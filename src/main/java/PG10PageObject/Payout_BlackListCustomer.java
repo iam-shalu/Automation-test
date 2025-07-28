@@ -67,6 +67,13 @@
 	    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[1]")
 	    WebElement smasterMerchant3;  
 	    
+	    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
+	    WebElement sMasterMerchant2;
+	    
+	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
+	    WebElement searchMasterMerchant2;
+	    
+	    
 	
 	    public void interactWithfraudControlPayoutblackListCust() throws InterruptedException, IOException {
 	    	
@@ -95,7 +102,7 @@
 	            WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
 
 	            
-	            String filePath = "C:\\Automation\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";  
+	            String filePath = "";  
 
 	            
 	            blackListUpload.sendKeys(filePath);
@@ -104,6 +111,7 @@
 	            Thread.sleep(5000); 
 
 	            System.out.println("File uploaded successfully.");
+	            
 
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -130,9 +138,10 @@
 	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
 	       
+	       wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
 	       
+	       wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
 	       
-	  //     smasterMerchant3
 	       
 	       
 	       
