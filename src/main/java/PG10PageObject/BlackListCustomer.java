@@ -147,7 +147,7 @@
 	            WebElement blackListUpload = driver.findElement(By.xpath("//input[@name=\"blacklistcustomerfile\"]"));
 
 	            
-	            String filePath = "C:\\Automation\\Blacklist Customer\\BlackList.xlsx"; 
+	            String filePath = "D:\\Automation\\pg10-automation\\Excel file\\Blacklist Customer\\BlackList.xlsx"; 
 	            
 	   
 	            blackListUpload.sendKeys(filePath);
