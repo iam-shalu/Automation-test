@@ -117,7 +117,7 @@ import ru.yandex.qatools.ashot.AShot;
 	            WebElement WhiteListMerchantIPUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
 
 	            
-	            String filePath = "C:\\Automation\\WhiteList Merchant Ip\\WhiteList_MerchantIP_SampleFile.xlsx"; 
+	            String filePath = "D:\\Automation\\pg10-automation\\Excel file\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx"; 
 	            
 	            WhiteListMerchantIPUpload.sendKeys(filePath);
 

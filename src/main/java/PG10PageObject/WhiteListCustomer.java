@@ -109,7 +109,7 @@ import ru.yandex.qatools.ashot.AShot;
 	          
 	            WebElement whiteListCustomerUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
 
-	            String filePath = "C:\\Automation\\Whitelist Customer\\WhiteList.xlsx";  
+	            String filePath = "D:\\Automation\\pg10-automation\\Excel file\\Whitelist Customer\\WhiteList.xlsx";  
 	            
 	       
 	            
