@@ -21,7 +21,6 @@
 <!--  <class name="PG10TestCases.TC_Dashboard"/>  -->
 <!--  <class name="PG10TestCases.TC_Logout"/>  -->
 <!--  <class name="PG10TestCases.TC_TransactionsPage"/>  -->
- <!--  <"test new"/>  -->
 </classes>
 
 </test>

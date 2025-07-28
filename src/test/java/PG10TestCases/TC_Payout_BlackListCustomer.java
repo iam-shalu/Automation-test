@@ -17,7 +17,8 @@
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");
 	        Listeners.test.log(Status.INFO, "click On Fraud Control & Go to Payout Blacklist Customer");
 	     
-
+	        
+	        
 	        
 	        payoutBlackListCustomerPage.interactWithfraudControlPayoutblackListCust();
 
