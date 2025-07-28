@@ -1,6 +1,4 @@
-
 	
-
 	package PG10PageObject;
 
 	import java.io.File;
@@ -73,78 +71,37 @@
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	    WebElement searchMasterMerchant2;
 	    
-	    
-	
 	    public void interactWithfraudControlPayoutblackListCust() throws InterruptedException, IOException {
-	    	
-	    	Thread.sleep(3000);
 
 	        wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 	        wait.until(ExpectedConditions.elementToBeClickable(payoutblackListCustomer)).click();
 	         
-	        Thread.sleep(3000);
-	        
 	        wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
-	        
 	        wait.until(ExpectedConditions.elementToBeClickable(sSearchMasterMerchant)).click();
-	        
 	        wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
-	        
-	       Thread.sleep(3000);
 	       
-	     
 	       try {
-	            
 	            driver.manage().window().maximize();
-	            Thread.sleep(2000); // Let the page load
-
-	          
-	            WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
-
-	            
+	            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
+	            WebElement blackListUpload = driver.findElement(By.xpath("//input[@id='fileInput']"));
 	            String filePath = "D:\\Automation\\pg10-automation\\Excel file\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";  
-
-	            
 	            blackListUpload.sendKeys(filePath);
-
-	            // Wait to see upload result
-	            Thread.sleep(5000); 
-
+	            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']"))); // hypothetical loader wait
 	            System.out.println("File uploaded successfully.");
-	            
-
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            
 	        }
 	       
-	       Thread.sleep(3000);
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(addPayoutBlackList)).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(addsMasterMerchant)).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(sSearchMasterMerchant3)).sendKeys("Test-acs-01");
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(selectTestacs013)).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("AccountNo"))).sendKeys("1234234346789");
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("BankIFSC"))).sendKeys("ICICI008");
-
-	       Thread.sleep(3000);
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
-	       
-	       
-	       
-	       
 	    }
 	    
 	    private void captureFullPageScreenshot(WebDriver driver, String mainFolder, String subFolder, String fileNameTag) {
@@ -175,14 +132,12 @@
 	    private void scrollToTopAndClick(WebElement element) throws InterruptedException {
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 	        js.executeScript("window.scrollTo(0, 0);");
-	        Thread.sleep(500);
+	        wait.until(ExpectedConditions.visibilityOf(element));
 	        js.executeScript("arguments[0].scrollIntoView(true);", element);
-	        Thread.sleep(300);
-	        js.executeScript("arguments[0].click();", element);
-	        
+	        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	    }
 
-}
+	}
 
 
 
