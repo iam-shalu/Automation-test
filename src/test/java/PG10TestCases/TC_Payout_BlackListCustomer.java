@@ -18,6 +18,8 @@
 	        Listeners.test.log(Status.INFO, "click On Fraud Control & Go to Payout Blacklist Customer");
 	     
 	        
+	        
+	        
 	        payoutBlackListCustomerPage.interactWithfraudControlPayoutblackListCust();
 
 	        Listeners.test.log(Status.INFO, "Blacklist Customer Test Completed");
