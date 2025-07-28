@@ -67,6 +67,9 @@
 	    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[1]")
 	    WebElement smasterMerchant3;  
 	    
+	    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
+	    WebElement sMasterMerchant2;
+	    
 	
 	    public void interactWithfraudControlPayoutblackListCust() throws InterruptedException, IOException {
 	    	
@@ -130,11 +133,10 @@
 	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
 	       
+	       wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
 	       
 	       
-	  //     smasterMerchant3
-	       
-	       
+	      
 	       
 	    }
 	    

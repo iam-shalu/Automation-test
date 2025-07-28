@@ -43,7 +43,6 @@ public class TC_WhiteListCustomerPage extends PG10Base{
 	        
 	        Listeners.test.log(Status.INFO, "Whitelist Merchant Ip Test Started");
 	        
-	        
 	        log.info("==== FraudControl WhiteList Customer Test Completed ====");
 
 	    }
