@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-28T16:00:14 IST" name="Suite" finished-at="2025-07-28T16:00:56 IST" duration-ms="41938">
+    <groups>
+    </groups>
+    <test started-at="2025-07-28T16:00:14 IST" name="Test" finished-at="2025-07-28T16:00:56 IST" duration-ms="41938">
+      <class name="PG10TestCases.TC_Payout_BlackListCustomer">
+        <test-method is-config="true" signature="createPageObjects()[pri:0, instance:PG10TestCases.TC_Payout_BlackListCustomer@67b9b51a]" started-at="2025-07-28T16:00:21 IST" name="createPageObjects" finished-at="2025-07-28T16:00:21 IST" duration-ms="17" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPageObjects -->
+        <test-method signature="testPayoutBlackListCustomer()[pri:2, instance:PG10TestCases.TC_Payout_BlackListCustomer@67b9b51a]" started-at="2025-07-28T16:00:21 IST" name="testPayoutBlackListCustomer" finished-at="2025-07-28T16:00:51 IST" duration-ms="30012" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPayoutBlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_Payout_BlackListCustomer -->
+      <class name="PG10TestCases.TC_Logout">
+        <test-method is-config="true" signature="createPageObjects()[pri:0, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-07-28T16:00:51 IST" name="createPageObjects" finished-at="2025-07-28T16:00:51 IST" duration-ms="25" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPageObjects -->
+        <test-method signature="logout()[pri:3, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-07-28T16:00:51 IST" name="logout" finished-at="2025-07-28T16:00:56 IST" duration-ms="5007" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+      </class> <!-- PG10TestCases.TC_Logout -->
+      <class name="PG10TestCases.TC_LoginPage">
+        <test-method is-config="true" signature="initializeDriver()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-07-28T16:00:14 IST" name="initializeDriver" finished-at="2025-07-28T16:00:19 IST" duration-ms="4607" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeDriver -->
+        <test-method is-config="true" signature="createPageObjects()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-07-28T16:00:19 IST" name="createPageObjects" finished-at="2025-07-28T16:00:19 IST" duration-ms="60" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPageObjects -->
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-07-28T16:00:19 IST" name="login" finished-at="2025-07-28T16:00:21 IST" duration-ms="1594" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-07-28T16:00:56 IST" name="closeBrowser" finished-at="2025-07-28T16:00:56 IST" duration-ms="556" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- PG10TestCases.TC_LoginPage -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
