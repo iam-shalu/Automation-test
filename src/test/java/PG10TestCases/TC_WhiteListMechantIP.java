@@ -1,6 +1,4 @@
 
-	
-
 	package PG10TestCases;
 
 	import org.testng.annotations.Test;
@@ -37,11 +35,6 @@
 	        Listeners.test.log(Status.INFO, "Clear the Data");
 	        Listeners.test.log(Status.INFO, "Search by IP -  1.1.1.1 ");
 	        Listeners.test.log(Status.INFO, "Delete the Record by IP - 1.5.7.8");
-	       
-
-
-	        
-
 	       
 	        whiteListMerchantIPPage.interactWithfraudControlwhiteListMerchIP();
 

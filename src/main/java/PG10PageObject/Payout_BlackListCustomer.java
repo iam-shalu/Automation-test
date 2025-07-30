@@ -1,6 +1,4 @@
-
 	
-
 	package PG10PageObject;
 
 	import java.io.File;
@@ -73,78 +71,110 @@
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	    WebElement searchMasterMerchant2;
 	    
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    WebElement TestacsMasterMerch03;
+	   
+	    @FindBy(xpath = "//h3[normalize-space()='Payout BlackList Customers']")
+	    WebElement PayoutblackListCustomerText;
 	    
-	
+	    
+	    
+	    @FindBy(xpath = "(//input[@class='form-control form-control-sm'])[2]")
+	    WebElement searchByIP;
+	    
+	    @FindBy(xpath = "//i[@class='fa fa-trash-o fa-lg']")
+	    WebElement deleteRecord;
+	  	    
+	    @FindBy(xpath = "(//span[@class=\"fa fa-trash-o fa-lg\"])[2]")
+	    WebElement deleteRecord2;
+	    
+	 
+	    
+	   
+	    
 	    public void interactWithfraudControlPayoutblackListCust() throws InterruptedException, IOException {
-	    	
-	    	Thread.sleep(3000);
 
 	        wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 	        wait.until(ExpectedConditions.elementToBeClickable(payoutblackListCustomer)).click();
 	         
-	        Thread.sleep(3000);
-	        
 	        wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
-	        
 	        wait.until(ExpectedConditions.elementToBeClickable(sSearchMasterMerchant)).click();
-	        
 	        wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
 	        
-	       Thread.sleep(3000);
+	        Thread.sleep(3000);
 	       
-	     
 	       try {
-	            
 	            driver.manage().window().maximize();
-	            Thread.sleep(2000); // Let the page load
-
-	          
-	            WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
-
-	            
-	            String filePath = "D:\\Automation\\pg10-automation\\Excel file\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";  
-
-	            
+	            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
+	            WebElement blackListUpload = driver.findElement(By.xpath("//input[@id='fileInput']"));
+	            String filePath = "D:\\Automation\\Excel file\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";  
 	            blackListUpload.sendKeys(filePath);
-
-	            // Wait to see upload result
-	            Thread.sleep(5000); 
-
+	            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']"))); // hypothetical loader wait
 	            System.out.println("File uploaded successfully.");
-	            
-
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            
 	        }
-	       
 	       Thread.sleep(3000);
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
-	       
+	       Thread.sleep(3000);
 	       wait.until(ExpectedConditions.elementToBeClickable(addPayoutBlackList)).click();
-	       
+	       Thread.sleep(3000);
 	       wait.until(ExpectedConditions.elementToBeClickable(addsMasterMerchant)).click();
-	       
+	       Thread.sleep(3000);
 	       wait.until(ExpectedConditions.elementToBeClickable(sSearchMasterMerchant3)).sendKeys("Test-acs-01");
-	       
+	       Thread.sleep(3000);
 	       wait.until(ExpectedConditions.elementToBeClickable(selectTestacs013)).click();
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("AccountNo"))).sendKeys("1234234346789");
-	       
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("BankIFSC"))).sendKeys("ICICI008");
-
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
+	       Thread.sleep(3000);
+	       wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
+	       Thread.sleep(3000);
+	       wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
+	       Thread.sleep(3000);
+	       wait.until(ExpectedConditions.elementToBeClickable(TestacsMasterMerch03)).click();
+	       Thread.sleep(3000);
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	       Thread.sleep(3000);
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	      
 	       Thread.sleep(3000);
 	       
-	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 	       
-	       wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
+	       captureFullPageScreenshot(driver, "Fraud Control", "BlackListCustomer", "PayoutblackListCustomerText");
 	       
-	       wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
+	       Thread.sleep(3000);
 	       
+	       ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 	       
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1234234346789");
 	       
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 	       
+	       Thread.sleep(3000);
+	       
+	       	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	        wait.until(ExpectedConditions.alertIsPresent());
+	        driver.switchTo().alert().accept();
+	        
+	        Thread.sleep(3000);
+	        
+		   wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
+
+		   wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	        
+		   wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1234234346796");
+		   
+		   wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+		   
+		   
+		   wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	       wait.until(ExpectedConditions.alertIsPresent());
+	       driver.switchTo().alert().accept();
+		   
+		   
+	      
 	    }
 	    
 	    private void captureFullPageScreenshot(WebDriver driver, String mainFolder, String subFolder, String fileNameTag) {
@@ -164,6 +194,7 @@
 	            Screenshot screenshot = new AShot()
 	                    .shootingStrategy(ShootingStrategies.viewportPasting(1000))
 	                    .takeScreenshot(driver);
+	            
 
 	            ImageIO.write(screenshot.getImage(), "PNG", new File(filePath));
 	            System.out.println("Screenshot saved to: " + filePath);
@@ -175,14 +206,12 @@
 	    private void scrollToTopAndClick(WebElement element) throws InterruptedException {
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 	        js.executeScript("window.scrollTo(0, 0);");
-	        Thread.sleep(500);
+	        wait.until(ExpectedConditions.visibilityOf(element));
 	        js.executeScript("arguments[0].scrollIntoView(true);", element);
-	        Thread.sleep(300);
-	        js.executeScript("arguments[0].click();", element);
-	        
+	        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	    }
 
-}
+	}
 
 
 

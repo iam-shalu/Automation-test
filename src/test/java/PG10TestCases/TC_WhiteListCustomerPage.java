@@ -9,7 +9,7 @@ import PG10Base.PG10Base;
 
 public class TC_WhiteListCustomerPage extends PG10Base{
 	
-	   @Test(priority = 3)
+	   @Test(priority = 2)
 	    public void testWhiteListCustomer() throws Exception {
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 	        

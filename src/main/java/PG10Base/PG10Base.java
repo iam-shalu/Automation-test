@@ -13,7 +13,6 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
@@ -23,6 +22,7 @@ import PG10PageObject.WhiteList_MechantIP;
 import PG10PageObject.Logout;
 import PG10PageObject.Payout_BlackListCustomer;
 import PG10PageObject.BlackListCustomer;
+import PG10PageObject.FTDWhiteListUser;
 import PG10PageObject.FraudControl;
 //import PG10PageObject.FraudControl;
 import PG10PageObject.Login;
@@ -43,6 +43,9 @@ public class PG10Base {
     public WhiteListCustomer whiteListCustomerPage;
     public WhiteList_MechantIP whiteListMerchantIPPage;
     public Payout_BlackListCustomer payoutBlackListCustomerPage;
+    public FTDWhiteListUser ftdwhiteListPage;
+   
+    
 
 
     @BeforeTest
@@ -140,18 +143,12 @@ public class PG10Base {
         whiteListCustomerPage = new WhiteListCustomer(driver);
         whiteListMerchantIPPage = new WhiteList_MechantIP(driver);
         payoutBlackListCustomerPage = new Payout_BlackListCustomer(driver);
+     
+        ftdwhiteListPage = new FTDWhiteListUser(driver);
         
         
         
     }
 
-    @AfterTest
-    public void closeBrowser() {
-    	
-        if (driver != null) {
-            driver.quit();
-            log.info("Browser closed");
-            
-        }
-    }
+
 }

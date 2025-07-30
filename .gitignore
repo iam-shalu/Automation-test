@@ -15,7 +15,7 @@ dist/
 
 # Log files
 *.log
-
+ 
 # Package files
 *.jar
 
@@ -23,6 +23,7 @@ dist/
 target/
 dist/
 ExcelFile/
+screenshots/
 
 # JetBrains IDE
 .idea/
