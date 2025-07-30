@@ -26,8 +26,8 @@
 	        Listeners.test.log(Status.INFO, " Click on save )");
 	        Listeners.test.log(Status.INFO, "Search Black List Customer data by Search By Name - Akash");  
 	        Listeners.test.log(Status.INFO, "capture the FullPageScreenshot ");
-	        Listeners.test.log(Status.INFO, "click On Delete - Delete the Imported Excel File ");
-	        Listeners.test.log(Status.INFO, "click On Delete - Delete the Imported Excel File ");
+	        Listeners.test.log(Status.INFO, "click On Delete - Delete the Imported Excel File Record ");
+	        Listeners.test.log(Status.INFO, "click On Delete - Delete the Imported Excel File Record");
 	        Listeners.test.log(Status.INFO, " click & Export the Excel File ");
 	       
 	        blackListCustomerPage.interactWithfraudControlblackList();

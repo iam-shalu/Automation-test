@@ -75,7 +75,7 @@ public class WhiteList_MechantIP {
     @FindBy(xpath = "//span[@class='fa fa-trash-o fa-lg']")
     WebElement deleteIp;
 
-    public void interactWithfraudControlwhiteListMerchIP() throws IOException {
+    public void interactWithfraudControlwhiteListMerchIP() throws IOException, InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(whiteListMerchantIp)).click();
         wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
@@ -86,7 +86,7 @@ public class WhiteList_MechantIP {
         waitForPageLoad();
 
         WebElement WhiteListMerchantIPUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
-        String filePath = "D:\\Automation\\pg10-automation\\Excel file\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx"; 
+        String filePath = "D:\\Automation\\Excel file\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx"; 
         WhiteListMerchantIPUpload.sendKeys(filePath);
         waitForUploadComplete();
 
@@ -105,19 +105,27 @@ public class WhiteList_MechantIP {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 
         captureFullPageScreenshot(driver, "Fraud Control", "WhiteListMasterMerchantIp", "WhitelistMasterMerchantIPDetails");
+        
+        Thread.sleep(3000);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.5.7.8");
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(deleteIp)).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+        
+        Thread.sleep(3000);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.1.1.1");
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(deleteIp)).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+        
+        Thread.sleep(3000);
     }
 
     private void waitForPageLoad() {
