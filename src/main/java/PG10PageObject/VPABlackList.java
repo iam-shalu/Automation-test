@@ -106,15 +106,6 @@
 	        
 	     // Click Save button when visible
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnSave"))).click();
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	
-	        
 
 	    }
 
