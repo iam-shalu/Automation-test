@@ -12,9 +12,9 @@
 <!-- <class name="PG10TestCases.TC_BlackListCustomer"/>  -->
 <!--<class name="PG10TestCases.TC_WhiteListCustomerPage"/> -->
 <!--<class name="PG10TestCases.TC_WhiteListMechantIP"/> -->
-<!--<class name="PG10TestCases.TC_Payout_BlackListCustomer"/> -->
+<class name="PG10TestCases.TC_Payout_BlackListCustomer"/> 
 <!--<class name="PG10TestCases.TC_FTDWhiteListUserPage"/>  -->
-<class name="PG10TestCases.TC_FTDWhiteListUserPage"/>
+<!--<class name="PG10TestCases.TC_FTDWhiteListUserPage"/>  -->
 
 
 <class name="PG10TestCases.TC_Logout"/>
