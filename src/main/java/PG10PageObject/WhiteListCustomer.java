@@ -120,6 +120,7 @@ public class WhiteListCustomer {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("IP"))).sendKeys("1.1.1.3");
         wait.until(ExpectedConditions.elementToBeClickable(By.id("IsActive"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
+        
 
         scrollSmoothToTop();
 
@@ -129,12 +130,14 @@ public class WhiteListCustomer {
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("Akash");
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-
+        
         captureFullPageScreenshot(driver, "Fraud Control", "WhiteListCustomer", "whiteListCustomerText");
 
         wait.until(ExpectedConditions.elementToBeClickable(delete1)).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+        
+        Thread.sleep(3000);
         
         wait.until(ExpectedConditions.visibilityOf(delete2));
 
@@ -146,6 +149,9 @@ public class WhiteListCustomer {
         scrollSmoothToTop();
         
         Thread.sleep(3000);
+        
+        
+        
     }
 
     private void captureFullPageScreenshot(WebDriver driver, String mainFolder, String subFolder, String fileNameTag) {

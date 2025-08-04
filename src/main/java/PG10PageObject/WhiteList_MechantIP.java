@@ -117,15 +117,17 @@ public class WhiteList_MechantIP {
         driver.switchTo().alert().accept();
         
         Thread.sleep(3000);
-
+      
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.1.1.1");
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("8.7.6.5");
         Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(deleteIp)).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
         
         Thread.sleep(3000);
+        
     }
 
     private void waitForPageLoad() {
@@ -166,12 +168,7 @@ public class WhiteList_MechantIP {
         }
     }
 
-    private void scrollToTopAndClick(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, 0);");
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
-        js.executeScript("arguments[0].click();", element);
-    }
+
 }
 
 

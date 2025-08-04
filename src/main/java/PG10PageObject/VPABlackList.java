@@ -35,78 +35,100 @@
 	    @FindBy(xpath = "//span[normalize-space()='Fraud Control']") 
 	    WebElement fraudControlManu;
 
-	    @FindBy(xpath = "//a[normalize-space()='Black List Customer']")
-	    WebElement blackListCustomer;
+	    @FindBy(xpath = "//a[normalize-space()='VPA BlackList']")
+	    WebElement VpaBlackList;
 	    
-	    @FindBy(xpath = "//a[normalize-space()='Add Blacklist Customer']")
-	    WebElement ManualAddBlackListCust;
-
-	    @FindBy(xpath = "//a[normalize-space()='Download Sample File']")
-	    WebElement downloadSampleFile;
-
-	    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[1]/div/div/div[2]/div/div/div/form/div/div[1]/input")
-	    WebElement chooseFileInput;
-
-	    @FindBy(xpath = "//button[contains(text(),'Import')]")
-	    WebElement importButton;
-
-	    @FindBy(xpath = "//h3[normalize-space()='Blacklist Customer']")
-	    WebElement blackListCustomerText;
+	    @FindBy(xpath = "//a[normalize-space()='Add VPABlackList User']")
+	    WebElement AddVPABlackListUser;
+	   
+	    @FindBy(xpath = "//h3[normalize-space()='VPA BlackList Details']")
+	    WebElement VpaBlackListDetailsText;
 	    
+	    @FindBy(xpath = "//button[@class=\"multiselect dropdown-toggle btn btn-default\"]")
+	    WebElement selectAny;
 	    
-	    @FindBy(xpath = "//input[@id='dt-search-0']")
-	    WebElement searchBlackListCust;
-	       
-	    @FindBy(xpath = "//tbody/tr[30]/td[9]/a[2]/span[1]")
-	    WebElement deleteBlackListcust1;
+	    @FindBy(xpath = "//input[@class='form-control multiselect-search']")
+	    WebElement searchselectAny;
 	    
-	 // //tr[td[contains(text(), 'akash13@gmail.com')]]//a[contains(@onclick, 'DeleteRow')]
-	  
+	    @FindBy(xpath = "//label[normalize-space()='FULL']")
+	    WebElement Full;
+	    
+	    @FindBy(xpath = "//span[@class='fa fa-trash-o fa-lg']")
+	    WebElement deleteRecord;
+	    
 	    
 
-	    @FindBy(xpath = "//h3[normalize-space()='Blacklist Customer']")
-	    WebElement BlackListText;
-	    
-	    @FindBy(xpath = "//span[@class='user-name']")
-	    WebElement LogoutText;
-	    
-	    public void interactWithfraudControlblackList() throws IOException, InterruptedException {
+	    public void interactWithfraudControlVPABlackList() throws IOException, InterruptedException {
 	    	
-	        wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
-	        wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
-
-	        driver.manage().window().maximize();
+	    	wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
+	    	
+	        wait.until(ExpectedConditions.elementToBeClickable(VpaBlackList)).click();
 	        
+	        Thread.sleep(3000);
 	        
-	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='blacklistcustomerfile']")));
+	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//input[@class='form-control form-control-sm'])[1]")));
 
-	        WebElement blackListUpload = driver.findElement(By.xpath("//input[@name='blacklistcustomerfile']"));
-	        String filePath = "D:\\Automation\\Excel file\\Blacklist Customer\\BlackList.xlsx"; 
+	        WebElement blackListUpload = driver.findElement(By.xpath("(//input[@class='form-control form-control-sm'])[1]"));
+	        String filePath = "D:\\Automation\\Excel file\\VPA BlackList\\VPABlackList.xlsx"; 
 	        blackListUpload.sendKeys(filePath);
 	        
 	        System.out.println("File uploaded successfully.");
 	        
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("frmimport")));
-
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("frmimport"))).click();
+	        Thread.sleep(3000);
 	        
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnimport"))).click();
 	        
-	     //   Thread.sleep(3000);
-	         
-	        wait.until(ExpectedConditions.elementToBeClickable(ManualAddBlackListCust)).click();
+	        Thread.sleep(3000);
+	       
+	        wait.until(ExpectedConditions.elementToBeClickable(AddVPABlackListUser)).click();
 	        
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Name"))).sendKeys("akash");
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Email"))).sendKeys("akash135@gmail.com");
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
-	  //      wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629096");
+	        Thread.sleep(3000);
 	        
+	        wait.until(ExpectedConditions.elementToBeClickable(selectAny)).click();
 	        
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
+	        Thread.sleep(3000);
 	        
-	     // Click Save button when visible
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnSave"))).click();
-
+	        wait.until(ExpectedConditions.elementToBeClickable(searchselectAny)).click();
+	        
+	        Thread.sleep(3000);
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(Full)).click();
+	        
+	        Thread.sleep(3000);
+	        
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("VPA"))).sendKeys("4123499@paytm");
+	        
+	        Thread.sleep(3000);
+	        
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn_Save"))).click();
+	        
+	        Thread.sleep(3000);
+	       
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("4123466@paytm");
+	        
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
+	        
+	        Thread.sleep(3000);
+	        
+	       captureFullPageScreenshot(driver, "Fraud Control", "VPA BlackList", "VpaBlackListDetailsText");
+	       
+	       Thread.sleep(3000);
+	       
+	   //     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnExport"))).click();
+	       
+	       wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	       wait.until(ExpectedConditions.alertIsPresent());
+	       driver.switchTo().alert().accept();
+	       
+	       Thread.sleep(3000);
+	       
+	       wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	       wait.until(ExpectedConditions.alertIsPresent());
+	       driver.switchTo().alert().accept();
+	       
+	       Thread.sleep(3000);
+	       
+	    	
 	    }
 
 	    private void captureFullPageScreenshot(WebDriver driver, String mainFolder, String subFolder, String fileNameTag) {
