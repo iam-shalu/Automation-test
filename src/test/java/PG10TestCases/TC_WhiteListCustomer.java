@@ -7,13 +7,13 @@ import com.aventstack.extentreports.Status;
 import Listeners.Listeners;
 import PG10Base.PG10Base;
 
-public class TC_WhiteListCustomerPage extends PG10Base{
+public class TC_WhiteListCustomer extends PG10Base{
 	
-	   @Test(priority = 2)
-	    public void testWhiteListCustomer() throws Exception {
+	   @Test(priority = 4)
+	    public void WhiteListCustomer() throws Exception {
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 	        
-	        log.info("==== Starting FraudControl WhiteList Customer Test ====");
+	        log.info("==== Starting FraudControl WhiteList Test ====");
 
 	        Listeners.test.log(Status.INFO, "click On Fraud Control & Go to WhiteList Customer");
 	        Listeners.test.log(Status.INFO, "Select the Master Merchant Dropdown -Test-Acs-01");
@@ -37,13 +37,14 @@ public class TC_WhiteListCustomerPage extends PG10Base{
 	        Listeners.test.log(Status.INFO, "Click On Delete Record ");
 	               
 	        whiteListCustomerPage.interactWithfraudControl_whiteListCustomer();
+	           
+	        Listeners.test.log(Status.INFO, "Whitelist Merchant Ip Test Completed");
 	        
+	        Listeners.test.log(Status.INFO, "Whitelist Test Started");
 	        
-	        Listeners.test.log(Status.INFO, "Whitelist Customer Test Completed");
+	        log.info("==== FraudControl WhiteList  Test Completed ====");
 	        
-	        Listeners.test.log(Status.INFO, "Whitelist Merchant Ip Test Started");
-	        
-	        log.info("==== FraudControl WhiteList Customer Test Completed ====");
+	        Thread.sleep(3000);
 
 	    }
 	    

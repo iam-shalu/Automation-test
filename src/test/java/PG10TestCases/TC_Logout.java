@@ -10,7 +10,7 @@ import Listeners.Listeners;
 
 public class TC_Logout extends PG10Base {
 
-    @Test(priority = 3)
+    @Test(priority = 13)
     public void logout() throws InterruptedException {
         Listeners.test.log(Status.INFO, "Clicking on Profile");
         logoutPage.profileclick();

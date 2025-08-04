@@ -11,8 +11,8 @@
 
 	public class TC_BlackListCustomer  extends PG10Base {
 
-	    @Test(priority = 2)
-	    public void testBlackListCustomer() throws Exception {
+	    @Test(priority = 3 )
+	    public void BlackListCustomer() throws Exception {
 	    	log.info("==== Starting FraudControl Blacklist Customer Test ====");
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");
 	        Listeners.test.log(Status.INFO, "click On Fraud Control & Go to Blacklist Customer");
@@ -35,6 +35,7 @@
 	        Listeners.test.log(Status.INFO, "Blacklist Customer Test Completed");
 	        log.info("==== FraudControl BlackList Customer Test Completed ====");
 	        Thread.sleep(3000);
+	        
 	    }
 	
 

@@ -7,26 +7,41 @@ import com.aventstack.extentreports.Status;
 import Listeners.Listeners;
 import PG10Base.PG10Base;
 
-public class TC_FTDWhiteListUserPage extends PG10Base{
+public class TC_FTDWhiteListUser extends PG10Base{
 	
-	   @Test(priority = 2)
-	    public void testWhiteFTDListCustomer() throws Exception {
+	   @Test(priority = 7)
+	    public void WhiteFTDListCustomer() throws Exception {
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 	        
-	        log.info("==== Starting FraudControl WhiteList Customer Test ====");
+	        log.info("==== Starting FraudControl FTD White List User Test ====");
 
 	        Listeners.test.log(Status.INFO, "click On Fraud Control & Go to FTD WhiteList Customer");
 	        Listeners.test.log(Status.INFO, "Select the Master Merchant Dropdown -Test-Acs-01");
-	       
-	               
+	        Listeners.test.log(Status.INFO, "click On choose file & Upload the Excel File");
+	        Listeners.test.log(Status.INFO, "click On Import So that Import the Excel File ");
+	        Listeners.test.log(Status.INFO, "click On Add FTD White List User");
+	        Listeners.test.log(Status.INFO, "Add FTD White List User - Select the Master Merchant Dropdown -Test-Acs-01");
+	        Listeners.test.log(Status.INFO, "Add FTD White List User - Enter First Name");
+	        Listeners.test.log(Status.INFO, "Add FTD White List User - Enter Last Name");   
+	        Listeners.test.log(Status.INFO, "Add FTD White List User - Enter the  Email " );   
+	        Listeners.test.log(Status.INFO, "Add FTD White List User - Enter the  Phone No." );   
+	        Listeners.test.log(Status.INFO, "click On Sumbit Button" );   
+	        Listeners.test.log(Status.INFO, "Select the Master Merchant Dropdown -Test-Acs-01");
+	        Listeners.test.log(Status.INFO, "Enter the Phone No ");
+	        Listeners.test.log(Status.INFO, "click On Filter " );   
+	        Listeners.test.log(Status.INFO, "capture the FullPageScreenshot " );   
+	        Listeners.test.log(Status.INFO, "delete the Records " ); 
+	        
 	        ftdwhiteListPage.interactWithfraudControl_FTDwhiteListUser();
 	        
 	        
 	        Listeners.test.log(Status.INFO, "Whitelist Customer Test Completed");
 	        
-	        Listeners.test.log(Status.INFO, "Whitelist Merchant Ip Test Started");
+	        Listeners.test.log(Status.INFO, "FraudControl FTD White List Customer Test Completed");
 	        
-	        log.info("==== FraudControl WhiteList Customer Test Completed ====");
+	        log.info("==== FraudControl FTD White List Customer Test Completed ====");
+	        
+	        Thread.sleep(3000);
 
 	    }
 	    

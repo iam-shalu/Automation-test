@@ -77,8 +77,6 @@
 	    @FindBy(xpath = "//h3[normalize-space()='Payout BlackList Customers']")
 	    WebElement PayoutblackListCustomerText;
 	    
-	    
-	    
 	    @FindBy(xpath = "(//input[@class='form-control form-control-sm'])[2]")
 	    WebElement searchByIP;
 	    
@@ -90,9 +88,9 @@
 	    
 	 
 	    
-	   
-	    
 	    public void interactWithfraudControlPayoutblackListCust() throws InterruptedException, IOException {
+	    	
+	    	Thread.sleep(3000);
 
 	        wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 	        wait.until(ExpectedConditions.elementToBeClickable(payoutblackListCustomer)).click();
@@ -172,6 +170,8 @@
 		   wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 	       wait.until(ExpectedConditions.alertIsPresent());
 	       driver.switchTo().alert().accept();
+	       
+	       Thread.sleep(3000);
 		   
 		   
 	      

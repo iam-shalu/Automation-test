@@ -83,7 +83,7 @@ public class Transactions {
     public void interactWithtransactionsDepositTxs() throws InterruptedException, IOException {
     
     	
-    	 wait.until(ExpectedConditions.elementToBeClickable(CloseLimit)).click();
+    //	 wait.until(ExpectedConditions.elementToBeClickable(CloseLimit)).click();
         wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();

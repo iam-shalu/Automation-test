@@ -6,13 +6,27 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_Payout_BlackListCustomer">
+      <class name="PG10TestCases.TC_Logout">
         <methods>
-          <include name="testPayoutBlackListCustomer"/>
-          <include name="createPageObjects"/>
-          <include name="initializeDriver"/>
+          <include name="setUpSuite"/>
+          <include name="logout"/>
+          <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_Payout_BlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_Logout -->
+      <class name="PG10TestCases.TC_LoginPage">
+        <methods>
+          <include name="login"/>
+          <include name="setUpSuite"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_LoginPage -->
+      <class name="PG10TestCases.TC_Dashboard">
+        <methods>
+          <include name="setUpSuite"/>
+          <include name="verifyDashboardButtons"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_Dashboard -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

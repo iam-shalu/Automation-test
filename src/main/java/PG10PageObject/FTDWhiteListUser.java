@@ -1,7 +1,12 @@
 package PG10PageObject;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
+import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +16,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
 public class FTDWhiteListUser {
-	
+
 	 WebDriver driver;
 	 WebDriverWait wait;
 
@@ -57,8 +66,20 @@ public class FTDWhiteListUser {
 	    @FindBy(xpath = "(//span[@class=\"multiselect-selected-text\"])[2]")
 	    WebElement selectMasterMerchant2;
 	    
-	    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
+	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	    WebElement searchMasterMerchant2;
+	    
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']" )
+	    WebElement Testacs0135;
+	    
+	    @FindBy(xpath = "//h3[normalize-space()='FTD White list User Details']")
+	    WebElement FTDWhiteListUser;
+	    
+	    @FindBy(xpath = "//span[@class=\"fa fa-trash-o fa-lg\"]")
+	    WebElement deleteRecord;
+	    
+	    @FindBy(xpath = "/span[@class=\"fa fa-trash-o fa-lg\"]")
+	    WebElement deleteRecord2;
 	    
 	   
 	    public void interactWithfraudControl_FTDwhiteListUser() throws InterruptedException, IOException {
@@ -66,9 +87,8 @@ public class FTDWhiteListUser {
 	        wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 	        
 	        wait.until(ExpectedConditions.elementToBeClickable(ftdWhiteList)).click();
-	        
+	        	        
 	        Thread.sleep(3000);
-	        
 	        
 	       wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant)).click();
 	        
@@ -119,21 +139,89 @@ public class FTDWhiteListUser {
 	        
 	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btn_Save"))).click();
 	       
-	        Thread.sleep(3000);	 
+	        Thread.sleep(3000);	
 	        
-	        wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).click();
+	        wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant2)).click(); 
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(Testacs0135)).click();
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	        
+	        Thread.sleep(3000);
+	        
+	        captureFullPageScreenshot(driver, "Fraud Control", "FTD White List User", "FTDWhiteListUser");
+	        
+	       	Thread.sleep(3000);
+	       
+	       	wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629063");
+	       
+	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	        
+	       	Thread.sleep(3000);
+   
+	//        wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	       	
+	       	
+	       	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	        wait.until(ExpectedConditions.alertIsPresent());
+	        driver.switchTo().alert().accept();
+	        
+	    	Thread.sleep(3000);
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	        
+	        Thread.sleep(3000);
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033");
+	        
+	        Thread.sleep(3000);
+	        
+	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	        
+	        Thread.sleep(3000);
 	        
 	        
+	    //    wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	        
+	    	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	        wait.until(ExpectedConditions.alertIsPresent());
+	        driver.switchTo().alert().accept();
 	        
 	        
+	        Thread.sleep(3000);
 	        
 	        
-	        
-	        
-	        
-	        
-	   	
 	    }
+
+
+		private void captureFullPageScreenshot(WebDriver driver2, String mainFolder, String subFolder, String fileNameTag) {
+			 try {
+		            String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		            String directoryPath = System.getProperty("user.dir") + File.separator + "screenshots" +
+		                    File.separator + date + File.separator + mainFolder + File.separator + subFolder;
+
+		            File dir = new File(directoryPath);
+		            if (!dir.exists()) {
+		                dir.mkdirs();
+		            }
+
+		            String timestamp = new SimpleDateFormat("HHmmss").format(new Date());
+		            String filePath = directoryPath + File.separator + fileNameTag + "_" + timestamp + ".png";
+
+		            Screenshot screenshot = new AShot()
+		                    .shootingStrategy(ShootingStrategies.viewportPasting(1000))
+		                    .takeScreenshot(driver);
+
+		            ImageIO.write(screenshot.getImage(), "PNG", new File(filePath));
+		            System.out.println("Screenshot saved to: " + filePath);
+		        } catch (IOException e) {
+		            System.err.println("Screenshot capture failed: " + e.getMessage());
+		        }
+		}
 	
 }
 
