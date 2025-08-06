@@ -59,6 +59,9 @@
 
 	    @FindBy(xpath = "//button[@id='btnDownloadExcel']")
 	    WebElement export;
+	    
+	    @FindBy(xpath = "//td[normalize-space()='45640892']")
+	    WebElement PayoutId;
 
 	    @FindBy(xpath = "//span[@class='dtr-data']//i[@class='fa fa-server']")
 	    WebElement tx_Action;
@@ -78,41 +81,125 @@
 	    @FindBy(xpath = "//h3[normalize-space()='Payout Tx List']")
 	    WebElement payoutTxList;
 	    
+	  
 	    
-	    public void interactWithtransactionPayoutTxs() throws InterruptedException, IOException {
-	    	
-	    	Thread.sleep(3000);
-	    	
-	    	wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
-	    	
-	    	wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
-   
-	        Thread.sleep(2000);
-	        
-	        wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
+//	    
+//	    public void interactWithtransactionPayoutTxs() throws InterruptedException, IOException {
+//	    	
+//	    	Thread.sleep(3000);
+//	    	
+//	    	wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
+//	    	
+//	    	wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
+//   
+//	        Thread.sleep(2000);
+//	        
+//	        wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
+//	        wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
+//	        Thread.sleep(3000);
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+//	        Thread.sleep(3000);
+//
+//	        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//	        new PG10Base().moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
+//	        Thread.sleep(3000);
+//
+//	        captureFullPageScreenshot(driver, "Transactions", "Payout Transactions", "Payout_Tx_List");
+//
+//	        Thread.sleep(2000);
+//	        
+//	        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+//
+//	        Thread.sleep(2000);
+//	    }
+	    
+	    public void interactWithtransactionPayoutTxs() throws IOException {
+	        try {
+	            System.out.println("==== Starting Payout Transactions Test ====");
+	            
+	            
+	            Thread.sleep(3000);
 
-	        wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-	        wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
+	            // Wait for merchant modal to close (if it appears)
+	                wait.until(ExpectedConditions.or(
+	                ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")),
+	                ExpectedConditions.not(ExpectedConditions.attributeContains(By.id("merchantLimitModal"), "style", "display: block"))
+	            ));
+	            
+	            Thread.sleep(3000);
 
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
+	            
+	            Thread.sleep(3000);
+	            
+	            wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
+	            
+	            Thread.sleep(3000);
+	            
+	            wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
 
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
-	        Thread.sleep(3000);
+	            wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
+	            
+	            
+	         // Wait for the cutoff time dropdown element to be present
+	            WebElement cutoffTimeDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlCutOffTime")));
 
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-	        Thread.sleep(3000);
+	            // Wrap it in a Select object
+	            Select timeSelect = new Select(cutoffTimeDropdown);
 
-	        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-	        new PG10Base().moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
+	            // Select the option by visible text "12 AM to 12 AM"
+	            timeSelect.selectByVisibleText("12 AM to 12 AM");
+	            
+	            Thread.sleep(3000);
+	            
+	            wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
-	        Thread.sleep(3000);
+	            // Wait and move Excel
+	            String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	            String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+	            PG10Base base = new PG10Base();
 
-	        captureFullPageScreenshot(driver, "Transactions", "Payout Transactions", "Payout_Tx_List");
+	            if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+	                base.moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
+	            } else {
+	                System.err.println("❌ No downloaded Excel file found to move.");
+	            }
 
-	        Thread.sleep(2000);
-	        
+	            wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
+	            
+	            Thread.sleep(3000);
+	            
+	            wait.until(ExpectedConditions.elementToBeClickable(PayoutId)).click();
+	            
+	            Thread.sleep(3000);
+	            
+	            captureFullPageScreenshot(driver, "Transactions", "Payout Transactions", "Payout_Tx_List");
+	            
+	            Thread.sleep(3000);
+	                
+	            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+            
+	            Thread.sleep(3000);
+
+	            System.out.println("==== Payout Transactions Test Completed ====");
+
+	        } catch (Exception e) {
+	            System.err.println("❌ Unexpected error in Payout Transaction flow: " + e.getMessage());
+	        }
 	    }
+
 
 	    // ==== Screenshot Handler ====
 	    public void captureFullPageScreenshot(WebDriver driver, String parentFolder, String subFolder, String label) {

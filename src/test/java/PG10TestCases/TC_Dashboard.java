@@ -18,5 +18,7 @@ public class TC_Dashboard extends PG10Base {
 
         log.info("Full-page screenshot captured: Dashboard > After_Button_Clicks");
         log.info("==== Dashboard Test Completed ====");
+        
+        Thread.sleep(3000);
     }
 }

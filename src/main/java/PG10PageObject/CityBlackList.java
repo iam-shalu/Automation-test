@@ -43,7 +43,7 @@ public class CityBlackList {
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
 	    WebElement searchMasterMerchant1;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
 	    WebElement Testacs1;
 	 
 	    @FindBy(xpath = "//a[@class='btn btn-info btn-sm']")
@@ -55,7 +55,7 @@ public class CityBlackList {
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
 	    WebElement searchSubTestacs2;
 	    
-	    @FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
 	    WebElement selectsubTestacs2;
 	    
 	    @FindBy(xpath = "(//span[@class=\"multiselect-selected-text\"])[2]")
@@ -67,7 +67,7 @@ public class CityBlackList {
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	    WebElement searchSubMastermerchant3;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
 	    WebElement Testacs3;
 	    
 	    @FindBy(xpath = "//h3[normalize-space()='City BlackList Details']")

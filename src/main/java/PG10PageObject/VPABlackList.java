@@ -60,6 +60,8 @@
 
 	    public void interactWithfraudControlVPABlackList() throws IOException, InterruptedException {
 	    	
+	    	Thread.sleep(3000);
+	    	
 	    	wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 	    	
 	        wait.until(ExpectedConditions.elementToBeClickable(VpaBlackList)).click();

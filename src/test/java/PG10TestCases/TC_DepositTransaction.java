@@ -9,7 +9,7 @@ import PG10Base.PG10Base;
 
 	public class TC_DepositTransaction extends PG10Base {
 		
-		  @Test(priority = 11)
+		  @Test(priority = 3)
 		    public void depositTransactions() throws Exception {
 			  
 		        log.info("==== Starting Deposit Transactions Test ====");
