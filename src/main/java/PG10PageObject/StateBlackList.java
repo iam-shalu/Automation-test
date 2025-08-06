@@ -254,7 +254,7 @@ public class StateBlackList {
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
     WebElement searchSubMerchant1;
 
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01']")
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
     WebElement Testacs1;
 
     @FindBy(xpath = "//a[@class='btn btn-info btn-sm']")
@@ -266,7 +266,7 @@ public class StateBlackList {
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
     WebElement searchselectSubElement1;
 
-    @FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    @FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
     WebElement Testacs2;
     
     @FindBy(xpath = "//h3[normalize-space()='State BlackList Details']")
@@ -387,8 +387,10 @@ public class StateBlackList {
         // Click the checkbox for Test-Acs-01
      // Click the checkbox for Test-Acs-01
         WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("(//label[contains(@class,'checkbox') and normalize-space()='Test-Acs-01']/input[@type='checkbox'])[2]")
+            By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
         ));
+        
+       
         checkbox.click();
         System.out.println("Checkbox for Test-Acs-01 clicked successfully.");
 

@@ -47,7 +47,7 @@
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
 	    WebElement sSearchMasterMerchant;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	    WebElement Testacs01;
 	    
 	    @FindBy(xpath = "(//button[@class=\"btn btn-info btn-sm\"])[1]")
@@ -59,7 +59,7 @@
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
 	    WebElement sSearchMasterMerchant3;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	    WebElement selectTestacs013;
 	    
 	    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[1]")
@@ -71,7 +71,7 @@
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	    WebElement searchMasterMerchant2;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	    WebElement TestacsMasterMerch03;
 	   
 	    @FindBy(xpath = "//h3[normalize-space()='Payout BlackList Customers']")
@@ -96,7 +96,7 @@
 	        wait.until(ExpectedConditions.elementToBeClickable(payoutblackListCustomer)).click();
 	         
 	        wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
-	        wait.until(ExpectedConditions.elementToBeClickable(sSearchMasterMerchant)).click();
+	        wait.until(ExpectedConditions.elementToBeClickable(sSearchMasterMerchant)).sendKeys("Test-acs-01");
 	        wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
 	        
 	        Thread.sleep(3000);
@@ -133,11 +133,7 @@
 	       wait.until(ExpectedConditions.elementToBeClickable(TestacsMasterMerch03)).click();
 	       Thread.sleep(3000);
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-	       Thread.sleep(3000);
-	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-	      
-	       Thread.sleep(3000);
-	       
+	       Thread.sleep(3000);       	             
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 	       
 	       captureFullPageScreenshot(driver, "Fraud Control", "BlackListCustomer", "PayoutblackListCustomerText");
@@ -171,7 +167,15 @@
 	       wait.until(ExpectedConditions.alertIsPresent());
 	       driver.switchTo().alert().accept();
 	       
+	       
 	       Thread.sleep(3000);
+	       
+	     //Scroll To Top
+           ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+	       
+	       Thread.sleep(3000);
+	       
+	       
 		   
 		   
 	      

@@ -15,10 +15,12 @@ public class TC_LoginPage extends PG10Base {
     	Thread.sleep(3000);
     	
         Listeners.test.log(Status.INFO, "Entering Username");
-        loginPage.username("miteshqa");
+    //    loginPage.username("Akash_Lade");
+          loginPage.username("miteshqa");
         log.info("Entered username in username field");
 
         Listeners.test.log(Status.INFO, "Entering Password");
+  //     loginPage.enterpass("Akash@lade1315");
         loginPage.enterpass("QEJm9~QBnfft7*");
         log.info("Entered password in password field");
 
@@ -28,6 +30,8 @@ public class TC_LoginPage extends PG10Base {
 
         Thread.sleep(1000);
         Listeners.test.log(Status.INFO, "Login successful");
+        
+        Thread.sleep(3000);
         
     }
 }

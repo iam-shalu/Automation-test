@@ -11,7 +11,7 @@
 
 	public class TC_StateBlackList  extends PG10Base {
 
-	    @Test(priority = 10)
+	    @Test(priority = 12)
 	    public void StateBlackListCustomer() throws Exception {
 	    	log.info("==== Starting FraudControl City  Blacklist Customer Test ====");
 	        Listeners.test.log(Status.INFO, "Navigating to City Fraud Control Module");

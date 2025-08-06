@@ -45,7 +45,7 @@ public class WhiteList_MechantIP {
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//input[@placeholder='Search']")
     WebElement searchWhiteListMasterMerchant;
 
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/div/ul/li[898]/a/label")
     WebElement Testacs01;
 
     @FindBy(xpath = "//a[normalize-space()='Add Whitelist Merchant IP']")
@@ -57,30 +57,34 @@ public class WhiteList_MechantIP {
     @FindBy(xpath = "//*[@id=\"frmWhiteListCustomer\"]/div[1]/div/div[1]/div/div/div/ul/li[1]/div/input")
     WebElement searchTestAcs;
 
-    @FindBy(xpath = "//*[@id=\"frmWhiteListCustomer\"]/div[1]/div/div[1]/div/div/div/ul/li[500]/a/label")
+    @FindBy(xpath = "/html/body/div[2]/div/div[2]/div/div/div[2]/form/div[1]/div/div[1]/div/div/div/ul/li[898]/a/label")
     WebElement selectTestAcs01;
 
     @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
     WebElement sMasterMerchant2;
 
-    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//input[@placeholder='Search']")
     WebElement searchWhiteListMasterMerchant2;
 
-    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div/div/ul/li[500]/a/label")
-    WebElement Testacs013;
+    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div/div/ul/li[898]/a/label")
+    WebElement Testacs03;
 
     @FindBy(xpath = "//h3[text()='White list Master Merchant IP Details']")
     WebElement WhitelistMasterMerchantIPDetails ;
 
-    @FindBy(xpath = "//span[@class='fa fa-trash-o fa-lg']")
+    @FindBy(xpath = "//tbody/tr[1]/td[9]/a[2]/span[1]")
     WebElement deleteIp;
 
     public void interactWithfraudControlwhiteListMerchIP() throws IOException, InterruptedException {
+    	
+    	Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(whiteListMerchantIp)).click();
         wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
         wait.until(ExpectedConditions.elementToBeClickable(searchWhiteListMasterMerchant)).sendKeys("Test-acs-01");
         wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
+        
+        Thread.sleep(3000);
 
         driver.manage().window().maximize();
         waitForPageLoad();
@@ -91,25 +95,37 @@ public class WhiteList_MechantIP {
         waitForUploadComplete();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(AddWhiteListMerchantIp)).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(addWhiteLiStselectMasterMerchant)).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(searchTestAcs)).sendKeys("Test-acs-01");
         wait.until(ExpectedConditions.elementToBeClickable(selectTestAcs01)).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("IP"))).sendKeys("1.5.7.8");
         wait.until(ExpectedConditions.elementToBeClickable(By.id("IsActive"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(searchWhiteListMasterMerchant2)).sendKeys("Test-acs-01");
-        wait.until(ExpectedConditions.elementToBeClickable(Testacs013)).click();
+        Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(Testacs03)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 
         captureFullPageScreenshot(driver, "Fraud Control", "WhiteListMasterMerchantIp", "WhitelistMasterMerchantIPDetails");
         
         Thread.sleep(3000);
-
+        
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+        
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+        
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.5.7.8");
+        
+        Thread.sleep(3000);
+        
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
         Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(deleteIp)).click();
@@ -117,14 +133,21 @@ public class WhiteList_MechantIP {
         driver.switchTo().alert().accept();
         
         Thread.sleep(3000);
-      
+        
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("8.7.6.5");
+        
         Thread.sleep(3000);
+        
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.5.7.8");
+        
+        Thread.sleep(3000);
+        
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(deleteIp)).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+        
         
         Thread.sleep(3000);
         
