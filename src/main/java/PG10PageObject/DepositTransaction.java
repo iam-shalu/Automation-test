@@ -57,7 +57,7 @@
 	    @FindBy(xpath = "//button[@id='btnDownloadExcel']")
 	    WebElement export;
 
-	    @FindBy(xpath = "//td[normalize-space()='36720055']")
+	    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div[2]/div/div/div[3]/table/tbody/tr[1]/td[1]")
 	    WebElement txId;
 
 	    @FindBy(xpath = "//span[@class='dtr-data']//i[@class='fa fa-server']")
@@ -75,7 +75,7 @@
 	    @FindBy(xpath = "//a[@href='/BNIBPayout/Transactions']")
 	    WebElement payoutTxs;
 
-	    @FindBy(xpath = "//li[normalize-space()='Last 7 Days']")
+	    @FindBy(xpath = "//li[@data-range-key=\"Yesterday\"]")
 	    WebElement payoutTxdateLast7Days;
 
 	    @FindBy(xpath = "//h3[normalize-space()='Payout Tx List']")
@@ -83,93 +83,199 @@
 	  
 	    
 	    // ==== DEPOSIT TRANSACTIONS ====
-	    public void interactWithtransactionsDepositTxs() throws InterruptedException, IOException {
-	    	
-	    	Thread.sleep(3000);
-	    
-	    	
-	    	
-	        wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
-	        wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
-	        wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
-	        
-	        Thread.sleep(3000);
-	           
-	        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtDateRange"))).click();
+//	    public void interactWithtransactionsDepositTxs() throws InterruptedException, IOException {
+//	    	
+//	    	Thread.sleep(3000);
+//	    
+//	    	
+//	    	
+//	        wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
+//	        wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
+//	        
+//	        Thread.sleep(3000);
+//	        
+//	        wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
+//	        
+//	        Thread.sleep(3000);
+//	           
+//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtDateRange"))).click();
+//
+//	   //     wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
+//	        
+//	        Thread.sleep(3000);
+//	   //     WebElement last7DaysOption = wait.until(ExpectedConditions.elementToBeClickable(
+//	   //             By.xpath("")));
+//	    //    last7DaysOption.click();
+//	        
+//	        WebElement Yesterday = wait.until(ExpectedConditions.elementToBeClickable(
+//	                By.xpath("//li[@data-range-key=\"Yesterday\"]")));
+//	        Yesterday.click();
+//	        
+//	        Thread.sleep(3000);
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
+//	        
+//	        Thread.sleep(5000);
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(export)).click();
+//	        
+//	        Thread.sleep(3000);
+//
+//	       String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//	        new PG10Base().moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
+//
+//	        Thread.sleep(3000);
+//	        
+// 
+//	        wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
+//	        
+//	        Thread.sleep(3000);
+//	        
+//	        captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "depositTxText");
+//	        
+//	        Thread.sleep(3000);
+//	        
+//	        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+//        
+//	        wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
+//	        
+//	        Thread.sleep(3000);
+//	        
+//	        String originalWindow = driver.getWindowHandle();
+//	        wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
+//
+//	        new WebDriverWait(driver, Duration.ofSeconds(10))
+//	                .until(d -> driver.getWindowHandles().size() > 1);
+//
+//	        for (String handle : driver.getWindowHandles()) {
+//	            if (!handle.equals(originalWindow)) {
+//	                driver.switchTo().window(handle);
+//	                break;
+//	            }
+//	            
+//	        }
+//	        
+//	        Thread.sleep(3000);
+//
+//	        wait.until(ExpectedConditions.visibilityOf(viewTxButton));
+//	        captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "View_Tx_Details");
+//	        
+//
+//	        driver.close();
+//	        driver.switchTo().window(originalWindow);
+//
+//	        Select searchDropdown = new Select(driver.findElement(By.id("fieldname1")));
+//	        searchDropdown.selectByValue("iPayinfo");
+//
+//	        Thread.sleep(2000);
+//
+//	        Select selectFilterType = new Select(driver.findElement(By.id("filtertype1")));
+//	        selectFilterType.selectByValue("Equals");
+//
+//	        wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
+//
+//	        Thread.sleep(2000);
+//	    }
+//
+//
+	    public void interactWithtransactionsDepositTxs() throws IOException {
+	        try {
+	            System.out.println("==== Starting Deposit Transactions Test ====");
 
-	   //     wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-	        
-	        Thread.sleep(3000);
-	        WebElement last7DaysOption = wait.until(ExpectedConditions.elementToBeClickable(
-	                By.xpath("//li[@data-range-key=\"Last 7 Days\"]")));
-	        last7DaysOption.click();
-	        
-	        Thread.sleep(3000);
-
-	        wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
-
-	        wait.until(ExpectedConditions.elementToBeClickable(export)).click();
-	        
-	        Thread.sleep(3000);
-
-	       String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-	        new PG10Base().moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
-
-	        Thread.sleep(3000);
-	        
-	        
-	        wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
-	        
-	        Thread.sleep(3000);
-	        
-	        captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "depositTxText");
-	        
-	        Thread.sleep(3000);
-	        
-	        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-        
-	        wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-	        
-	        Thread.sleep(3000);
-	        
-	        String originalWindow = driver.getWindowHandle();
-	        wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-
-	        new WebDriverWait(driver, Duration.ofSeconds(10))
-	                .until(d -> driver.getWindowHandles().size() > 1);
-
-	        for (String handle : driver.getWindowHandles()) {
-	            if (!handle.equals(originalWindow)) {
-	                driver.switchTo().window(handle);
-	                break;
+	            // === Handle Merchant Limit Modal if present ===
+	            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")));
+	            if (CloseLimit.isDisplayed()) {
+	                CloseLimit.click();
+	                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")));
+	                System.out.println("Merchant limit modal closed.");
 	            }
 	            
+
+	            // === Navigate to Deposit Transactions Menu ===
+	            wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
+
+	            // === Date Range Selection ===
+	            wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
+	            WebElement yesterday = wait.until(ExpectedConditions.elementToBeClickable(
+	                    By.xpath("//li[@data-range-key='Yesterday']")));
+	            yesterday.click();
+
+	            // === Filter and Export ===
+	            wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
+	            wait.until(ExpectedConditions.elementToBeClickable(export)).click();
+
+	            // === Wait for Excel file download ===
+	            String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	            String downloadDir = System.getProperty("user.home") + "\\Downloads";
+
+	            PG10Base base = new PG10Base();
+	            if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+	                base.moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
+	            } else {
+	                System.err.println("No downloaded Excel file found to move.");
+	            }
+
+	            // === Wait for loader to disappear ===
+	            WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(50));
+	            longWait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-wrapper")));
+	            
+	            Thread.sleep(3000);
+	            
+
+	            // === Click txId and capture screenshot ===
+	            wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
+	            wait.until(ExpectedConditions.visibilityOf(depositTxText));
+	            captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "depositTxText");
+
+	            // === Scroll to top and click tx action ===
+	            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+	            
+	            Thread.sleep(3000);
+	            
+	            wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
+	            
+	            Thread.sleep(3000);
+
+	            // === Handle new window ===
+	            String originalWindow = driver.getWindowHandle();
+	            wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+	            for (String handle : driver.getWindowHandles()) {
+	                if (!handle.equals(originalWindow)) {
+	                    driver.switchTo().window(handle);
+	                    break;
+	                }
+	            }
+	            
+	            
+
+	            // === Screenshot on new tab ===
+	            wait.until(ExpectedConditions.visibilityOf(viewTxButton));
+	            captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "View_Tx_Details");
+
+	            driver.close();
+	            driver.switchTo().window(originalWindow);
+
+	            // === Filter input ===
+	            Select searchDropdown = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fieldname1"))));
+	            searchDropdown.selectByValue("iPayinfo");
+
+	            Select selectFilterType = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("filtertype1"))));
+	            selectFilterType.selectByValue("Equals");
+
+	            wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
+	            
+	            Thread.sleep(3000);
+
+	            System.out.println("==== Deposit Transactions Test Completed ====");
+
+	        } catch (Exception e) {
+	            System.err.println("Unexpected error occurred: " + e.getMessage());
 	        }
-	        
-	        Thread.sleep(3000);
-
-	        wait.until(ExpectedConditions.visibilityOf(viewTxButton));
-	        captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "View_Tx_Details");
-	        
-
-	        driver.close();
-	        driver.switchTo().window(originalWindow);
-
-	        Select searchDropdown = new Select(driver.findElement(By.id("fieldname1")));
-	        searchDropdown.selectByValue("iPayinfo");
-
-	        Thread.sleep(2000);
-
-	        Select selectFilterType = new Select(driver.findElement(By.id("filtertype1")));
-	        selectFilterType.selectByValue("Equals");
-
-	        wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
-
-	        Thread.sleep(2000);
 	    }
 
-
-		private void captureFullPageScreenshot(WebDriver driver2, String mainFolder, String subFolder, String fileNameTag) {
+	  	    private void captureFullPageScreenshot(WebDriver driver2, String mainFolder, String subFolder, String fileNameTag) {
 			 try {
 		            String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		            String directoryPath = System.getProperty("user.dir") + File.separator + "screenshots" +

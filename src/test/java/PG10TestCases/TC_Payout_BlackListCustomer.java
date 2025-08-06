@@ -59,7 +59,7 @@ import Listeners.Listeners;
 
 public class TC_Payout_BlackListCustomer extends PG10Base {
 
-    @Test(priority = 6)
+    @Test(priority = 8)
     public void PayoutBlackListCustomer() {
         try {
             // ✅ Initialize the Page Object
@@ -92,7 +92,7 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
             payoutBlackListCustomerPage.interactWithfraudControlPayoutblackListCust();
             
             Thread.sleep(3000);
-
+            
             Listeners.test.log(Status.PASS, "✅ Payout BlackList Customer Test Completed Successfully");
             log.info("==== FraudControl Payout BlackList Customer Test Completed ====");
         } catch (Exception e) {

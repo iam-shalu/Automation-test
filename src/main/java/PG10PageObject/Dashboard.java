@@ -64,6 +64,8 @@ public class Dashboard {
 //
 //    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div/div/div/div[1]/div[2]/button")
 //	WebElement exportButton;
+    
+    
 
     public void interactWithDashboard() throws Exception {
         closeLimitBarIfPresent();
@@ -82,6 +84,13 @@ public class Dashboard {
         Thread.sleep(2000);
         
         CommonUtilis.scrollToTop(driver);
+        
+        Thread.sleep(3000);
+        
+        
+        
+    //    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+
 
 //        handleTabAndDownload(viewTxsButton, "ViewTxs");
 //        handleTabAndDownload(approvedTxsButton, "ApproveTxs");
@@ -151,12 +160,20 @@ public class Dashboard {
             Thread.sleep(1000);
             popupCloseButton.click();
             System.out.println("Limit Bar popup closed.");
+
+            
         } catch (TimeoutException e) {
             System.out.println("Limit Bar popup not present.");
         } catch (IOException e) {
             System.out.println("Screenshot error: " + e.getMessage());
         }
     }
+    
+
+    
+    
+    
+       
          
 //    private void exportAndRename(String label) throws Exception {
 //        exportButton.click();

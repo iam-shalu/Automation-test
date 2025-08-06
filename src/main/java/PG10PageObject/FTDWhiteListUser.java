@@ -45,7 +45,7 @@ public class FTDWhiteListUser {
 	    @FindBy(xpath =  "(//input[@class=\"form-control multiselect-search\"])[1]")
 	    WebElement searchMasterMerchant;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	    WebElement Testacs01;
 	    
 	    @FindBy(xpath = "//a[normalize-space()='Add FTDWhiteList User']")
@@ -57,7 +57,7 @@ public class FTDWhiteListUser {
 	    @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
 	    WebElement searchaddWhiteListUserMasterMerchant;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	    WebElement Testacs013;
 	    
 	    @FindBy(xpath = "(//button[@class=\"btn btn-success\"])[1]")
@@ -69,7 +69,7 @@ public class FTDWhiteListUser {
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	    WebElement searchMasterMerchant2;
 	    
-	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']" )
+	    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']" )
 	    WebElement Testacs0135;
 	    
 	    @FindBy(xpath = "//h3[normalize-space()='FTD White list User Details']")
@@ -83,6 +83,8 @@ public class FTDWhiteListUser {
 	    
 	   
 	    public void interactWithfraudControl_FTDwhiteListUser() throws InterruptedException, IOException {
+	    	
+	    	Thread.sleep(3000);
 
 	        wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 	        
@@ -90,11 +92,11 @@ public class FTDWhiteListUser {
 	        	        
 	        Thread.sleep(3000);
 	        
-	       wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant)).click();
+	        wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant)).click();
 	        
-	       wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant)).sendKeys("Test-acs-01");
+	        wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant)).sendKeys("Test-acs-01");
 	        
-	       wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
+	        wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
 	        
 	        Thread.sleep(3000);
 	        
@@ -165,6 +167,8 @@ public class FTDWhiteListUser {
 	       	
 	       	
 	       	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	       	Thread.sleep(3000);
+	       	
 	        wait.until(ExpectedConditions.alertIsPresent());
 	        driver.switchTo().alert().accept();
 	        
@@ -183,11 +187,10 @@ public class FTDWhiteListUser {
 	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 	        
 	        Thread.sleep(3000);
-	        
-	        
-	    //    wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-	        
+	         	        
 	    	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	    	
+	    	Thread.sleep(3000);
 	        wait.until(ExpectedConditions.alertIsPresent());
 	        driver.switchTo().alert().accept();
 	        

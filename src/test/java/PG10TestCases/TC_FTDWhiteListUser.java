@@ -9,7 +9,7 @@ import PG10Base.PG10Base;
 
 public class TC_FTDWhiteListUser extends PG10Base{
 	
-	   @Test(priority = 7)
+	   @Test(priority = 9)
 	    public void WhiteFTDListCustomer() throws Exception {
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 	        

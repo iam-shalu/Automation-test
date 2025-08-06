@@ -11,7 +11,7 @@
 
 	public class TC_VPABlackList  extends PG10Base {
 
-	    @Test(priority = 8)
+	    @Test(priority = 10)
 	    public void VPABlackListCustomer() throws Exception {
 	    	log.info("==== Starting FraudControl VPA Blacklist Test ====");
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");

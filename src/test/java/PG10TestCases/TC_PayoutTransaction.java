@@ -11,7 +11,7 @@ import PG10Base.PG10Base;
 
 	public class TC_PayoutTransaction extends PG10Base {
 		
-		   @Test(priority = 12)
+		   @Test(priority = 4)
 		    public void payoutTransactions() throws Exception {
 			   
 		        log.info("==== Starting Payout Transactions Test ====");
