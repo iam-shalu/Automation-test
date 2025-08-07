@@ -162,6 +162,8 @@
 		   
 		   wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		   
+		   Thread.sleep(3000);
+		   
 		   
 		   wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 	       wait.until(ExpectedConditions.alertIsPresent());

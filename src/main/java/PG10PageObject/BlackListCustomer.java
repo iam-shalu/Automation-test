@@ -242,10 +242,12 @@ public class BlackListCustomer {
             captureFullPageScreenshot(driver, "Fraud Control", "BlackListCustomer", "blackListCustomerText");
 
             // ✅ Delete records
+            Thread.sleep(3000);
             while (true) {
                 List<WebElement> deleteButtons = driver.findElements(By.xpath(
                         "//tr[td[contains(text(), '" + expectedEmail + "')]]//a[contains(@onclick, 'DeleteRow')]"));
                 if (deleteButtons.isEmpty()) break;
+                
 
                 WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(deleteButtons.get(0)));
                 deleteBtn.click();

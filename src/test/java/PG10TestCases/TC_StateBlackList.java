@@ -12,8 +12,8 @@
 	public class TC_StateBlackList  extends PG10Base {
 
 	    @Test(priority = 12)
-	    public void StateBlackListCustomer() throws Exception {
-	    	log.info("==== Starting FraudControl City  Blacklist Customer Test ====");
+	    public void stateBlackListCustomer() throws Exception {
+	    	log.info("==== Starting FraudControl State Blacklist Customer Test ====");
 	        Listeners.test.log(Status.INFO, "Navigating to City Fraud Control Module");
 	        Listeners.test.log(Status.INFO, "click On Fraud Control & Go to State Blacklist Customer");
 	        Listeners.test.log(Status.INFO, "select the submerchant - Test-acs-01");
@@ -24,13 +24,13 @@
 	        Listeners.test.log(Status.INFO, "Select the Submerchant - Test-acs-01");
 	        Listeners.test.log(Status.INFO, "Click On Filter");
 	        Listeners.test.log(Status.INFO, "Capture the FullPageScreenshot");
-	        Listeners.test.log(Status.INFO, "Search the State");
-	        Listeners.test.log(Status.INFO, "Click On Filter");
+	        Listeners.test.log(Status.INFO, "Search by the State");
+	        Listeners.test.log(Status.INFO, "Click On the  Filter");
 	        Listeners.test.log(Status.INFO, "Delete the Records");
 	        
 	        stateblackListPage.interactWithfraudControlStateblackList();
 	        
-	        Listeners.test.log(Status.INFO, "Blacklist Customer Test Completed");
+	        Listeners.test.log(Status.INFO, "State Blacklist Customer Test Completed");
 	        log.info("==== FraudControl State BlackList Customer Test Completed ====");
 	        Thread.sleep(3000);
 	        

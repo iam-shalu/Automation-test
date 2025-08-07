@@ -6,20 +6,6 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_CityBlackList">
-        <methods>
-          <include name="CityBlackListCustomer"/>
-          <include name="setUpSuite"/>
-          <include name="tearDownSuite"/>
-        </methods>
-      </class> <!-- PG10TestCases.TC_CityBlackList -->
-      <class name="PG10TestCases.TC_StateBlackList">
-        <methods>
-          <include name="StateBlackListCustomer"/>
-          <include name="setUpSuite"/>
-          <include name="tearDownSuite"/>
-        </methods>
-      </class> <!-- PG10TestCases.TC_StateBlackList -->
       <class name="PG10TestCases.TC_FTDWhiteListUser">
         <methods>
           <include name="WhiteFTDListCustomer"/>
@@ -27,20 +13,6 @@
           <include name="tearDownSuite"/>
         </methods>
       </class> <!-- PG10TestCases.TC_FTDWhiteListUser -->
-      <class name="PG10TestCases.TC_VPABlackList">
-        <methods>
-          <include name="VPABlackListCustomer"/>
-          <include name="setUpSuite"/>
-          <include name="tearDownSuite"/>
-        </methods>
-      </class> <!-- PG10TestCases.TC_VPABlackList -->
-      <class name="PG10TestCases.TC_WhiteListMechantIP">
-        <methods>
-          <include name="WhiteListMerchantIP"/>
-          <include name="setUpSuite"/>
-          <include name="tearDownSuite"/>
-        </methods>
-      </class> <!-- PG10TestCases.TC_WhiteListMechantIP -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
