@@ -60,7 +60,7 @@ import Listeners.Listeners;
 public class TC_Payout_BlackListCustomer extends PG10Base {
 
     @Test(priority = 8)
-    public void PayoutBlackListCustomer() {
+    public void payoutBlackListCustomer() {
         try {
             // ✅ Initialize the Page Object
             Payout_BlackListCustomer payoutBlackListCustomerPage = new Payout_BlackListCustomer(driver);
@@ -68,32 +68,32 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
             log.info("==== Starting FraudControl Payout Blacklist Customer Test ====");
             Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");
 
-            Listeners.test.log(Status.INFO, "Step 1: Click on 'Fraud Control' menu");
-            Listeners.test.log(Status.INFO, "Step 2: Select 'Payout BlackList Customer' option");
+            Listeners.test.log(Status.INFO, "Click on 'Fraud Control' menu");
+            Listeners.test.log(Status.INFO, "Select 'Payout BlackList Customer' option");
 
-            Listeners.test.log(Status.INFO, "Step 3: Select Master Merchant - Test-acs-01");
-            Listeners.test.log(Status.INFO, "Step 4: Upload Blacklist Excel File");
+            Listeners.test.log(Status.INFO, "Select Master Merchant - Test-acs-01");
+            Listeners.test.log(Status.INFO, "Upload Blacklist Excel File");
 
-            Listeners.test.log(Status.INFO, "Step 5: Click on Import Button");
-            Listeners.test.log(Status.INFO, "Step 6: Click on Add Payout BlackList (Manual)");
+            Listeners.test.log(Status.INFO, "Click on Import Button");
+            Listeners.test.log(Status.INFO, "Click on Add Payout BlackList (Manual)");
 
-            Listeners.test.log(Status.INFO, "Step 7: Fill Master Merchant, Account Number & IFSC");
-            Listeners.test.log(Status.INFO, "Step 8: Save Manual Entry");
+            Listeners.test.log(Status.INFO, "Fill Master Merchant, Account Number & IFSC");
+            Listeners.test.log(Status.INFO, "Save Manual Entry");
 
-            Listeners.test.log(Status.INFO, "Step 9: Search Records By Account No");
-            Listeners.test.log(Status.INFO, "Step 10: Click on Filter");
+            Listeners.test.log(Status.INFO, "Search Records By Account No");
+            Listeners.test.log(Status.INFO, "Click on Filter");
 
-            Listeners.test.log(Status.INFO, "Step 11: Export Record to Excel");
-            Listeners.test.log(Status.INFO, "Step 12: Capture Full Page Screenshot");
+            Listeners.test.log(Status.INFO, "Export Record to Excel");
+            Listeners.test.log(Status.INFO, "Capture Full Page Screenshot");
 
-            Listeners.test.log(Status.INFO, "Step 13: Delete Record #1 by Account No");
-            Listeners.test.log(Status.INFO, "Step 14: Delete Record #2 by Account No");
+            Listeners.test.log(Status.INFO, "Delete Records #1 by Account No");
+         
 
             payoutBlackListCustomerPage.interactWithfraudControlPayoutblackListCust();
             
             Thread.sleep(3000);
             
-            Listeners.test.log(Status.PASS, "✅ Payout BlackList Customer Test Completed Successfully");
+            Listeners.test.log(Status.PASS, "Payout BlackList Customer Test Completed Successfully");
             log.info("==== FraudControl Payout BlackList Customer Test Completed ====");
         } catch (Exception e) {
             Listeners.test.log(Status.FAIL, "❌ Test Failed due to: " + e.getMessage());

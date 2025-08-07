@@ -167,13 +167,7 @@ public class Dashboard {
         } catch (IOException e) {
             System.out.println("Screenshot error: " + e.getMessage());
         }
-    }
-    
-
-    
-    
-    
-       
+    }   
          
 //    private void exportAndRename(String label) throws Exception {
 //        exportButton.click();
