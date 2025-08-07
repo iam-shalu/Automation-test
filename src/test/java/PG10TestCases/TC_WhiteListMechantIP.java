@@ -19,7 +19,7 @@
 	        Listeners.test.log(Status.INFO, "Select the Master Merchant Dropdown -Test-Acs-01 ");
 	        Listeners.test.log(Status.INFO, "Click On Choose File & Upload the File");
 	        Listeners.test.log(Status.INFO, "Click On Import & Import the Excel File");
-	        Listeners.test.log(Status.INFO, "Click On Add Merchant Ip");
+	        Listeners.test.log(Status.INFO, "Click On Add Merchant Ip - Manual Way");
 	        Listeners.test.log(Status.INFO, "Select the Master Merchant - Test-Acs-01");
 	        Listeners.test.log(Status.INFO, "Enter the IP");
 	        Listeners.test.log(Status.INFO, "check the Checkbox Active");

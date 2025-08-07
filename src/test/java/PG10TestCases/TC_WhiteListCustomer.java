@@ -10,7 +10,7 @@ import PG10Base.PG10Base;
 public class TC_WhiteListCustomer extends PG10Base{
 	
 	   @Test(priority = 6)
-	    public void WhiteListCustomer() throws Exception {
+	    public void whiteListCustomer() throws Exception {
 	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 	        
 	        log.info("==== Starting FraudControl WhiteList Test ====");
@@ -19,7 +19,7 @@ public class TC_WhiteListCustomer extends PG10Base{
 	        Listeners.test.log(Status.INFO, "Select the Master Merchant Dropdown -Test-Acs-01");
 	        Listeners.test.log(Status.INFO, "Click On Choose File & Upload the File");
 	        Listeners.test.log(Status.INFO, "Click On Import & Import the Excel File");
-	        Listeners.test.log(Status.INFO, "click on Add White List Customer");
+	        Listeners.test.log(Status.INFO, "click on Add White List Customer -Manual ");
 	        Listeners.test.log(Status.INFO, "Select Master Merchant -Test-Acs-01"); 
 	        Listeners.test.log(Status.INFO, "Enter the First Name");
 	        Listeners.test.log(Status.INFO, "Enter the Last Name");
@@ -33,12 +33,12 @@ public class TC_WhiteListCustomer extends PG10Base{
 	        Listeners.test.log(Status.INFO, "click on Filter");
 	        Listeners.test.log(Status.INFO, "click on Export So Export the Excel Sheet");
 	        Listeners.test.log(Status.INFO, "Capture the Full Page Screenshot ");
-	        Listeners.test.log(Status.INFO, "Click On Delete Record ");
-	        Listeners.test.log(Status.INFO, "Click On Delete Record ");
+	        Listeners.test.log(Status.INFO, "Click On Delete Records ");
+	     
 	               
 	        whiteListCustomerPage.interactWithfraudControl_whiteListCustomer();
 	           
-	        Listeners.test.log(Status.INFO, "Whitelist Merchant Ip Test Completed");
+	        Listeners.test.log(Status.INFO, "Whitelist Merchant Test Completed");
 	        
 	        Listeners.test.log(Status.INFO, "Whitelist Test Started");
 	        

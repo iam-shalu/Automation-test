@@ -10,8 +10,8 @@ import PG10Base.PG10Base;
 public class TC_FTDWhiteListUser extends PG10Base{
 	
 	   @Test(priority = 9)
-	    public void WhiteFTDListCustomer() throws Exception {
-	        Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
+	    public void whiteListFTDListCustomer() throws Exception {
+	        Listeners.test.log(Status.INFO, " Started FraudControl FTD White List User Test ");
 	        
 	        log.info("==== Starting FraudControl FTD White List User Test ====");
 
@@ -35,9 +35,9 @@ public class TC_FTDWhiteListUser extends PG10Base{
 	        ftdwhiteListPage.interactWithfraudControl_FTDwhiteListUser();
 	        
 	        
-	        Listeners.test.log(Status.INFO, "Whitelist Customer Test Completed");
+	        Listeners.test.log(Status.INFO, "FTD White List User Test Completed");
 	        
-	        Listeners.test.log(Status.INFO, "FraudControl FTD White List Customer Test Completed");
+	        Listeners.test.log(Status.INFO, "FraudControl FTD White List user Test Completed");
 	        
 	        log.info("==== FraudControl FTD White List Customer Test Completed ====");
 	        

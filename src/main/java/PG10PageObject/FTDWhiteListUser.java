@@ -63,7 +63,7 @@ public class FTDWhiteListUser {
 	    @FindBy(xpath = "(//button[@class=\"btn btn-success\"])[1]")
 	    WebElement close;
 	    
-	    @FindBy(xpath = "(//span[@class=\"multiselect-selected-text\"])[2]")
+	    @FindBy(xpath = "//div[@class='gutters row']//button[@title='Select Master Merchant']")
 	    WebElement selectMasterMerchant2;
 	    
 	    @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
@@ -145,6 +145,8 @@ public class FTDWhiteListUser {
 	        
 	        wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant2)).click(); 
 	        
+	        Thread.sleep(3000);	
+	        
 	        wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
 	        
 	        wait.until(ExpectedConditions.elementToBeClickable(Testacs0135)).click();
@@ -164,11 +166,13 @@ public class FTDWhiteListUser {
 	       	Thread.sleep(3000);
    
 	//        wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-	       	
-	       	
-	       	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	      	
 	       	Thread.sleep(3000);
 	       	
+	       	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+	       	
+	     	Thread.sleep(3000);
+	     
 	        wait.until(ExpectedConditions.alertIsPresent());
 	        driver.switchTo().alert().accept();
 	        
@@ -189,8 +193,6 @@ public class FTDWhiteListUser {
 	        Thread.sleep(3000);
 	         	        
 	    	wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-	    	
-	    	Thread.sleep(3000);
 	        wait.until(ExpectedConditions.alertIsPresent());
 	        driver.switchTo().alert().accept();
 	        

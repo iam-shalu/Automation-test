@@ -16,7 +16,7 @@ import PG10Base.PG10Base;
 		        
 		        Listeners.test.log(Status.INFO, "Navigating to Transaction Module");
 		        Listeners.test.log(Status.INFO, "click On Transaction & BNIB -----> Deposit Transaction");
-		        Listeners.test.log(Status.INFO, "select the Date Range - Last 7 days");
+		        Listeners.test.log(Status.INFO, "Select the Date Range - Yesterday");
 		        Listeners.test.log(Status.INFO, "Click On Filter");
 		        Listeners.test.log(Status.INFO, "Click On Transaction Id");
 		        Listeners.test.log(Status.INFO, "Capture the FullPageScreenshot");
@@ -33,7 +33,7 @@ import PG10Base.PG10Base;
 		       
 		        depositTransactionPage.interactWithtransactionsDepositTxs();
 		        
-		        log.info("==== Payout Transactions Test Completed ====");
+		        log.info("==== Deposit Transactions Test Completed ====");
 		        
 		        Thread.sleep(3000);
 		    }
