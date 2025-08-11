@@ -1,24 +1,18 @@
-
-	
-	
-	package PG10PageObject;
-
-	import java.io.File;
-	import java.io.IOException;
-	import java.text.SimpleDateFormat;
-	import java.time.Duration;
-	import java.util.Date;
-	import javax.imageio.ImageIO;
-
-	import org.openqa.selenium.*;
-	import org.openqa.selenium.support.FindBy;
-	import org.openqa.selenium.support.PageFactory;
-	import org.openqa.selenium.support.ui.*;
-
-	import PG10Base.PG10Base;
-	import ru.yandex.qatools.ashot.AShot;
-	import ru.yandex.qatools.ashot.Screenshot;
-	import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+package PG10PageObject;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
+import javax.imageio.ImageIO;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.*;
+import PG10Base.PG10Base;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 	public class PayoutTransaction {
 		
@@ -31,8 +25,7 @@
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    }
 
-	    // Page Elements
-	    
+	  
 	    @FindBy(xpath = "//div[@class='modal-dialog']//button[@type='button'][normalize-space()='Close']")
 	    WebElement CloseLimit;
 	    
@@ -81,52 +74,11 @@
 	    @FindBy(xpath = "//h3[normalize-space()='Payout Tx List']")
 	    WebElement payoutTxList;
 	    
-	  
-	    
-//	    
-//	    public void interactWithtransactionPayoutTxs() throws InterruptedException, IOException {
-//	    	
-//	    	Thread.sleep(3000);
-//	    	
-//	    	wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
-//	    	
-//	    	wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
-//   
-//	        Thread.sleep(2000);
-//	        
-//	        wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-//	        wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
-//	        Thread.sleep(3000);
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-//	        Thread.sleep(3000);
-//
-//	        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-//	        new PG10Base().moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
-//	        Thread.sleep(3000);
-//
-//	        captureFullPageScreenshot(driver, "Transactions", "Payout Transactions", "Payout_Tx_List");
-//
-//	        Thread.sleep(2000);
-//	        
-//	        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-//
-//	        Thread.sleep(2000);
-//	    }
-	    
+	      
 	    public void interactWithtransactionPayoutTxs() throws IOException {
 	        try {
 	            System.out.println("==== Starting Payout Transactions Test ====");
-	            
-	            
+	            	
 	            Thread.sleep(3000);
 
 	            // Wait for merchant modal to close (if it appears)
@@ -174,7 +126,7 @@
 	            if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
 	                base.moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
 	            } else {
-	                System.err.println("❌ No downloaded Excel file found to move.");
+	                System.err.println(" No downloaded Excel file found to move.");
 	            }
 
 	            wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
@@ -196,7 +148,7 @@
 	            System.out.println("==== Payout Transactions Test Completed ====");
 
 	        } catch (Exception e) {
-	            System.err.println("❌ Unexpected error in Payout Transaction flow: " + e.getMessage());
+	            System.err.println(" Unexpected error in Payout Transaction flow: " + e.getMessage());
 	        }
 	    }
 
@@ -219,7 +171,7 @@
 	            File screenshotFile = new File(baseDir, label + "_" + timestamp + ".png");
 	            ImageIO.write(screenshot.getImage(), "PNG", screenshotFile);
 
-	            System.out.println("📸 Screenshot saved at: " + screenshotFile.getAbsolutePath());
+	            System.out.println("Screenshot saved at: " + screenshotFile.getAbsolutePath());
 
 	        } catch (IOException e) {
 	            System.out.println("Screenshot error: " + e.getMessage());

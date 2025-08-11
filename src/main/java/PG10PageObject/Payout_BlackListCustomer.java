@@ -136,7 +136,7 @@
 	       Thread.sleep(3000);       	             
 	       wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 	       
-	       captureFullPageScreenshot(driver, "Fraud Control", "BlackListCustomer", "PayoutblackListCustomerText");
+	       captureFullPageScreenshot(driver, "Fraud Control", "PayoutBlackList", "PayoutblackListCustomerText");
 	       
 	       Thread.sleep(3000);
 	       

@@ -6,16 +6,15 @@
 	import java.time.Duration;
 	import java.util.Date;
 	import javax.imageio.ImageIO;
-
 	import org.openqa.selenium.*;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
 	import org.openqa.selenium.support.ui.*;
-
 	import PG10Base.PG10Base;
 	import ru.yandex.qatools.ashot.AShot;
 	import ru.yandex.qatools.ashot.Screenshot;
 	import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+	
 
 	public class DepositTransaction {
 		
@@ -82,102 +81,7 @@
 	    WebElement payoutTxList;
 	  
 	    
-	    // ==== DEPOSIT TRANSACTIONS ====
-//	    public void interactWithtransactionsDepositTxs() throws InterruptedException, IOException {
-//	    	
-//	    	Thread.sleep(3000);
-//	    
-//	    	
-//	    	
-//	        wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
-//	        wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
-//	        
-//	        Thread.sleep(3000);
-//	        
-//	        wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
-//	        
-//	        Thread.sleep(3000);
-//	           
-//	        wait.until(ExpectedConditions.elementToBeClickable(By.id("txtDateRange"))).click();
-//
-//	   //     wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-//	        
-//	        Thread.sleep(3000);
-//	   //     WebElement last7DaysOption = wait.until(ExpectedConditions.elementToBeClickable(
-//	   //             By.xpath("")));
-//	    //    last7DaysOption.click();
-//	        
-//	        WebElement Yesterday = wait.until(ExpectedConditions.elementToBeClickable(
-//	                By.xpath("//li[@data-range-key=\"Yesterday\"]")));
-//	        Yesterday.click();
-//	        
-//	        Thread.sleep(3000);
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
-//	        
-//	        Thread.sleep(5000);
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(export)).click();
-//	        
-//	        Thread.sleep(3000);
-//
-//	       String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-//	        new PG10Base().moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
-//
-//	        Thread.sleep(3000);
-//	        
-// 
-//	        wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
-//	        
-//	        Thread.sleep(3000);
-//	        
-//	        captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "depositTxText");
-//	        
-//	        Thread.sleep(3000);
-//	        
-//	        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-//        
-//	        wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-//	        
-//	        Thread.sleep(3000);
-//	        
-//	        String originalWindow = driver.getWindowHandle();
-//	        wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-//
-//	        new WebDriverWait(driver, Duration.ofSeconds(10))
-//	                .until(d -> driver.getWindowHandles().size() > 1);
-//
-//	        for (String handle : driver.getWindowHandles()) {
-//	            if (!handle.equals(originalWindow)) {
-//	                driver.switchTo().window(handle);
-//	                break;
-//	            }
-//	            
-//	        }
-//	        
-//	        Thread.sleep(3000);
-//
-//	        wait.until(ExpectedConditions.visibilityOf(viewTxButton));
-//	        captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "View_Tx_Details");
-//	        
-//
-//	        driver.close();
-//	        driver.switchTo().window(originalWindow);
-//
-//	        Select searchDropdown = new Select(driver.findElement(By.id("fieldname1")));
-//	        searchDropdown.selectByValue("iPayinfo");
-//
-//	        Thread.sleep(2000);
-//
-//	        Select selectFilterType = new Select(driver.findElement(By.id("filtertype1")));
-//	        selectFilterType.selectByValue("Equals");
-//
-//	        wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
-//
-//	        Thread.sleep(2000);
-//	    }
-//
-//
+
 	    public void interactWithtransactionsDepositTxs() throws IOException {
 	        try {
 	            System.out.println("==== Starting Deposit Transactions Test ====");
@@ -249,7 +153,6 @@
 	            }
 	            
 	            
-
 	            // === Screenshot on new tab ===
 	            wait.until(ExpectedConditions.visibilityOf(viewTxButton));
 	            captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "View_Tx_Details");
@@ -300,6 +203,5 @@
 		        }
 			
 		}
-
 
 }

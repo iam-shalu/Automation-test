@@ -6,13 +6,20 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_FTDWhiteListUser">
+      <class name="PG10TestCases.TC_Logout">
         <methods>
-          <include name="WhiteFTDListCustomer"/>
+          <include name="setUpSuite"/>
+          <include name="logout"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_Logout -->
+      <class name="PG10TestCases.TC_BlackListCustomer">
+        <methods>
+          <include name="blackListCustomer"/>
           <include name="setUpSuite"/>
           <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_FTDWhiteListUser -->
+      </class> <!-- PG10TestCases.TC_BlackListCustomer -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

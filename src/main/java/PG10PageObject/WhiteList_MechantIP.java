@@ -17,6 +17,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import PG10Base.PG10Base;
 import net.bytebuddy.asm.MemberSubstitution.FieldValue;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -113,6 +114,8 @@ public class WhiteList_MechantIP {
         Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(Testacs03)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+        
+        Thread.sleep(3000);
 
         captureFullPageScreenshot(driver, "Fraud Control", "WhiteListMasterMerchantIp", "WhitelistMasterMerchantIPDetails");
         
@@ -121,6 +124,19 @@ public class WhiteList_MechantIP {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
         
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+        
+        Thread.sleep(3000);
+        
+        // ✅ Move downloaded file
+        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String downloadDir = System.getProperty("user.home") + "\\Downloads";
+        PG10Base base = new PG10Base();
+        if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+            base.moveDownloadedFileToDatedFolder("WhiteList_Customers", dateFolder);
+        } else {
+            System.err.println("No downloaded Excel file found to move.");
+            
+        }
         
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.5.7.8");
         

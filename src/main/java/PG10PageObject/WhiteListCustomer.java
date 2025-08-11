@@ -18,6 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import PG10Base.PG10Base;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -64,7 +65,7 @@ public class WhiteListCustomer {
     @FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM']")
     WebElement Testacs;
 
-    @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
+    @FindBy(xpath = "")
     WebElement smasterMerchantDropdown2;
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
@@ -216,7 +217,7 @@ public class WhiteListCustomer {
 //    }
     
     
-    public void interactWithfraudControl_whiteListCustomer() throws IOException {
+    public void interactWithfraudControl_whiteListCustomer() throws IOException, InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(whiteListCustomer)).click();
         wait.until(ExpectedConditions.elementToBeClickable(smasterMerchantDropdown)).click();
@@ -263,14 +264,34 @@ public class WhiteListCustomer {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+        
+        Thread.sleep(3000);        
+        // ✅ Export Excel
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+
+        // ✅ Move downloaded file
+        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String downloadDir = System.getProperty("user.home") + "\\Downloads";
+        PG10Base base = new PG10Base();
+        if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+            base.moveDownloadedFileToDatedFolder("WhiteList_Customers", dateFolder);
+        } else {
+            System.err.println("No downloaded Excel file found to move.");
+            
+        }
+        
+        Thread.sleep(3000);
 
         captureFullPageScreenshot(driver, "Fraud Control", "WhiteListCustomer", "whiteListCustomerText");
+        
+        Thread.sleep(3000);
+
 
         try {
             wait.until(ExpectedConditions.elementToBeClickable(delete1)).click();
             wait.until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().accept();
-
+           
             wait.until(ExpectedConditions.visibilityOf(delete2));
             wait.until(ExpectedConditions.elementToBeClickable(delete2)).click();
             wait.until(ExpectedConditions.alertIsPresent());
