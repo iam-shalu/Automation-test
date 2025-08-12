@@ -1,13 +1,9 @@
 
-	package PG10TestCases;
-
-	import org.testng.annotations.Test;
-
-
-	import com.aventstack.extentreports.Status;
-
-	import PG10Base.PG10Base;
-	import Listeners.Listeners;
+package PG10TestCases;
+import org.testng.annotations.Test;
+import com.aventstack.extentreports.Status;
+import PG10Base.PG10Base;
+import Listeners.Listeners;
 
 	public class TC_WhiteListMechantIP  extends PG10Base {
 
@@ -39,11 +35,8 @@
 
 	        Listeners.test.log(Status.INFO, "WhiteList Master Merchant IP Test Completed");
 	        log.info("==== FraudControl WhiteList Master Merchant IP Completed ====");
-	        
 	        Thread.sleep(3000);
 	    }
-	
-
 }
 
 	

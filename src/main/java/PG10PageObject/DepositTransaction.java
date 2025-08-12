@@ -1,207 +1,178 @@
 
-	package PG10PageObject;
-	import java.io.File;
-	import java.io.IOException;
-	import java.text.SimpleDateFormat;
-	import java.time.Duration;
-	import java.util.Date;
-	import javax.imageio.ImageIO;
-	import org.openqa.selenium.*;
-	import org.openqa.selenium.support.FindBy;
-	import org.openqa.selenium.support.PageFactory;
-	import org.openqa.selenium.support.ui.*;
-	import PG10Base.PG10Base;
-	import ru.yandex.qatools.ashot.AShot;
-	import ru.yandex.qatools.ashot.Screenshot;
-	import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-	
+package PG10PageObject;
 
-	public class DepositTransaction {
-		
-	    WebDriver driver;
-	    WebDriverWait wait;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.*;
+import PG10Base.PG10Base;
+import PG10utils.CommonUtilis;
 
-	    public DepositTransaction(WebDriver driver) {
-	        this.driver = driver;
-	        PageFactory.initElements(driver, this);
-	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    }
+public class DepositTransaction {
 
-	    // Page Elements
-	    
-	    @FindBy(xpath = "//div[@class='modal-dialog']//button[@type='button'][normalize-space()='Close']")
-	    WebElement CloseLimit;
-	    
-	    @FindBy(xpath = "//span[normalize-space()='Transactions']")
-	    WebElement transactionsMenu;
+	WebDriver driver;
+	WebDriverWait wait;
 
-	    @FindBy(xpath = "//a[@id='submenuTxDropdown']")
-	    WebElement bnibMenu;
+	public DepositTransaction(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	}
 
-	    @FindBy(xpath = "//a[normalize-space()='Deposit Txs']")
-	    WebElement depositTxsOption;
+	// Page Elements
 
-	    @FindBy(xpath = "//select[@id='fieldname1']")
-	    WebElement searchField;
+	@FindBy(xpath = "//div[@class='modal-dialog']//button[@type='button'][normalize-space()='Close']")
+	WebElement CloseLimit;
 
-	    @FindBy(xpath = "//input[@id='txtDateRange']")
-	    WebElement dateRange;
+	@FindBy(xpath = "//span[normalize-space()='Transactions']")
+	WebElement transactionsMenu;
 
-	    @FindBy(xpath = "//li[@class='active']")
-	    WebElement dateLast7days;
+	@FindBy(xpath = "//a[@id='submenuTxDropdown']")
+	WebElement bnibMenu;
 
-	    @FindBy(xpath = "//button[@id='btnfiltersearch']")
-	    WebElement filter;
+	@FindBy(xpath = "//a[normalize-space()='Deposit Txs']")
+	WebElement depositTxsOption;
 
-	    @FindBy(xpath = "//button[@id='btnDownloadExcel']")
-	    WebElement export;
+	@FindBy(xpath = "//select[@id='fieldname1']")
+	WebElement searchField;
 
-	    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div[2]/div/div/div[3]/table/tbody/tr[1]/td[1]")
-	    WebElement txId;
+	@FindBy(xpath = "//input[@id='txtDateRange']")
+	WebElement dateRange;
 
-	    @FindBy(xpath = "//span[@class='dtr-data']//i[@class='fa fa-server']")
-	    WebElement tx_Action;
-	    
-	    @FindBy(xpath = "//h3[normalize-space()='Deposit Txs']")
-	    WebElement depositTxText ;
-	    
-	    @FindBy(xpath = "/html/body/div[2]/div/header/div/div/div/div/h3")
-	    WebElement viewTxButton;
+	@FindBy(xpath = "//li[@class='active']")
+	WebElement dateLast7days;
 
-	    @FindBy(xpath = "//input[@id='searchval1']")
-	    WebElement enterValue;
+	@FindBy(xpath = "//button[@id='btnfiltersearch']")
+	WebElement filter;
 
-	    @FindBy(xpath = "//a[@href='/BNIBPayout/Transactions']")
-	    WebElement payoutTxs;
+	@FindBy(xpath = "//button[@id='btnDownloadExcel']")
+	WebElement export;
 
-	    @FindBy(xpath = "//li[@data-range-key=\"Yesterday\"]")
-	    WebElement payoutTxdateLast7Days;
+	@FindBy(xpath = "/html/body/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div[2]/div/div/div[3]/table/tbody/tr[1]/td[1]")
+	WebElement txId;
 
-	    @FindBy(xpath = "//h3[normalize-space()='Payout Tx List']")
-	    WebElement payoutTxList;
-	  
-	    
+	@FindBy(xpath = "//span[@class='dtr-data']//i[@class='fa fa-server']")
+	WebElement tx_Action;
 
-	    public void interactWithtransactionsDepositTxs() throws IOException {
-	        try {
-	            System.out.println("==== Starting Deposit Transactions Test ====");
+	@FindBy(xpath = "//h3[normalize-space()='Deposit Txs']")
+	WebElement depositTxText;
 
-	            // === Handle Merchant Limit Modal if present ===
-	            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")));
-	            if (CloseLimit.isDisplayed()) {
-	                CloseLimit.click();
-	                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")));
-	                System.out.println("Merchant limit modal closed.");
-	            }
-	            
+	@FindBy(xpath = "/html/body/div[2]/div/header/div/div/div/div/h3")
+	WebElement viewTxButton;
 
-	            // === Navigate to Deposit Transactions Menu ===
-	            wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
-	            wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
-	            wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
+	@FindBy(xpath = "//input[@id='searchval1']")
+	WebElement enterValue;
 
-	            // === Date Range Selection ===
-	            wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-	            WebElement yesterday = wait.until(ExpectedConditions.elementToBeClickable(
-	                    By.xpath("//li[@data-range-key='Yesterday']")));
-	            yesterday.click();
+	@FindBy(xpath = "//a[@href='/BNIBPayout/Transactions']")
+	WebElement payoutTxs;
 
-	            // === Filter and Export ===
-	            wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
-	            wait.until(ExpectedConditions.elementToBeClickable(export)).click();
+	@FindBy(xpath = "//li[@data-range-key=\"Yesterday\"]")
+	WebElement payoutTxdateLast7Days;
 
-	            // === Wait for Excel file download ===
-	            String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-	            String downloadDir = System.getProperty("user.home") + "\\Downloads";
+	@FindBy(xpath = "//h3[normalize-space()='Payout Tx List']")
+	WebElement payoutTxList;
 
-	            PG10Base base = new PG10Base();
-	            if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-	                base.moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
-	            } else {
-	                System.err.println("No downloaded Excel file found to move.");
-	            }
+	public void interactWithtransactionsDepositTxs() throws IOException {
+		try {
+			System.out.println("==== Starting Deposit Transactions Test ====");
 
-	            // === Wait for loader to disappear ===
-	            WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(50));
-	            longWait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-wrapper")));
-	            
-	            Thread.sleep(3000);
-	            
+			// === Handle Merchant Limit Modal if present ===
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")));
+			if (CloseLimit.isDisplayed()) {
+				CloseLimit.click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")));
+				System.out.println("Merchant limit modal closed.");
+			}
 
-	            // === Click txId and capture screenshot ===
-	            wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
-	            wait.until(ExpectedConditions.visibilityOf(depositTxText));
-	            captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "depositTxText");
+			// === Navigate to Deposit Transactions Menu ===
+			wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
+			wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
+			wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
 
-	            // === Scroll to top and click tx action ===
-	            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-	            
-	            Thread.sleep(3000);
-	            
-	            wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-	            
-	            Thread.sleep(3000);
+			// === Date Range Selection ===
+			wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
+			WebElement yesterday = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-range-key='Yesterday']")));
+			yesterday.click();
 
-	            // === Handle new window ===
-	            String originalWindow = driver.getWindowHandle();
-	            wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-	            for (String handle : driver.getWindowHandles()) {
-	                if (!handle.equals(originalWindow)) {
-	                    driver.switchTo().window(handle);
-	                    break;
-	                }
-	            }
-	            
-	            
-	            // === Screenshot on new tab ===
-	            wait.until(ExpectedConditions.visibilityOf(viewTxButton));
-	            captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions", "View_Tx_Details");
+			// === Filter and Export ===
+			wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
+			wait.until(ExpectedConditions.elementToBeClickable(export)).click();
 
-	            driver.close();
-	            driver.switchTo().window(originalWindow);
+			// === Wait for Excel file download ===
+			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+			String downloadDir = System.getProperty("user.home") + "\\Downloads";
 
-	            // === Filter input ===
-	            Select searchDropdown = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fieldname1"))));
-	            searchDropdown.selectByValue("iPayinfo");
+			PG10Base base = new PG10Base();
+			if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+				base.moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
+			} else {
+				System.err.println("No downloaded Excel file found to move.");
+			}
 
-	            Select selectFilterType = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("filtertype1"))));
-	            selectFilterType.selectByValue("Equals");
+			// === Wait for loader to disappear ===
+			WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(50));
+			longWait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-wrapper")));
 
-	            wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
-	            
-	            Thread.sleep(3000);
+			Thread.sleep(3000);
 
-	            System.out.println("==== Deposit Transactions Test Completed ====");
+			// === Click txId and capture screenshot ===
+			wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
+			wait.until(ExpectedConditions.visibilityOf(depositTxText));
+			// captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions",
+			// "depositTxText");
 
-	        } catch (Exception e) {
-	            System.err.println("Unexpected error occurred: " + e.getMessage());
-	        }
-	    }
+			CommonUtilis.takeScreenshot(driver, "Deposit Transactions", "depositTxText");
 
-	  	    private void captureFullPageScreenshot(WebDriver driver2, String mainFolder, String subFolder, String fileNameTag) {
-			 try {
-		            String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		            String directoryPath = System.getProperty("user.dir") + File.separator + "screenshots" +
-		                    File.separator + date + File.separator + mainFolder + File.separator + subFolder;
+			// === Scroll to top and click tx action ===
+			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 
-		            File dir = new File(directoryPath);
-		            if (!dir.exists()) {
-		                dir.mkdirs();
-		            }
+			Thread.sleep(3000);
 
-		            String timestamp = new SimpleDateFormat("HHmmss").format(new Date());
-		            String filePath = directoryPath + File.separator + fileNameTag + "_" + timestamp + ".png";
+			wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
 
-		            Screenshot screenshot = new AShot()
-		                    .shootingStrategy(ShootingStrategies.viewportPasting(1000))
-		                    .takeScreenshot(driver);
+			Thread.sleep(3000);
 
-		            ImageIO.write(screenshot.getImage(), "PNG", new File(filePath));
-		            System.out.println("Screenshot saved to: " + filePath);
-		        } catch (IOException e) {
-		            System.err.println("Screenshot capture failed: " + e.getMessage());
-		        }
-			
+			// === Handle new window ===
+			String originalWindow = driver.getWindowHandle();
+			wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+			for (String handle : driver.getWindowHandles()) {
+				if (!handle.equals(originalWindow)) {
+					driver.switchTo().window(handle);
+					break;
+				}
+			}
+
+			// === Screenshot on new tab ===
+			wait.until(ExpectedConditions.visibilityOf(viewTxButton));
+			// captureFullPageScreenshot(driver, "Transactions", "Deposit Transactions",
+			// "View_Tx_Details");
+			CommonUtilis.takeScreenshot(driver, "Deposit Transactions", "View_Tx_Details");
+
+			driver.close();
+			driver.switchTo().window(originalWindow);
+
+			// === Filter input ===
+			Select searchDropdown = new Select(
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fieldname1"))));
+			searchDropdown.selectByValue("iPayinfo");
+
+			Select selectFilterType = new Select(
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("filtertype1"))));
+			selectFilterType.selectByValue("Equals");
+
+			wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
+
+			Thread.sleep(3000);
+
+			System.out.println("==== Deposit Transactions Test Completed ====");
+
+		} catch (Exception e) {
+			System.err.println("Unexpected error occurred: " + e.getMessage());
 		}
-
+	}
 }

@@ -13,13 +13,13 @@
           <include name="tearDownSuite"/>
         </methods>
       </class> <!-- PG10TestCases.TC_Logout -->
-      <class name="PG10TestCases.TC_BlackListCustomer">
+      <class name="PG10TestCases.TC_StateBlackList">
         <methods>
-          <include name="blackListCustomer"/>
           <include name="setUpSuite"/>
+          <include name="stateBlackListCustomer"/>
           <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_BlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_StateBlackList -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -2,36 +2,36 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-11T18:43:37 IST" name="Suite" finished-at="2025-08-11T18:43:56 IST" duration-ms="19393">
+  <suite started-at="2025-08-12T18:15:48 IST" name="Suite" finished-at="2025-08-12T18:17:13 IST" duration-ms="85010">
     <groups>
     </groups>
-    <test started-at="2025-08-11T18:43:37 IST" name="Test" finished-at="2025-08-11T18:43:56 IST" duration-ms="19393">
+    <test started-at="2025-08-12T18:15:48 IST" name="Test" finished-at="2025-08-12T18:17:13 IST" duration-ms="85010">
+      <class name="PG10TestCases.TC_StateBlackList">
+        <test-method signature="stateBlackListCustomer()[pri:12, instance:PG10TestCases.TC_StateBlackList@7ef27d7f]" started-at="2025-08-12T18:16:00 IST" name="stateBlackListCustomer" finished-at="2025-08-12T18:17:07 IST" duration-ms="66843" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stateBlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_StateBlackList -->
       <class name="PG10TestCases.TC_Logout">
-        <test-method signature="logout()[pri:13, instance:PG10TestCases.TC_Logout@6337c201]" started-at="2025-08-11T18:43:52 IST" name="logout" finished-at="2025-08-11T18:43:56 IST" duration-ms="4851" status="PASS">
+        <test-method signature="logout()[pri:13, instance:PG10TestCases.TC_Logout@490caf5f]" started-at="2025-08-12T18:17:07 IST" name="logout" finished-at="2025-08-12T18:17:13 IST" duration-ms="5183" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
       </class> <!-- PG10TestCases.TC_Logout -->
       <class name="PG10TestCases.TC_LoginPage">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@6fa34d52]" started-at="2025-08-11T18:43:35 IST" name="setUpSuite" finished-at="2025-08-11T18:43:37 IST" duration-ms="2269" status="PASS">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@125290e5]" started-at="2025-08-12T18:15:44 IST" name="setUpSuite" finished-at="2025-08-12T18:15:48 IST" duration-ms="3310" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@6fa34d52]" started-at="2025-08-11T18:43:37 IST" name="login" finished-at="2025-08-11T18:43:44 IST" duration-ms="7344" status="PASS">
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@125290e5]" started-at="2025-08-12T18:15:48 IST" name="login" finished-at="2025-08-12T18:16:00 IST" duration-ms="12914" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@6fa34d52]" started-at="2025-08-11T18:43:57 IST" name="tearDownSuite" finished-at="2025-08-11T18:43:57 IST" duration-ms="275" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@125290e5]" started-at="2025-08-12T18:17:14 IST" name="tearDownSuite" finished-at="2025-08-12T18:17:14 IST" duration-ms="490" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->
       </class> <!-- PG10TestCases.TC_LoginPage -->
-      <class name="PG10TestCases.TC_BlackListCustomer">
-        <test-method signature="blackListCustomer()[pri:5, instance:PG10TestCases.TC_BlackListCustomer@490caf5f]" started-at="2025-08-11T18:43:44 IST" name="blackListCustomer" finished-at="2025-08-11T18:43:52 IST" duration-ms="7179" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- blackListCustomer -->
-      </class> <!-- PG10TestCases.TC_BlackListCustomer -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
