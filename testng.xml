@@ -21,7 +21,7 @@
 			<class name="PG10TestCases.TC_ChargebackTxs" />
 			<class name="PG10TestCases.TC_FTDWhiteListUserPage" />   --> 
 			
-			<!-- Test -->
+			<!-- Test  Ok-->
 			
 		</classes>
 	</test>
