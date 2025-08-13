@@ -19,7 +19,10 @@
 			<class name="PG10TestCases.TC_Logout" />
 <!--		<class name="PG10TestCases.TC_SearchTxhist" />
 			<class name="PG10TestCases.TC_ChargebackTxs" />
-			<class name="PG10TestCases.TC_FTDWhiteListUserPage" />  --> 
+			<class name="PG10TestCases.TC_FTDWhiteListUserPage" />   --> 
+			
+			<!-- Test -->
+			
 		</classes>
 	</test>
 </suite>
