@@ -12,7 +12,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class BlackListCustomer {
@@ -63,35 +62,27 @@ public class BlackListCustomer {
 
 	public void interactWithfraudControlblackList() throws InterruptedException {
 		try {
-			// ✅ Navigate to 'Fraud Control' > 'Black List Customer'
 			wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
-
 			driver.manage().window().maximize();
-
-			// ✅ Upload Blacklist File
 			WebElement blackListUpload = wait.until(
-			ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='blacklistcustomerfile']")));
+					ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='blacklistcustomerfile']")));
 			String filePath = "D:\\Automation\\Excel file\\Blacklist Customer\\BlackList.xlsx";
 			blackListUpload.sendKeys(filePath);
 			System.out.println("File uploaded successfully.");
-			// ✅ Click 'Import' Button
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmimport"))).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader"))); // Optional
-			// ✅ Export Excel
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 
-			// ✅ Move downloaded file
 			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-			String downloadDir = System.getProperty("user.home") + "\\Downloads";
-			PG10Base base = new PG10Base();
-			if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-				base.moveDownloadedFileToDatedFolder("BlackList_Customer", dateFolder);
+			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+			if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+				CommonUtilis.moveDownloadedFileToDatedFolder("BlackListCustomer", dateFolder);
 			} else {
-				System.err.println("No downloaded Excel file found to move.");
+				System.err.println(" No downloaded Excel file found to move.");
 			}
 
-			// ✅ Manual Add
 			wait.until(ExpectedConditions.elementToBeClickable(ManualAddBlackListCust)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Name"))).sendKeys("akash");
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Email"))).sendKeys("akash13@gmail.com");
@@ -99,21 +90,18 @@ public class BlackListCustomer {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
 			Thread.sleep(3000);
-			// ✅ Search for customer by expected email
 			String expectedEmail = "akash13@gmail.com";
 			WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
 			searchBox.clear();
 			searchBox.sendKeys(expectedEmail);
 			Thread.sleep(3000);
-			// ✅ Wait for table result			
 			wait.until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//td[contains(text(), '" + expectedEmail + "')]")));
 
-			String screenshotName = "blackListCustomerText_Page_Screenshot";
+			String screenshotName = "BlackListCustomerText_Page_Screenshot";
 			System.out.println("Capturing full page screenshot...");
 			CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
 			Thread.sleep(3000);
-			// ✅ Delete records
 			while (true) {
 				List<WebElement> deleteButtons = driver.findElements(By.xpath(
 						"//tr[td[contains(text(), '" + expectedEmail + "')]]//a[contains(@onclick, 'DeleteRow')]"));
@@ -131,7 +119,6 @@ public class BlackListCustomer {
 				Thread.sleep(3000);
 			}
 
-			// ✅ Confirm deletion
 			List<WebElement> remainingRows = driver
 					.findElements(By.xpath("//td[contains(text(), '" + expectedEmail + "')]"));
 			if (remainingRows.isEmpty()) {
@@ -140,8 +127,6 @@ public class BlackListCustomer {
 			} else {
 				System.err.println("Some records with email '" + expectedEmail + "' still exist.");
 			}
-
-			// ✅ Scroll bottom & top (wait for page stability)
 			wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
 			wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
@@ -150,10 +135,8 @@ public class BlackListCustomer {
 		} catch (Exception e) {
 			System.err.println(" Test failed in BlackListCustomer interaction: " + e.getMessage());
 			e.printStackTrace();
-			
 		}
 		Thread.sleep(3000);
-		// Scroll To Top
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 		Thread.sleep(3000);
 	}

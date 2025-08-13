@@ -76,37 +76,26 @@ public class FTDWhiteListUser {
 	public void interactWithfraudControl_FTDwhiteListUser() throws InterruptedException, IOException {
 
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(ftdWhiteList)).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id=\"fileInput\"]")));
-
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
 		String filePath = "D:\\Automation\\Excel file\\FTDWhiteList User\\FTDWhiteListUser.xlsx";
 		blackListUpload.sendKeys(filePath);
-
 		System.out.println("File uploaded successfully.");
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUser)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUserMasterMerchant)).click();
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(searchaddWhiteListUserMasterMerchant))
 				.sendKeys("Test-acs-01");
-
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs013)).click();
 		Thread.sleep(3000);
@@ -122,12 +111,10 @@ public class FTDWhiteListUser {
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs0135)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		Thread.sleep(3000);
-		
 		String screenshotName = "FTDWhiteListUser_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-FTDWhiteListUser", screenshotName);
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629063");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		Thread.sleep(3000);

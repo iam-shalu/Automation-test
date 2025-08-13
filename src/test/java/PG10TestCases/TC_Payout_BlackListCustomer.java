@@ -12,7 +12,6 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
 	@Test(priority = 8)
 	public void payoutBlackListCustomer() {
 		try {
-			// ✅ Initialize the Page Object
 			Payout_BlackListCustomer payoutBlackListCustomerPage = new Payout_BlackListCustomer(driver);
 
 			log.info("==== Starting FraudControl Payout Blacklist Customer Test ====");

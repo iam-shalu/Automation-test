@@ -2,7 +2,10 @@
 package PG10PageObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -123,7 +126,17 @@ public class Payout_BlackListCustomer {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-		String screenshotName = "PayoutblackListCustomerText_Page_Screenshot";
+		
+		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("PayoutBlackListTransaction", dateFolder);
+		} else {
+			System.err.println(" No downloaded Excel file found to move.");
+		}
+		
+		String screenshotName = "PayoutblackList_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-PayoutBlackList", screenshotName);
 		Thread.sleep(3000);
@@ -144,7 +157,7 @@ public class Payout_BlackListCustomer {
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
 		Thread.sleep(3000);
-		// Scroll To Top
+
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 		Thread.sleep(3000);
 	}

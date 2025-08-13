@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-//import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class WhiteListCustomer {
@@ -78,6 +76,7 @@ public class WhiteListCustomer {
 	WebElement delete2;
 
 	public void interactWithfraudControl_whiteListCustomer() throws IOException, InterruptedException {
+		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(whiteListCustomer)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(smasterMerchantDropdown)).click();
@@ -116,28 +115,27 @@ public class WhiteListCustomer {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 		Thread.sleep(3000);
-		// ✅ Export Excel
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-		// ✅ Move downloaded file
+
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = System.getProperty("user.home") + "\\Downloads";
-		PG10Base base = new PG10Base();
-		if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			base.moveDownloadedFileToDatedFolder("WhiteList_Customers", dateFolder);
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("WhiteListCustomer", dateFolder);
 		} else {
-			System.err.println("No downloaded Excel file found to move.");
+			System.err.println(" No downloaded Excel file found to move.");
 		}
+
+		Thread.sleep(3000);
+		String screenshotName = "WhiteListCustomer_Page_Screenshot";
+		System.out.println("Capturing full page screenshot...");
+		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-WhiteListCustomer", screenshotName);
 		Thread.sleep(3000);
 
-		String screenshotName = "whiteListCustomerText_Page_Screenshot";
-		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-whiteListCustomer", screenshotName);
-		Thread.sleep(3000);
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(delete1)).click();
 			wait.until(ExpectedConditions.alertIsPresent());
 			driver.switchTo().alert().accept();
-
 			wait.until(ExpectedConditions.visibilityOf(delete2));
 			wait.until(ExpectedConditions.elementToBeClickable(delete2)).click();
 			wait.until(ExpectedConditions.alertIsPresent());
@@ -151,7 +149,6 @@ public class WhiteListCustomer {
 				WebElement fallbackElement = wait.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("//td[@class='dt-type-numeric sorting_1 dtr-control']")));
 				fallbackElement.click();
-
 				WebElement fallbackElementdelete = wait.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("(//span[@class=\"fa fa-trash-o  fa-lg\"])[2]")));
 				fallbackElementdelete.click();
@@ -177,5 +174,4 @@ public class WhiteListCustomer {
 			}
 		}
 	}
-
 }

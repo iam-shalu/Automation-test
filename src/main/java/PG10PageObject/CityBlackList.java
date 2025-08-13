@@ -70,98 +70,56 @@ public class CityBlackList {
 	public void interactWithfraudControlblackList() throws InterruptedException, IOException {
 
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(cityBlackList)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant1)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant1)).sendKeys("Test-acs-01");
-
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs1)).click();
-
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
-
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id='fileInput']"));
 		String filePath = "D:\\Automation\\Excel file\\CityBlackList Customer\\CityBlackList.xlsx";
 		blackListUpload.sendKeys(filePath);
-
 		System.out.println("File uploaded successfully.");
-
 		Thread.sleep(3000);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnimport"))).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(addcityBlackList)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(selectSubMerchant2)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(searchSubTestacs2)).sendKeys("Test-acs-01");
-
 		wait.until(ExpectedConditions.elementToBeClickable(selectsubTestacs2)).click();
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("City"))).sendKeys("Surat");
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn_Save"))).click();
-
 		Thread.sleep(5000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant3)).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(selectAllbtn3)).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(searchSubMastermerchant3)).sendKeys("Test-acs-01");
-
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs3)).click();
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
-
 		Thread.sleep(3000);
-
-		String screenshotName = "cityBlackListDetails_Page_Screenshot";
+		String screenshotName = "CityBlackListDetails_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-City BlackList", screenshotName);
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Surat");
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant3)).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(selectAllbtn3)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(searchSubMastermerchant3)).sendKeys("Test-acs-01");
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs3)).click();
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Bangalore");
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
-
 	}
 }

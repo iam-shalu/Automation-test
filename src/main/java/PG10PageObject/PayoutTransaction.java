@@ -12,7 +12,6 @@ import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class PayoutTransaction {
-
 	WebDriver driver;
 	WebDriverWait wait;
 
@@ -73,67 +72,46 @@ public class PayoutTransaction {
 	public void interactWithtransactionPayoutTxs() throws IOException {
 		try {
 			System.out.println("==== Starting Payout Transactions Test ====");
-
 			Thread.sleep(3000);
-
-			// Wait for merchant modal to close (if it appears)
 			wait.until(
 					ExpectedConditions.or(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")),
 							ExpectedConditions.not(ExpectedConditions.attributeContains(By.id("merchantLimitModal"),
 									"style", "display: block"))));
-
 			Thread.sleep(3000);
-
 			wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
-
 			Thread.sleep(3000);
-
 			wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
 			Thread.sleep(3000);
-
 			wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
-
-			// Wait for the cutoff time dropdown element to be present
 			WebElement cutoffTimeDropdown = wait
 					.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlCutOffTime")));
-
-			// Wrap it in a Select object
 			Select timeSelect = new Select(cutoffTimeDropdown);
-
 			// Select the option by visible text "12 AM to 12 AM"
 			timeSelect.selectByVisibleText("12 AM to 12 AM");
-
 			Thread.sleep(3000);
-
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-
 			// Wait and move Excel
 			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-			PG10Base base = new PG10Base();
 
-			if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-				base.moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
+			if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+				CommonUtilis.moveDownloadedFileToDatedFolder("PayoutTransaction", dateFolder);
 			} else {
 				System.err.println(" No downloaded Excel file found to move.");
 			}
-
+			
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
 			Thread.sleep(3000);
-
 			wait.until(ExpectedConditions.elementToBeClickable(PayoutId)).click();
 			Thread.sleep(3000);
-
 			CommonUtilis.takeScreenshot(driver, "Payout Transactions", "Payout_Tx_List");
 			Thread.sleep(3000);
-
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 			Thread.sleep(3000);
-
 			System.out.println("==== Payout Transactions Test Completed ====");
 
 		} catch (Exception e) {

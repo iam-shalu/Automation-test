@@ -75,12 +75,9 @@ public class WhiteList_MechantIP {
 		wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(searchWhiteListMasterMerchant)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
-
 		Thread.sleep(3000);
-
 		driver.manage().window().maximize();
 		waitForPageLoad();
-
 		WebElement WhiteListMerchantIPUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
 		String filePath = "D:\\Automation\\Excel file\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx";
 		WhiteListMerchantIPUpload.sendKeys(filePath);
@@ -105,23 +102,23 @@ public class WhiteList_MechantIP {
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs03)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		Thread.sleep(3000);
-		String screenshotName = "WhitelistMasterMerchantIPDetails_Page_Screenshot";
+		String screenshotName = "WhitelistMasterMerchantIP_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-WhitelistMasterMerchantIP", screenshotName);
 		Thread.sleep(3000);
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 		Thread.sleep(3000);
-		// ✅ Move downloaded file
+	
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = System.getProperty("user.home") + "\\Downloads";
-		PG10Base base = new PG10Base();
-		if (base.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			base.moveDownloadedFileToDatedFolder("WhiteList_Customers", dateFolder);
-		} else {
-			System.err.println("No downloaded Excel file found to move.");
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("WhiteListMerchantIP", dateFolder);
+		} else {
+			System.err.println(" No downloaded Excel file found to move.");
 		}
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("1.5.7.8");
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
@@ -149,7 +146,7 @@ public class WhiteList_MechantIP {
 
 	private void waitForUploadComplete() {
 		try {
-			Thread.sleep(5000); 
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}

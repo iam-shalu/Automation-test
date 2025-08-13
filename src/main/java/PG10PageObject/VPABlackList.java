@@ -22,7 +22,6 @@ public class VPABlackList {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
 
-	// Page Elements
 	@FindBy(xpath = "//span[normalize-space()='Fraud Control']")
 	WebElement fraudControlManu;
 
@@ -78,11 +77,12 @@ public class VPABlackList {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("4123466@paytm");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
 		Thread.sleep(3000);
-		String screenshotName = "VpaBlackListDetailsText_Page_Screenshot";
+		String screenshotName = "VpaBlackList_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-VPA BlackList", screenshotName);
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnExport"))).click();
+		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();

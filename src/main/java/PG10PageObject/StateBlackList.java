@@ -60,12 +60,10 @@ public class StateBlackList {
 	@FindBy(xpath = "//tbody/tr[1]/td[4]/a[2]/span[1]")
 	WebElement deleteka;
 
-	// These are used only via By locators in retrying method
 	By subMerchant2Btn = By.xpath("(//button[@class='multiselect dropdown-toggle btn btn-default'])[2]");
 	By selectAllChk = By.xpath("(//a[contains(@class, 'multiselect-all')]//label[normalize-space()='Select all'])[2]");
 	By subMerchant2Search = By.xpath("(//input[@class='form-control multiselect-search'])[2]");
 
-	// Retry method to safely click on potentially stale elements
 	public boolean retryingFindClick(By locator, int maxAttempts) {
 		int attempts = 0;
 		while (attempts < maxAttempts) {
@@ -87,7 +85,6 @@ public class StateBlackList {
 	public void interactWithfraudControlStateblackList() throws InterruptedException, IOException {
 
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(stateBlackList)).click();
 		Thread.sleep(3000);
@@ -105,35 +102,22 @@ public class StateBlackList {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(addStateBlackList)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(selectSubElement)).click();
-
 		wait.until(ExpectedConditions.elementToBeClickable(searchselectSubElement1)).sendKeys("Test-acs-01");
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs2)).click();
-
 		Thread.sleep(3000);
-
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("State"))).sendKeys("Chattisgarh");
-
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn_Save"))).click();
-
 		Thread.sleep(3000);
-
 		try {
-			// Click the dropdown with retry
 			boolean dropdownClicked = retryingFindClick(
 					By.xpath("(//button[@class='multiselect dropdown-toggle btn btn-default'])[2]"), 3);
 			if (!dropdownClicked) {
 				throw new RuntimeException("Failed to click SubMerchant dropdown after retries.");
 			}
 			System.out.println("Dropdown clicked successfully.");
-
 			Thread.sleep(1000);
-
-			// Click Select All checkbox with retry
 			boolean selectAllClicked = retryingFindClick(
 					By.xpath("(//a[contains(@class, 'multiselect-all')]//label[normalize-space()='Select all'])[2]"),
 					3);
@@ -141,10 +125,7 @@ public class StateBlackList {
 				throw new RuntimeException("Failed to click Select All checkbox after retries.");
 			}
 			System.out.println("Select all clicked successfully.");
-
 			Thread.sleep(1000);
-
-			// Type in the search box with fresh reference (relocate right before typing)
 			WebElement freshSearchBox = wait.until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("(//input[@class='form-control multiselect-search'])[2]")));
 			freshSearchBox.clear();
@@ -164,7 +145,7 @@ public class StateBlackList {
 		}
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		Thread.sleep(3000);
-		String screenshotName = "StateBlackListText_Page_Screenshot";
+		String screenshotName = "StateBlackList_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-State BlackList", screenshotName);
 		Thread.sleep(3000);

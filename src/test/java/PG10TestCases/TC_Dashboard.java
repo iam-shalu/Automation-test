@@ -1,9 +1,7 @@
 package PG10TestCases;
 
 import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.Status;
-
 import Listeners.Listeners;
 import PG10Base.PG10Base;
 
@@ -29,7 +27,6 @@ public class TC_Dashboard extends PG10Base {
 		Listeners.test.log(Status.INFO, " Scroll To Top");
 		Listeners.test.log(Status.INFO, " Dashboard Test  Completed");
 
-		// Handle dashboard interactions (limit bar, filters, export)
 		dashboardPage.interactWithDashboard();
 
 		log.info("Full-page screenshot captured: Dashboard > After_Button_Clicks");

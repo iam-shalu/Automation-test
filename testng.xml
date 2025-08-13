@@ -4,22 +4,22 @@
 	</listeners>
 	<test thread-count="1" name="Test">
 		<classes>
-				 <class name="PG10TestCases.TC_LoginPage" />
-			<!-- <class name="PG10TestCases.TC_Dashboard" /> -->
-			<!-- <class name="PG10TestCases.TC_DepositTransaction" /> -->
-			<!-- <class name="PG10TestCases.TC_PayoutTransaction" /> --> 
+			<class name="PG10TestCases.TC_LoginPage" />
+			<!-- <class name="PG10TestCases.TC_Dashboard" /> --> 
+			<!-- <class name="PG10TestCases.TC_DepositTransaction" /> 
+			<class name="PG10TestCases.TC_PayoutTransaction" />  --> 
 			<!-- <class name="PG10TestCases.TC_BlackListCustomer" /> -->
-			<!-- <class name="PG10TestCases.TC_WhiteListCustomer" /> -->
-			 <!-- <class name="PG10TestCases.TC_WhiteListMechantIP" /> --> 
-			<!-- <class name="PG10TestCases.TC_Payout_BlackListCustomer" /> -->
-			 <!-- <class name="PG10TestCases.TC_FTDWhiteListUser" / -->> 
-			<!-- <class name="PG10TestCases.TC_VPABlackList" /> -->
-			     <class name="PG10TestCases.TC_CityBlackList" /> 
-			 	 <class name="PG10TestCases.TC_StateBlackList" /> 
-			 	 <class name="PG10TestCases.TC_Logout" />
-			<!-- <class name="PG10TestCases.TC_SearchTxhist"/> -->
-			<!-- <class name="PG10TestCases.TC_ChargebackTxs"/> -->
-			<!--<class name="PG10TestCases.TC_FTDWhiteListUserPage"/> -->		
+			<!-- <class name="PG10TestCases.TC_WhiteListCustomer"/> -->
+			<!-- <class name="PG10TestCases.TC_WhiteListMechantIP" /> -->
+			<class name="PG10TestCases.TC_Payout_BlackListCustomer"/> 
+			<!-- <class name="PG10TestCases.TC_FTDWhiteListUser"/> 
+			<class name="PG10TestCases.TC_VPABlackList" />  
+			<class name="PG10TestCases.TC_CityBlackList" />
+			<class name="PG10TestCases.TC_StateBlackList" /> -->     
+			<class name="PG10TestCases.TC_Logout" />
+<!--		<class name="PG10TestCases.TC_SearchTxhist" />
+			<class name="PG10TestCases.TC_ChargebackTxs" />
+			<class name="PG10TestCases.TC_FTDWhiteListUserPage" />  --> 
 		</classes>
 	</test>
 </suite>
