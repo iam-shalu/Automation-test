@@ -1,26 +1,22 @@
 
-	package PG10PageObject;
-
-	import java.io.File;
-	import java.io.IOException;
-	import java.text.SimpleDateFormat;
-	import java.time.Duration;
-	import java.util.Date;
-
-	import javax.imageio.ImageIO;
-
-	import org.openqa.selenium.By;
-	import org.openqa.selenium.JavascriptExecutor;
-	import org.openqa.selenium.WebDriver;
-	import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.support.FindBy;
-	import org.openqa.selenium.support.PageFactory;
-	import org.openqa.selenium.support.ui.ExpectedConditions;
-	import org.openqa.selenium.support.ui.WebDriverWait;
-
-	import ru.yandex.qatools.ashot.AShot;
-	import ru.yandex.qatools.ashot.Screenshot;
-	import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+package PG10PageObject;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
+import javax.imageio.ImageIO;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 	public class FraudControl {
 	    WebDriver driver;
@@ -287,8 +283,7 @@
 	        } catch (IOException e) {
 	            System.err.println("Screenshot capture failed: " + e.getMessage());
 	        }
-	    }
-	    
+	    }  
 	    private void scrollToTopAndClick(WebElement element) throws InterruptedException {
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 	        js.executeScript("window.scrollTo(0, 0);");
@@ -302,6 +297,3 @@
 	   
 	   
 }
-
-
-
