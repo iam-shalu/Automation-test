@@ -98,8 +98,8 @@ public class Transactions {
         wait.until(ExpectedConditions.elementToBeClickable(export)).click();
         Thread.sleep(3000);
 
-        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        new PG10Base().moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
+//        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//        new PG10Base().moveDownloadedFileToDatedFolder("depositTransactions", dateFolder);
 
         Thread.sleep(3000);
         
@@ -166,8 +166,8 @@ public class Transactions {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
         Thread.sleep(3000);
 
-        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        new PG10Base().moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
+//        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//        new PG10Base().moveDownloadedFileToDatedFolder("payoutTransactions", dateFolder);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
         Thread.sleep(3000);
