@@ -32,6 +32,7 @@ public class PG10Base {
 	public static PayoutTransaction payoutTransactionPage;
 	public static Dashboard dashboardPage;
 	public static SearchTxHistory searchTxhistoryPage;
+	public static ChargebackTxReport ChargebackTxPage;
 
 	@BeforeSuite
 	public void setUpSuite() {
@@ -49,7 +50,7 @@ public class PG10Base {
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			log.info("Browser launched and maximized");
-			driver.get("https://paygate10.com/Login");
+			driver.get("https://test.paygate10.com/Login");
 			log.info("Navigated to PG10 login page");
 			loginPage = new Login(driver);
 			transactionPage = new Transactions(driver);
@@ -66,6 +67,7 @@ public class PG10Base {
 			payoutTransactionPage = new PayoutTransaction(driver);
 			dashboardPage = new Dashboard(driver);
 			searchTxhistoryPage = new SearchTxHistory(driver);
+			ChargebackTxPage = new ChargebackTxReport(driver);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,62 +76,6 @@ public class PG10Base {
 		}
 	}
 
-//	public boolean waitForFileDownload(String downloadDir, String fileExtension, int timeoutSeconds) {
-//		File dir = new File(downloadDir);
-//		int waited = 0;
-//		while (waited < timeoutSeconds) {
-//			File[] xlsxFiles = dir.listFiles((d, name) -> name.toLowerCase().endsWith(fileExtension));
-//			File[] crdownloadFiles = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".crdownload"));
-//			if (xlsxFiles != null && xlsxFiles.length > 0 && (crdownloadFiles == null || crdownloadFiles.length == 0)) {
-//				return true;
-//			}
-//			try {
-//				Thread.sleep(7000);
-//			} catch (InterruptedException e) {
-//				return false;
-//			}
-//			waited++;
-//		}
-//
-//		return false;
-//	}
-//
-//	public void moveDownloadedFileToDatedFolder(String moduleName, String dateStr) {
-//		String baseDownloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-//		File downloadFolder = new File(baseDownloadDir);
-//		File[] xlsxFiles = downloadFolder.listFiles(
-//				(dir, name) -> name.toLowerCase().endsWith(".xlsx") && !name.toLowerCase().endsWith(".crdownload"));
-//		if (xlsxFiles == null || xlsxFiles.length == 0) {
-//			log.warn("No downloaded Excel file found to move.");
-//			return;
-//		}
-//
-//		File latestFile = xlsxFiles[0];
-//		for (File f : xlsxFiles) {
-//			if (f.lastModified() > latestFile.lastModified()) {
-//				latestFile = f;
-//			}
-//		}
-//		File targetDir = new File(baseDownloadDir + File.separator + dateStr + File.separator + moduleName);
-//		if (!targetDir.exists()) {
-//			if (targetDir.mkdirs()) {
-//				log.info("Created directory: " + targetDir.getAbsolutePath());
-//			} else {
-//				log.error("Failed to create target directory: " + targetDir.getAbsolutePath());
-//				return;
-//			}
-//		}
-//		// Generate timestamped destination file
-//		String timestamp = new SimpleDateFormat("HHmmss").format(new Date());
-//		File destinationFile = new File(targetDir, "Export_" + timestamp + ".xlsx");
-//
-//		// Move file
-//		if (latestFile.renameTo(destinationFile)) {
-//			log.info("Exported file moved to: " + destinationFile.getAbsolutePath());
-//		} else {
-//			log.error("Failed to move file: " + latestFile.getAbsolutePath());
-//		}
-//	}
 
 	@AfterSuite
 	public void tearDownSuite() {
