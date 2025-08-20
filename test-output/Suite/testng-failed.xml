@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_Logout">
+      <class name="PG10TestCases.TC_ChargebackTxs">
         <methods>
           <include name="setUpSuite"/>
-          <include name="logout"/>
+          <include name="chargebackTransaction"/>
           <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_Logout -->
+      </class> <!-- PG10TestCases.TC_ChargebackTxs -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

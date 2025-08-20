@@ -1,7 +1,10 @@
 package PG10PageObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import PG10utils.CommonUtilis;
 
 public class ChargebackTxReport {
 	WebDriver driver;
@@ -71,7 +76,6 @@ public class ChargebackTxReport {
 	
 	@FindBy(id = "ddlCompleted")
 	WebElement isClosedDropdown;
-
 	
 	public void interactWithtransactionchargebackTX() throws IOException, InterruptedException {
 		Thread.sleep(3000);
@@ -86,7 +90,16 @@ public class ChargebackTxReport {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtCBCloseDateRange"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(cbcloseDateRangeYesterday)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcelDisputeRaised"))).click();
+		
+		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("ChargebackTxReport", dateFolder);
+		} else {
+			System.err.println(" No downloaded Excel file found to move.");
+		}
+		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSelectAny)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(SearchMasterMerchant)).sendKeys("Test-acs-01");
 		Thread.sleep(3000);
@@ -102,12 +115,12 @@ public class ChargebackTxReport {
 		isClosed.selectByVisibleText("No");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch"))).click();
 		
+		String screenshotName = "ChargebackTxReport_Page_Screenshot";
+		System.out.println("Capturing full page screenshot...");
+		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-ChargebackTxReport", screenshotName);
 		
+		Thread.sleep(3000);
 		
-		
-		
-		
-		
-		
+			
 	}
 }

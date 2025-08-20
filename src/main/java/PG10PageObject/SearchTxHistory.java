@@ -1,7 +1,9 @@
 package PG10PageObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import PG10utils.CommonUtilis;
 
 public class SearchTxHistory {
 	WebDriver driver;
@@ -41,32 +45,31 @@ public class SearchTxHistory {
     	Thread.sleep(3000);
     	wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
-        
-        Thread.sleep(3000);
-        
         wait.until(ExpectedConditions.elementToBeClickable(searchTxHist)).click();
-        
-        Thread.sleep(3000);
-                
+        Thread.sleep(3000); 
         WebElement searchFieldDropdown = driver.findElement(By.id("ddlSearchParam")); 
-    
         Select dropdown = new Select(searchFieldDropdown);
-
         dropdown.selectByVisibleText("ChargeBack Tx Id");
-        
         Thread.sleep(3000);
-        
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearchValue"))).sendKeys("123");
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();     
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
         
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-        
-        Thread.sleep(3000);
-        
-    //   ChargebackId
-        
+        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("SearchTxHistory", dateFolder);
+		} else {
+			System.err.println(" No downloaded Excel file found to move.");
+		}
+		
         wait.until(ExpectedConditions.elementToBeClickable(ChargebackId)).click();
-        
         Thread.sleep(3000);
+        String screenshotName = "SearchTxHistory_Page_Screenshot";
+		System.out.println("Capturing full page screenshot...");
+		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-SearchTxHistory", screenshotName);
+        
     }
     
     
