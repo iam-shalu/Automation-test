@@ -120,7 +120,6 @@ public class ChargebackTxReport {
 		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-ChargebackTxReport", screenshotName);
 		
 		Thread.sleep(3000);
-		
 			
 	}
 }
