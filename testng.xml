@@ -16,7 +16,8 @@
 			<class name="PG10TestCases.TC_VPABlackList" />
 			<class name="PG10TestCases.TC_CityBlackList" />
 			<class name="PG10TestCases.TC_StateBlackList" /> -->
-			<class name="PG10TestCases.TC_SearchTxhist" />
+			<!-- <class name="PG10TestCases.TC_SearchTxhist" /> -->
+			<class name="PG10TestCases.TC_MasterMerchant" />
 			<class name="PG10TestCases.TC_Logout" />
 			<!-- <class name="PG10TestCases.TC_ChargebackTxs" />
 			<class name="PG10TestCases.TC_FTDWhiteListUserPage" /> -->

@@ -2,32 +2,32 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-14T17:13:55 IST" name="Suite" finished-at="2025-08-14T17:14:49 IST" duration-ms="54542">
+  <suite started-at="2025-08-20T18:45:18 IST" name="Suite" finished-at="2025-08-20T18:45:43 IST" duration-ms="25298">
     <groups>
     </groups>
-    <test started-at="2025-08-14T17:13:55 IST" name="Test" finished-at="2025-08-14T17:14:49 IST" duration-ms="54542">
-      <class name="PG10TestCases.TC_SearchTxhist">
-        <test-method signature="depositTransactions()[pri:2, instance:PG10TestCases.TC_SearchTxhist@67b9b51a]" started-at="2025-08-14T17:14:05 IST" name="depositTransactions" finished-at="2025-08-14T17:14:44 IST" duration-ms="38702" status="PASS">
+    <test started-at="2025-08-20T18:45:18 IST" name="Test" finished-at="2025-08-20T18:45:43 IST" duration-ms="25298">
+      <class name="PG10TestCases.TC_MasterMerchant">
+        <test-method signature="masterMerchantList()[pri:2, instance:PG10TestCases.TC_MasterMerchant@67b9b51a]" started-at="2025-08-20T18:45:29 IST" name="masterMerchantList" finished-at="2025-08-20T18:45:38 IST" duration-ms="9331" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- depositTransactions -->
-      </class> <!-- PG10TestCases.TC_SearchTxhist -->
+        </test-method> <!-- masterMerchantList -->
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
       <class name="PG10TestCases.TC_Logout">
-        <test-method signature="logout()[pri:13, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-08-14T17:14:44 IST" name="logout" finished-at="2025-08-14T17:14:49 IST" duration-ms="5018" status="PASS">
+        <test-method signature="logout()[pri:13, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-08-20T18:45:38 IST" name="logout" finished-at="2025-08-20T18:45:43 IST" duration-ms="5043" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
       </class> <!-- PG10TestCases.TC_Logout -->
       <class name="PG10TestCases.TC_LoginPage">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-08-14T17:13:50 IST" name="setUpSuite" finished-at="2025-08-14T17:13:55 IST" duration-ms="4251" status="PASS">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-08-20T18:45:13 IST" name="setUpSuite" finished-at="2025-08-20T18:45:18 IST" duration-ms="4705" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-08-14T17:13:55 IST" name="login" finished-at="2025-08-14T17:14:05 IST" duration-ms="10777" status="PASS">
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-08-20T18:45:18 IST" name="login" finished-at="2025-08-20T18:45:29 IST" duration-ms="10851" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-08-14T17:14:50 IST" name="tearDownSuite" finished-at="2025-08-14T17:14:51 IST" duration-ms="568" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-08-20T18:45:45 IST" name="tearDownSuite" finished-at="2025-08-20T18:45:45 IST" duration-ms="535" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->
