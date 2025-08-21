@@ -69,8 +69,6 @@ public class PG10Base {
 			masterMerchantpage = new MasterMerchant(driver);
 			
 			
-			
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Setup failed: " + e.getMessage());
