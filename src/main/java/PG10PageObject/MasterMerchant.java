@@ -80,14 +80,15 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(merchantList)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantList)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(createMasterMerchant)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("Name"))).sendKeys("AL_MM");
-		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantTitle)).sendKeys("AL_MM");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Name"))).sendKeys("RP_MM");
+		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantTitle)).sendKeys("RP_MM");
 		wait.until(ExpectedConditions.elementToBeClickable(active)).click();
 		Select selectCurrency = new Select(currency);
 		selectCurrency.selectByVisibleText("Indian Rupee");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("HubSpotId"))).sendKeys("123");
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantnotes)).sendKeys("Test");
 		wait.until(ExpectedConditions.elementToBeClickable(isProductionLive)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsTestAccount"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantcheckRealName)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantbalanceCheck)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSettlementReport)).click();
@@ -101,12 +102,12 @@ public class MasterMerchant {
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-MasterMerchant", screenshotName);
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSubmit)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSearch)).sendKeys("AL_MM");
-		WebElement almmIcon = driver.findElement(By.xpath("//tr[td[normalize-space(text())='AL_MM']]//i[contains(@class,'fa-arrow-circle-right')]"));
+		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSearch)).sendKeys("RP_MM");
+		WebElement almmIcon = driver.findElement(By.xpath("//tr[td[normalize-space(text())='RP_MM']]//i[contains(@class,'fa-arrow-circle-right')]"));
 		almmIcon.click();
 		wait.until(ExpectedConditions.elementToBeClickable(createMerchant)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("AL_M");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("AliasName"))).sendKeys("AL_M");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("RP_M");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("AliasName"))).sendKeys("RP_MM");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("HubSpotId"))).sendKeys("1234");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Description"))).sendKeys("Test");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Margin"))).sendKeys("13");
@@ -117,21 +118,95 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableInstantPayout_Report"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifycheck_Report"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifyratio_Report"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
+		String screenshotName1 = "MasterMerchant_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-Merchant", screenshotName);
+		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-Merchant", screenshotName1);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(submerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(createSubMerchant)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("AL_SM");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("RP_SM");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("AliasName"))).sendKeys("RP_SM");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("supportemail"))).sendKeys("subm@gmail.com");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("HubSpotId"))).sendKeys("1876");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("description"))).sendKeys("NA");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("margin"))).sendKeys("15");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsRefund"))).click();
+		Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Status"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("EnablePayout"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("EnableDeposit"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsWithoutProcess"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsGeoLocationcheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsMD5toAESMoved"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_HashModify"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkAllowFundTransfer"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkIsInstantPayout"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkIsInstantPayout"))).click();
+		((JavascriptExecutor) driver).executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FxRateType")));
+		Select select = new Select(dropdown);
+		select.selectByVisibleText("Live Rate");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("FxMarkup"))).sendKeys("13");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("CheckBalanceLevel"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("BTSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("UPISeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("QRCodeSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("UPIQRCodeSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("WalletSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("BankDepositSeonDepositFraudCheck"))).click();	
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("CardDepositSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("VoucherDepositSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("CashDepositSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("PIXWithCryptoDepositSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("PIXDepositSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("SPEIDepositSeonDepositFraudCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsIPCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkIsmatchKYCName"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkIsValidateVPA"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkIsKycVpaValidate"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsBlacklist_by_VPA"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsBlacklist_by_VPA_Prefix"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsBlacklist_by_VPA_Postfix"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsBlacklist_by_City"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsBlacklist_by_State"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsKYCEnabled"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_KYCReverificationInterval"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(
+		    By.xpath("//select[@id='tblsite_Validation_Rules_KYCReverificationInterval']/option[text()='15 Days']")))
+		    .click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_TrustScoreLevel"))).sendKeys("1");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_TrustScoreCheck"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_TrustScoreByPassEnabled"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsFTDNonFTDMidRouting"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsFTDNonFTDMidRoutingForSubMerchant"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_FTD_Mid_AllowBeforeDays"))).sendKeys("1");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("MidRoutingRuleAppliedOn"))).click();
+		WebElement dropdown1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("MidRoutingRuleAppliedOn")));
+		Select select1 = new Select(dropdown1);
+		select1.selectByVisibleText("Mobile");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_MidRoutingTxnCount"))).sendKeys("15");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("MidRoutingExpression"))).click();
+		Thread.sleep(3000);
+		WebElement dropdown2 = wait.until(ExpectedConditions.elementToBeClickable(By.id("MidRoutingExpression")));
+		Select select2 = new Select(dropdown2);
+		select2.selectByVisibleText("AND");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_MidRoutingAmountSum"))).sendKeys("130");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_EnableUPIRecurring"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_Enablebalance_report"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableBatchPayout_Report"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableInstantPayout_Report"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifycheck_Report"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifyratio_Report"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_Alert_Trigger"))).click();
+		String screenshotName2 = "MasterMerchant_Page_Screenshot";
+		System.out.println("Capturing full page screenshot...");
+		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchant", screenshotName2);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
 		
 		
 		
 		
-		
-		
-		
-
-	
 	}
 	
 }

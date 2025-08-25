@@ -44,6 +44,7 @@ public class CommonUtilis {
 		System.out.println("Screenshot saved: " + outputFile.getAbsolutePath());
 	}
 
+	
 	public static void captureFullPageScreenshot(WebDriver driver, String folderName, String baseFileName)
 			throws IOException {
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -79,6 +80,57 @@ public class CommonUtilis {
 		ImageIO.write(image, "PNG", outputFile);
 		System.out.println("Full-page screenshot saved at: " + outputFile.getAbsolutePath());
 	}
+
+//	public static void captureFullPageScreenshot(WebDriver driver, String folderName, String baseFileName)
+//	        throws IOException {
+//	    String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//	    Path destDir = Paths.get(System.getProperty("user.dir"), "screenshots", date, folderName);
+//	    Files.createDirectories(destDir);
+//
+//	    JavascriptExecutor js = (JavascriptExecutor) driver;
+//
+//	    // Scroll to bottom to load lazy content and wait until height stabilizes
+//	    long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+//	    for (int i = 0; i < 10; i++) {
+//	        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//	        try {
+//	            Thread.sleep(300);
+//	        } catch (InterruptedException e) {
+//	            Thread.currentThread().interrupt();
+//	        }
+//	        long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+//	        if (newHeight == lastHeight) break;
+//	        lastHeight = newHeight;
+//	    }
+//
+//	    js.executeScript("document.body.style.zoom='100%'");
+//
+//	    new WebDriverWait(driver, Duration.ofSeconds(5))
+//	            .until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+//
+//	    Screenshot screenshot = new AShot()
+//	            .shootingStrategy(ShootingStrategies.viewportPasting(ShootingStrategies.scaling(1.0f), 1000))
+//	            .coordsProvider(new WebDriverCoordsProvider()).takeScreenshot(driver);
+//
+//	    BufferedImage image = screenshot.getImage();
+//
+//	    // Use timestamp + counter
+//	    String timestamp = new SimpleDateFormat("HH-mm-ss").format(new Date());
+//	    int counter = 1;
+//	    String fileName;
+//	    Path outputPath;
+//
+//	    do {
+//	        fileName = baseFileName + "_" + timestamp + "_" + counter + ".png";
+//	        outputPath = destDir.resolve(fileName);
+//	        counter++;
+//	    } while (Files.exists(outputPath));
+//
+//	    File outputFile = outputPath.toFile();
+//	    ImageIO.write(image, "PNG", outputFile);
+//
+//	    System.out.println("Full-page screenshot saved at: " + outputFile.getAbsolutePath());
+//	}
 
 	public static File waitForNewDownload(File dir, int timeoutInSeconds) throws InterruptedException {
 		long end = System.currentTimeMillis() + (timeoutInSeconds * 1000L);
