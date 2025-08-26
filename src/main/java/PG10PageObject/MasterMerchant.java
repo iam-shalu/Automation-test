@@ -2,6 +2,8 @@ package PG10PageObject;
 
 import java.io.IOException;
 import java.time.Duration;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -74,6 +76,18 @@ public class MasterMerchant {
 	@FindBy(xpath = "//a[normalize-space()='Create Sub Merchant']")
 	WebElement createSubMerchant;
 	
+	@FindBy(xpath = "//input[@id=\"Status\"]")
+	WebElement isActive;
+	
+	@FindBy(xpath = "(//a[@class=\"btn btn-info btn-sm\"])[1]")
+	WebElement backToMerchant;
+	
+	@FindBy(xpath = "(//a[@class=\"btn btn-info btn-sm\"])[1]")
+	WebElement backToMasterMerchant;
+	
+	@FindBy(xpath =  "//tbody/tr[1]/td[6]/a[2]/span[1]")
+	WebElement deleteMasterMerchant;
+	
 	public void interactWithlistControl_masterMerchant() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(listControl)).click();
@@ -131,8 +145,7 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("description"))).sendKeys("NA");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("margin"))).sendKeys("15");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsRefund"))).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("Status"))).click();
+		Thread.sleep(1000);	
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("EnablePayout"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("EnableDeposit"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsWithoutProcess"))).click();
@@ -203,8 +216,18 @@ public class MasterMerchant {
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchant", screenshotName2);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
-		
-		
+		String screenshotName5 = "MasterMerchant_Page_Screenshot";
+		System.out.println("Capturing full page screenshot...");
+		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchantCreatedPage", screenshotName5);
+		wait.until(ExpectedConditions.elementToBeClickable(backToMerchant)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(backToMasterMerchant)).click();
+		Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(deleteMasterMerchant)).click();
+		// Wait for the alert and switch
+		wait.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		System.out.println("Alert text: " + alert.getText());
+		alert.accept();
 		
 		
 	}
