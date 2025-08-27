@@ -6,20 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_Logout">
+      <class name="PG10TestCases.TC_MasterMerchant">
         <methods>
-          <include name="setUpSuite"/>
-          <include name="logout"/>
-          <include name="tearDownSuite"/>
-        </methods>
-      </class> <!-- PG10TestCases.TC_Logout -->
-      <class name="PG10TestCases.TC_SearchTxhist">
-        <methods>
-          <include name="depositTransactions"/>
+          <include name="masterMerchantList"/>
           <include name="setUpSuite"/>
           <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_SearchTxhist -->
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

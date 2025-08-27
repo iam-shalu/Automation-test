@@ -31,6 +31,7 @@ public class PG10Base {
 	public static PayoutTransaction payoutTransactionPage;
 	public static Dashboard dashboardPage;
 	public static SearchTxHistory searchTxhistoryPage;
+	public static MasterMerchant masterMerchantpage;
 
 	@BeforeSuite
 	public void setUpSuite() {
@@ -65,7 +66,9 @@ public class PG10Base {
 			payoutTransactionPage = new PayoutTransaction(driver);
 			dashboardPage = new Dashboard(driver);
 			searchTxhistoryPage = new SearchTxHistory(driver);
-
+			masterMerchantpage = new MasterMerchant(driver);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Setup failed: " + e.getMessage());
