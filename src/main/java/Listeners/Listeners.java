@@ -6,11 +6,10 @@ import org.testng.ITestResult;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-
 import Reports.ExtentReportManager;
 
 public class Listeners implements ITestListener {
-
+	
 	ExtentReports extent = ExtentReportManager.getReportObject();
 	public static ExtentTest test;
 
@@ -30,4 +29,5 @@ public class Listeners implements ITestListener {
 	public void onFinish(ITestContext context) {
 		extent.flush();
 	}
+	
 }

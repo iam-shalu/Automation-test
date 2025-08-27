@@ -1,7 +1,10 @@
 package PG10PageObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -82,6 +85,15 @@ public class VPABlackList {
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-VPA BlackList", screenshotName);
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnExport"))).click();
+		Thread.sleep(3000);
+		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("VPABlackList", dateFolder);
+		} else {
+			System.err.println(" No downloaded Excel file found to move.");
+		}
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());

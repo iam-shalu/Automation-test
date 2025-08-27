@@ -12,7 +12,6 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
 import javax.imageio.ImageIO;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -21,7 +20,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import PG10Base.PG10Base;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -30,7 +28,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 public class CommonUtilis {
 	public static Logger log = Logger.getLogger(PG10Base.class.getName());
-	
+
 	public static void takeScreenshot(WebDriver driver, String moduleName, String label) throws IOException {
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String timestamp = new SimpleDateFormat("HH-mm-ss").format(new Date());
@@ -46,6 +44,7 @@ public class CommonUtilis {
 		System.out.println("Screenshot saved: " + outputFile.getAbsolutePath());
 	}
 
+	
 	public static void captureFullPageScreenshot(WebDriver driver, String folderName, String baseFileName)
 			throws IOException {
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -82,6 +81,57 @@ public class CommonUtilis {
 		System.out.println("Full-page screenshot saved at: " + outputFile.getAbsolutePath());
 	}
 
+//	public static void captureFullPageScreenshot(WebDriver driver, String folderName, String baseFileName)
+//	        throws IOException {
+//	    String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//	    Path destDir = Paths.get(System.getProperty("user.dir"), "screenshots", date, folderName);
+//	    Files.createDirectories(destDir);
+//
+//	    JavascriptExecutor js = (JavascriptExecutor) driver;
+//
+//	    // Scroll to bottom to load lazy content and wait until height stabilizes
+//	    long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+//	    for (int i = 0; i < 10; i++) {
+//	        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//	        try {
+//	            Thread.sleep(300);
+//	        } catch (InterruptedException e) {
+//	            Thread.currentThread().interrupt();
+//	        }
+//	        long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+//	        if (newHeight == lastHeight) break;
+//	        lastHeight = newHeight;
+//	    }
+//
+//	    js.executeScript("document.body.style.zoom='100%'");
+//
+//	    new WebDriverWait(driver, Duration.ofSeconds(5))
+//	            .until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+//
+//	    Screenshot screenshot = new AShot()
+//	            .shootingStrategy(ShootingStrategies.viewportPasting(ShootingStrategies.scaling(1.0f), 1000))
+//	            .coordsProvider(new WebDriverCoordsProvider()).takeScreenshot(driver);
+//
+//	    BufferedImage image = screenshot.getImage();
+//
+//	    // Use timestamp + counter
+//	    String timestamp = new SimpleDateFormat("HH-mm-ss").format(new Date());
+//	    int counter = 1;
+//	    String fileName;
+//	    Path outputPath;
+//
+//	    do {
+//	        fileName = baseFileName + "_" + timestamp + "_" + counter + ".png";
+//	        outputPath = destDir.resolve(fileName);
+//	        counter++;
+//	    } while (Files.exists(outputPath));
+//
+//	    File outputFile = outputPath.toFile();
+//	    ImageIO.write(image, "PNG", outputFile);
+//
+//	    System.out.println("Full-page screenshot saved at: " + outputFile.getAbsolutePath());
+//	}
+
 	public static File waitForNewDownload(File dir, int timeoutInSeconds) throws InterruptedException {
 		long end = System.currentTimeMillis() + (timeoutInSeconds * 1000L);
 		while (System.currentTimeMillis() < end) {
@@ -95,7 +145,8 @@ public class CommonUtilis {
 			Thread.sleep(2000);
 		}
 		return null;
-	}	
+	}
+
 	// Rename downloaded file
 	public static void renameDownloadedFile(File file, String label) throws IOException {
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -116,7 +167,6 @@ public class CommonUtilis {
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 		System.out.println("Scrolled to top.");
 	}
-	
 
 	// Switch to new browser tab
 	public static void switchToNewTab(WebDriver driver) {
@@ -131,7 +181,7 @@ public class CommonUtilis {
 			}
 		}
 	}
-	
+
 	public static boolean waitForFileDownload(String downloadDir, String fileExtension, int timeoutSeconds) {
 		File dir = new File(downloadDir);
 		int waited = 0;
@@ -181,72 +231,14 @@ public class CommonUtilis {
 		String timestamp = new SimpleDateFormat("HHmmss").format(new Date());
 		File destinationFile = new File(targetDir, "Export_" + timestamp + ".xlsx");
 
-		// Move file From Base 
+		// Move file From Base
 		if (latestFile.renameTo(destinationFile)) {
 			log.info("Exported file moved to: " + destinationFile.getAbsolutePath());
 		} else {
 			log.error("Failed to move file: " + latestFile.getAbsolutePath());
 		}
 	}
-	
-	
-	public boolean waitForFileDownload1(String downloadDir, String fileExtension, int timeoutSeconds) {
-		File dir = new File(downloadDir);
-		int waited = 0;
-		while (waited < timeoutSeconds) {
-			File[] xlsxFiles = dir.listFiles((d, name) -> name.toLowerCase().endsWith(fileExtension));
-			File[] crdownloadFiles = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".crdownload"));
-			if (xlsxFiles != null && xlsxFiles.length > 0 && (crdownloadFiles == null || crdownloadFiles.length == 0)) {
-				return true;
-			}
-			try {
-				Thread.sleep(7000);
-			} catch (InterruptedException e) {
-				return false;
-			}
-			waited++;
-		}
 
-		return false;
-	}
-
-	public void moveDownloadedFileToDatedFolder1(String moduleName, String dateStr) {
-		String baseDownloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-		File downloadFolder = new File(baseDownloadDir);
-		File[] xlsxFiles = downloadFolder.listFiles(
-				(dir, name) -> name.toLowerCase().endsWith(".xlsx") && !name.toLowerCase().endsWith(".crdownload"));
-		if (xlsxFiles == null || xlsxFiles.length == 0) {
-			log.warn("No downloaded Excel file found to move.");
-			return;
-		}
-
-		File latestFile = xlsxFiles[0];
-		for (File f : xlsxFiles) {
-			if (f.lastModified() > latestFile.lastModified()) {
-				latestFile = f;
-			}
-		}
-		File targetDir = new File(baseDownloadDir + File.separator + dateStr + File.separator + moduleName);
-		if (!targetDir.exists()) {
-			if (targetDir.mkdirs()) {
-				log.info("Created directory: " + targetDir.getAbsolutePath());
-			} else {
-				log.error("Failed to create target directory: " + targetDir.getAbsolutePath());
-				return;
-			}
-		}
-		// Generate timestamped destination file
-		String timestamp = new SimpleDateFormat("HHmmss").format(new Date());
-		File destinationFile = new File(targetDir, "Export_" + timestamp + ".xlsx");
-
-		// Move file
-		if (latestFile.renameTo(destinationFile)) {
-			log.info("Exported file moved to: " + destinationFile.getAbsolutePath());
-		} else {
-			log.error("Failed to move file: " + latestFile.getAbsolutePath());
-		}
-	}
-	
 	// Generic calendar date picker
 	public static void selectCalendarDate(WebDriver driver, WebElement field, WebElement dateOption) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

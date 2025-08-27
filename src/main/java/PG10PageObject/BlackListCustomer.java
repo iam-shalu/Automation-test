@@ -73,7 +73,7 @@ public class BlackListCustomer {
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmimport"))).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader"))); // Optional
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-
+			
 			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
@@ -82,7 +82,6 @@ public class BlackListCustomer {
 			} else {
 				System.err.println(" No downloaded Excel file found to move.");
 			}
-
 			wait.until(ExpectedConditions.elementToBeClickable(ManualAddBlackListCust)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Name"))).sendKeys("akash");
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Email"))).sendKeys("akash13@gmail.com");
