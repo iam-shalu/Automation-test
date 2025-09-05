@@ -1,5 +1,6 @@
 package PG10Base;
 
+import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -32,7 +33,9 @@ public class PG10Base {
 	public static Dashboard dashboardPage;
 	public static SearchTxHistory searchTxhistoryPage;
 	public static MasterMerchant masterMerchantpage;
-
+	public static GatewayList gatewaylistpage;
+	public static Settings_DepositAssignProcessor settingsDepositAssignPage;
+	
 	@BeforeSuite
 	public void setUpSuite() {
 		try {
@@ -67,6 +70,8 @@ public class PG10Base {
 			dashboardPage = new Dashboard(driver);
 			searchTxhistoryPage = new SearchTxHistory(driver);
 			masterMerchantpage = new MasterMerchant(driver);
+			gatewaylistpage = new GatewayList(driver);
+			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
 			
 			
 		} catch (Exception e) {

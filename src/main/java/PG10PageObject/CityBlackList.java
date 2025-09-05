@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -216,7 +216,7 @@ public class MasterMerchant {
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchant", screenshotName2);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
-		String screenshotName5 = "MasterMerchant_Page_Screenshot";
+        String screenshotName5 = "MasterMerchant_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchantCreatedPage", screenshotName5);
 		wait.until(ExpectedConditions.elementToBeClickable(backToMerchant)).click();
