@@ -149,6 +149,7 @@
           device="">
           <div class="test-detail">
             <p class="name">settingsAssignProces</p>
+            <p class="name">payoutBlackListCustomer</p>
             <p class="text-sm">
               <span>6:12:33 pm</span> / <span>00:00:10:812</span>
               <span class="badge pass-bg log float-right">Pass</span>
@@ -162,6 +163,10 @@
 <span class='badge badge-success'>09.04.2025 6:12:33 pm</span>
 <span class='badge badge-danger'>09.04.2025 6:12:44 pm</span>
 <span class='badge badge-default'>00:00:10:812</span>
+<h5 class="test-status text-pass">payoutBlackListCustomer</h5>
+<span class='badge badge-success'>08.13.2025 5:45:40 pm</span>
+<span class='badge badge-danger'>08.13.2025 5:46:57 pm</span>
+<span class='badge badge-default'>00:01:16:138</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -177,6 +182,104 @@
         <td>6:12:33 pm</td>
         <td>
           Navigating to Settings deposit Assign Processor Module
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Click on 'Fraud Control' menu
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Select 'Payout BlackList Customer' option
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Select Master Merchant - Test-acs-01
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Upload Blacklist Excel File
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Click on Import Button
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Click on Add Payout BlackList (Manual)
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Fill Master Merchant, Account Number & IFSC
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Save Manual Entry
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Search Records By Account No
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Click on Filter
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Export Record to Excel
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Capture Full Page Screenshot
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:45:41 pm</td>
+        <td>
+          Delete Records #1 by Account No
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:46:57 pm</td>
+        <td>
+          Payout BlackList Customer Test Completed Successfully
         </td>
       </tr>
       <tr class="event-row">
@@ -324,10 +427,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='27%'><b>3</b> events passed</small></div>
+<div><small data-tooltip='16%'><b>4</b> events passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> events failed,
-<b data-tooltip='%'>8</b> others
+<b data-tooltip='%'>21</b> others
 </small>
 </div>
 </div>
@@ -344,6 +447,7 @@
 <script>
 var timeline = {
 "login":10.916,"settingsAssignProces":10.812,"logout":5.192
+"login":7.729,"payoutBlackListCustomer":76.138,"logout":5.077
 };
 </script>
 <div class="row">
@@ -387,7 +491,7 @@ passEvents: 3,
 failEvents: 0,
 warningEvents: 0,
 skipEvents: 0,
-infoEvents: 8
+infoEvents: 21
 };
 </script>        </div>
       </div>

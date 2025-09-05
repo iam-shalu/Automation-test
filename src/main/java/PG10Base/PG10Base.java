@@ -32,6 +32,7 @@ public class PG10Base {
 	public static PayoutTransaction payoutTransactionPage;
 	public static Dashboard dashboardPage;
 	public static SearchTxHistory searchTxhistoryPage;
+	public static ChargebackTxReport ChargebackTxPage;
 	public static MasterMerchant masterMerchantpage;
 	public static GatewayList gatewaylistpage;
 	public static Settings_DepositAssignProcessor settingsDepositAssignPage;
@@ -74,6 +75,8 @@ public class PG10Base {
 			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
 			
 			
+			ChargebackTxPage = new ChargebackTxReport(driver);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Setup failed: " + e.getMessage());

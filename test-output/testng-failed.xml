@@ -17,6 +17,7 @@
         <methods>
           <include name="login"/>
           <include name="setUpSuite"/>
+          <include name="chargebackTransaction"/>
           <include name="tearDownSuite"/>
         </methods>
       </class> <!-- PG10TestCases.TC_LoginPage -->
@@ -24,6 +25,7 @@
         <methods>
           <include name="settingsAssignProces"/>
           <include name="setUpSuite"/>
+          <include name="chargebackTransaction"/>
           <include name="tearDownSuite"/>
         </methods>
       </class> <!-- PG10TestCases.TC_SettingsAssignProces -->

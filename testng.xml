@@ -5,7 +5,7 @@
 	<test thread-count="1" name="Test">
 		<classes>
 			<class name="PG10TestCases.TC_LoginPage" />
-			<!-- <class name="PG10TestCases.TC_Dashboard" />
+				<!-- <class name="PG10TestCases.TC_Dashboard" />
 			<class name="PG10TestCases.TC_DepositTransaction" />
 			<class name="PG10TestCases.TC_PayoutTransaction" />
 			<class name="PG10TestCases.TC_BlackListCustomer" />
@@ -21,8 +21,12 @@
 			  <!-- <class name="PG10TestCases.TC_GatewayList" />  -->
 			<class name="PG10TestCases.TC_SettingsAssignProces" /> 
 			<class name="PG10TestCases.TC_Logout" />
-			<!-- <class name="PG10TestCases.TC_ChargebackTxs" />
+				<!-- <class name="PG10TestCases.TC_ChargebackTxs" />
 			<class name="PG10TestCases.TC_FTDWhiteListUserPage" /> -->
+ 
+			
+			<!-- Test  Ok-->
+			
 		</classes>
 	</test>
 </suite>

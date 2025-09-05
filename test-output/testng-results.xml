@@ -12,6 +12,10 @@
           </reporter-output>
         </test-method> <!-- settingsAssignProces -->
       </class> <!-- PG10TestCases.TC_SettingsAssignProces -->
+        </test-method> <!-- masterMerchantList -->
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
+        </test-method> <!-- depositTransactions -->
+      </class> <!-- PG10TestCases.TC_SearchTxhist -->
       <class name="PG10TestCases.TC_Logout">
         <test-method signature="logout()[pri:13, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-09-04T18:12:44 IST" name="logout" finished-at="2025-09-04T18:12:49 IST" duration-ms="5207" status="PASS">
           <reporter-output>

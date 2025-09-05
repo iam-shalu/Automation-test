@@ -21,9 +21,12 @@
         </methods>
       </class> <!-- PG10TestCases.TC_LoginPage -->
       <class name="PG10TestCases.TC_SettingsAssignProces">
+      <class name="PG10TestCases.TC_MasterMerchant">
+      <class name="PG10TestCases.TC_ChargebackTxs">
         <methods>
           <include name="settingsAssignProces"/>
           <include name="setUpSuite"/>
+          <include name="chargebackTransaction"/>
           <include name="tearDownSuite"/>
         </methods>
       </class> <!-- PG10TestCases.TC_SettingsAssignProces -->
