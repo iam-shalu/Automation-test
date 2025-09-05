@@ -6,12 +6,15 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="PG10TestCases.TC_MasterMerchant">
       <class name="PG10TestCases.TC_ChargebackTxs">
         <methods>
+          <include name="masterMerchantList"/>
           <include name="setUpSuite"/>
           <include name="chargebackTransaction"/>
           <include name="tearDownSuite"/>
         </methods>
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
       </class> <!-- PG10TestCases.TC_ChargebackTxs -->
     </classes>
   </test> <!-- Test(failed) -->

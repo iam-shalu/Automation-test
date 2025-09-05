@@ -2,7 +2,10 @@
 package PG10PageObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -155,6 +158,15 @@ public class StateBlackList {
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			CommonUtilis.moveDownloadedFileToDatedFolder("StateBlackList", dateFolder);
+		} else {
+			System.err.println(" No downloaded Excel file found to move.");
+		}
+		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(deleteChg)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
@@ -163,6 +175,7 @@ public class StateBlackList {
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
 		Thread.sleep(3000);
+
 	}
 
 }

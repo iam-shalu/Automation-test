@@ -8,8 +8,13 @@
     <test started-at="2025-08-19T14:10:50 IST" name="Test" finished-at="2025-08-19T14:11:27 IST" duration-ms="36777">
       <class name="PG10TestCases.TC_SearchTxhist">
         <test-method signature="depositTransactions()[pri:2, instance:PG10TestCases.TC_SearchTxhist@67b9b51a]" started-at="2025-08-19T14:11:00 IST" name="depositTransactions" finished-at="2025-08-19T14:11:22 IST" duration-ms="21547" status="PASS">
+    <test started-at="2025-08-26T18:35:11 IST" name="Test" finished-at="2025-08-26T18:36:34 IST" duration-ms="83710">
+      <class name="PG10TestCases.TC_MasterMerchant">
+        <test-method signature="masterMerchantList()[pri:2, instance:PG10TestCases.TC_MasterMerchant@67b9b51a]" started-at="2025-08-26T18:35:18 IST" name="masterMerchantList" finished-at="2025-08-26T18:36:29 IST" duration-ms="70959" status="PASS">
           <reporter-output>
           </reporter-output>
+        </test-method> <!-- masterMerchantList -->
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
         </test-method> <!-- depositTransactions -->
       </class> <!-- PG10TestCases.TC_SearchTxhist -->
       <class name="PG10TestCases.TC_Logout">

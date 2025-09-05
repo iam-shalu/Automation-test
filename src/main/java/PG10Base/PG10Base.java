@@ -13,7 +13,6 @@ import PG10PageObject.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class PG10Base {
-
 	public static Logger log = Logger.getLogger(PG10Base.class.getName());
 	public static WebDriver driver;
 	public static Login loginPage;
@@ -33,6 +32,7 @@ public class PG10Base {
 	public static Dashboard dashboardPage;
 	public static SearchTxHistory searchTxhistoryPage;
 	public static ChargebackTxReport ChargebackTxPage;
+	public static MasterMerchant masterMerchantpage;
 
 	@BeforeSuite
 	public void setUpSuite() {
@@ -50,7 +50,7 @@ public class PG10Base {
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			log.info("Browser launched and maximized");
-			driver.get("https://paygate10.com/Login");
+			driver.get("https://test.paygate10.com/Login");
 			log.info("Navigated to PG10 login page");
 			loginPage = new Login(driver);
 			transactionPage = new Transactions(driver);
@@ -67,6 +67,7 @@ public class PG10Base {
 			payoutTransactionPage = new PayoutTransaction(driver);
 			dashboardPage = new Dashboard(driver);
 			searchTxhistoryPage = new SearchTxHistory(driver);
+			masterMerchantpage = new MasterMerchant(driver);
 			ChargebackTxPage = new ChargebackTxReport(driver);
 
 		} catch (Exception e) {
@@ -75,7 +76,6 @@ public class PG10Base {
 			throw new RuntimeException("Driver setup or page object creation failed");
 		}
 	}
-
 
 	@AfterSuite
 	public void tearDownSuite() {
