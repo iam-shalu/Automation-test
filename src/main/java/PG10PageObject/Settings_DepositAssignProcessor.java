@@ -50,6 +50,20 @@ public class Settings_DepositAssignProcessor {
 	@FindBy(xpath = "//tbody/tr[12]/td[7]/input[1]")
 	WebElement order;
 	
+	@FindBy(xpath = "//tbody/tr[14]/td[1]/input[1]")
+	WebElement acs;
+	
+	@FindBy(xpath = "//tbody/tr[14]/td[5]/input[1]")
+	WebElement processorisactive;
+	
+	@FindBy(xpath = "//tbody/tr[14]/td[6]/input[1]")
+	WebElement limit2;
+	
+	@FindBy(xpath = "//tbody/tr[14]/td[7]/input[1]")
+	WebElement order2;
+	
+	
+	
 	
 	public void interactWithsettingsDepositProcessor() throws IOException, InterruptedException {
 		Thread.sleep(3000);
@@ -66,15 +80,16 @@ public class Settings_DepositAssignProcessor {
 		wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
 		wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
 		wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(limit2)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(limit2)).sendKeys("1000");
+		wait.until(ExpectedConditions.elementToBeClickable(order2)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(order2)).sendKeys("1");
+		wait.until(ExpectedConditions.elementToBeClickable(firstPay)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
 		
 		
 	}

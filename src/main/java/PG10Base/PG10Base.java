@@ -1,6 +1,5 @@
 package PG10Base;
 
-import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -31,11 +30,11 @@ public class PG10Base {
 	public static DepositTransaction depositTransactionPage;
 	public static PayoutTransaction payoutTransactionPage;
 	public static Dashboard dashboardPage;
-	public static SearchTxHistory searchTxhistoryPage;
 	public static ChargebackTxReport ChargebackTxPage;
 	public static MasterMerchant masterMerchantpage;
 	public static GatewayList gatewaylistpage;
 	public static Settings_DepositAssignProcessor settingsDepositAssignPage;
+	public static SearchTxHistory searchTxhistoryPage;
 	
 	@BeforeSuite
 	public void setUpSuite() {
@@ -69,10 +68,10 @@ public class PG10Base {
 			depositTransactionPage = new DepositTransaction(driver);
 			payoutTransactionPage = new PayoutTransaction(driver);
 			dashboardPage = new Dashboard(driver);
-			searchTxhistoryPage = new SearchTxHistory(driver);
 			masterMerchantpage = new MasterMerchant(driver);
 			gatewaylistpage = new GatewayList(driver);
 			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
+			searchTxhistoryPage = new SearchTxHistory(driver);
 			
 			
 			ChargebackTxPage = new ChargebackTxReport(driver);
