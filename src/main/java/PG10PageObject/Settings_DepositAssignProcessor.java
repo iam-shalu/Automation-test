@@ -2,9 +2,6 @@ package PG10PageObject;
 
 import java.io.IOException;
 import java.time.Duration;
-
-import org.apache.hc.core5.http.impl.nio.ExpandableBuffer;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -97,7 +94,13 @@ public class Settings_DepositAssignProcessor {
 		wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
-	   
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
+		wait.until(ExpectedConditions.alertIsPresent());
+		driver.switchTo().alert().accept(); 
+		
+		
+		
+
 	    
 	}
 

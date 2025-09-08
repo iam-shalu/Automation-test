@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import PG10utils.CommonUtilis;
@@ -68,8 +67,6 @@ public class GatewayList {
 	
 	@FindBy(xpath = "//tbody/tr[1]/td[5]/a[2]/i[1]")
 	WebElement deleteTest3;
-	
-	
 	
 	
 	public void interactWithgatewayList() throws IOException, InterruptedException {
