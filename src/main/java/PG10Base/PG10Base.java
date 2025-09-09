@@ -1,6 +1,4 @@
 package PG10Base;
-
-import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -36,6 +34,8 @@ public class PG10Base {
 	public static MasterMerchant masterMerchantpage;
 	public static GatewayList gatewaylistpage;
 	public static Settings_DepositAssignProcessor settingsDepositAssignPage;
+//	public static Settings_PayoutProcessorAss settingsPayoutAssignPage;
+	public static Settings_PayoutProcessorAss settingAssignPayoutPage;
 	
 	@BeforeSuite
 	public void setUpSuite() {
@@ -73,9 +73,9 @@ public class PG10Base {
 			masterMerchantpage = new MasterMerchant(driver);
 			gatewaylistpage = new GatewayList(driver);
 			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
-			
-			
 			ChargebackTxPage = new ChargebackTxReport(driver);
+		//	settingsPayoutAssignPage = new Settings_PayoutProcessorAss(driver);
+			settingAssignPayoutPage = new Settings_PayoutProcessorAss(driver);
 
 		} catch (Exception e) {
 			e.printStackTrace();

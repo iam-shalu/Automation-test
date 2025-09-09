@@ -19,6 +19,7 @@
 			<!-- <class name="PG10TestCases.TC_SearchTxhist" /> -->
 			<!-- <class name="PG10TestCases.TC_MasterMerchant" /> -->
 			  <!-- <class name="PG10TestCases.TC_GatewayList" />  -->
+			<!-- <class name="PG10TestCases.TC_SettingsAssignProces" />  -->
 			<class name="PG10TestCases.TC_SettingsAssignProces" /> 
 			<class name="PG10TestCases.TC_Logout" />
 				<!-- <class name="PG10TestCases.TC_ChargebackTxs" />

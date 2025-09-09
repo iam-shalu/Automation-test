@@ -1,9 +1,7 @@
 package PG10TestCases;
 
 import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.Status;
-
 import Listeners.Listeners;
 import PG10Base.PG10Base;
 

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -72,26 +71,4 @@ public class SearchTxHistory {
         
     }
     
-    
-    
-    
- 
-	
-	
-	
-
-        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			CommonUtilis.moveDownloadedFileToDatedFolder("searchTxHist", dateFolder);
-		} else {
-			System.err.println(" No downloaded Excel file found to move.");
-		}
-		Thread.sleep(3000);
-		String screenshotName = "SearchTxHistoryPage";
-		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "SearchTxHistoryPage", screenshotName);
-		Thread.sleep(3000);
-		
-    }
 }

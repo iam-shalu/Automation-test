@@ -71,7 +71,7 @@ public class GatewayList {
 	
 	
 	
-	
+
 	public void interactWithgatewayList() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(listControl)).click();
