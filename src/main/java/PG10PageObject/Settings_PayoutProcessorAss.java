@@ -88,8 +88,6 @@ public class Settings_PayoutProcessorAss {
 		String screenshotName = "Settings_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "Settings-Payout Processor Assign", screenshotName);
-		
-	
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
 		
 	}

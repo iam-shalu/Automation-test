@@ -34,7 +34,6 @@ public class PG10Base {
 	public static MasterMerchant masterMerchantpage;
 	public static GatewayList gatewaylistpage;
 	public static Settings_DepositAssignProcessor settingsDepositAssignPage;
-//	public static Settings_PayoutProcessorAss settingsPayoutAssignPage;
 	public static Settings_PayoutProcessorAss settingAssignPayoutPage;
 	
 	@BeforeSuite

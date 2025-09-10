@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_SettingsAssignProces">
+      <class name="PG10TestCases.TC_FTDWhiteListUser">
         <methods>
           <include name="setUpSuite"/>
-          <include name="SettingsAssignProces"/>
+          <include name="whiteListFTDListCustomer"/>
           <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_SettingsAssignProces -->
+      </class> <!-- PG10TestCases.TC_FTDWhiteListUser -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

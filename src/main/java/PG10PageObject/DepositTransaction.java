@@ -9,7 +9,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
-import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class DepositTransaction {
@@ -110,7 +109,7 @@ public class DepositTransaction {
 			// === Wait for loader to disappear ===
 			WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			longWait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-wrapper")));
-			Thread.sleep(3000);
+		
 			// === Click txId and capture screenshot ===
 			wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
 			wait.until(ExpectedConditions.visibilityOf(depositTxText));
@@ -119,7 +118,7 @@ public class DepositTransaction {
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-			Thread.sleep(3000);
+	  
 			String originalWindow = driver.getWindowHandle();
 			wait.until(ExpectedConditions.numberOfWindowsToBe(2));
 			for (String handle : driver.getWindowHandles()) {
