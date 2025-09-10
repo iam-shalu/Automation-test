@@ -2,8 +2,6 @@ package PG10PageObject;
 
 import java.io.IOException;
 import java.time.Duration;
-
-import org.apache.hc.core5.http.impl.nio.ExpandableBuffer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import PG10utils.CommonUtilis;
 
 public class Settings_DepositAssignProcessor {
 	WebDriver driver;
@@ -50,6 +50,21 @@ public class Settings_DepositAssignProcessor {
 	@FindBy(xpath = "//tbody/tr[12]/td[7]/input[1]")
 	WebElement order;
 	
+	@FindBy(xpath = "//tbody/tr[14]/td[1]/input[1]")
+	WebElement acs;
+	
+	@FindBy(xpath = "//tbody/tr[14]/td[5]/input[1]")
+	WebElement processorisactive;
+	
+	@FindBy(xpath = "//tbody/tr[14]/td[6]/input[1]")
+	WebElement limit2;
+	
+	@FindBy(xpath = "//tbody/tr[14]/td[7]/input[1]")
+	WebElement order2;
+	
+	@FindBy(xpath = "//button[@id='btnSaveLoadBalance']")
+	WebElement updateLimit;
+	
 	
 	public void interactWithsettingsDepositProcessor() throws IOException, InterruptedException {
 		Thread.sleep(3000);
@@ -66,17 +81,27 @@ public class Settings_DepositAssignProcessor {
 		wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
 		wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
 		wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
+		wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(limit2)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(limit2)).sendKeys("1000");
+		wait.until(ExpectedConditions.elementToBeClickable(order2)).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(order2)).sendKeys("1");
+		String screenshotName = "SettingsDepositTx_Page_Screenshot";
+		System.out.println("Capturing full page screenshot...");
+		CommonUtilis.captureFullPageScreenshot(driver, "Setting-DepositTx", screenshotName);
+		wait.until(ExpectedConditions.elementToBeClickable(firstPay)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
+		wait.until(ExpectedConditions.alertIsPresent());
+		driver.switchTo().alert().accept(); 
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
+	    
 	}
 
 }
