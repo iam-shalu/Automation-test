@@ -9,7 +9,7 @@ import PG10Base.PG10Base;
 
 public class TC_GatewayList extends PG10Base{
 	
-	@Test(priority = 2)
+	@Test(priority = 16)
 	public void gatewayList() throws Exception {
 		Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 

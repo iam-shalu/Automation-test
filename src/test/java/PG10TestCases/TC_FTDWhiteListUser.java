@@ -7,7 +7,7 @@ import PG10Base.PG10Base;
 
 public class TC_FTDWhiteListUser extends PG10Base {
 
-	@Test(priority = 9)
+	@Test(priority = 11)
 	public void whiteListFTDListCustomer() throws Exception {
 		Listeners.test.log(Status.INFO, " Started FraudControl FTD White List User Test ");
 

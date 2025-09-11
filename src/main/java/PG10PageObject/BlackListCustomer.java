@@ -1,5 +1,4 @@
 package PG10PageObject;
-
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -88,41 +87,48 @@ public class BlackListCustomer {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
-			Thread.sleep(3000);
 			String expectedEmail = "akash13@gmail.com";
 			WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
 			searchBox.clear();
 			searchBox.sendKeys(expectedEmail);
-			Thread.sleep(3000);
+
 			wait.until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//td[contains(text(), '" + expectedEmail + "')]")));
 
 			String screenshotName = "BlackListCustomerText_Page_Screenshot";
 			System.out.println("Capturing full page screenshot...");
 			CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
-			Thread.sleep(3000);
+
+			
+			/*
+			 * while (true) { List<WebElement> deleteButtons = driver.findElements(By.xpath(
+			 * "//tr[td[contains(text(), '" + expectedEmail +
+			 * "')]]//a[contains(@onclick, 'DeleteRow')]"));
+			 */
+			 
 			while (true) {
-				List<WebElement> deleteButtons = driver.findElements(By.xpath(
-						"//tr[td[contains(text(), '" + expectedEmail + "')]]//a[contains(@onclick, 'DeleteRow')]"));
+					List<WebElement> deleteButtons = driver.findElements(By.xpath(
+							"//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]"));
+				
 				if (deleteButtons.isEmpty())
 					break;
 
 				WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(deleteButtons.get(0)));
 				deleteBtn.click();
-				Thread.sleep(3000);
 				wait.until(ExpectedConditions.alertIsPresent());
 				driver.switchTo().alert().accept();
 
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
-						"//tr[td[contains(text(), '" + expectedEmail + "')]]//a[contains(@onclick, 'DeleteRow')]")));
-				Thread.sleep(3000);
-			}
+						"//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]")));
 
+			}
+			
 			List<WebElement> remainingRows = driver
 					.findElements(By.xpath("//td[contains(text(), '" + expectedEmail + "')]"));
+			
 			if (remainingRows.isEmpty()) {
 				System.out.println(" All blacklist customers with email '" + expectedEmail + "' deleted successfully.");
-				Thread.sleep(3000);
+
 			} else {
 				System.err.println("Some records with email '" + expectedEmail + "' still exist.");
 			}
@@ -135,8 +141,8 @@ public class BlackListCustomer {
 			System.err.println(" Test failed in BlackListCustomer interaction: " + e.getMessage());
 			e.printStackTrace();
 		}
-		Thread.sleep(3000);
+
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-		Thread.sleep(3000);
+	
 	}
 }

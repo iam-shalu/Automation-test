@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import PG10utils.CommonUtilis;
 
 public class FTDWhiteListUser {
@@ -39,7 +38,7 @@ public class FTDWhiteListUser {
 
 	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	WebElement Testacs01;
-
+	
 	@FindBy(xpath = "//a[normalize-space()='Add FTDWhiteList User']")
 	WebElement addWhiteListUser;
 
@@ -67,7 +66,7 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "//h3[normalize-space()='FTD White list User Details']")
 	WebElement FTDWhiteListUser;
 
-	@FindBy(xpath = "//span[@class=\"fa fa-trash-o fa-lg\"]")
+	@FindBy(xpath = "//span[@class='fa fa-trash-o fa-lg']")
 	WebElement deleteRecord;
 
 	@FindBy(xpath = "/span[@class=\"fa fa-trash-o fa-lg\"]")
@@ -75,65 +74,49 @@ public class FTDWhiteListUser {
 
 	public void interactWithfraudControl_FTDwhiteListUser() throws InterruptedException, IOException {
 
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(ftdWhiteList)).click();
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id=\"fileInput\"]")));
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
 		String filePath = "D:\\Automation\\Excel file\\FTDWhiteList User\\FTDWhiteListUser.xlsx";
 		blackListUpload.sendKeys(filePath);
 		System.out.println("File uploaded successfully.");
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUser)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUserMasterMerchant)).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(searchaddWhiteListUserMasterMerchant))
-				.sendKeys("Test-acs-01");
-		Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUser)).click(); 
+		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUserMasterMerchant)).click(); 
+		wait.until(ExpectedConditions.elementToBeClickable(searchaddWhiteListUserMasterMerchant)) .sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs013)).click();
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("firstName"))).sendKeys("Akash");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("lastName"))).sendKeys("Lade");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Email"))).sendKeys("akash@gmail.com");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Phone"))).sendKeys("9632629063");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn_Save"))).click();
 		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant2)).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
+	    wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant2)).click(); 
+	    wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs0135)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-		Thread.sleep(3000);
-		String screenshotName = "FTDWhiteListUser_Page_Screenshot";
+	    wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();  
+		String screenshotName="FTDWhiteListUser_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-FTDWhiteListUser", screenshotName);
-		Thread.sleep(3000);
+		CommonUtilis.captureFullPageScreenshot(driver,"FraudControl-FTDWhiteListUser", screenshotName); // Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629063");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.alertIsPresent());
-		driver.switchTo().alert().accept();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
+	    Thread.sleep(3000);
+	   wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click(); 
+	    wait.until(ExpectedConditions.alertIsPresent());
+		driver.switchTo().alert().accept(); 
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033");
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-		wait.until(ExpectedConditions.alertIsPresent());
-		driver.switchTo().alert().accept();
-		Thread.sleep(3000);
-
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033"); 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
+		  wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+		  wait.until(ExpectedConditions.alertIsPresent());
+		  driver.switchTo().alert().accept();
+		  
+		 
 	}
 }

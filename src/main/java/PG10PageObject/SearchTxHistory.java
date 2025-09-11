@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +13,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import PG10utils.CommonUtilis;
 
 public class SearchTxHistory {
@@ -57,19 +56,13 @@ public class SearchTxHistory {
         Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
         Thread.sleep(3000);
-        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			CommonUtilis.moveDownloadedFileToDatedFolder("searchTxHist", dateFolder);
-		} else {
-			System.err.println(" No downloaded Excel file found to move.");
-		}
-		Thread.sleep(3000);
-		String screenshotName = "SearchTxHistoryPage";
+        String screenshotName = "SearchTxHistory_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "SearchTxHistoryPage", screenshotName);
-		Thread.sleep(3000);
+		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-SearchTxHistory", screenshotName);
 		
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+        
     }
+    
 }
 

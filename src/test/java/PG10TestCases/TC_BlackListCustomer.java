@@ -8,7 +8,7 @@ import Listeners.Listeners;
 
 public class TC_BlackListCustomer extends PG10Base {
 
-	@Test(priority = 5)
+	@Test(priority = 7)
 	public void blackListCustomer() throws Exception {
 		log.info("==== Starting FraudControl Blacklist Customer Test ====");
 		Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");

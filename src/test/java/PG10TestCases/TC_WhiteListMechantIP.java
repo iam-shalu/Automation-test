@@ -8,7 +8,7 @@ import Listeners.Listeners;
 
 public class TC_WhiteListMechantIP extends PG10Base {
 
-	@Test(priority = 7)
+	@Test(priority = 9)
 	public void WhiteListMerchantIP() throws Exception {
 		log.info("==== Starting WhiteList Master Merchant IP Test ====");
 		Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");

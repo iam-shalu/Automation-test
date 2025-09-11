@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,7 +53,7 @@ public class ChargebackTxReport {
 	@FindBy(xpath = "(//input[@placeholder=\"Search\"])[1]")
 	WebElement SearchMasterMerchant;
 	
-	@FindBy(xpath = "//label[contains(normalize-space(.), 'Test-Acs-01')]")
+	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM']")
 	WebElement selectTestacs01;
 	
 	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
@@ -62,7 +62,7 @@ public class ChargebackTxReport {
 	@FindBy(xpath = "(//input[@placeholder=\"Search\"])[2]")
 	WebElement searchMasterMerchant2;
 	
-	@FindBy(xpath = "(//label[contains(normalize-space(.), 'Test-Acs-01')])[3]")
+	@FindBy(xpath = "//div[@class='form-group']//li[3]//a[1]//label[1]")
 	WebElement masterselectTestacs01;
 	
 	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[3]")
@@ -71,7 +71,7 @@ public class ChargebackTxReport {
 	@FindBy(xpath = "(//input[@placeholder=\"Search\"])[3]")
 	WebElement searchSubMerchant;
 	
-	@FindBy(xpath = "(//label[contains(normalize-space(.), 'Test-Acs-01')])[4]")
+	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-SM']")
 	WebElement submerchantTestacs01;
 	
 	@FindBy(id = "ddlCompleted")
@@ -114,12 +114,14 @@ public class ChargebackTxReport {
 		Select isClosed = new Select(isClosedDropdown);
 		isClosed.selectByVisibleText("No");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch"))).click();
-		
 		String screenshotName = "ChargebackTxReport_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-ChargebackTxReport", screenshotName);
 		
-		Thread.sleep(3000);
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+
+		
+		
 			
 	}
 }
