@@ -42,25 +42,16 @@ public class SearchTxHistory {
     	Thread.sleep(5000);
     	wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(searchTxHist)).click();
-        Thread.sleep(3000); 
-        WebElement searchFieldDropdown = driver.findElement(By.id("ddlSearchParam")); 
+        Thread.sleep(3000);      
+        WebElement searchFieldDropdown = driver.findElement(By.id("ddlSearchParam"));
         Select dropdown = new Select(searchFieldDropdown);
         dropdown.selectByVisibleText("ChargeBack Tx Id");
         Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearchValue"))).sendKeys("123");
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();     
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
-        
-        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-
-		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			CommonUtilis.moveDownloadedFileToDatedFolder("SearchTxHistory", dateFolder);
-		} else {
-			System.err.println(" No downloaded Excel file found to move.");
-		}
-		
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(ChargebackId)).click();
         Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
@@ -74,3 +65,4 @@ public class SearchTxHistory {
     }
     
 }
+
