@@ -9,7 +9,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
-import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class DepositTransaction {
@@ -90,8 +89,7 @@ public class DepositTransaction {
 			wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
 			// === Date Range Selection ===
 			wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-			WebElement yesterday = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-range-key='Yesterday']")));
+			WebElement yesterday = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-range-key='Yesterday']")));
 			yesterday.click();
 			// === Filter and Export ===
 			wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
@@ -110,16 +108,16 @@ public class DepositTransaction {
 			// === Wait for loader to disappear ===
 			WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			longWait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-wrapper")));
-			Thread.sleep(3000);
+		
 			// === Click txId and capture screenshot ===
 			wait.until(ExpectedConditions.elementToBeClickable(txId)).click();
 			wait.until(ExpectedConditions.visibilityOf(depositTxText));
 			CommonUtilis.takeScreenshot(driver, "Deposit Transactions", "DepositTxText");
 			// === Scroll to top and click tx action ===
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-			Thread.sleep(3000);
+	//		Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
-			Thread.sleep(3000);
+	  
 			String originalWindow = driver.getWindowHandle();
 			wait.until(ExpectedConditions.numberOfWindowsToBe(2));
 			for (String handle : driver.getWindowHandles()) {
@@ -139,7 +137,7 @@ public class DepositTransaction {
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("filtertype1"))));
 			selectFilterType.selectByValue("Equals");
 			wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
-			Thread.sleep(3000);
+		//	Thread.sleep(3000);
 			System.out.println("==== Deposit Transactions Test Completed ====");
 		} catch (Exception e) {
 			System.err.println("Unexpected error occurred: " + e.getMessage());

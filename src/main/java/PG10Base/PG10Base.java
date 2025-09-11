@@ -1,5 +1,4 @@
 package PG10Base;
-
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -30,9 +29,13 @@ public class PG10Base {
 	public static DepositTransaction depositTransactionPage;
 	public static PayoutTransaction payoutTransactionPage;
 	public static Dashboard dashboardPage;
-	public static SearchTxHistory searchTxhistoryPage;
+	public static ChargebackTxReport ChargebackTxPage;
 	public static MasterMerchant masterMerchantpage;
-
+	public static GatewayList gatewaylistpage;
+	public static Settings_DepositAssignProcessor settingsDepositAssignPage;
+	public static Settings_PayoutProcessorAss settingAssignPayoutPage;
+	public static SearchTxHistory searchTxhistoryPage;
+	
 	@BeforeSuite
 	public void setUpSuite() {
 		try {
@@ -49,7 +52,7 @@ public class PG10Base {
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			log.info("Browser launched and maximized");
-			driver.get("https://test.paygate10.com/Login");
+			driver.get("https://paygate10.com/Login");
 			log.info("Navigated to PG10 login page");
 			loginPage = new Login(driver);
 			transactionPage = new Transactions(driver);
@@ -65,10 +68,13 @@ public class PG10Base {
 			depositTransactionPage = new DepositTransaction(driver);
 			payoutTransactionPage = new PayoutTransaction(driver);
 			dashboardPage = new Dashboard(driver);
-			searchTxhistoryPage = new SearchTxHistory(driver);
 			masterMerchantpage = new MasterMerchant(driver);
-			
-			
+			gatewaylistpage = new GatewayList(driver);
+			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
+			ChargebackTxPage = new ChargebackTxReport(driver);
+			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
+			settingAssignPayoutPage = new Settings_PayoutProcessorAss(driver);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Setup failed: " + e.getMessage());

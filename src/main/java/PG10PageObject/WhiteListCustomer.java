@@ -116,7 +116,6 @@ public class WhiteListCustomer {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
@@ -125,7 +124,6 @@ public class WhiteListCustomer {
 		} else {
 			System.err.println(" No downloaded Excel file found to move.");
 		}
-
 		Thread.sleep(3000);
 		String screenshotName = "WhiteListCustomer_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");

@@ -2,7 +2,6 @@ package PG10PageObject;
 
 import java.io.IOException;
 import java.time.Duration;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -120,7 +119,7 @@ public class MasterMerchant {
 		WebElement almmIcon = driver.findElement(By.xpath("//tr[td[normalize-space(text())='RP_MM']]//i[contains(@class,'fa-arrow-circle-right')]"));
 		almmIcon.click();
 		wait.until(ExpectedConditions.elementToBeClickable(createMerchant)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("RP_M");
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("RP_MM");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("AliasName"))).sendKeys("RP_MM");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("HubSpotId"))).sendKeys("1234");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Description"))).sendKeys("Test");
@@ -185,9 +184,7 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsBlacklist_by_State"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_IsKYCEnabled"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_KYCReverificationInterval"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(
-		    By.xpath("//select[@id='tblsite_Validation_Rules_KYCReverificationInterval']/option[text()='15 Days']")))
-		    .click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='tblsite_Validation_Rules_KYCReverificationInterval']/option[text()='15 Days']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_TrustScoreLevel"))).sendKeys("1");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_TrustScoreCheck"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_TrustScoreByPassEnabled"))).click();
@@ -216,7 +213,7 @@ public class MasterMerchant {
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchant", screenshotName2);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
-		String screenshotName5 = "MasterMerchant_Page_Screenshot";
+        String screenshotName5 = "MasterMerchant_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchantCreatedPage", screenshotName5);
 		wait.until(ExpectedConditions.elementToBeClickable(backToMerchant)).click();
