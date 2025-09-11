@@ -89,8 +89,7 @@ public class DepositTransaction {
 			wait.until(ExpectedConditions.elementToBeClickable(depositTxsOption)).click();
 			// === Date Range Selection ===
 			wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-			WebElement yesterday = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-range-key='Yesterday']")));
+			WebElement yesterday = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-range-key='Yesterday']")));
 			yesterday.click();
 			// === Filter and Export ===
 			wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
@@ -116,7 +115,7 @@ public class DepositTransaction {
 			CommonUtilis.takeScreenshot(driver, "Deposit Transactions", "DepositTxText");
 			// === Scroll to top and click tx action ===
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-			Thread.sleep(3000);
+	//		Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
 	  
 			String originalWindow = driver.getWindowHandle();
@@ -138,7 +137,7 @@ public class DepositTransaction {
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("filtertype1"))));
 			selectFilterType.selectByValue("Equals");
 			wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
-			Thread.sleep(3000);
+		//	Thread.sleep(3000);
 			System.out.println("==== Deposit Transactions Test Completed ====");
 		} catch (Exception e) {
 			System.err.println("Unexpected error occurred: " + e.getMessage());

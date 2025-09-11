@@ -2,11 +2,11 @@ package PG10TestCases;
 import org.testng.annotations.Test;
 import PG10Base.PG10Base;
 
-public class TC_SettingsAssignProces  extends PG10Base  {
+public class TC_SettingsPayoutAssignProces  extends PG10Base  {
 	
 	
-	@Test(priority = 2)
-	public void SettingsAssignProces() throws Exception {
+	@Test(priority = 18)
+	public void SettingsPayoutAssignProces() throws Exception {
 
 		log.info("==== Starting Payout Processor Assign Transactions Test ====");
 		

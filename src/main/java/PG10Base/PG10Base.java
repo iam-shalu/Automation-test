@@ -52,7 +52,7 @@ public class PG10Base {
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			log.info("Browser launched and maximized");
-			driver.get("https://test.paygate10.com/Login");
+			driver.get("https://paygate10.com/Login");
 			log.info("Navigated to PG10 login page");
 			loginPage = new Login(driver);
 			transactionPage = new Transactions(driver);
@@ -73,7 +73,7 @@ public class PG10Base {
 			gatewaylistpage = new GatewayList(driver);
 			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
 			ChargebackTxPage = new ChargebackTxReport(driver);
-		//	settingsPayoutAssignPage = new Settings_PayoutProcessorAss(driver);
+			settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
 			settingAssignPayoutPage = new Settings_PayoutProcessorAss(driver);
 
 		} catch (Exception e) {

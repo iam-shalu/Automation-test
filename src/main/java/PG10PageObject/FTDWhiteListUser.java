@@ -36,9 +36,9 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
 	WebElement searchMasterMerchant;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	WebElement Testacs01;
-
+	
 	@FindBy(xpath = "//a[normalize-space()='Add FTDWhiteList User']")
 	WebElement addWhiteListUser;
 
@@ -48,7 +48,7 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
 	WebElement searchaddWhiteListUserMasterMerchant;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	WebElement Testacs013;
 
 	@FindBy(xpath = "(//button[@class=\"btn btn-success\"])[1]")
@@ -60,7 +60,7 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	WebElement searchMasterMerchant2;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
 	WebElement Testacs0135;
 
 	@FindBy(xpath = "//h3[normalize-space()='FTD White list User Details']")
@@ -113,9 +113,10 @@ public class FTDWhiteListUser {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033"); 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
-		 wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click(); 
-		 wait.until(ExpectedConditions.alertIsPresent());
-		 driver.switchTo().alert().accept(); 
+		  wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+		  wait.until(ExpectedConditions.alertIsPresent());
+		  driver.switchTo().alert().accept();
+		  
 		 
 	}
 }

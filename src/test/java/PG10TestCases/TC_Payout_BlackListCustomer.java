@@ -1,6 +1,5 @@
 
 package PG10TestCases;
-
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import PG10Base.PG10Base;
@@ -9,7 +8,7 @@ import Listeners.Listeners;
 
 public class TC_Payout_BlackListCustomer extends PG10Base {
 
-	@Test(priority = 8)
+	@Test(priority = 10)
 	public void payoutBlackListCustomer() {
 		try {
 			Payout_BlackListCustomer payoutBlackListCustomerPage = new Payout_BlackListCustomer(driver);

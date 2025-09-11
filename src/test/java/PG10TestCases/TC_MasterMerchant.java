@@ -9,7 +9,7 @@ import PG10Base.PG10Base;
 
 public class TC_MasterMerchant extends PG10Base {
 
-	@Test(priority = 2)
+	@Test(priority = 15)
 	public void masterMerchantList() throws Exception {
 		
 		log.info("==== Starting List Control Master Merchant Test ====");
@@ -46,6 +46,24 @@ public class TC_MasterMerchant extends PG10Base {
 	    Listeners.test.log(Status.INFO, "click On  Enable KYC verification check Report ?");
 	    Listeners.test.log(Status.INFO, "click On  Enable KYC verification Ratio Report ?");
 	    Listeners.test.log(Status.INFO, "click On  Submit");
+	    Listeners.test.log(Status.INFO, "Click On Sub Mertchant");
+	    Listeners.test.log(Status.INFO, "Click On Create Sub Merchant ");
+	    Listeners.test.log(Status.INFO, "Enter Sub Merchant Name * - RP_SM");
+	    Listeners.test.log(Status.INFO, "Enter Alias Name * - RP_SM");
+	    Listeners.test.log(Status.INFO, "Enter Sub Merchant Email *");
+	    Listeners.test.log(Status.INFO, "Enter HubSpot Id");
+	    Listeners.test.log(Status.INFO, "Margin Percentage (as %) *");
+	    Listeners.test.log(Status.INFO, "Check(Right Tick) this Checkbox - Is Active ? , Enable Deposit ? ,Enable Payout ?,Offline Processing ?");
+	    Listeners.test.log(Status.INFO, "In Sub Merchant - Fx Rate Settings- Select Fx Rate Type");
+	    Listeners.test.log(Status.INFO, "Enter Markup Percentage (as %)");
+	    Listeners.test.log(Status.INFO, "Select Check Balance Level");
+	    Listeners.test.log(Status.INFO, "check (Right Tick) on RMS Deposit Fraud Check Configurations");
+	    Listeners.test.log(Status.INFO, "check (Right Tick) on Blacklist Validation Rules");
+	    Listeners.test.log(Status.INFO, "check (Right Tick) on KYC Configurations");
+	    Listeners.test.log(Status.INFO, "check (Right Tick) on Enable Reports");
+	    Listeners.test.log(Status.INFO, "check (Right Tick) on Alert Trigger ?");
+	    Listeners.test.log(Status.INFO, "Click On Submit");
+	    Listeners.test.log(Status.INFO, "Delete the Record");
 	    
 		masterMerchantpage.interactWithlistControl_masterMerchant();
 		

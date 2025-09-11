@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,7 +35,7 @@ public class Settings_PayoutProcessorAss {
 	@FindBy(xpath = "//input[@class=\"form-control multiselect-search\"]")
 	WebElement SearchMM;
 	
-	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01 - (287)']")
+	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM - (287)']")
 	WebElement testacs01;
 	
 	@FindBy(xpath = "(//input[@type=\"checkbox\"])[1]")
@@ -90,6 +91,8 @@ public class Settings_PayoutProcessorAss {
 		CommonUtilis.captureFullPageScreenshot(driver, "Settings-Payout Processor Assign", screenshotName);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
 		
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+
 	}
 
 }

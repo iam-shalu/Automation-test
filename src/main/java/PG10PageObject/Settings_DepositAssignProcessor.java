@@ -1,6 +1,8 @@
 package PG10PageObject;
 import java.io.IOException;
 import java.time.Duration;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +11,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import PG10utils.CommonUtilis;
 
 public class Settings_DepositAssignProcessor {
 	WebDriver driver;
@@ -32,19 +36,19 @@ public class Settings_DepositAssignProcessor {
 	@FindBy(xpath = "//input[@placeholder='Search']")
 	WebElement searchDepositProcessor;
 	
-	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-007 - (589)']")
+	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM - (287)']")
 	WebElement testacs01;
 	
-	@FindBy(xpath = "//tbody/tr[12]/td[1]/input[1]")
-	WebElement firstPay;
+	@FindBy(xpath = "(//input[@class=\"chkIsActive\"])[1]")
+	WebElement firSTPAY;
 	
-	@FindBy(xpath = "//tbody/tr[12]/td[5]/input[1]")
+	@FindBy(xpath = "(//input[@class=\"chkProcessorIsActive\"])[1]")
 	WebElement processorIsActive;
 	
-	@FindBy(xpath = "//tbody/tr[12]/td[6]/input[1]")
+	@FindBy(xpath = "(//input[@class=\"form-control form-control-sm txtLoadAmount\"])[1]")
 	WebElement limit;
 	
-	@FindBy(xpath = "//tbody/tr[12]/td[7]/input[1]")
+	@FindBy(xpath = "(//input[@class=\"form-control form-control-sm txtOrderNo\"])[1]")
 	WebElement order;
 	
 	
@@ -53,25 +57,26 @@ public class Settings_DepositAssignProcessor {
 		wait.until(ExpectedConditions.elementToBeClickable(settings)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(depositAssignProcessor)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(depositProcessorSelectAny)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(searchDepositProcessor)).sendKeys("Test-acs-01-007");
+		wait.until(ExpectedConditions.elementToBeClickable(searchDepositProcessor)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(testacs01)).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id( "btnGetProcessor"))).click();
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
-		wait.until(ExpectedConditions.elementToBeClickable(firstPay)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(limit)).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
-		wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
-		
-		
-		
-		
-
-		
-		
-		
-		
+		 ((JavascriptExecutor)driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+		 wait.until(ExpectedConditions.elementToBeClickable(firSTPAY)).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click(); 
+		  wait.until(ExpectedConditions.elementToBeClickable(limit)).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
+		  wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
+		  String screenshotName = "Settings_Page_Screenshot";
+		  System.out.println("Capturing full page screenshot...");
+		  CommonUtilis.captureFullPageScreenshot(driver, "Settings-Deposit Processor Assign", screenshotName);
+		  wait.until(ExpectedConditions.visibilityOfElementLocated(By.id( "btnSaveLoadBalance"))).click();
+		  wait.until(ExpectedConditions.alertIsPresent());
+		  Alert alert = driver.switchTo().alert();
+		  System.out.println("Alert Text: " + alert.getText());  
+		  alert.accept(); 
+		  
+		  ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 	
 	}
 

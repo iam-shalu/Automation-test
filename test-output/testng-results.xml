@@ -1,37 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="19" passed="19" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-10T14:56:10 IST" name="Suite" finished-at="2025-09-10T14:56:53 IST" duration-ms="43247">
+  <suite started-at="2025-09-11T11:02:00 IST" name="Suite" finished-at="2025-09-11T11:13:50 IST" duration-ms="710794">
     <groups>
     </groups>
-    <test started-at="2025-09-10T14:56:10 IST" name="Test" finished-at="2025-09-10T14:56:53 IST" duration-ms="43247">
-      <class name="PG10TestCases.TC_FTDWhiteListUser">
-        <test-method signature="whiteListFTDListCustomer()[pri:9, instance:PG10TestCases.TC_FTDWhiteListUser@67b9b51a]" started-at="2025-09-10T14:56:21 IST" name="whiteListFTDListCustomer" finished-at="2025-09-10T14:56:48 IST" duration-ms="27294" status="PASS">
+    <test started-at="2025-09-11T11:02:00 IST" name="Test" finished-at="2025-09-11T11:13:50 IST" duration-ms="710794">
+      <class name="PG10TestCases.TC_GatewayList">
+        <test-method signature="gatewayList()[pri:16, instance:PG10TestCases.TC_GatewayList@662706a7]" started-at="2025-09-11T11:12:40 IST" name="gatewayList" finished-at="2025-09-11T11:13:09 IST" duration-ms="29207" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- whiteListFTDListCustomer -->
-      </class> <!-- PG10TestCases.TC_FTDWhiteListUser -->
-      <class name="PG10TestCases.TC_Logout">
-        <test-method signature="logout()[pri:13, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-09-10T14:56:48 IST" name="logout" finished-at="2025-09-10T14:56:53 IST" duration-ms="5041" status="PASS">
+        </test-method> <!-- gatewayList -->
+      </class> <!-- PG10TestCases.TC_GatewayList -->
+      <class name="PG10TestCases.TC_Payout_BlackListCustomer">
+        <test-method signature="payoutBlackListCustomer()[pri:10, instance:PG10TestCases.TC_Payout_BlackListCustomer@5e403b4a]" started-at="2025-09-11T11:06:51 IST" name="payoutBlackListCustomer" finished-at="2025-09-11T11:07:56 IST" duration-ms="65192" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- logout -->
-      </class> <!-- PG10TestCases.TC_Logout -->
+        </test-method> <!-- payoutBlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_Payout_BlackListCustomer -->
+      <class name="PG10TestCases.TC_MasterMerchant">
+        <test-method signature="masterMerchantList()[pri:15, instance:PG10TestCases.TC_MasterMerchant@19e7a160]" started-at="2025-09-11T11:11:22 IST" name="masterMerchantList" finished-at="2025-09-11T11:12:40 IST" duration-ms="78145" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- masterMerchantList -->
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
+      <class name="PG10TestCases.TC_SearchTxhist">
+        <test-method signature="depositTransactions()[pri:5, instance:PG10TestCases.TC_SearchTxhist@df6620a]" started-at="2025-09-11T11:03:53 IST" name="depositTransactions" finished-at="2025-09-11T11:04:26 IST" duration-ms="33155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- depositTransactions -->
+      </class> <!-- PG10TestCases.TC_SearchTxhist -->
+      <class name="PG10TestCases.TC_SettingsDepositAssignProces">
+        <test-method signature="SettingsDepositAssignProces()[pri:17, instance:PG10TestCases.TC_SettingsDepositAssignProces@45a4b042]" started-at="2025-09-11T11:13:09 IST" name="SettingsDepositAssignProces" finished-at="2025-09-11T11:13:25 IST" duration-ms="16210" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SettingsDepositAssignProces -->
+      </class> <!-- PG10TestCases.TC_SettingsDepositAssignProces -->
+      <class name="PG10TestCases.TC_DepositTransaction">
+        <test-method signature="depositTransactions()[pri:3, instance:PG10TestCases.TC_DepositTransaction@5170bcf4]" started-at="2025-09-11T11:02:56 IST" name="depositTransactions" finished-at="2025-09-11T11:03:36 IST" duration-ms="39696" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- depositTransactions -->
+      </class> <!-- PG10TestCases.TC_DepositTransaction -->
+      <class name="PG10TestCases.TC_Dashboard">
+        <test-method signature="verifyDashboardButtons()[pri:2, instance:PG10TestCases.TC_Dashboard@6304101a]" started-at="2025-09-11T11:02:07 IST" name="verifyDashboardButtons" finished-at="2025-09-11T11:02:56 IST" duration-ms="49396" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDashboardButtons -->
+      </class> <!-- PG10TestCases.TC_Dashboard -->
+      <class name="PG10TestCases.TC_CityBlackList">
+        <test-method signature="cityBlackListCustomer()[pri:13, instance:PG10TestCases.TC_CityBlackList@2931522b]" started-at="2025-09-11T11:09:15 IST" name="cityBlackListCustomer" finished-at="2025-09-11T11:10:15 IST" duration-ms="59468" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cityBlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_CityBlackList -->
       <class name="PG10TestCases.TC_LoginPage">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-09-10T14:56:07 IST" name="setUpSuite" finished-at="2025-09-10T14:56:10 IST" duration-ms="3408" status="PASS">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@5cdec700]" started-at="2025-09-11T11:01:55 IST" name="setUpSuite" finished-at="2025-09-11T11:02:00 IST" duration-ms="5058" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-09-10T14:56:10 IST" name="login" finished-at="2025-09-10T14:56:21 IST" duration-ms="10874" status="PASS">
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@5cdec700]" started-at="2025-09-11T11:02:00 IST" name="login" finished-at="2025-09-11T11:02:07 IST" duration-ms="7368" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-09-10T14:56:55 IST" name="tearDownSuite" finished-at="2025-09-10T14:56:55 IST" duration-ms="568" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@5cdec700]" started-at="2025-09-11T11:13:52 IST" name="tearDownSuite" finished-at="2025-09-11T11:13:53 IST" duration-ms="1135" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->
       </class> <!-- PG10TestCases.TC_LoginPage -->
+      <class name="PG10TestCases.TC_WhiteListMechantIP">
+        <test-method signature="WhiteListMerchantIP()[pri:9, instance:PG10TestCases.TC_WhiteListMechantIP@198d6542]" started-at="2025-09-11T11:05:38 IST" name="WhiteListMerchantIP" finished-at="2025-09-11T11:06:51 IST" duration-ms="72296" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- WhiteListMerchantIP -->
+      </class> <!-- PG10TestCases.TC_WhiteListMechantIP -->
+      <class name="PG10TestCases.TC_BlackListCustomer">
+        <test-method signature="blackListCustomer()[pri:7, instance:PG10TestCases.TC_BlackListCustomer@1a72a540]" started-at="2025-09-11T11:04:47 IST" name="blackListCustomer" finished-at="2025-09-11T11:05:05 IST" duration-ms="17910" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- blackListCustomer -->
+      </class> <!-- PG10TestCases.TC_BlackListCustomer -->
+      <class name="PG10TestCases.TC_SettingsPayoutAssignProces">
+        <test-method signature="SettingsPayoutAssignProces()[pri:18, instance:PG10TestCases.TC_SettingsPayoutAssignProces@16b2bb0c]" started-at="2025-09-11T11:13:25 IST" name="SettingsPayoutAssignProces" finished-at="2025-09-11T11:13:45 IST" duration-ms="20023" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SettingsPayoutAssignProces -->
+      </class> <!-- PG10TestCases.TC_SettingsPayoutAssignProces -->
+      <class name="PG10TestCases.TC_WhiteListCustomer">
+        <test-method signature="whiteListCustomer()[pri:8, instance:PG10TestCases.TC_WhiteListCustomer@27d5a580]" started-at="2025-09-11T11:05:05 IST" name="whiteListCustomer" finished-at="2025-09-11T11:05:38 IST" duration-ms="33597" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- whiteListCustomer -->
+      </class> <!-- PG10TestCases.TC_WhiteListCustomer -->
+      <class name="PG10TestCases.TC_ChargebackTxs">
+        <test-method signature="chargebackTransaction()[pri:6, instance:PG10TestCases.TC_ChargebackTxs@4e31276e]" started-at="2025-09-11T11:04:26 IST" name="chargebackTransaction" finished-at="2025-09-11T11:04:47 IST" duration-ms="21155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- chargebackTransaction -->
+      </class> <!-- PG10TestCases.TC_ChargebackTxs -->
+      <class name="PG10TestCases.TC_PayoutTransaction">
+        <test-method signature="payoutTransactions()[pri:4, instance:PG10TestCases.TC_PayoutTransaction@2812b107]" started-at="2025-09-11T11:03:36 IST" name="payoutTransactions" finished-at="2025-09-11T11:03:53 IST" duration-ms="16476" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- payoutTransactions -->
+      </class> <!-- PG10TestCases.TC_PayoutTransaction -->
+      <class name="PG10TestCases.TC_FTDWhiteListUser">
+        <test-method signature="whiteListFTDListCustomer()[pri:11, instance:PG10TestCases.TC_FTDWhiteListUser@5117dd67]" started-at="2025-09-11T11:07:56 IST" name="whiteListFTDListCustomer" finished-at="2025-09-11T11:08:20 IST" duration-ms="23682" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- whiteListFTDListCustomer -->
+      </class> <!-- PG10TestCases.TC_FTDWhiteListUser -->
+      <class name="PG10TestCases.TC_StateBlackList">
+        <test-method signature="stateBlackListCustomer()[pri:14, instance:PG10TestCases.TC_StateBlackList@7674b62c]" started-at="2025-09-11T11:10:15 IST" name="stateBlackListCustomer" finished-at="2025-09-11T11:11:22 IST" duration-ms="66941" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stateBlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_StateBlackList -->
+      <class name="PG10TestCases.TC_VPABlackList">
+        <test-method signature="VPABlackListCustomer()[pri:12, instance:PG10TestCases.TC_VPABlackList@5be49b60]" started-at="2025-09-11T11:08:20 IST" name="VPABlackListCustomer" finished-at="2025-09-11T11:09:15 IST" duration-ms="55554" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPABlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_VPABlackList -->
+      <class name="PG10TestCases.TC_Logout">
+        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@327af41b]" started-at="2025-09-11T11:13:45 IST" name="logout" finished-at="2025-09-11T11:13:50 IST" duration-ms="5185" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+      </class> <!-- PG10TestCases.TC_Logout -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

@@ -87,7 +87,6 @@ public class BlackListCustomer {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
-			
 			String expectedEmail = "akash13@gmail.com";
 			WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
 			searchBox.clear();
@@ -100,25 +99,33 @@ public class BlackListCustomer {
 			System.out.println("Capturing full page screenshot...");
 			CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
 
+			
+			/*
+			 * while (true) { List<WebElement> deleteButtons = driver.findElements(By.xpath(
+			 * "//tr[td[contains(text(), '" + expectedEmail +
+			 * "')]]//a[contains(@onclick, 'DeleteRow')]"));
+			 */
+			 
 			while (true) {
-				List<WebElement> deleteButtons = driver.findElements(By.xpath(
-						"//tr[td[contains(text(), '" + expectedEmail + "')]]//a[contains(@onclick, 'DeleteRow')]"));
+					List<WebElement> deleteButtons = driver.findElements(By.xpath(
+							"//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]"));
+				
 				if (deleteButtons.isEmpty())
 					break;
 
 				WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(deleteButtons.get(0)));
 				deleteBtn.click();
-				Thread.sleep(3000);
 				wait.until(ExpectedConditions.alertIsPresent());
 				driver.switchTo().alert().accept();
 
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
-						"//tr[td[contains(text(), '" + expectedEmail + "')]]//a[contains(@onclick, 'DeleteRow')]")));
+						"//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]")));
 
 			}
-
+			
 			List<WebElement> remainingRows = driver
 					.findElements(By.xpath("//td[contains(text(), '" + expectedEmail + "')]"));
+			
 			if (remainingRows.isEmpty()) {
 				System.out.println(" All blacklist customers with email '" + expectedEmail + "' deleted successfully.");
 

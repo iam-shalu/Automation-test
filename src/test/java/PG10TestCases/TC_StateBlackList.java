@@ -10,7 +10,7 @@ import Listeners.Listeners;
 
 public class TC_StateBlackList extends PG10Base {
 
-	@Test(priority = 12)
+	@Test(priority = 14)
 	public void stateBlackListCustomer() throws Exception {
 		log.info("==== Starting FraudControl State Blacklist Customer Test ====");
 		Listeners.test.log(Status.INFO, "Navigating to City Fraud Control Module");

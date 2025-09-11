@@ -9,11 +9,19 @@ import PG10Base.PG10Base;
 
 public class TC_SearchTxhist extends PG10Base {
 
-	@Test(priority = 2)
+	@Test(priority = 5)
 	public void depositTransactions() throws Exception {
 
 		log.info("==== Starting Search Tx History Transactions Test ====");
-
+		Listeners.test.log(Status.INFO, "Navigating to Transactions Module");
+		Listeners.test.log(Status.INFO, "click On BNIB & Go to Search Tx History");
+		Listeners.test.log(Status.INFO, "Select ChargeBack Tx Id");
+		Listeners.test.log(Status.INFO, "Enter Value");
+		Listeners.test.log(Status.INFO, "click Filter");
+		Listeners.test.log(Status.INFO, "Export the Excel data");
+		Listeners.test.log(Status.INFO, "Click On Tx Type - Chargeback ");
+		Listeners.test.log(Status.INFO, "Capture Full Page Screenshot ");
+		
 		searchTxhistoryPage.interactWithtransactionsSearchTxHist();
 
 		log.info("==== Deposit Search Tx History  Test Completed ====");

@@ -73,17 +73,13 @@ public class PayoutTransaction {
 		try {
 			System.out.println("==== Starting Payout Transactions Test ====");
 			Thread.sleep(3000);
-			wait.until(
-					ExpectedConditions.or(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")),
+			wait.until(ExpectedConditions.or(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")),
 							ExpectedConditions.not(ExpectedConditions.attributeContains(By.id("merchantLimitModal"),
 									"style", "display: block"))));
-			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
-			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
 			WebElement cutoffTimeDropdown = wait
@@ -91,7 +87,6 @@ public class PayoutTransaction {
 			Select timeSelect = new Select(cutoffTimeDropdown);
 			// Select the option by visible text "12 AM to 12 AM"
 			timeSelect.selectByVisibleText("12 AM to 12 AM");
-			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
 			// Wait and move Excel
@@ -105,13 +100,11 @@ public class PayoutTransaction {
 			}
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
-			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(PayoutId)).click();
 			Thread.sleep(3000);
 			CommonUtilis.takeScreenshot(driver, "Payout Transactions", "Payout_Tx_List");
 			Thread.sleep(3000);
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-			Thread.sleep(3000);
 			System.out.println("==== Payout Transactions Test Completed ====");
 
 		} catch (Exception e) {
