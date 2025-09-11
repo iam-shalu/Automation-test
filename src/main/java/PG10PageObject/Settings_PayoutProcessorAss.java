@@ -56,7 +56,6 @@ public class Settings_PayoutProcessorAss {
 	@FindBy(xpath = "(//input[@class=\"form-control form-control-sm txtOrderNo\"])[2]")
 	WebElement order2;
 	
-	
 	public void interactWithsettingsPayoutProcessorAss() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(settings)).click();

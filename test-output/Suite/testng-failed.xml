@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="PG10TestCases.TC_SettingsDepositAssignProces">
+      <class name="PG10TestCases.TC_SettingsPayoutAssignProces">
         <methods>
+          <include name="SettingsPayoutAssignProces"/>
           <include name="setUpSuite"/>
-          <include name="SettingsDepositAssignProces"/>
           <include name="tearDownSuite"/>
         </methods>
-      </class> <!-- PG10TestCases.TC_SettingsDepositAssignProces -->
+      </class> <!-- PG10TestCases.TC_SettingsPayoutAssignProces -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
