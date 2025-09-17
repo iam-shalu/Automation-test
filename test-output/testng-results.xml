@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-09-17T09:19:12 IST" name="Suite" finished-at="2025-09-17T09:20:40 IST" duration-ms="88352">
+    <groups>
+    </groups>
+    <test started-at="2025-09-17T09:19:12 IST" name="Test" finished-at="2025-09-17T09:20:40 IST" duration-ms="88352">
+      <class name="PG10TestCases.TC_SettingsPayoutAssignProces">
+        <test-method signature="SettingsPayoutAssignProces()[pri:18, instance:PG10TestCases.TC_SettingsPayoutAssignProces@28d18df5]" started-at="2025-09-17T09:20:25 IST" name="SettingsPayoutAssignProces" finished-at="2025-09-17T09:20:36 IST" duration-ms="10783" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SettingsPayoutAssignProces -->
+      </class> <!-- PG10TestCases.TC_SettingsPayoutAssignProces -->
+      <class name="PG10TestCases.TC_GatewayList">
+        <test-method signature="gatewayList()[pri:16, instance:PG10TestCases.TC_GatewayList@1d483de4]" started-at="2025-09-17T09:19:56 IST" name="gatewayList" finished-at="2025-09-17T09:20:14 IST" duration-ms="18420" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gatewayList -->
+      </class> <!-- PG10TestCases.TC_GatewayList -->
+      <class name="PG10TestCases.TC_MasterMerchant">
+        <test-method signature="masterMerchantList()[pri:15, instance:PG10TestCases.TC_MasterMerchant@31920ade]" started-at="2025-09-17T09:19:22 IST" name="masterMerchantList" finished-at="2025-09-17T09:19:56 IST" duration-ms="34127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- masterMerchantList -->
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
+      <class name="PG10TestCases.TC_SettingsDepositAssignProces">
+        <test-method signature="SettingsDepositAssignProces()[pri:17, instance:PG10TestCases.TC_SettingsDepositAssignProces@4032d386]" started-at="2025-09-17T09:20:14 IST" name="SettingsDepositAssignProces" finished-at="2025-09-17T09:20:25 IST" duration-ms="10882" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SettingsDepositAssignProces -->
+      </class> <!-- PG10TestCases.TC_SettingsDepositAssignProces -->
+      <class name="PG10TestCases.TC_Logout">
+        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@934b6cb]" started-at="2025-09-17T09:20:36 IST" name="logout" finished-at="2025-09-17T09:20:40 IST" duration-ms="4669" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+      </class> <!-- PG10TestCases.TC_Logout -->
+      <class name="PG10TestCases.TC_LoginPage">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@67b9b51a]" started-at="2025-09-17T09:19:11 IST" name="setUpSuite" finished-at="2025-09-17T09:19:12 IST" duration-ms="1598" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpSuite -->
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@67b9b51a]" started-at="2025-09-17T09:19:12 IST" name="login" finished-at="2025-09-17T09:19:22 IST" duration-ms="9444" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@67b9b51a]" started-at="2025-09-17T09:20:41 IST" name="tearDownSuite" finished-at="2025-09-17T09:20:41 IST" duration-ms="178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownSuite -->
+      </class> <!-- PG10TestCases.TC_LoginPage -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

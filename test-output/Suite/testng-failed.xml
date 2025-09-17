@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="Listeners.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="PG10TestCases.TC_SettingsDepositAssignProces">
+        <methods>
+          <include name="setUpSuite"/>
+          <include name="SettingsDepositAssignProces"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_SettingsDepositAssignProces -->
+      <class name="PG10TestCases.TC_SettingsPayoutAssignProces">
+        <methods>
+          <include name="SettingsPayoutAssignProces"/>
+          <include name="setUpSuite"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_SettingsPayoutAssignProces -->
+      <class name="PG10TestCases.TC_MasterMerchant">
+        <methods>
+          <include name="masterMerchantList"/>
+          <include name="setUpSuite"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_MasterMerchant -->
+      <class name="PG10TestCases.TC_GatewayList">
+        <methods>
+          <include name="gatewayList"/>
+          <include name="setUpSuite"/>
+          <include name="tearDownSuite"/>
+        </methods>
+      </class> <!-- PG10TestCases.TC_GatewayList -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
