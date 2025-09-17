@@ -12,7 +12,7 @@ public class TC_SettingsDepositAssignProces  extends PG10Base  {
 	@Test(priority = 17)
 	public void SettingsDepositAssignProces() throws Exception {
 
-		log.info("==== Starting Setting - Deposit Processor Assign Transactions Test ====");
+		log.info("==== Starting Settings - Deposit Processor Assign Test ====");
 		
 		Listeners.test.log(Status.INFO, "Nevigating to Setting Module");
 		Listeners.test.log(Status.INFO, "click On deposit Assign Processor");
@@ -29,7 +29,7 @@ public class TC_SettingsDepositAssignProces  extends PG10Base  {
 		
 		settingsDepositAssignPage.interactWithsettingsDepositProcessor();
 		
-		log.info("====  Settings - Payout Processor Assign Test Completed ====");
+		log.info("====  Settings - Deposit Processor Assign Test Completed ====");
 
 		Thread.sleep(3000);
 	}

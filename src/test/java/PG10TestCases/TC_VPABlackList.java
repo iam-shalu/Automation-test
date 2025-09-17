@@ -28,6 +28,7 @@ public class TC_VPABlackList extends PG10Base {
 		vpablackListPage.interactWithfraudControlVPABlackList();
 
 		Listeners.test.log(Status.INFO, "VPA Blacklist Customer Test Completed");
+		
 		log.info("==== FraudControl VPA  BlackList Test Completed ====");
 
 		Thread.sleep(3000);

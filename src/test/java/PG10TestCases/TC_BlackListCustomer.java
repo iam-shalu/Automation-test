@@ -23,6 +23,7 @@ public class TC_BlackListCustomer extends PG10Base {
 		Listeners.test.log(Status.INFO, " Click on save )");
 		Listeners.test.log(Status.INFO, "Search Black List Customer data by Search By Name - Akash");
 		Listeners.test.log(Status.INFO, "capture the FullPageScreenshot ");
+		log.info("==== capture the FullPageScreenshot ====");
 		Listeners.test.log(Status.INFO, "Click On Delete the Records");
 		Listeners.test.log(Status.INFO, " Click & Export the Excel File ");
 

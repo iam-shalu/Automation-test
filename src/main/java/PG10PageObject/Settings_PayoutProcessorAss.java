@@ -35,7 +35,7 @@ public class Settings_PayoutProcessorAss {
 	@FindBy(xpath = "//input[@class=\"form-control multiselect-search\"]")
 	WebElement SearchMM;
 	
-	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM - (287)']")
+	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01 - (287)']")
 	WebElement testacs01;
 	
 	@FindBy(xpath = "(//input[@type=\"checkbox\"])[1]")
@@ -49,6 +49,8 @@ public class Settings_PayoutProcessorAss {
 	
 	@FindBy(xpath = "(//input[@class=\"chkIsActive\"])[2]")
 	WebElement processor2;
+	
+	
 	
 	@FindBy(xpath = "(//input[@class=\"form-control form-control-sm txtLoadAmount\"])[2]")
 	WebElement limit2;
@@ -89,8 +91,8 @@ public class Settings_PayoutProcessorAss {
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "Settings-Payout Processor Assign", screenshotName);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
-		
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+		
 
 	}
 

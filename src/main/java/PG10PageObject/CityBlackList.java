@@ -79,7 +79,10 @@ public class CityBlackList {
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs1)).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id='fileInput']"));
-		String filePath = "D:\\Automation\\Excel file\\CityBlackList Customer\\CityBlackList.xlsx";
+	//	String filePath = "D:\\Automation\\Excel file\\CityBlackList Customer\\CityBlackList.xlsx";
+		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
+		
+		
 		blackListUpload.sendKeys(filePath);
 		System.out.println("File uploaded successfully.");
 		Thread.sleep(3000);
