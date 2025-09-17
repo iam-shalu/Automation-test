@@ -1,3 +1,4 @@
+
 package PG10PageObject;
 
 import java.io.IOException;
@@ -36,9 +37,9 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
 	WebElement searchMasterMerchant;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
+	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 	WebElement Testacs01;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Add FTDWhiteList User']")
 	WebElement addWhiteListUser;
 
@@ -48,7 +49,7 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
 	WebElement searchaddWhiteListUserMasterMerchant;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
+	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 	WebElement Testacs013;
 
 	@FindBy(xpath = "(//button[@class=\"btn btn-success\"])[1]")
@@ -60,17 +61,20 @@ public class FTDWhiteListUser {
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	WebElement searchMasterMerchant2;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
+	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 	WebElement Testacs0135;
 
 	@FindBy(xpath = "//h3[normalize-space()='FTD White list User Details']")
 	WebElement FTDWhiteListUser;
 
-	@FindBy(xpath = "//span[@class='fa fa-trash-o fa-lg']")
+	@FindBy(xpath = "//span[@class=\"fa fa-trash-o fa-lg\"]")
 	WebElement deleteRecord;
 
 	@FindBy(xpath = "/span[@class=\"fa fa-trash-o fa-lg\"]")
 	WebElement deleteRecord2;
+
+	// Locator for duplicate data error toast
+	By duplicateDataError = By.xpath("//*[contains(text(),'Data Already Exist for this Merchant')]");
 
 	public void interactWithfraudControl_FTDwhiteListUser() throws InterruptedException, IOException {
 
@@ -81,42 +85,73 @@ public class FTDWhiteListUser {
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id=\"fileInput\"]")));
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
-		String filePath = "D:\\Automation\\Excel file\\FTDWhiteList User\\FTDWhiteListUser.xlsx";
+		// String filePath = "D:\\Automation\\Excel file\\FTDWhiteList
+		// User\\FTDWhiteListUser.xlsx";
+		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\FTDWhiteList User\\FTDWhiteListUser.xlsx";
 		blackListUpload.sendKeys(filePath);
 		System.out.println("File uploaded successfully.");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUser)).click(); 
-		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUserMasterMerchant)).click(); 
-		wait.until(ExpectedConditions.elementToBeClickable(searchaddWhiteListUserMasterMerchant)) .sendKeys("Test-acs-01");
+
+		// Add new WhiteList User
+		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUser)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(addWhiteListUserMasterMerchant)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(searchaddWhiteListUserMasterMerchant)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs013)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("firstName"))).sendKeys("Akash");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("lastName"))).sendKeys("Lade");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Email"))).sendKeys("akash@gmail.com");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Phone"))).sendKeys("9632629063");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn_Save"))).click();
-		Thread.sleep(3000);
-	    wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant2)).click(); 
-	    wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
+
+		// ✅ Handle duplicate data condition
+		try {
+			WebElement errorMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(duplicateDataError));
+			if (errorMsg.isDisplayed()) {
+				System.out.println("Duplicate data detected → Closing popup.");
+				wait.until(ExpectedConditions.elementToBeClickable(close)).click();
+				return; // stop execution if duplicate data exists
+			}
+		} catch (Exception e) {
+			System.out.println("No duplicate data error. Proceeding with normal flow.");
+		}
+
+		// Continue with normal flow if no duplicate error
+		wait.until(ExpectedConditions.elementToBeClickable(selectMasterMerchant2)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs0135)).click();
-	    wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();  
-		String screenshotName="FTDWhiteListUser_Page_Screenshot";
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+		String screenshotName = "FTDWhiteListUser_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver,"FraudControl-FTDWhiteListUser", screenshotName); // Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629063");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
-	    Thread.sleep(3000);
-	   wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click(); 
-	    wait.until(ExpectedConditions.alertIsPresent());
-		driver.switchTo().alert().accept(); 
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033"); 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
+		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-FTDWhiteListUser", screenshotName);
+
+		
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629063");
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
+		  Thread.sleep(3000);
 		  wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		  wait.until(ExpectedConditions.alertIsPresent());
-		  driver.switchTo().alert().accept();
+		  driver.switchTo().alert().accept(); 
+		  Thread.sleep(3000);
 		  
+			  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear
+			  ();
+			  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click
+			  ();
+		    
+		  
+			  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033");
+			  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+			  
+			  Thread.sleep(1000);
+			  wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+			  wait.until(ExpectedConditions.alertIsPresent());
+			  driver.switchTo().alert().accept();
+			  
+			  
+			  
+		   
 		 
+
 	}
+
 }

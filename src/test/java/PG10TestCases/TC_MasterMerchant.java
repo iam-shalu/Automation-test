@@ -67,7 +67,7 @@ public class TC_MasterMerchant extends PG10Base {
 	    
 		masterMerchantpage.interactWithlistControl_masterMerchant();
 		
-		log.info("==== List Control Sub Merchant Test Completed ====");
+		log.info("==== List Control  Merchant Test Completed ====");
 
 		Thread.sleep(3000);
 

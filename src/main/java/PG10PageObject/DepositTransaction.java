@@ -1,6 +1,5 @@
 
 package PG10PageObject;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -115,7 +114,7 @@ public class DepositTransaction {
 			CommonUtilis.takeScreenshot(driver, "Deposit Transactions", "DepositTxText");
 			// === Scroll to top and click tx action ===
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-	//		Thread.sleep(3000);
+			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(tx_Action)).click();
 	  
 			String originalWindow = driver.getWindowHandle();
@@ -137,7 +136,7 @@ public class DepositTransaction {
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("filtertype1"))));
 			selectFilterType.selectByValue("Equals");
 			wait.until(ExpectedConditions.elementToBeClickable(enterValue)).sendKeys("gomzi001@axl");
-		//	Thread.sleep(3000);
+			Thread.sleep(3000);
 			System.out.println("==== Deposit Transactions Test Completed ====");
 		} catch (Exception e) {
 			System.err.println("Unexpected error occurred: " + e.getMessage());

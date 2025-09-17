@@ -59,7 +59,8 @@ public class VPABlackList {
 				.presenceOfElementLocated(By.xpath("(//input[@class='form-control form-control-sm'])[1]")));
 		WebElement blackListUpload = driver
 				.findElement(By.xpath("(//input[@class='form-control form-control-sm'])[1]"));
-		String filePath = "D:\\Automation\\Excel file\\VPA BlackList\\VPABlackList.xlsx";
+	//	String filePath = "D:\\Automation\\Excel file\\VPA BlackList\\VPABlackList.xlsx";
+		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\VPA BlackList\\VPABlackList.xlsx";
 		blackListUpload.sendKeys(filePath);
 		System.out.println("File uploaded successfully.");
 		Thread.sleep(3000);
@@ -98,10 +99,10 @@ public class VPABlackList {
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
-		Thread.sleep(3000);
+		
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
-		Thread.sleep(3000);
+		
 	}
 }
