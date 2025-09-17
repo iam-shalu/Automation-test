@@ -1,5 +1,4 @@
 package PG10PageObject;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -53,37 +52,42 @@ public class ChargebackTxReport {
 	@FindBy(xpath = "(//input[@placeholder=\"Search\"])[1]")
 	WebElement SearchMasterMerchant;
 	
-	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM']")
-	WebElement selectTestacs01;
+	// X Path For UAT
+	@FindBy(xpath = "//label[normalize-space(text())='Test-Acs-01']")
+	WebElement SelectmasterMasterTestacs01;
+	
+	// X Path For UAT
+	@FindBy(xpath = "//label[normalize-space(text())='Test-Acs-01']")
+	WebElement SelectmasterMasterTestacs01_Live;
 	
 	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
 	WebElement merchantSelectAny2;
 	
-	@FindBy(xpath = "(//input[@placeholder=\"Search\"])[2]")
-	WebElement searchMasterMerchant2;
-	
-	@FindBy(xpath = "//div[@class='form-group']//li[3]//a[1]//label[1]")
-	WebElement masterselectTestacs01;
-	
-	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[3]")
-	WebElement subMerchantSelectAny;
-	
-	@FindBy(xpath = "(//input[@placeholder=\"Search\"])[3]")
-	WebElement searchSubMerchant;
-	
-	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-SM']")
-	WebElement submerchantTestacs01;
-	
+	 @FindBy(xpath = "(//input[@placeholder=\"Search\"])[2]") 
+	 WebElement searchMasterMerchant2;
+	 
+	 @FindBy(xpath = "(//span[@class=\"multiselect-selected-text\"])[3]")
+	 WebElement subMerchantSelectAny3;
+	 
+	 @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
+	 WebElement SearchSubMerchant03;
+	 
+	 @FindBy(xpath = "//label[normalize-space(text())='Test-Acs-01-SM']")
+	 WebElement SelectSubMerchant03;
+	 
+	 @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+	 WebElement SelectSubMerchant_Live;
+	 
 	@FindBy(id = "ddlCompleted")
 	WebElement isClosedDropdown;
 	
 	public void interactWithtransactionchargebackTX() throws IOException, InterruptedException {
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(chargebackTxReport)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtCreatedDateRange"))).click();
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(createdDateRangeyesterday)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtCBOpenDateRange"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(cbOpenDateRange)).click();
@@ -92,34 +96,50 @@ public class ChargebackTxReport {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
 		
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile" ;
 
 		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
 			CommonUtilis.moveDownloadedFileToDatedFolder("ChargebackTxReport", dateFolder);
 		} else {
 			System.err.println(" No downloaded Excel file found to move.");
 		}
+		
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSelectAny)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(SearchMasterMerchant)).sendKeys("Test-acs-01");
 		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(selectTestacs01)).click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(SelectmasterMasterTestacs01)).click();
+		
+			
 		wait.until(ExpectedConditions.elementToBeClickable(merchantSelectAny2)).click();
+		
 		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
-		wait.until(ExpectedConditions.elementToBeClickable(masterselectTestacs01)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(subMerchantSelectAny)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(searchSubMerchant)).sendKeys("Test-acs-01");
-		wait.until(ExpectedConditions.elementToBeClickable(submerchantTestacs01)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCompleted"))).click();
+		
+		//X Path For UAT
+		WebElement merchantOption = driver.findElement(By.xpath("//label[normalize-space(text())='Test-Acs-01-M']"));
+		merchantOption.click();
+
+		
+		wait.until(ExpectedConditions.elementToBeClickable(subMerchantSelectAny3)).click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(SearchSubMerchant03)).click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(SelectSubMerchant03)).click();
+
+				
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCompleted"))).click(); 
 		Select isClosed = new Select(isClosedDropdown);
 		isClosed.selectByVisibleText("No");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch"))).click(); 
 		String screenshotName = "ChargebackTxReport_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-ChargebackTxReport", screenshotName);
-		
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+		CommonUtilis.captureFullPageScreenshot(driver,"Transaction-ChargebackTxReport", screenshotName); 
+		((JavascriptExecutor) driver).executeScript("window.scroll({ top: 0, behavior: 'smooth' });");
 
+				 
+			 
+		 
 		
 		
 			

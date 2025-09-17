@@ -35,7 +35,7 @@ public class Settings_DepositAssignProcessor {
 	@FindBy(xpath = "//input[@placeholder='Search']")
 	WebElement searchDepositProcessor;
 	
-	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM - (287)']")
+	@FindBy(xpath = "//label[normalize-space()='Test-Acs-01 - (287)']")
 	WebElement testacs01;
 	
 	@FindBy(xpath = "(//input[@class=\"chkIsActive\"])[1]")
@@ -94,14 +94,8 @@ public class Settings_DepositAssignProcessor {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept(); 
-		
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-
 		
-
-	    
-	
-	
 	}
 
 }

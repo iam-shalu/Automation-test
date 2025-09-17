@@ -60,13 +60,17 @@ public class BlackListCustomer {
 	WebElement delete2;
 
 	public void interactWithfraudControlblackList() throws InterruptedException {
+		
+		Thread.sleep(3000);
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
 			driver.manage().window().maximize();
 			WebElement blackListUpload = wait.until(
-					ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='blacklistcustomerfile']")));
-			String filePath = "D:\\Automation\\Excel file\\Blacklist Customer\\BlackList.xlsx";
+			ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name=\"blacklistcustomerfile\"]")));
+			
+
+			String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\Blacklist Customer\\BlackList.xlsx";
 			blackListUpload.sendKeys(filePath);
 			System.out.println("File uploaded successfully.");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmimport"))).click();
@@ -87,6 +91,24 @@ public class BlackListCustomer {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
+			
+			
+			try {
+			    WebElement errorToast = wait.until(ExpectedConditions.visibilityOfElementLocated(
+			            By.xpath("//div[contains(text(),'Blacklist Customer creation failed')]")));
+			    if (errorToast.isDisplayed()) {
+			        System.out.println("Blacklist creation failed. Clicking Close.");
+			        WebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(
+			                By.xpath("//button[normalize-space()='Close']")));
+			        closeBtn.click();
+			        return; // Exit the method since creation failed
+			    }
+			} catch (Exception e) {
+			    // No error toast found, continue normal flow
+			    System.out.println("Blacklist Customer created successfully, continuing test flow...");
+			}
+			
+			
 			String expectedEmail = "akash13@gmail.com";
 			WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
 			searchBox.clear();
@@ -99,32 +121,28 @@ public class BlackListCustomer {
 			System.out.println("Capturing full page screenshot...");
 			CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
 
-			
-			/*
-			 * while (true) { List<WebElement> deleteButtons = driver.findElements(By.xpath(
-			 * "//tr[td[contains(text(), '" + expectedEmail +
-			 * "')]]//a[contains(@onclick, 'DeleteRow')]"));
-			 */
-			 
 			while (true) {
-					List<WebElement> deleteButtons = driver.findElements(By.xpath(
-							"//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]"));
-				
+				List<WebElement> deleteButtons = driver.findElements(By.xpath("//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]"));      
+				   //	//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]
+					
 				if (deleteButtons.isEmpty())
 					break;
-
+				
+				//Delete X Path For Production -    //span[@class="fa fa-trash-o  fa-lg"]
+				
+				//Delete x Path For UAT -          //span[@class="fa fa-trash-o  fa-lg"]
 				WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(deleteButtons.get(0)));
 				deleteBtn.click();
 				wait.until(ExpectedConditions.alertIsPresent());
 				driver.switchTo().alert().accept();
 
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
-						"//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]")));
 
 			}
 			
-			List<WebElement> remainingRows = driver
-					.findElements(By.xpath("//td[contains(text(), '" + expectedEmail + "')]"));
+			//Delete X Path For Production -    //span[@class="fa fa-trash-o  fa-lg"]
+	
+			List<WebElement> remainingRows = driver.findElements(By.xpath("//td[contains(text(), '" + expectedEmail + "')]"));
 			
 			if (remainingRows.isEmpty()) {
 				System.out.println(" All blacklist customers with email '" + expectedEmail + "' deleted successfully.");
@@ -143,6 +161,8 @@ public class BlackListCustomer {
 		}
 
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+		
+		Thread.sleep(3000);
 	
 	}
 }

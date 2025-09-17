@@ -12,7 +12,8 @@ public class TC_SearchTxhist extends PG10Base {
 	@Test(priority = 5)
 	public void depositTransactions() throws Exception {
 
-		log.info("==== Starting Search Tx History Transactions Test ====");
+		log.info("==== Starting Transactions - Search Tx History Test ====");
+		
 		Listeners.test.log(Status.INFO, "Navigating to Transactions Module");
 		Listeners.test.log(Status.INFO, "click On BNIB & Go to Search Tx History");
 		Listeners.test.log(Status.INFO, "Select ChargeBack Tx Id");
@@ -21,10 +22,10 @@ public class TC_SearchTxhist extends PG10Base {
 		Listeners.test.log(Status.INFO, "Export the Excel data");
 		Listeners.test.log(Status.INFO, "Click On Tx Type - Chargeback ");
 		Listeners.test.log(Status.INFO, "Capture Full Page Screenshot ");
-		
+		log.info("==== Capture Full Page Screenshot ====");
 		searchTxhistoryPage.interactWithtransactionsSearchTxHist();
 
-		log.info("==== Deposit Search Tx History  Test Completed ====");
+		log.info("==== Transactions - Search Tx History  Test Completed ====");
 
 		Thread.sleep(3000);
 

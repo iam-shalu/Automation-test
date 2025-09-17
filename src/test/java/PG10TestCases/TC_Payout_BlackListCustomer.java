@@ -13,7 +13,7 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
 		try {
 			Payout_BlackListCustomer payoutBlackListCustomerPage = new Payout_BlackListCustomer(driver);
 
-			log.info("==== Starting FraudControl Payout Blacklist Customer Test ====");
+			log.info("==== Starting FraudControl  Blacklist Payout Customer Test ====");
 			Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");
 			Listeners.test.log(Status.INFO, "Click on 'Fraud Control' menu");
 			Listeners.test.log(Status.INFO, "Select 'Payout BlackList Customer' option");
@@ -34,7 +34,8 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
 			Thread.sleep(3000);
 
 			Listeners.test.log(Status.PASS, "Payout BlackList Customer Test Completed Successfully");
-			log.info("==== FraudControl Payout BlackList Customer Test Completed ====");
+			
+			log.info("==== FraudControl  BlackList Payout Customer Test Completed ====");
 		} catch (Exception e) {
 			Listeners.test.log(Status.FAIL, "Test Failed due to: " + e.getMessage());
 			log.error("Error occurred during Payout BlackList Customer test", e);

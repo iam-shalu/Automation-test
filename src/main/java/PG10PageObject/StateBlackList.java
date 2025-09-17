@@ -1,11 +1,9 @@
 
 package PG10PageObject;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -98,7 +96,9 @@ public class StateBlackList {
 		driver.manage().window().maximize();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id=\"fileInput\"]")));
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
-		String filePath = "D:\\Automation\\Excel file\\State BlackList\\StateBlackList.xlsx";
+	//	String filePath = "D:\\Automation\\Excel file\\State BlackList\\StateBlackList.xlsx";
+		
+		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\State BlackList\\StateBlackList.xlsx";
 		blackListUpload.sendKeys(filePath);
 		System.out.println("File uploaded successfully.");
 		Thread.sleep(3000);
