@@ -1,7 +1,6 @@
 package PG10PageObject;
 import java.io.IOException;
 import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -76,20 +75,24 @@ public class Settings_DepositAssignProcessor {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id( "btnGetProcessor"))).click();
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
 		wait.until(ExpectedConditions.elementToBeClickable(firSTPAY)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(limit)).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
-		wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
-		wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(limit2)).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(limit2)).sendKeys("1000");
-		wait.until(ExpectedConditions.elementToBeClickable(order2)).clear();
-		wait.until(ExpectedConditions.elementToBeClickable(order2)).sendKeys("1");
+		
+		  wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click(
+		  ); wait.until(ExpectedConditions.elementToBeClickable(limit)).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
+		  wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
+		  wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
+		  wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click(
+		  ); wait.until(ExpectedConditions.elementToBeClickable(limit2)).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(limit2)).sendKeys("1000");
+		  wait.until(ExpectedConditions.elementToBeClickable(order2)).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(order2)).sendKeys("1");
+		 
+		
 		String screenshotName = "SettingsDepositTx_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "Setting-DepositTx", screenshotName);
+		
 		wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
 		wait.until(ExpectedConditions.alertIsPresent());

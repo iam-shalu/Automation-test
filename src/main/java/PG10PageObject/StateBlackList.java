@@ -36,7 +36,8 @@ public class StateBlackList {
 
 	@FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
 	WebElement searchSubMerchant1;
-
+	
+	// X Path For UAT Environment
 	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
 	WebElement Testacs1;
 
@@ -48,7 +49,8 @@ public class StateBlackList {
 
 	@FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
 	WebElement searchselectSubElement1;
-
+	
+	//X Path For UAT Environment
 	@FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
 	WebElement Testacs2;
 
@@ -73,7 +75,7 @@ public class StateBlackList {
 				element.click();
 				return true;
 			} catch (org.openqa.selenium.StaleElementReferenceException e) {
-				System.err.println("StaleElementException on attempt #" + (attempts + 1) + " for locator: " + locator);
+			//	System.err.println("StaleElementException on attempt #" + (attempts + 1) + " for locator: " + locator);
 				attempts++;
 			} catch (Exception e) {
 				System.err.println("Non-stale error during clicking: " + e.getMessage());

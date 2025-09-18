@@ -35,7 +35,8 @@ public class CityBlackList {
 
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
 	WebElement searchMasterMerchant1;
-
+	
+	//X Path For UAT 
 	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
 	WebElement Testacs1;
 
@@ -47,7 +48,8 @@ public class CityBlackList {
 
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
 	WebElement searchSubTestacs2;
-
+	
+	//x Path For UAT
 	@FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
 	WebElement selectsubTestacs2;
 
@@ -59,7 +61,8 @@ public class CityBlackList {
 
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	WebElement searchSubMastermerchant3;
-
+	
+	// X Path For UAT 
 	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
 	WebElement Testacs3;
 
@@ -81,7 +84,6 @@ public class CityBlackList {
 		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id='fileInput']"));
 	//	String filePath = "D:\\Automation\\Excel file\\CityBlackList Customer\\CityBlackList.xlsx";
 		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
-		
 		
 		blackListUpload.sendKeys(filePath);
 		System.out.println("File uploaded successfully.");

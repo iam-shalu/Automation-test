@@ -9,10 +9,14 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.imageio.ImageIO;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -135,43 +139,67 @@ public class CommonUtilis {
 
 		return false;
 	}
+	
+	/*
+	 * public static void moveDownloadedFileToDatedFolder(String moduleName, String
+	 * dateStr) { String baseDownloadDir =
+	 * "D:\\Automation\\pg10-automation\\ExcelFile"; File downloadFolder = new
+	 * File(baseDownloadDir); File[] xlsxFiles = downloadFolder.listFiles( (dir,
+	 * name) -> name.toLowerCase().endsWith(".xlsx") &&
+	 * !name.toLowerCase().endsWith(".crdownload")); if (xlsxFiles == null ||
+	 * xlsxFiles.length == 0) { log.warn("No downloaded Excel file found to move.");
+	 * return; }
+	 * 
+	 * File latestFile = xlsxFiles[0]; for (File f : xlsxFiles) { if
+	 * (f.lastModified() > latestFile.lastModified()) { latestFile = f; } } File
+	 * targetDir = new File(baseDownloadDir + File.separator + dateStr +
+	 * File.separator + moduleName); if (!targetDir.exists()) { if
+	 * (targetDir.mkdirs()) { log.info("Created directory: " +
+	 * targetDir.getAbsolutePath()); } else {
+	 * log.error("Failed to create target directory: " +
+	 * targetDir.getAbsolutePath()); return; } }
+	 * 
+	 * 
+	 * 
+	 * 
+	 * // Generate timestamped destination file String timestamp = new
+	 * SimpleDateFormat("HHmmss").format(new Date()); File destinationFile = new
+	 * File(targetDir, "Export_" + timestamp + ".xlsx");
+	 * 
+	 * // Move file From Base if (latestFile.renameTo(destinationFile)) {
+	 * log.info("Exported file moved to: " + destinationFile.getAbsolutePath()); }
+	 * else { log.error("Failed to move file: " + latestFile.getAbsolutePath()); } }
+	 */
+	
+	public static void moveDownloadedFileToDatedFolder(String moduleName, String dateFolder) throws IOException {
+	    String baseDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
-	public static void moveDownloadedFileToDatedFolder(String moduleName, String dateStr) {
-		String baseDownloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-		File downloadFolder = new File(baseDownloadDir);
-		File[] xlsxFiles = downloadFolder.listFiles(
-				(dir, name) -> name.toLowerCase().endsWith(".xlsx") && !name.toLowerCase().endsWith(".crdownload"));
-		if (xlsxFiles == null || xlsxFiles.length == 0) {
-			log.warn("No downloaded Excel file found to move.");
-			return;
-		}
+	    // Create folder structure: baseDir\dateFolder\moduleName\Download
+	    File targetDir = new File(baseDir, dateFolder + "\\" + moduleName);
+	    File downloadDir = new File(targetDir, "Download");
 
-		File latestFile = xlsxFiles[0];
-		for (File f : xlsxFiles) {
-			if (f.lastModified() > latestFile.lastModified()) {
-				latestFile = f;
-			}
-		}
-		File targetDir = new File(baseDownloadDir + File.separator + dateStr + File.separator + moduleName);
-		if (!targetDir.exists()) {
-			if (targetDir.mkdirs()) {
-				log.info("Created directory: " + targetDir.getAbsolutePath());
-			} else {
-				log.error("Failed to create target directory: " + targetDir.getAbsolutePath());
-				return;
-			}
-		}
-		// Generate timestamped destination file
-		String timestamp = new SimpleDateFormat("HHmmss").format(new Date());
-		File destinationFile = new File(targetDir, "Export_" + timestamp + ".xlsx");
+	    if (!downloadDir.exists()) downloadDir.mkdirs();
 
-		// Move file From Base
-		if (latestFile.renameTo(destinationFile)) {
-			log.info("Exported file moved to: " + destinationFile.getAbsolutePath());
-		} else {
-			log.error("Failed to move file: " + latestFile.getAbsolutePath());
-		}
+	    // Find the latest downloaded .xlsx file in baseDir
+	    File folder = new File(baseDir);
+	    File[] files = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".xlsx"));
+
+	    if (files != null && files.length > 0) {
+	        File latestFile = Arrays.stream(files)
+	                                .max(Comparator.comparingLong(File::lastModified))
+	                                .orElse(null);
+
+	        if (latestFile != null) {
+	            // Move into Download folder
+	            Path movedPath = Paths.get(downloadDir.getAbsolutePath(), latestFile.getName());
+	            Files.move(latestFile.toPath(), movedPath, StandardCopyOption.REPLACE_EXISTING);
+	            System.out.println("File moved to Download folder: " + movedPath);
+	        }
+	    } else {
+	        System.err.println("No .xlsx file found in download folder.");
+	    }
 	}
+	
 	
 	
 	// Generic calendar date picker

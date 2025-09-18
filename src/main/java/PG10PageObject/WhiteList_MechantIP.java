@@ -152,39 +152,40 @@ public class WhiteList_MechantIP {
 			System.err.println(" No downloaded Excel file found to move.");
 		}
 		Thread.sleep(2000);
+		
+		deleteAllRecordsFromTable();  // will delete both records in your screenshot
 
-		// 🔥 Delete all records with IP "1.5.7.8"
-		deleteAllMatchingIPs("1.5.7.8");
+		//  Delete all records with IP "1.5.7.8"
+	   //	deleteAllMatchingIPs("1.5.7.8");
+	
 	}
 
-	// Helper method: delete all rows matching an IP
-	private void deleteAllMatchingIPs(String ip) {
-		while (true) {
-			// Search by IP
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys(ip);
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+	
+	private void deleteAllRecordsFromTable() {
+	    while (true) {
+	        // Find all delete icons inside the datatable
+	        List<WebElement> deleteButtons = driver.findElements(
+	            By.xpath("//span[@class=\"fa fa-trash-o fa-lg\"]")
+	        );
 
-			// Find delete icons
-			List<WebElement> deleteIcons = driver.findElements(
-					By.xpath("//table[@id='datatable']//tbody//tr//td[last()]//span[contains(@class,'fa-trash-o')]"));
+	        if (deleteButtons.isEmpty()) {
+	            System.out.println(" No more records left to delete.");
+	            break;
+	        }
 
-			if (deleteIcons.isEmpty()) {
-				System.out.println("✅ No more records found for IP: " + ip);
-				break;
-			}
+	        // Take the first delete button
+	        WebElement deleteBtn = deleteButtons.get(0);
 
-			// Delete first record
-			WebElement deleteIcon = deleteIcons.get(0);
-			wait.until(ExpectedConditions.elementToBeClickable(deleteIcon)).click();
+	        // Click delete
+	        wait.until(ExpectedConditions.elementToBeClickable(deleteBtn)).click();
 
-			// Accept alert
-			wait.until(ExpectedConditions.alertIsPresent());
-			driver.switchTo().alert().accept();
+	        // Confirm alert
+	        wait.until(ExpectedConditions.alertIsPresent());
+	        driver.switchTo().alert().accept();
 
-			// Wait until row disappears
-			wait.until(ExpectedConditions.stalenessOf(deleteIcon));
-		}
+	        // Wait until the deleted row disappears
+	        wait.until(ExpectedConditions.stalenessOf(deleteBtn));
+	    }
 	}
 
 	private void waitForPageLoad() {

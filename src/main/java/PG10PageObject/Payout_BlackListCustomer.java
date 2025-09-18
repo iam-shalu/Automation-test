@@ -175,17 +175,6 @@ public class Payout_BlackListCustomer {
 	  
 }
 	 
-	
-	
-		 
-	
-
-		  
-		  
-		  
-		  
-		  
-
 
 
 

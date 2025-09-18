@@ -103,7 +103,18 @@ public class ChargebackTxReport {
 		} else {
 			System.err.println(" No downloaded Excel file found to move.");
 		}
+	
 		
+		/*
+		 * wait.until(ExpectedConditions.elementToBeClickable(By.id(
+		 * "btnDownloadExcelDisputeRaised"))).click();
+		 * 
+		 * 
+		 * if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+		 * CommonUtilis.DownloadSampleFileFormat("DisputeRaised", dateFolder); } else {
+		 * System.err.println("No downloaded Excel file found to move."); }
+		 */
+			
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSelectAny)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(SearchMasterMerchant)).sendKeys("Test-acs-01");
@@ -111,7 +122,6 @@ public class ChargebackTxReport {
 		
 		wait.until(ExpectedConditions.elementToBeClickable(SelectmasterMasterTestacs01)).click();
 		
-			
 		wait.until(ExpectedConditions.elementToBeClickable(merchantSelectAny2)).click();
 		
 		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant2)).sendKeys("Test-acs-01");
@@ -120,18 +130,19 @@ public class ChargebackTxReport {
 		WebElement merchantOption = driver.findElement(By.xpath("//label[normalize-space(text())='Test-Acs-01-M']"));
 		merchantOption.click();
 
-		
 		wait.until(ExpectedConditions.elementToBeClickable(subMerchantSelectAny3)).click();
 		
 		wait.until(ExpectedConditions.elementToBeClickable(SearchSubMerchant03)).click();
 		
+		//X Path For UAT
 		wait.until(ExpectedConditions.elementToBeClickable(SelectSubMerchant03)).click();
 
-				
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCompleted"))).click(); 
 		Select isClosed = new Select(isClosedDropdown);
 		isClosed.selectByVisibleText("No");
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch"))).click(); 
+		
 		String screenshotName = "ChargebackTxReport_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver,"Transaction-ChargebackTxReport", screenshotName); 

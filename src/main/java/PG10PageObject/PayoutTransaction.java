@@ -89,6 +89,7 @@ public class PayoutTransaction {
 			timeSelect.selectByVisibleText("12 AM to 12 AM");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+			
 			// Wait and move Excel
 			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";

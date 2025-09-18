@@ -98,12 +98,15 @@ public class DepositTransaction {
 			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
-			if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-				CommonUtilis.moveDownloadedFileToDatedFolder("DepositTransactions", dateFolder);
-			} else {
-				System.err.println(" No downloaded Excel file found to move.");
-			}
-
+			  if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+			  CommonUtilis.moveDownloadedFileToDatedFolder("DepositTransactions",
+			  dateFolder);
+			  
+			  } else { System.err.println(" No downloaded Excel file found to move."); }
+			 
+			 
+		//	 CommonUtilis.moveDownloadedFileToDatedFolder("DepositTransactions", dateFolder);
+			
 			// === Wait for loader to disappear ===
 			WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			longWait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-wrapper")));

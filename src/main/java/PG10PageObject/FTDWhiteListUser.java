@@ -33,7 +33,8 @@ public class FTDWhiteListUser {
 
 	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[1]")
 	WebElement selectMasterMerchant;
-
+	
+	//X Path For UAT ENV.
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
 	WebElement searchMasterMerchant;
 
@@ -48,7 +49,8 @@ public class FTDWhiteListUser {
 
 	@FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
 	WebElement searchaddWhiteListUserMasterMerchant;
-
+	
+	//X Path For UAT ENV.
 	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 	WebElement Testacs013;
 
@@ -60,7 +62,8 @@ public class FTDWhiteListUser {
 
 	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
 	WebElement searchMasterMerchant2;
-
+	
+	//X Path For UAT Environment
 	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 	WebElement Testacs0135;
 
@@ -112,7 +115,7 @@ public class FTDWhiteListUser {
 				return; // stop execution if duplicate data exists
 			}
 		} catch (Exception e) {
-			System.out.println("No duplicate data error. Proceeding with normal flow.");
+			System.out.println("Proceeding with normal flow.");
 		}
 
 		// Continue with normal flow if no duplicate error
@@ -124,7 +127,6 @@ public class FTDWhiteListUser {
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-FTDWhiteListUser", screenshotName);
 
-		
 		  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629063");
 		  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click(); 
 		  Thread.sleep(3000);
@@ -133,25 +135,17 @@ public class FTDWhiteListUser {
 		  driver.switchTo().alert().accept(); 
 		  Thread.sleep(3000);
 		  
-			  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear
-			  ();
-			  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click
-			  ();
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).clear();
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 		    
-		  
-			  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033");
-			  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch"))).sendKeys("9632629033");
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
 			  
-			  Thread.sleep(1000);
-			  wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-			  wait.until(ExpectedConditions.alertIsPresent());
-			  driver.switchTo().alert().accept();
-			  
-			  
-			  
-		   
-		 
-
+		  Thread.sleep(1000);
+		  wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
+		  wait.until(ExpectedConditions.alertIsPresent());
+		  driver.switchTo().alert().accept();
+			
 	}
 
 }

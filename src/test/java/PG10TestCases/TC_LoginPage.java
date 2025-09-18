@@ -17,7 +17,7 @@ public class TC_LoginPage extends PG10Base {
 
 		Listeners.test.log(Status.INFO, "Entering Password");
 		loginPage.enterpass("KJMYqzp37~Wug&");
-		log.info("Ent4ered password in password field");
+		log.info("Entered password in password field");
 
 		Listeners.test.log(Status.INFO, "Clicking on Login Button");
 		loginPage.pclickonlogin();

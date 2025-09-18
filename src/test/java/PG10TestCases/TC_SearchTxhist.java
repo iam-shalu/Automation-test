@@ -10,7 +10,7 @@ import PG10Base.PG10Base;
 public class TC_SearchTxhist extends PG10Base {
 
 	@Test(priority = 5)
-	public void depositTransactions() throws Exception {
+	public void SearchTransactionshist() throws Exception {
 
 		log.info("==== Starting Transactions - Search Tx History Test ====");
 		
@@ -23,6 +23,7 @@ public class TC_SearchTxhist extends PG10Base {
 		Listeners.test.log(Status.INFO, "Click On Tx Type - Chargeback ");
 		Listeners.test.log(Status.INFO, "Capture Full Page Screenshot ");
 		log.info("==== Capture Full Page Screenshot ====");
+		
 		searchTxhistoryPage.interactWithtransactionsSearchTxHist();
 
 		log.info("==== Transactions - Search Tx History  Test Completed ====");

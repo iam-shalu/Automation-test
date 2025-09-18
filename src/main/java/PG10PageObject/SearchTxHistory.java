@@ -1,5 +1,4 @@
 package PG10PageObject;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -52,10 +51,33 @@ public class SearchTxHistory {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearchValue"))).sendKeys("123");
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
         Thread.sleep(3000);
+        
         wait.until(ExpectedConditions.elementToBeClickable(ChargebackId)).click();
-        Thread.sleep(3000);
+       
         wait.until(ExpectedConditions.elementToBeClickable(By.id("btnDownloadExcel"))).click();
+        
         Thread.sleep(3000);
+      
+    	// Wait and move Excel
+		/*
+		 * String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		 * String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+		 * 
+		 * if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+		 * CommonUtilis.moveDownloadedFileToDatedFolder("Search Transaction hist",
+		 * dateFolder); } else {
+		 * System.err.println(" No downloaded Excel file found to move."); }
+		 */
+         
+        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+
+		  if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+		  CommonUtilis.moveDownloadedFileToDatedFolder("SearchTx History",
+		  dateFolder);
+		  
+		  } else { System.err.println(" No downloaded Excel file found to move."); }
+        
         String screenshotName = "SearchTxHistory_Page_Screenshot";
 		System.out.println("Capturing full page screenshot...");
 		CommonUtilis.captureFullPageScreenshot(driver, "Transaction-SearchTxHistory", screenshotName);

@@ -50,8 +50,6 @@ public class Settings_PayoutProcessorAss {
 	@FindBy(xpath = "(//input[@class=\"chkIsActive\"])[2]")
 	WebElement processor2;
 	
-	
-	
 	@FindBy(xpath = "(//input[@class=\"form-control form-control-sm txtLoadAmount\"])[2]")
 	WebElement limit2;
 	
@@ -59,6 +57,7 @@ public class Settings_PayoutProcessorAss {
 	WebElement order2;
 	
 	public void interactWithsettingsPayoutProcessorAss() throws IOException, InterruptedException {
+		
 		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(settings)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(payoutAssign)).click();
