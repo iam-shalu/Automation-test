@@ -1,5 +1,5 @@
-package PG10PageObject;
 
+package PG10PageObject;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -14,190 +14,191 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import PG10utils.CommonUtilis;
+import PG10Base.PG10Base;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class WhiteList_MechantIP {
-	WebDriver driver;
-	WebDriverWait wait;
 
-	public WhiteList_MechantIP(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	}
+    WebDriver driver;
+    WebDriverWait wait;
+    private static final Logger log = LoggerFactory.getLogger(WhiteList_MechantIP.class);
 
-	// Page Elements
-	@FindBy(xpath = "//span[normalize-space()='Fraud Control']")
-	WebElement fraudControlManu;
+    public WhiteList_MechantIP(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
 
-	@FindBy(xpath = "//a[normalize-space()='White List Merchant IP']")
-	WebElement whiteListMerchantIp;
+    // ===== Page Elements =====
+    @FindBy(xpath = "//span[normalize-space()='Fraud Control']")
+    WebElement fraudControlMenu;
 
-	@FindBy(xpath = "(//span[@class=\"multiselect-selected-text\"])[1]")
-	WebElement sMasterMerchant;
+    @FindBy(xpath = "//a[normalize-space()='White List Merchant IP']")
+    WebElement whiteListMerchantIp;
 
-	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
-	WebElement searchWhiteListMasterMerchant;
+    @FindBy(xpath = "(//span[@class='multiselect-selected-text'])[1]")
+    WebElement sMasterMerchant;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
-	WebElement Testacs01;
+    @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
+    WebElement searchWhiteListMasterMerchant;
 
-	@FindBy(xpath = "//a[normalize-space()='Add Whitelist Merchant IP']")
-	WebElement AddWhiteListMerchantIp;
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    WebElement TestAcs01;
 
-	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[3]")
-	WebElement AddWhiteListMSelectAny;
+    @FindBy(xpath = "//a[normalize-space()='Add Whitelist Merchant IP']")
+    WebElement addWhiteListMerchantIp;
 
-	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
-	WebElement AddWhiteListTestACS;
+    @FindBy(xpath = "(//button[@class='multiselect dropdown-toggle btn btn-default'])[3]")
+    WebElement addWhiteListSelectAny;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
-	WebElement AddWhiteListSelectTestAcs;
+    @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
+    WebElement addWhiteListTestACS;
 
-	@FindBy(xpath = "//button[@title='Select Any']")
-	WebElement addWhiteLiStselectMasterMerchant;
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    WebElement addWhiteListSelectTestAcs;
 
-	@FindBy(xpath = "//*[@id=\"frmWhiteListCustomer\"]/div[1]/div/div[1]/div/div/div/ul/li[1]/div/input")
-	WebElement searchTestAcs;
+    @FindBy(xpath = "//div[@class='gutters row']//button[@title='Select Master Merchant']")
+    WebElement sMasterMerchant2;
 
-	@FindBy(xpath = "/html/body/div[2]/div/div[2]/div/div/div[2]/form/div[1]/div/div[1]/div/div/div/ul/li[898]/a/label")
-	WebElement selectTestAcs01;
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//input[@placeholder='Search']")
+    WebElement searchWhiteListMasterMerchant2;
 
-	@FindBy(xpath = "//div[@class='gutters row']//button[@title='Select Master Merchant']")
-	WebElement sMasterMerchant2;
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    WebElement TestAcs03;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//input[@placeholder='Search']")
-	WebElement searchWhiteListMasterMerchant2;
+    @FindBy(xpath = "//h3[text()='White list Master Merchant IP Details']")
+    WebElement whitelistMasterMerchantIPDetails;
 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
-	WebElement Testacs03;
+    // ===== Main Flow =====
+    public void interactWithfraudControlwhiteListMerchIP() throws IOException {
+        log.info("==== Starting WhiteList Merchant IP Test ====");
 
-	@FindBy(xpath = "//h3[text()='White list Master Merchant IP Details']")
-	WebElement WhitelistMasterMerchantIPDetails;
+        // Expand sidebar if collapsed
+        PG10Base.expandSidebarIfCollapsed();
 
-	public void interactWithfraudControlwhiteListMerchIP() throws IOException, InterruptedException {
-		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
-		Thread.sleep(2000);
+        // Navigate to WhiteList Merchant IP
+        safeClick(fraudControlMenu);
+        safeClick(whiteListMerchantIp);
 
-		wait.until(ExpectedConditions.elementToBeClickable(whiteListMerchantIp)).click();
-		Thread.sleep(2000);
+        // Select Master Merchant
+        safeClick(sMasterMerchant);
+        typeAndSelect(searchWhiteListMasterMerchant, "Test-acs-01", TestAcs01);
 
-		wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant)).click();
-		Thread.sleep(2000);
+        driver.manage().window().maximize();
+        waitForPageLoad();
 
-		wait.until(ExpectedConditions.elementToBeClickable(searchWhiteListMasterMerchant)).sendKeys("Test-acs-01");
-		Thread.sleep(2000);
+        // Upload File
+        WebElement fileInput = driver.findElement(By.id("fileInput"));
+        String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx";
+        fileInput.sendKeys(filePath);
+        waitForUploadComplete();
 
-		wait.until(ExpectedConditions.elementToBeClickable(Testacs01)).click();
-		Thread.sleep(2000);
+        safeClick(By.id("btnimport"));
 
-		driver.manage().window().maximize();
-		waitForPageLoad();
+        // Add Whitelist Merchant IP
+        safeClick(addWhiteListMerchantIp);
+        safeClick(addWhiteListSelectAny);
+        typeAndSelect(addWhiteListTestACS, "Test-acs-01", addWhiteListSelectTestAcs);
 
-		WebElement WhiteListMerchantIPUpload = driver.findElement(By.xpath("//input[@id=\"fileInput\"]"));
-		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx";
-		WhiteListMerchantIPUpload.sendKeys(filePath);
-		waitForUploadComplete();
-		Thread.sleep(2000);
+        // Fill IP Form
+        typeText(By.id("IP"), "1.5.7.8");
+        safeClick(By.id("IsActive"));
+        safeClick(By.id("btnSave"));
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnimport"))).click();
-		Thread.sleep(2000);
+        // Filter Records
+        safeClick(sMasterMerchant2);
+        typeAndSelect(searchWhiteListMasterMerchant2, "Test-acs-01", TestAcs03);
+        safeClick(By.id("btnFilter"));
 
-		wait.until(ExpectedConditions.elementToBeClickable(AddWhiteListMerchantIp)).click();
-		Thread.sleep(2000);
+        // Capture Screenshot
+        String screenshotName = "WhitelistMasterMerchantIP_Page_Screenshot";
+        CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-WhitelistMasterMerchantIP", screenshotName);
 
-		wait.until(ExpectedConditions.elementToBeClickable(AddWhiteListMSelectAny)).click();
-		Thread.sleep(2000);
+        // Export Excel
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0,0);");
+        safeClick(By.id("btnExport"));
 
-		wait.until(ExpectedConditions.elementToBeClickable(AddWhiteListTestACS)).sendKeys("Test-acs-01");
-		Thread.sleep(2000);
+        String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+        if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+            CommonUtilis.moveDownloadedFileToDatedFolder("WhiteListMerchantIP", dateFolder);
+        } else {
+            log.warn("No downloaded Excel file found to move.");
+        }
 
-		wait.until(ExpectedConditions.elementToBeClickable(AddWhiteListSelectTestAcs)).click();
-		Thread.sleep(2000);
+        // Delete all records safely
+        deleteAllRecordsFromTable();
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("IP"))).sendKeys("1.5.7.8");
-		Thread.sleep(2000);
+        log.info("==== WhiteList Merchant IP Test Completed ====");
+    }
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("IsActive"))).click();
-		Thread.sleep(2000);
+    // ===== Delete All Records =====
+    private void deleteAllRecordsFromTable() {
+        while (true) {
+            List<WebElement> deleteButtons = driver.findElements(By.xpath("//span[@class='fa fa-trash-o fa-lg']"));
+            if (deleteButtons.isEmpty()) {
+                log.info("No more records left to delete.");
+                break;
+            }
+            WebElement deleteBtn = deleteButtons.get(0);
+            safeClick(deleteBtn);
+            wait.until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().accept();
+            wait.until(ExpectedConditions.stalenessOf(deleteBtn));
+        }
+    }
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
-		Thread.sleep(2000);
+    // ===== Wait Helpers =====
+    private void waitForPageLoad() {
+        new WebDriverWait(driver, Duration.ofSeconds(15))
+            .until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
 
-		wait.until(ExpectedConditions.elementToBeClickable(sMasterMerchant2)).click();
-		Thread.sleep(2000);
+    private void waitForUploadComplete() {
+        wait.until(driver -> driver.findElement(By.id("btnimport")).isEnabled());
+    }
 
-		wait.until(ExpectedConditions.elementToBeClickable(searchWhiteListMasterMerchant2)).sendKeys("Test-acs-01");
-		Thread.sleep(2000);
+    // ===== Safe Click Helpers =====
+    private void safeClick(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            wait.until(ExpectedConditions.elementToBeClickable(element));
 
-		wait.until(ExpectedConditions.elementToBeClickable(Testacs03)).click();
-		Thread.sleep(2000);
+            ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'}); window.scrollBy(0,-150);", element);
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnFilter"))).click();
-		Thread.sleep(2000);
+            element.click();
+            log.info("Clicked normally: " + element.toString());
+        } catch (Exception e) {
+            log.warn("Normal click failed, retrying with JS: " + e.getMessage());
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            log.info("Clicked with JS fallback: " + element.toString());
+        }
+    }
 
-		String screenshotName = "WhitelistMasterMerchantIP_Page_Screenshot";
-		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-WhitelistMasterMerchantIP", screenshotName);
-		Thread.sleep(2000);
+    private void safeClick(By locator) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+            wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        } catch (Exception e) {
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        }
+    }
 
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-		Thread.sleep(2000);
+    // ===== Utility Wrappers =====
+    private void typeAndSelect(WebElement searchBox, String text, WebElement optionToSelect) {
+        wait.until(ExpectedConditions.visibilityOf(searchBox)).clear();
+        searchBox.sendKeys(text);
+        wait.until(ExpectedConditions.elementToBeClickable(optionToSelect)).click();
+    }
 
-		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-
-		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			CommonUtilis.moveDownloadedFileToDatedFolder("WhiteListMerchantIP", dateFolder);
-		} else {
-			System.err.println(" No downloaded Excel file found to move.");
-		}
-		Thread.sleep(2000);
-		
-		deleteAllRecordsFromTable();  // will delete both records in your screenshot
-
-		//  Delete all records with IP "1.5.7.8"
-	   //	deleteAllMatchingIPs("1.5.7.8");
-	
-	}
-
-	
-	private void deleteAllRecordsFromTable() {
-	    while (true) {
-	        // Find all delete icons inside the datatable
-	        List<WebElement> deleteButtons = driver.findElements(
-	            By.xpath("//span[@class=\"fa fa-trash-o fa-lg\"]")
-	        );
-
-	        if (deleteButtons.isEmpty()) {
-	            System.out.println(" No more records left to delete.");
-	            break;
-	        }
-
-	        // Take the first delete button
-	        WebElement deleteBtn = deleteButtons.get(0);
-
-	        // Click delete
-	        wait.until(ExpectedConditions.elementToBeClickable(deleteBtn)).click();
-
-	        // Confirm alert
-	        wait.until(ExpectedConditions.alertIsPresent());
-	        driver.switchTo().alert().accept();
-
-	        // Wait until the deleted row disappears
-	        wait.until(ExpectedConditions.stalenessOf(deleteBtn));
-	    }
-	}
-
-	private void waitForPageLoad() {
-		new WebDriverWait(driver, Duration.ofSeconds(5)).until(webDriver -> ((JavascriptExecutor) webDriver)
-				.executeScript("return document.readyState").equals("complete"));
-	}
-
-	private void waitForUploadComplete() {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-		}
-	}
+    private void typeText(By locator, String text) {
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        el.clear();
+        el.sendKeys(text);
+    }
 }
+

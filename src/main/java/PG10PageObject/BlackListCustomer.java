@@ -1,10 +1,9 @@
-package PG10PageObject;
 
+package PG10PageObject;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +25,7 @@ public class BlackListCustomer {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    @FindBy(xpath = "//span[normalize-space()='Fraud Control']")
+    @FindBy(xpath = "/html/body/div[2]/div/nav/div/ul/li[4]/a/span")
     WebElement fraudControlManu;
 
     @FindBy(xpath = "//a[normalize-space()='Black List Customer']")
@@ -79,7 +78,7 @@ public class BlackListCustomer {
             } else {
                 System.err.println("No downloaded Excel file found to move.");
             }
-
+            
             // Add record
             wait.until(ExpectedConditions.elementToBeClickable(ManualAddBlackListCust)).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Name"))).sendKeys("akash");
@@ -87,7 +86,8 @@ public class BlackListCustomer {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
             wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
-
+            
+            
             // Handle possible error toast
             try {
                 WebElement errorToast = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -102,58 +102,76 @@ public class BlackListCustomer {
             } catch (Exception e) {
                 System.out.println("Blacklist Customer created successfully, continuing test flow...");
             }
+          
+//            String expectedEmail = "akash13@gmail.com";
 
-            // Search record
+         // Define target email
             String expectedEmail = "akash13@gmail.com";
+
+            // Step 1: Search once and take screenshot
             WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
             searchBox.clear();
             searchBox.sendKeys(expectedEmail);
 
-            wait.until(ExpectedConditions
-                    .visibilityOfElementLocated(By.xpath("//td[contains(text(), '" + expectedEmail + "')]")));
+            // Wait until at least one row with email appears
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//td[normalize-space(text())='" + expectedEmail + "']")));
 
-            // Screenshot
+            // Screenshot before deletion
             String screenshotName = "BlackListCustomerText_Page_Screenshot";
             System.out.println("Capturing full page screenshot...");
             CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
 
-            // Delete all records for expected email 
+            // Step 2: Loop until all records deleted
+
             while (true) {
                 try {
+                    // Re-apply search (because table refresh clears it after deletion)
+                    WebElement searchBox2 = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
+                    searchBox2.clear();
+                    searchBox2.sendKeys(expectedEmail);
+
+                    // Small wait for table to refresh after typing search
+                    Thread.sleep(1000); // replace with WebDriverWait on a loader/spinner if available
+
+                    // Find all rows with the target email (no exception if none found)
                     List<WebElement> rows = driver.findElements(
-                            By.xpath("//span[@class=\"fa fa-trash-o  fa-lg\"]"));
-                   
-                    //  //td[normalize-space()='" + expectedEmail + "']/following-sibling::td//a[contains(@title,'Delete')]//span[contains(@class,'fa-trash-o')]
-                    
-                    // //td[normalize-space()='" + expectedEmail + "']/following-sibling::td/a[@title='Delete Blacklist customer']/span[@class='fa fa-trash-o fa-lg']
-                    			
-                    // Updated X Path For UAT
+                        By.xpath("//td[normalize-space(text())='" + expectedEmail + "']")
+                    );
+
                     if (rows.isEmpty()) {
-                        System.out.println("✅ All blacklist customers with email '" + expectedEmail + "' deleted.");
+                        System.out.println("All records deleted for: " + expectedEmail);
                         break;
                     }
 
-                    WebElement deleteBtn = rows.get(0);
-                    wait.until(ExpectedConditions.elementToBeClickable(deleteBtn)).click();
+                    // Take the first row
+                    WebElement row = rows.get(0);
 
-                    wait.until(ExpectedConditions.alertIsPresent());
-                    driver.switchTo().alert().accept();
+                    // Wait for its delete button to be clickable
+                    WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                        row.findElement(By.xpath(
+                            "./following-sibling::td//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-trash-o')]"
+                        ))
+                    ));
 
-                    // Wait until row disappears
-                    wait.until(ExpectedConditions.invisibilityOf(deleteBtn));
-                    
-                    if (rows.isEmpty()) {
-                        System.out.println("✅ All blacklist customers with email '" + expectedEmail + "' deleted.");
-                        break;
-                    }
+                    // Click delete
+                    deleteBtn.click();
 
-                    
+                    // Accept the alert
+                    wait.until(ExpectedConditions.alertIsPresent()).accept();
+
+                    // Wait until that row is removed (table refresh completes)
+                    wait.until(ExpectedConditions.stalenessOf(row));
+
+                    System.out.println("Deleted one record for: " + expectedEmail);
+
                 } catch (Exception e) {
-                    System.out.println(" No more delete buttons found or error: " + e.getMessage());
+                    e.printStackTrace();
                     break;
                 }
             }
-
+      
+//
             // Scroll page
              wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -169,3 +187,7 @@ public class BlackListCustomer {
         Thread.sleep(3000);
     }
 }
+
+
+
+

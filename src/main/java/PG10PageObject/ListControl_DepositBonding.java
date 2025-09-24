@@ -55,7 +55,7 @@ public class ListControl_DepositBonding {
 
 	public void interactWithListControl_DepositBonding() throws InterruptedException, IOException {
 
-		 wait.until(ExpectedConditions.elementToBeClickable(listControl)).click();
+		    wait.until(ExpectedConditions.elementToBeClickable(listControl)).click();
 		    wait.until(ExpectedConditions.elementToBeClickable(merchantList)).click();
 		    wait.until(ExpectedConditions.elementToBeClickable(depositBoarding)).click();
 		    wait.until(ExpectedConditions.elementToBeClickable(By.id("btncreate"))).click();

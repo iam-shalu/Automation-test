@@ -2,36 +2,36 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-18T18:47:04 IST" name="Suite" finished-at="2025-09-18T18:47:27 IST" duration-ms="22883">
+  <suite started-at="2025-09-24T10:59:17 IST" name="Suite" finished-at="2025-09-24T11:01:02 IST" duration-ms="104445">
     <groups>
     </groups>
-    <test started-at="2025-09-18T18:47:04 IST" name="Test" finished-at="2025-09-18T18:47:27 IST" duration-ms="22883">
+    <test started-at="2025-09-24T10:59:17 IST" name="Test" finished-at="2025-09-24T11:01:02 IST" duration-ms="104445">
+      <class name="PG10TestCases.TC_WhiteListCustomer">
+        <test-method signature="whiteListCustomer()[pri:8, instance:PG10TestCases.TC_WhiteListCustomer@5c669da8]" started-at="2025-09-24T10:59:27 IST" name="whiteListCustomer" finished-at="2025-09-24T11:00:57 IST" duration-ms="90122" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- whiteListCustomer -->
+      </class> <!-- PG10TestCases.TC_WhiteListCustomer -->
       <class name="PG10TestCases.TC_Logout">
-        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@1205bd62]" started-at="2025-09-18T18:47:22 IST" name="logout" finished-at="2025-09-18T18:47:27 IST" duration-ms="5021" status="PASS">
+        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@31920ade]" started-at="2025-09-24T11:00:57 IST" name="logout" finished-at="2025-09-24T11:01:02 IST" duration-ms="4890" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
       </class> <!-- PG10TestCases.TC_Logout -->
       <class name="PG10TestCases.TC_LoginPage">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-09-18T18:47:01 IST" name="setUpSuite" finished-at="2025-09-18T18:47:04 IST" duration-ms="3570" status="PASS">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-09-24T10:59:15 IST" name="setUpSuite" finished-at="2025-09-24T10:59:17 IST" duration-ms="2064" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-09-18T18:47:04 IST" name="login" finished-at="2025-09-18T18:47:12 IST" duration-ms="7870" status="PASS">
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-09-24T10:59:17 IST" name="login" finished-at="2025-09-24T10:59:27 IST" duration-ms="9411" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@2a225dd7]" started-at="2025-09-18T18:47:28 IST" name="tearDownSuite" finished-at="2025-09-18T18:47:29 IST" duration-ms="647" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-09-24T11:01:02 IST" name="tearDownSuite" finished-at="2025-09-24T11:01:02 IST" duration-ms="188" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->
       </class> <!-- PG10TestCases.TC_LoginPage -->
-      <class name="PG10TestCases.TC_BlackListCustomer">
-        <test-method signature="blackListCustomer()[pri:7, instance:PG10TestCases.TC_BlackListCustomer@67b9b51a]" started-at="2025-09-18T18:47:12 IST" name="blackListCustomer" finished-at="2025-09-18T18:47:22 IST" duration-ms="9920" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- blackListCustomer -->
-      </class> <!-- PG10TestCases.TC_BlackListCustomer -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
