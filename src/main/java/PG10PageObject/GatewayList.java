@@ -135,6 +135,7 @@ public class GatewayList {
         safeClick(deleteTest3, "Delete Test3");
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+        
     }
 }
 

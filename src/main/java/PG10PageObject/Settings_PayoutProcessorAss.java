@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class Settings_PayoutProcessorAss {
@@ -22,11 +23,10 @@ public class Settings_PayoutProcessorAss {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
-    // ✅ Fixed locator
+    // ✅ Use stable locator if possible instead of index
     @FindBy(xpath = "(//span[@class=\"nav-item\"])[7]")
     WebElement settings;
 
-    // Sidebar toggle button (adjust xpath if different in PG10 UI)
     @FindBy(xpath = "//i[contains(@class,'nav-icon') and contains(@class,'icon-layers3')]")
     WebElement sidebarToggle;
 
@@ -39,7 +39,7 @@ public class Settings_PayoutProcessorAss {
     @FindBy(xpath = "//input[@class=\"form-control multiselect-search\"]")
     WebElement SearchMM;
 
-    // X Path For UAT 
+    // UAT specific
     @FindBy(xpath = "//label[normalize-space()='Test-Acs-01 - (287)']")
     WebElement testacs01;
 
@@ -63,48 +63,51 @@ public class Settings_PayoutProcessorAss {
 
     public void interactWithsettingsPayoutProcessorAss() throws IOException, InterruptedException {
         try {
-            Thread.sleep(2000);
-
-            // ✅ Ensure sidebar is open before clicking Settings
+            // ✅ Ensure sidebar open
             try {
                 if (!settings.isDisplayed()) {
                     wait.until(ExpectedConditions.elementToBeClickable(sidebarToggle)).click();
-                    Thread.sleep(1000);
                 }
             } catch (Exception e) {
                 System.out.println("Sidebar toggle not needed or already open.");
             }
 
-            wait.until(ExpectedConditions.elementToBeClickable(settings)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(payoutAssign)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MMSelectany)).click();
+            // ✅ Use safeClick from PG10Base (scroll + JS fallback if needed)
+            PG10Base.safeClick(By.xpath("(//span[@class='nav-item'])[7]"));
+            PG10Base.safeClick(By.xpath("//a[contains(text(),'Payout - Assign Processor & Set Merchant Wise Proc')]"));
+            PG10Base.safeClick(By.xpath("(//span[@class='multiselect-selected-text'])[1]"));
+
             wait.until(ExpectedConditions.elementToBeClickable(SearchMM)).sendKeys("Test-acs-01");
             wait.until(ExpectedConditions.elementToBeClickable(testacs01)).click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("btnGetProcessor"))).click();
+            PG10Base.safeClick(By.id("btnGetProcessor"));
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSingleTxMinAmount"))).clear();
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSingleTxMinAmount"))).sendKeys("1");
+            WebElement minAmount = wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSingleTxMinAmount")));
+            minAmount.clear();
+            minAmount.sendKeys("1");
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSingleTxMaxAmount"))).clear();
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSingleTxMaxAmount"))).sendKeys("10");
+            WebElement maxAmount = wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSingleTxMaxAmount")));
+            maxAmount.clear();
+            maxAmount.sendKeys("10");
+            
+            // (//input[@type="checkbox"])[3]
 
-            wait.until(ExpectedConditions.elementToBeClickable(processor)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(limit)).clear();
-            wait.until(ExpectedConditions.elementToBeClickable(limit)).sendKeys("1000");
-            wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
-            wait.until(ExpectedConditions.elementToBeClickable(order)).sendKeys("1");
+            PG10Base.safeClick(By.xpath("(//input[@type='checkbox'])[3]"));
+            limit.clear();
+            limit.sendKeys("1000");
+            order.clear();
+            order.sendKeys("1");
 
-            wait.until(ExpectedConditions.elementToBeClickable(processor2)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(limit2)).clear();
-            wait.until(ExpectedConditions.elementToBeClickable(limit2)).sendKeys("1000");
-            wait.until(ExpectedConditions.elementToBeClickable(order2)).clear();
-            wait.until(ExpectedConditions.elementToBeClickable(order2)).sendKeys("1");
+            PG10Base.safeClick(By.xpath("(//input[@type=\"checkbox\"])[28]"));
+            limit2.clear();
+            limit2.sendKeys("1000");
+            order2.clear();
+            order2.sendKeys("1");
 
             String screenshotName = "SettingsPayout_Page_Screenshot";
             CommonUtilis.captureFullPageScreenshot(driver, "Settings-PayoutProcessorAssign", screenshotName);
-
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSaveLoadBalance"))).click();
+            
+            PG10Base.safeClick(By.id("btnSaveLoadBalance"));
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 
         } catch (Exception e) {

@@ -1,4 +1,4 @@
-package PG10PageObject;
+ package PG10PageObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -83,10 +83,10 @@ public class WhiteListCustomer {
             String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\Whitelist Customer\\WhiteList.xlsx";
             upload.sendKeys(filePath);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader")));
-            System.out.println("✅ File uploaded successfully.");
+            System.out.println(" File uploaded successfully.");
         } catch (Exception e) {
             CommonUtilis.captureFullPageScreenshot(driver, "debug", "uploadFail");
-            throw new RuntimeException("❌ File upload failed", e);
+            throw new RuntimeException(" File upload failed", e);
         }
 
         clickElementWithFallback(By.id("btnimport"));
@@ -165,9 +165,6 @@ public class WhiteListCustomer {
         }
     }
 
-    /**
-     * Safe text input
-     */
     private void typeText(By locator, String text) {
         WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
         el.clear();

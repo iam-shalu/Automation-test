@@ -15,13 +15,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import PG10utils.CommonUtilis;
 
 public class Settings_DepositAssignProcessor {
+
     WebDriver driver;
     WebDriverWait wait;
+    JavascriptExecutor js;
 
     public Settings_DepositAssignProcessor(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        js = (JavascriptExecutor) driver;
     }
 
     @FindBy(xpath = "(//span[@class=\"nav-item\"])[7]")
@@ -66,57 +69,74 @@ public class Settings_DepositAssignProcessor {
     @FindBy(xpath = "//button[@id='btnSaveLoadBalance']")
     WebElement updateLimit;
 
-    public void interactWithsettingsDepositProcessor() throws IOException, InterruptedException {
+    // -------------------- Headless Safe Click --------------------
+    private void safeClick(WebElement element, String elementName) {
         try {
-            // Handle sidebar if exists
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+            System.out.println("[CLICKED] " + elementName);
+        } catch (Exception e) {
+            js.executeScript("arguments[0].scrollIntoView(true);", element);
+            js.executeScript("arguments[0].click();", element);
+            System.out.println("[JS CLICK FALLBACK] " + elementName);
+        }
+    }
+
+    public void interactWithsettingsDepositProcessor() throws IOException {
+
+        try {
+            // Handle sidebar if hidden
             List<WebElement> sidebarList = driver.findElements(By.id("sidebar-wrapper"));
             if (!sidebarList.isEmpty() && !settings.isDisplayed()) {
                 WebElement toggleBtn = driver.findElement(By.id("sidebarToggle"));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", toggleBtn);
+                js.executeScript("arguments[0].click();", toggleBtn);
                 wait.until(ExpectedConditions.visibilityOf(settings));
             }
 
             // Navigate to Deposit Assign Processor
-            wait.until(ExpectedConditions.elementToBeClickable(settings)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(depositAssignProcessor)).click();
+            safeClick(settings, "Settings");
+            safeClick(depositAssignProcessor, "Deposit Assign Processor");
 
             // Select deposit processor
-            wait.until(ExpectedConditions.elementToBeClickable(depositProcessorSelectAny)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(searchDepositProcessor)).sendKeys("Test-acs-01");
-            wait.until(ExpectedConditions.elementToBeClickable(testacs01)).click();
+            safeClick(depositProcessorSelectAny, "Deposit Processor Dropdown");
+            wait.until(ExpectedConditions.visibilityOf(searchDepositProcessor)).sendKeys("Test-acs-01");
+            safeClick(testacs01, "Test-Acs-01");
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("btnGetProcessor"))).click();
+            safeClick(driver.findElement(By.id("btnGetProcessor")), "Get Processor");
 
-            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            // Scroll bottom
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
             // Fill processor details
-            wait.until(ExpectedConditions.elementToBeClickable(firSTPAY)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(processorIsActive)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(limit)).clear();
+            safeClick(firSTPAY, "First Pay Active");
+            safeClick(processorIsActive, "Processor Is Active");
+
+            wait.until(ExpectedConditions.visibilityOf(limit)).clear();
             limit.sendKeys("1000");
-            wait.until(ExpectedConditions.elementToBeClickable(order)).clear();
+
+            wait.until(ExpectedConditions.visibilityOf(order)).clear();
             order.sendKeys("1");
 
-            wait.until(ExpectedConditions.elementToBeClickable(acs)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(limit2)).clear();
+            safeClick(acs, "ACS Checkbox");
+            safeClick(processorisactive, "Processor Is Active 2");
+
+            limit2.clear();
             limit2.sendKeys("1000");
-            wait.until(ExpectedConditions.elementToBeClickable(order2)).clear();
+
+            order2.clear();
             order2.sendKeys("1");
 
-            // Capture screenshot
-            String screenshotName = "SettingsDepositTx_Page_Screenshot";
-            CommonUtilis.captureFullPageScreenshot(driver, "Setting-DepositTx", screenshotName);
+            // Screenshot
+            CommonUtilis.captureFullPageScreenshot(driver, "Setting-DepositTx", "SettingsDepositTx_Page_Screenshot");
 
             // Final save
-            wait.until(ExpectedConditions.elementToBeClickable(processorisactive)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(updateLimit)).click();
+            safeClick(processorisactive, "Processor Is Active 2 again");
+            safeClick(updateLimit, "Update Limit");
 
-            wait.until(ExpectedConditions.alertIsPresent());
-            driver.switchTo().alert().accept();
+            wait.until(ExpectedConditions.alertIsPresent()).accept();
 
-            // Scroll back to top
-            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+            // Scroll top
+            js.executeScript("window.scrollTo(0, 0);");
 
         } catch (Exception e) {
             System.out.println("Error in Settings_DepositAssignProcessor: " + e.getMessage());
@@ -124,3 +144,4 @@ public class Settings_DepositAssignProcessor {
         }
     }
 }
+

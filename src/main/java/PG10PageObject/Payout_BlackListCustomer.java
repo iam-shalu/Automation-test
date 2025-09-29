@@ -29,6 +29,7 @@ public class Payout_BlackListCustomer {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
+    // ==== Locators ====
     @FindBy(xpath = "//span[normalize-space()='Fraud Control']")
     WebElement fraudControlMenu;
 
@@ -65,9 +66,8 @@ public class Payout_BlackListCustomer {
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
     WebElement TestAcsMasterMerch03;
 
-    @FindBy(xpath = "//i[@class='fa fa-trash-o fa-lg']")
-    WebElement deleteRecord;
 
+    // ==== Main Flow ====
     public void interactWithfraudControlPayoutblackListCust() throws IOException {
         log.info("==== Starting FraudControl Blacklist Payout Customer Test ====");
 
@@ -80,6 +80,7 @@ public class Payout_BlackListCustomer {
         typeAndSelect(sSearchMasterMerchant, "Test-acs-01", TestAcs01);
 
         // Upload Excel
+        
         try {
             WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("fileInput")));
             String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";
@@ -120,76 +121,65 @@ public class Payout_BlackListCustomer {
         CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-PayoutBlackList", "PayoutblackList_Page_Screenshot");
 
         // Search & Delete records safely
-        deleteRecordByIP("1234234346789");
-        
-        
-        
-        deleteRecordByIP("1234234346796");
-        
-        
+   //     deleteRecordByAccountNo("1234234346789");
+   //     deleteRecordByAccountNo("1234234346796");
+
+        deleteAllRecordsFromTable();
         
         log.info("==== Completed FraudControl Blacklist Payout Customer Test ====");
-    
     }
 
-    // ===== Helpers =====
-//    private void deleteRecordByIP(String ip) {
+// ==== Helpers ====
+//    private void deleteRecordByAccountNo(String accountNo) {
 //        try {
 //            WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch")));
 //            searchBox.clear();
-//            searchBox.sendKeys(ip);
+//            searchBox.sendKeys(accountNo);
 //            safeClick(By.id("btnFilter"));
 //
-//            List<WebElement> deleteButtons = driver.findElements(By.xpath("//I[@class=\"fa fa-trash-o fa-lg\"]"));
-//            if (!deleteButtons.isEmpty()) {
-//                safeClick(deleteButtons.get(0));
+//            // Wait for table refresh/loader
+//            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']")));
+//
+//            // Find row with given Account No
+//            List<WebElement> rows = driver.findElements(
+//                By.xpath("//table[@id='example']/tbody/tr[td[contains(text(),'" + accountNo + "')]]")
+//            );
+//
+//            if (!rows.isEmpty()) {
+//                WebElement deleteBtn = rows.get(0).findElement(By.xpath(".//i[@class='fa fa-trash-o fa-lg']"));
+//                safeClick(deleteBtn);
+//                
+//                // Accept alert
 //                wait.until(ExpectedConditions.alertIsPresent());
 //                driver.switchTo().alert().accept();
+//
+//                log.info("Deleted record for Account No: " + accountNo);
+//                
+//            } else {
+//                log.warn("No record found for Account No: " + accountNo);
 //            }
 //        } catch (Exception e) {
-//            log.warn("No record found to delete for IP: " + ip);
+//            log.error("Error while deleting record for Account No: " + accountNo, e);
 //        }
 //    }
     
-    
-    private void deleteRecordByIP(String accountNo) {
-        try {
-            boolean recordFound = true;
-            while (recordFound) {
-                // Enter Account No in search
-                WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch")));
-                searchBox.clear();
-                searchBox.sendKeys(accountNo);
-                safeClick(By.id("btnFilter"));
-
-                // Wait for table load
-                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']")));
-
-                List<WebElement> deleteButtons = driver.findElements(By.xpath("//i[@class='fa fa-trash-o fa-lg']"));
-                if (!deleteButtons.isEmpty()) {
-                    // Click the first delete button
-                    safeClick(deleteButtons.get(0));
-
-                    // Handle alert confirmation
-                    wait.until(ExpectedConditions.alertIsPresent());
-                    driver.switchTo().alert().accept();
-                    
-                  //i[@class="fa fa-trash-o fa-lg"]
-                    log.info("Deleted record for Account No: " + accountNo);
-
-                    // Small wait for refresh
-                    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']")));
-                } else {
-                    recordFound = false;
-                    log.info("No more records found for Account No: " + accountNo);
-                }
+    private void deleteAllRecordsFromTable() {
+        while (true) {
+            List<WebElement> deleteButtons = driver.findElements(By.xpath("//i[@class=\"fa fa-trash-o fa-lg\"]"));
+            if (deleteButtons.isEmpty()) {
+                log.info("No more records left to delete.");
+                break;
             }
-        } catch (Exception e) {
-            log.warn("Error while deleting records for Account No: " + accountNo, e);
+            
+            
+            WebElement deleteBtn = deleteButtons.get(0);
+            safeClick(deleteBtn);
+            wait.until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().accept();
+            wait.until(ExpectedConditions.stalenessOf(deleteBtn));
         }
     }
 
-    
     private void safeClick(WebElement element) {
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
@@ -220,4 +210,3 @@ public class Payout_BlackListCustomer {
         el.sendKeys(text);
     }
 }
-

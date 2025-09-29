@@ -1,4 +1,3 @@
-
 package PG10Base;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +18,7 @@ public class PG10Base {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
+    
     // Page objects
     public static Login loginPage;
     public static Transactions transactionPage;
@@ -63,6 +63,7 @@ public class PG10Base {
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
                 options.addArguments("--window-size=1920,1080");
+           //   WebDriver driver = new ChromeDriver(options);
                 log.info("Browser launched in headless mode");
             } else {
                 log.info("Browser launched in normal mode");
@@ -113,6 +114,7 @@ public class PG10Base {
             log.info("Browser closed after suite completion");
         }
     }
+    
     public static void expandSidebarIfCollapsed() {
         try {
             WebElement toggle = driver.findElement(By.xpath("//button[contains(@class,'menu-toggle')]"));
@@ -125,7 +127,7 @@ public class PG10Base {
         }
     }
 
-    // ✅ Safe click (scroll + fallback JS click)
+    //  Safe click (scroll + fallback JS click)
     public static void safeClick(By locator) {
         try {
             WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -135,6 +137,8 @@ public class PG10Base {
             WebElement el = driver.findElement(locator);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
             log.info("Clicked using JS fallback: " + locator);
+            
         }
     }
+    
 }

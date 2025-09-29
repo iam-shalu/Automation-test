@@ -1,4 +1,3 @@
-
 package PG10PageObject;
 import java.io.IOException;
 import java.time.Duration;
@@ -15,9 +14,9 @@ import PG10utils.CommonUtilis;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class FTDWhiteListUser {
 
-	
     WebDriver driver;
     WebDriverWait wait;
     private static final Logger log = LoggerFactory.getLogger(FTDWhiteListUser.class);
@@ -67,13 +66,10 @@ public class FTDWhiteListUser {
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
     WebElement TestAcs0135;
 
-    @FindBy(xpath = "//span[@class=\"fa fa-trash-o fa-lg\"]")
-    WebElement deleteRecord;
-
     By duplicateDataError = By.xpath("//*[contains(text(),'Data Already Exist for this Merchant')]");
 
     // ===== Main Method =====
-    public void interactWithfraudControl_FTDwhiteListUser() throws IOException {
+    public void interactWithfraudControl_FTDwhiteListUser() throws IOException, InterruptedException {
 
         log.info("==== Starting FraudControl FTD White List User Test ====");
 
@@ -95,7 +91,7 @@ public class FTDWhiteListUser {
         }
 
         safeClick(By.id("btnimport"));
-
+        
         // Add new WhiteList User
         safeClick(addWhiteListUser);
         safeClick(addWhiteListUserMasterMerchant);
@@ -119,18 +115,15 @@ public class FTDWhiteListUser {
             log.info("No duplicate error, continuing.");
         }
 
-        // Filter and screenshot
-        safeClick(selectMasterMerchant2);
-        typeAndSelect(searchMasterMerchant2, "Test-acs-01", TestAcs0135);
-        safeClick(By.id("btnFilter"));
-
+        // Apply filter & take screenshot once
+        applyFilters();
+        
         CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-FTDWhiteListUser", "FTDWhiteListUser_Page_Screenshot");
-
-        // Delete test data
-        deleteRecordByPhone("9632629063");
-        deleteRecordByPhone("9632629033");
-
+        
+        deleteAllRecordsFromTable();
+          
         log.info("==== Completed FraudControl FTD White List User Test ====");
+        
     }
 
     // ===== Helpers =====
@@ -146,7 +139,7 @@ public class FTDWhiteListUser {
     }
 
     private void safeClick(By locator) {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         safeClick(element);
     }
 
@@ -161,22 +154,37 @@ public class FTDWhiteListUser {
         el.clear();
         el.sendKeys(text);
     }
-    
-    private void deleteRecordByPhone(String phone) {
-        try {
-            WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch")));
-            searchBox.clear();
-            searchBox.sendKeys(phone);
-            safeClick(By.id("btnFilter"));
 
-            List<WebElement> deleteButtons = driver.findElements(By.xpath("//span[@class=\"fa fa-trash-o fa-lg\"]"));
-            if (!deleteButtons.isEmpty()) {
-                safeClick(deleteButtons.get(0));
-                wait.until(ExpectedConditions.alertIsPresent());
-                driver.switchTo().alert().accept();
-            }
-        } catch (Exception e) {
-            log.warn("No record found to delete for phone: " + phone);
-        }
+    // Helper to re-apply filters
+    private void applyFilters() {
+        safeClick(selectMasterMerchant2);
+        typeAndSelect(searchMasterMerchant2, "Test-acs-01", TestAcs0135);
+        safeClick(By.id("btnFilter"));
+
+        typeText(By.id("txtSearch"), "Akash");
+        safeClick(By.id("btnFilter"));
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//table")));
     }
+       
+    private void deleteAllRecordsFromTable() {
+      while (true) {
+      List<WebElement> deleteButtons = driver.findElements(By.xpath("//span[@class='fa fa-trash-o fa-lg']"));
+      if (deleteButtons.isEmpty()) {
+          log.info("No more records left to delete.");
+          break;
+          
+      }
+      
+      WebElement deleteBtn = deleteButtons.get(0);
+      safeClick(deleteBtn);
+      wait.until(ExpectedConditions.alertIsPresent());
+      driver.switchTo().alert().accept();
+      wait.until(ExpectedConditions.stalenessOf(deleteBtn));
+      
+      
+  }
+    	
+ }
+      
 }

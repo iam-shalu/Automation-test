@@ -143,7 +143,7 @@ public class ChargebackTxReport {
         // Scroll to top
         ((JavascriptExecutor) driver).executeScript("window.scroll({ top: 0, behavior: 'smooth' });");
     }
-
+    
     private void expandSidebarIfCollapsed() {
         try {
             List<WebElement> toggles = driver.findElements(By.xpath("//button[contains(@class,'menu-toggle')]"));

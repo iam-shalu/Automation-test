@@ -1,4 +1,3 @@
-
 package PG10PageObject;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -12,7 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import PG10utils.CommonUtilis;
 
 public class BlackListCustomer {
@@ -170,8 +168,8 @@ public class BlackListCustomer {
                     break;
                 }
             }
-      
-//
+            
+            //
             // Scroll page
              wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -184,10 +182,8 @@ public class BlackListCustomer {
         }
 
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+        
         Thread.sleep(3000);
+         
     }
 }
-
-
-
-
