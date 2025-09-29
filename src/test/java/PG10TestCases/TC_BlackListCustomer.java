@@ -32,5 +32,7 @@ public class TC_BlackListCustomer extends PG10Base {
 		Listeners.test.log(Status.INFO, "FraudControl Blacklist Customer Test Completed");
 		log.info("==== FraudControl BlackList Customer Test Completed ====");
 		Thread.sleep(3000);
+		
+		
 	}
 }

@@ -8,7 +8,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
-import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class PayoutTransaction {
@@ -89,6 +88,7 @@ public class PayoutTransaction {
 			timeSelect.selectByVisibleText("12 AM to 12 AM");
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmsearch"))).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+			
 			// Wait and move Excel
 			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";

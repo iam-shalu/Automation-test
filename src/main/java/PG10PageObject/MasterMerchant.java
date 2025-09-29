@@ -1,5 +1,4 @@
 package PG10PageObject;
-
 import java.io.IOException;
 import java.time.Duration;
 import org.openqa.selenium.Alert;
@@ -12,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import PG10utils.CommonUtilis;
 
 public class MasterMerchant {
@@ -118,15 +116,15 @@ public class MasterMerchant {
 		// Screenshot before submit
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-MasterMerchant", "MasterMerchant_Page_Screenshot");
-
+		
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSubmit)).click();
-
+		
 		// Search Master Merchant and expand
 		wait.until(ExpectedConditions.elementToBeClickable(masterMerchantSearch)).sendKeys("RP_MM");
 		WebElement almmIcon = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//tr[td[normalize-space(text())='RP_MM']]//i[contains(@class,'fa-arrow-circle-right')]")));
-		almmIcon.click();
-
+		By.xpath("//tr[td[normalize-space(text())='RP_MM']]//i[contains(@class,'fa-arrow-circle-right')]")));
+	    almmIcon.click();
+	    
 		// Create Merchant
 		wait.until(ExpectedConditions.elementToBeClickable(createMerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("name"))).sendKeys("RP_MM");
@@ -141,11 +139,11 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableInstantPayout_Report"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifycheck_Report"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifyratio_Report"))).click();
-
+		
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-Merchant", "Merchant_Page_Screenshot");
-
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
-
+		
 		// Go to Submerchant
 		wait.until(ExpectedConditions.elementToBeClickable(submerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(createSubMerchant)).click();
@@ -164,13 +162,12 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_HashModify"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkAllowFundTransfer"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("chkIsInstantPayout"))).click();
-
+		
 		// Scroll to bottom
 		((JavascriptExecutor) driver).executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
-
+		
 		WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FxRateType")));
 		new Select(dropdown).selectByVisibleText("Live Rate");
-
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("FxMarkup"))).sendKeys("13");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("CheckBalanceLevel"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("BTSeonDepositFraudCheck"))).click();
@@ -216,22 +213,24 @@ public class MasterMerchant {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifycheck_Report"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("Is_EnableKYCVerifyratio_Report"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("tblsite_Validation_Rules_Alert_Trigger"))).click();
-
+		
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchant", "SubMerchant_Page_Screenshot");
-
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-submit"))).click();
-
+		
 		CommonUtilis.captureFullPageScreenshot(driver, "ListControl-SubMerchantCreatedPage", "SubMerchantCreated_Page_Screenshot");
-
+		
 		// Back and delete Master Merchant
 		wait.until(ExpectedConditions.elementToBeClickable(backToMerchant)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(backToMasterMerchant)).click();
-
+		
 		WebElement deleteIcon = wait.until(ExpectedConditions.elementToBeClickable(deleteMasterMerchant));
 		deleteIcon.click();
-
+		
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		System.out.println("Alert text: " + alert.getText());
 		alert.accept();
+		
 	}
 }
+

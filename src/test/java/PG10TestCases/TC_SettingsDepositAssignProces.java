@@ -32,6 +32,9 @@ public class TC_SettingsDepositAssignProces  extends PG10Base  {
 		log.info("====  Settings - Deposit Processor Assign Test Completed ====");
 
 		Thread.sleep(3000);
+		
+		
+		
 	}
 
 }

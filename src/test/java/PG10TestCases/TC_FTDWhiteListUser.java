@@ -33,9 +33,12 @@ public class TC_FTDWhiteListUser extends PG10Base {
 		ftdwhiteListPage.interactWithfraudControl_FTDwhiteListUser();
 
 		Listeners.test.log(Status.INFO, "FTD White List User Test Completed");
+		
 		Listeners.test.log(Status.INFO, "FraudControl FTD White List user Test Completed");
 
 		log.info("==== FraudControl FTD White List Customer Test Completed ====");
 		Thread.sleep(3000);
+		
+		
 	}
 }

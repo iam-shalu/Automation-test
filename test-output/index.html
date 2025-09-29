@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite" class="navigator-link">
-              <span class="suite-name border-passed">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods,   6 passed</span>
+                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_CityBlackList" class="method navigator-link" hash-for-method="cityBlackListCustomer">cityBlackListCustomer</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,32 +117,12 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_SettingsDepositAssignProces" class="method navigator-link" hash-for-method="SettingsDepositAssignProces">SettingsDepositAssignProces</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_SettingsPayoutAssignProces" class="method navigator-link" hash-for-method="SettingsPayoutAssignProces">SettingsPayoutAssignProces</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_GatewayList" class="method navigator-link" hash-for-method="gatewayList">gatewayList</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_LoginPage" class="method navigator-link" hash-for-method="login">login</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_Logout" class="method navigator-link" hash-for-method="logout">logout</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="PG10TestCases.TC_MasterMerchant" class="method navigator-link" hash-for-method="masterMerchantList">masterMerchantList</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -143,21 +137,35 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-passed">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">PG10TestCases.TC_GatewayList</span>
+              <img src="failed.png"/>
+              <span class="class-name">PG10TestCases.TC_CityBlackList</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="gatewayList">
-                  </a> <!-- gatewayList -->
-                  <span class="method-name">gatewayList</span>
+                  <a name="cityBlackListCustomer">
+                  </a> <!-- cityBlackListCustomer -->
+                  <span class="method-name">cityBlackListCustomer</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (cbc1b996ebc2fe22554ca9d437d1e9ed)] -&gt; xpath: //span[normalize-space()=&apos;Fraud Control&apos;]] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.33.0&apos;, revision: &apos;2c6aaad03a&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\india\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49389}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49389/devtoo..., se:cdpVersion: 140.0.7339.186, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cbc1b996ebc2fe22554ca9d437d1e9ed
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at PG10PageObject.CityBlackList.clickElement(CityBlackList.java:273)
+	at PG10PageObject.CityBlackList.interactWithfraudControlblackList(CityBlackList.java:214)
+	at PG10TestCases.TC_CityBlackList.cityBlackListCustomer(TC_CityBlackList.java:33)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 25 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
+          </div> <!-- suite-Suite-class-failed -->
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -169,51 +177,6 @@
                   <a name="login">
                   </a> <!-- login -->
                   <span class="method-name">login</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">PG10TestCases.TC_SettingsPayoutAssignProces</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="SettingsPayoutAssignProces">
-                  </a> <!-- SettingsPayoutAssignProces -->
-                  <span class="method-name">SettingsPayoutAssignProces</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">PG10TestCases.TC_MasterMerchant</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="masterMerchantList">
-                  </a> <!-- masterMerchantList -->
-                  <span class="method-name">masterMerchantList</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">PG10TestCases.TC_SettingsDepositAssignProces</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="SettingsDepositAssignProces">
-                  </a> <!-- SettingsDepositAssignProces -->
-                  <span class="method-name">SettingsDepositAssignProces</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -249,10 +212,7 @@
   &lt;test thread-count=&quot;1&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;PG10TestCases.TC_LoginPage&quot;/&gt;
-      &lt;class name=&quot;PG10TestCases.TC_MasterMerchant&quot;/&gt;
-      &lt;class name=&quot;PG10TestCases.TC_GatewayList&quot;/&gt;
-      &lt;class name=&quot;PG10TestCases.TC_SettingsDepositAssignProces&quot;/&gt;
-      &lt;class name=&quot;PG10TestCases.TC_SettingsPayoutAssignProces&quot;/&gt;
+      &lt;class name=&quot;PG10TestCases.TC_CityBlackList&quot;/&gt;
       &lt;class name=&quot;PG10TestCases.TC_Logout&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
@@ -267,7 +227,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (6 classes)</span>
+                <span class="test-name">Test (3 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -293,36 +253,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(6);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'masterMerchantList')
-data.setCell(0, 2, 'PG10TestCases.TC_MasterMerchant')
-data.setCell(0, 3, 34127);
+data.setCell(0, 1, 'cityBlackListCustomer')
+data.setCell(0, 2, 'PG10TestCases.TC_CityBlackList')
+data.setCell(0, 3, 30204);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'gatewayList')
-data.setCell(1, 2, 'PG10TestCases.TC_GatewayList')
-data.setCell(1, 3, 18420);
+data.setCell(1, 1, 'login')
+data.setCell(1, 2, 'PG10TestCases.TC_LoginPage')
+data.setCell(1, 3, 7519);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'SettingsDepositAssignProces')
-data.setCell(2, 2, 'PG10TestCases.TC_SettingsDepositAssignProces')
-data.setCell(2, 3, 10882);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'SettingsPayoutAssignProces')
-data.setCell(3, 2, 'PG10TestCases.TC_SettingsPayoutAssignProces')
-data.setCell(3, 3, 10783);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'login')
-data.setCell(4, 2, 'PG10TestCases.TC_LoginPage')
-data.setCell(4, 3, 9444);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'logout')
-data.setCell(5, 2, 'PG10TestCases.TC_Logout')
-data.setCell(5, 3, 4669);
+data.setCell(2, 1, 'logout')
+data.setCell(2, 2, 'PG10TestCases.TC_Logout')
+data.setCell(2, 3, 4833);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 42 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -337,47 +285,20 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">10 ignored methods</span>
+            <span class="header-content">4 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">PG10TestCases.TC_GatewayList</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">setUpSuite</span>
-                <br/>
-                <span class="ignored-method-name">tearDownSuite</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">PG10TestCases.TC_SettingsPayoutAssignProces</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tearDownSuite</span>
-                <br/>
-                <span class="ignored-method-name">setUpSuite</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">PG10TestCases.TC_MasterMerchant</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tearDownSuite</span>
-                <br/>
-                <span class="ignored-method-name">setUpSuite</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">PG10TestCases.TC_SettingsDepositAssignProces</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">setUpSuite</span>
-                <br/>
-                <span class="ignored-method-name">tearDownSuite</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
               <span class="ignored-class-name">PG10TestCases.TC_Logout</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">tearDownSuite</span>
+                <br/>
+                <span class="ignored-method-name">setUpSuite</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">PG10TestCases.TC_CityBlackList</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">setUpSuite</span>
                 <br/>
@@ -400,49 +321,30 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="test-method">
                 <span class="method-name">login</span>
-                <span class="method-start">1613 ms</span>
+                <span class="method-start">3894 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">PG10TestCases.TC_MasterMerchant</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">PG10TestCases.TC_CityBlackList</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">masterMerchantList</span>
-                <span class="method-start">11061 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">PG10TestCases.TC_GatewayList</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">gatewayList</span>
-                <span class="method-start">45191 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">PG10TestCases.TC_SettingsDepositAssignProces</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">SettingsDepositAssignProces</span>
-                <span class="method-start">63612 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">PG10TestCases.TC_SettingsPayoutAssignProces</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">SettingsPayoutAssignProces</span>
-                <span class="method-start">74496 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">cityBlackListCustomer</span>
+                <span class="method-start">11423 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">PG10TestCases.TC_Logout</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">logout</span>
-                <span class="method-start">85280 ms</span>
+                <span class="method-start">41633 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">PG10TestCases.TC_LoginPage</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDownSuite</span>
-                <span class="method-start">90169 ms</span>
+                <span class="method-start">46830 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

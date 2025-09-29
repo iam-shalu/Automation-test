@@ -9,15 +9,24 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">88,352</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">42,601</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">PG10TestCases.TC_GatewayList</td><td><a href="#m0">gatewayList</a></td><td rowspan="1">1758080996228</td><td rowspan="1">18420</td></tr><tr class="passedodd"><td rowspan="1">PG10TestCases.TC_LoginPage</td><td><a href="#m1">login</a></td><td rowspan="1">1758080952650</td><td rowspan="1">9444</td></tr><tr class="passedeven"><td rowspan="1">PG10TestCases.TC_Logout</td><td><a href="#m2">logout</a></td><td rowspan="1">1758081036317</td><td rowspan="1">4669</td></tr><tr class="passedodd"><td rowspan="1">PG10TestCases.TC_MasterMerchant</td><td><a href="#m3">masterMerchantList</a></td><td rowspan="1">1758080962098</td><td rowspan="1">34127</td></tr><tr class="passedeven"><td rowspan="1">PG10TestCases.TC_SettingsDepositAssignProces</td><td><a href="#m4">SettingsDepositAssignProces</a></td><td rowspan="1">1758081014649</td><td rowspan="1">10882</td></tr><tr class="passedodd"><td rowspan="1">PG10TestCases.TC_SettingsPayoutAssignProces</td><td><a href="#m5">SettingsPayoutAssignProces</a></td><td rowspan="1">1758081025533</td><td rowspan="1">10783</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">PG10TestCases.TC_CityBlackList</td><td><a href="#m0">cityBlackListCustomer</a></td><td rowspan="1">1759126029685</td><td rowspan="1">30204</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">PG10TestCases.TC_LoginPage</td><td><a href="#m1">login</a></td><td rowspan="1">1759126022156</td><td rowspan="1">7519</td></tr><tr class="passedodd"><td rowspan="1">PG10TestCases.TC_Logout</td><td><a href="#m2">logout</a></td><td rowspan="1">1759126059895</td><td rowspan="1">4833</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">PG10TestCases.TC_GatewayList#gatewayList</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test</h2><h3 id="m0">PG10TestCases.TC_CityBlackList#cityBlackListCustomer</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (cbc1b996ebc2fe22554ca9d437d1e9ed)] -&gt; xpath: //span[normalize-space()=&apos;Fraud Control&apos;]] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.33.0&apos;, revision: &apos;2c6aaad03a&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\india\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49389}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49389/devtoo..., se:cdpVersion: 140.0.7339.186, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cbc1b996ebc2fe22554ca9d437d1e9ed
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at PG10PageObject.CityBlackList.clickElement(CityBlackList.java:273)
+	at PG10PageObject.CityBlackList.interactWithfraudControlblackList(CityBlackList.java:214)
+	at PG10TestCases.TC_CityBlackList.cityBlackListCustomer(TC_CityBlackList.java:33)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m1">PG10TestCases.TC_LoginPage#login</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m2">PG10TestCases.TC_Logout#logout</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">PG10TestCases.TC_MasterMerchant#masterMerchantList</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">PG10TestCases.TC_SettingsDepositAssignProces#SettingsDepositAssignProces</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">PG10TestCases.TC_SettingsPayoutAssignProces#SettingsPayoutAssignProces</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

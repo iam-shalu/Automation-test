@@ -1,51 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-17T09:19:12 IST" name="Suite" finished-at="2025-09-17T09:20:40 IST" duration-ms="88352">
+  <suite started-at="2025-09-29T11:37:02 IST" name="Suite" finished-at="2025-09-29T11:37:44 IST" duration-ms="42601">
     <groups>
     </groups>
-    <test started-at="2025-09-17T09:19:12 IST" name="Test" finished-at="2025-09-17T09:20:40 IST" duration-ms="88352">
-      <class name="PG10TestCases.TC_SettingsPayoutAssignProces">
-        <test-method signature="SettingsPayoutAssignProces()[pri:18, instance:PG10TestCases.TC_SettingsPayoutAssignProces@28d18df5]" started-at="2025-09-17T09:20:25 IST" name="SettingsPayoutAssignProces" finished-at="2025-09-17T09:20:36 IST" duration-ms="10783" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SettingsPayoutAssignProces -->
-      </class> <!-- PG10TestCases.TC_SettingsPayoutAssignProces -->
-      <class name="PG10TestCases.TC_GatewayList">
-        <test-method signature="gatewayList()[pri:16, instance:PG10TestCases.TC_GatewayList@1d483de4]" started-at="2025-09-17T09:19:56 IST" name="gatewayList" finished-at="2025-09-17T09:20:14 IST" duration-ms="18420" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- gatewayList -->
-      </class> <!-- PG10TestCases.TC_GatewayList -->
-      <class name="PG10TestCases.TC_MasterMerchant">
-        <test-method signature="masterMerchantList()[pri:15, instance:PG10TestCases.TC_MasterMerchant@31920ade]" started-at="2025-09-17T09:19:22 IST" name="masterMerchantList" finished-at="2025-09-17T09:19:56 IST" duration-ms="34127" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- masterMerchantList -->
-      </class> <!-- PG10TestCases.TC_MasterMerchant -->
-      <class name="PG10TestCases.TC_SettingsDepositAssignProces">
-        <test-method signature="SettingsDepositAssignProces()[pri:17, instance:PG10TestCases.TC_SettingsDepositAssignProces@4032d386]" started-at="2025-09-17T09:20:14 IST" name="SettingsDepositAssignProces" finished-at="2025-09-17T09:20:25 IST" duration-ms="10882" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SettingsDepositAssignProces -->
-      </class> <!-- PG10TestCases.TC_SettingsDepositAssignProces -->
+    <test started-at="2025-09-29T11:37:02 IST" name="Test" finished-at="2025-09-29T11:37:44 IST" duration-ms="42601">
       <class name="PG10TestCases.TC_Logout">
-        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@934b6cb]" started-at="2025-09-17T09:20:36 IST" name="logout" finished-at="2025-09-17T09:20:40 IST" duration-ms="4669" status="PASS">
+        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@31920ade]" started-at="2025-09-29T11:37:39 IST" name="logout" finished-at="2025-09-29T11:37:44 IST" duration-ms="4833" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
       </class> <!-- PG10TestCases.TC_Logout -->
+      <class name="PG10TestCases.TC_CityBlackList">
+        <test-method signature="cityBlackListCustomer()[pri:13, instance:PG10TestCases.TC_CityBlackList@5c669da8]" started-at="2025-09-29T11:37:09 IST" name="cityBlackListCustomer" finished-at="2025-09-29T11:37:39 IST" duration-ms="30204" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (cbc1b996ebc2fe22554ca9d437d1e9ed)] -> xpath: //span[normalize-space()='Fraud Control']] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.33.0', revision: '2c6aaad03a'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\india\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49389}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49389/devtoo..., se:cdpVersion: 140.0.7339.186, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cbc1b996ebc2fe22554ca9d437d1e9ed]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (cbc1b996ebc2fe22554ca9d437d1e9ed)] -> xpath: //span[normalize-space()='Fraud Control']] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.33.0', revision: '2c6aaad03a'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\india\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49389}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49389/devtoo..., se:cdpVersion: 140.0.7339.186, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cbc1b996ebc2fe22554ca9d437d1e9ed
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at PG10PageObject.CityBlackList.clickElement(CityBlackList.java:273)
+at PG10PageObject.CityBlackList.interactWithfraudControlblackList(CityBlackList.java:214)
+at PG10TestCases.TC_CityBlackList.cityBlackListCustomer(TC_CityBlackList.java:33)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cityBlackListCustomer -->
+      </class> <!-- PG10TestCases.TC_CityBlackList -->
       <class name="PG10TestCases.TC_LoginPage">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@67b9b51a]" started-at="2025-09-17T09:19:11 IST" name="setUpSuite" finished-at="2025-09-17T09:19:12 IST" duration-ms="1598" status="PASS">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-09-29T11:36:58 IST" name="setUpSuite" finished-at="2025-09-29T11:37:02 IST" duration-ms="3869" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@67b9b51a]" started-at="2025-09-17T09:19:12 IST" name="login" finished-at="2025-09-17T09:19:22 IST" duration-ms="9444" status="PASS">
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-09-29T11:37:02 IST" name="login" finished-at="2025-09-29T11:37:09 IST" duration-ms="7519" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@67b9b51a]" started-at="2025-09-17T09:20:41 IST" name="tearDownSuite" finished-at="2025-09-17T09:20:41 IST" duration-ms="178" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-09-29T11:37:45 IST" name="tearDownSuite" finished-at="2025-09-29T11:37:45 IST" duration-ms="263" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->

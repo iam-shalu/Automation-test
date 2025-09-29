@@ -14,155 +14,176 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import PG10utils.CommonUtilis;
 
 public class BlackListCustomer {
-	WebDriver driver;
-	WebDriverWait wait;
+    WebDriver driver;
+    WebDriverWait wait;
 
-	public BlackListCustomer(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	}
+    public BlackListCustomer(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
 
-	@FindBy(xpath = "//span[normalize-space()='Fraud Control']")
-	WebElement fraudControlManu;
+    @FindBy(xpath = "/html/body/div[2]/div/nav/div/ul/li[4]/a/span")
+    WebElement fraudControlManu;
 
-	@FindBy(xpath = "//a[normalize-space()='Black List Customer']")
-	WebElement blackListCustomer;
+    @FindBy(xpath = "//a[normalize-space()='Black List Customer']")
+    WebElement blackListCustomer;
 
-	@FindBy(xpath = "//a[normalize-space()='Add Blacklist Customer']")
-	WebElement ManualAddBlackListCust;
+    @FindBy(xpath = "//a[text()='Download Sample File']")
+    WebElement SampleFile;
 
-	@FindBy(xpath = "//a[normalize-space()='Download Sample File']")
-	WebElement downloadSampleFile;
+    @FindBy(xpath = "//a[normalize-space()='Add Blacklist Customer']")
+    WebElement ManualAddBlackListCust;
 
-	@FindBy(xpath = "/html/body/div[2]/div/div[1]/div[1]/div/div/div[2]/div/div/div/form/div/div[1]/input")
-	WebElement chooseFileInput;
+    @FindBy(xpath = "//input[@name='blacklistcustomerfile']")
+    WebElement chooseFileInput;
 
-	@FindBy(xpath = "//button[contains(text(),'Import')]")
-	WebElement importButton;
+    @FindBy(xpath = "//button[contains(text(),'Import')]")
+    WebElement importButton;
 
-	@FindBy(xpath = "//h3[normalize-space()='Blacklist Customer']")
-	WebElement blackListCustomerText;
+    @FindBy(xpath = "//h3[normalize-space()='Blacklist Customer']")
+    WebElement blackListCustomerText;
 
-	@FindBy(xpath = "//input[@id='dt-search-0']")
-	WebElement searchBlackListCust;
+    @FindBy(xpath = "//input[@id='dt-search-0']")
+    WebElement searchBlackListCust;
 
-	@FindBy(xpath = "//tbody/tr[30]/td[9]/a[2]/span[1]")
-	WebElement deleteBlackListcust1;
+    @FindBy(xpath = "//span[@class='user-name']")
+    WebElement LogoutText;
+    
+ 
+    public void interactWithfraudControlblackList() throws InterruptedException {
+        try {
+            // Navigate
+            wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
+            wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
+            driver.manage().window().maximize();
 
-	@FindBy(xpath = "//h3[normalize-space()='Blacklist Customer']")
-	WebElement BlackListText;
+            // Upload file
+            wait.until(ExpectedConditions.elementToBeClickable(SampleFile)).click();
+            String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\Blacklist Customer\\BlackList.xlsx";
+            chooseFileInput.sendKeys(filePath);
+            System.out.println("File uploaded successfully.");
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("frmimport"))).click();
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader")));
 
-	@FindBy(xpath = "//span[@class='user-name']")
-	WebElement LogoutText;
+            // Export file
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
+            String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
-	@FindBy(xpath = "//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]")
-	WebElement delete2;
+            if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+                CommonUtilis.moveDownloadedFileToDatedFolder("BlackListCustomer", dateFolder);
+            } else {
+                System.err.println("No downloaded Excel file found to move.");
+            }
+            
+            // Add record
+            wait.until(ExpectedConditions.elementToBeClickable(ManualAddBlackListCust)).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Name"))).sendKeys("akash");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Email"))).sendKeys("akash13@gmail.com");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
+            
+            
+            // Handle possible error toast
+            try {
+                WebElement errorToast = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//div[contains(text(),'Blacklist Customer creation failed')]")));
+                if (errorToast.isDisplayed()) {
+                    System.out.println("Blacklist Data is Already Exist . Clicking Close.");
+                    WebElement closeBtn = wait.until(
+                            ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Close']")));
+                    closeBtn.click();
+                    return;
+                }
+            } catch (Exception e) {
+                System.out.println("Blacklist Customer created successfully, continuing test flow...");
+            }
+          
+//            String expectedEmail = "akash13@gmail.com";
 
-	public void interactWithfraudControlblackList() throws InterruptedException {
-		
-		Thread.sleep(3000);
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
-			wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
-			driver.manage().window().maximize();
-			WebElement blackListUpload = wait.until(
-			ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name=\"blacklistcustomerfile\"]")));
-			
+         // Define target email
+            String expectedEmail = "akash13@gmail.com";
 
-			String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\Blacklist Customer\\BlackList.xlsx";
-			blackListUpload.sendKeys(filePath);
-			System.out.println("File uploaded successfully.");
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("frmimport"))).click();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader"))); // Optional
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExport"))).click();
-			
-			String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-			String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+            // Step 1: Search once and take screenshot
+            WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
+            searchBox.clear();
+            searchBox.sendKeys(expectedEmail);
 
-			if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-				CommonUtilis.moveDownloadedFileToDatedFolder("BlackListCustomer", dateFolder);
-			} else {
-				System.err.println(" No downloaded Excel file found to move.");
-			}
-			wait.until(ExpectedConditions.elementToBeClickable(ManualAddBlackListCust)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Name"))).sendKeys("akash");
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Email"))).sendKeys("akash13@gmail.com");
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("MobileNo"))).sendKeys("9632629099");
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("IPaddress"))).sendKeys("9.8.7.6");
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSave"))).click();
-			
-			
-			try {
-			    WebElement errorToast = wait.until(ExpectedConditions.visibilityOfElementLocated(
-			            By.xpath("//div[contains(text(),'Blacklist Customer creation failed')]")));
-			    if (errorToast.isDisplayed()) {
-			        System.out.println("Blacklist creation failed. Clicking Close.");
-			        WebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(
-			                By.xpath("//button[normalize-space()='Close']")));
-			        closeBtn.click();
-			        return; // Exit the method since creation failed
-			    }
-			} catch (Exception e) {
-			    // No error toast found, continue normal flow
-			    System.out.println("Blacklist Customer created successfully, continuing test flow...");
-			}
-			
-			
-			String expectedEmail = "akash13@gmail.com";
-			WebElement searchBox = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
-			searchBox.clear();
-			searchBox.sendKeys(expectedEmail);
+            // Wait until at least one row with email appears
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//td[normalize-space(text())='" + expectedEmail + "']")));
 
-			wait.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//td[contains(text(), '" + expectedEmail + "')]")));
+            // Screenshot before deletion
+            String screenshotName = "BlackListCustomerText_Page_Screenshot";
+            System.out.println("Capturing full page screenshot...");
+            CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
 
-			String screenshotName = "BlackListCustomerText_Page_Screenshot";
-			System.out.println("Capturing full page screenshot...");
-			CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
+            // Step 2: Loop until all records deleted
 
-			while (true) {
-				List<WebElement> deleteButtons = driver.findElements(By.xpath("//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]"));      
-				   //	//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]
-					
-				if (deleteButtons.isEmpty())
-					break;
-				
-				//Delete X Path For Production -    //span[@class="fa fa-trash-o  fa-lg"]
-				
-				//Delete x Path For UAT -          //span[@class="fa fa-trash-o  fa-lg"]
-				WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(deleteButtons.get(0)));
-				deleteBtn.click();
-				wait.until(ExpectedConditions.alertIsPresent());
-				driver.switchTo().alert().accept();
+            while (true) {
+                try {
+                    // Re-apply search (because table refresh clears it after deletion)
+                    WebElement searchBox2 = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
+                    searchBox2.clear();
+                    searchBox2.sendKeys(expectedEmail);
 
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-lg')]")));
+                    // Small wait for table to refresh after typing search
+                    Thread.sleep(1000); // replace with WebDriverWait on a loader/spinner if available
 
-			}
-			
-			//Delete X Path For Production -    //span[@class="fa fa-trash-o  fa-lg"]
-	
-			List<WebElement> remainingRows = driver.findElements(By.xpath("//td[contains(text(), '" + expectedEmail + "')]"));
-			
-			if (remainingRows.isEmpty()) {
-				System.out.println(" All blacklist customers with email '" + expectedEmail + "' deleted successfully.");
+                    // Find all rows with the target email (no exception if none found)
+                    List<WebElement> rows = driver.findElements(
+                        By.xpath("//td[normalize-space(text())='" + expectedEmail + "']")
+                    );
 
-			} else {
-				System.err.println("Some records with email '" + expectedEmail + "' still exist.");
-			}
-			wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
-			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
-			wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
-			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+                    if (rows.isEmpty()) {
+                        System.out.println("All records deleted for: " + expectedEmail);
+                        break;
+                    }
 
-		} catch (Exception e) {
-			System.err.println(" Test failed in BlackListCustomer interaction: " + e.getMessage());
-			e.printStackTrace();
-		}
+                    // Take the first row
+                    WebElement row = rows.get(0);
 
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
-		
-		Thread.sleep(3000);
-	
-	}
+                    // Wait for its delete button to be clickable
+                    WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                        row.findElement(By.xpath(
+                            "./following-sibling::td//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-trash-o')]"
+                        ))
+                    ));
+
+                    // Click delete
+                    deleteBtn.click();
+
+                    // Accept the alert
+                    wait.until(ExpectedConditions.alertIsPresent()).accept();
+
+                    // Wait until that row is removed (table refresh completes)
+                    wait.until(ExpectedConditions.stalenessOf(row));
+
+                    System.out.println("Deleted one record for: " + expectedEmail);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    break;
+                }
+            }
+            
+            //
+            // Scroll page
+             wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+             wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+
+        } catch (Exception e) {
+            System.err.println("Test data in BlackListCustomer is already Exist : " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+        
+        Thread.sleep(3000);
+         
+    }
 }
