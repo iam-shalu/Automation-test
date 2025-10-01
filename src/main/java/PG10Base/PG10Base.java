@@ -18,7 +18,7 @@ public class PG10Base {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
-    
+  
     // Page objects
     public static Login loginPage;
     public static Transactions transactionPage;
@@ -58,7 +58,7 @@ public class PG10Base {
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("--remote-allow-origins=*");
 
-            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
             if (headless) {
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
@@ -68,7 +68,7 @@ public class PG10Base {
             } else {
                 log.info("Browser launched in normal mode");
             }
-
+            
             driver = new ChromeDriver(options);
             wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(15));
 
@@ -126,7 +126,7 @@ public class PG10Base {
             log.info("Sidebar already expanded or toggle not found");
         }
     }
-
+    
     //  Safe click (scroll + fallback JS click)
     public static void safeClick(By locator) {
         try {

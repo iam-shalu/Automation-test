@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import PG10utils.CommonUtilis;
 
+
 public class BlackListCustomer {
     WebDriver driver;
     WebDriverWait wait;
@@ -50,13 +51,13 @@ public class BlackListCustomer {
     @FindBy(xpath = "//span[@class='user-name']")
     WebElement LogoutText;
     
- 
     public void interactWithfraudControlblackList() throws InterruptedException {
         try {
             // Navigate
-            wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
-            driver.manage().window().maximize();
+           wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
+       
+           wait.until(ExpectedConditions.elementToBeClickable(blackListCustomer)).click();
+           driver.manage().window().maximize();
 
             // Upload file
             wait.until(ExpectedConditions.elementToBeClickable(SampleFile)).click();
@@ -169,7 +170,6 @@ public class BlackListCustomer {
                 }
             }
             
-            //
             // Scroll page
              wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -184,6 +184,6 @@ public class BlackListCustomer {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
         
         Thread.sleep(3000);
-         
+       
     }
 }
