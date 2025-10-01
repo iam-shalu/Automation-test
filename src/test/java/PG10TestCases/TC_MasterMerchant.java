@@ -67,7 +67,7 @@ public class TC_MasterMerchant extends PG10Base {
 	    Listeners.test.log(Status.INFO, "Delete the Record");
 	    
 		masterMerchantpage.interactWithlistControl_masterMerchant();
-		
+	
 		log.info("==== List Control  Merchant Test Completed ====");
 
 		Thread.sleep(3000);

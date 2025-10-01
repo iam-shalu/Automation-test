@@ -181,8 +181,7 @@ public class FTDWhiteListUser {
       wait.until(ExpectedConditions.alertIsPresent());
       driver.switchTo().alert().accept();
       wait.until(ExpectedConditions.stalenessOf(deleteBtn));
-      
-      
+        
   }
     	
  }

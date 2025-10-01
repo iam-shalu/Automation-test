@@ -129,40 +129,6 @@ public class Payout_BlackListCustomer {
         log.info("==== Completed FraudControl Blacklist Payout Customer Test ====");
     }
 
-// ==== Helpers ====
-//    private void deleteRecordByAccountNo(String accountNo) {
-//        try {
-//            WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.id("txtSearch")));
-//            searchBox.clear();
-//            searchBox.sendKeys(accountNo);
-//            safeClick(By.id("btnFilter"));
-//
-//            // Wait for table refresh/loader
-//            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']")));
-//
-//            // Find row with given Account No
-//            List<WebElement> rows = driver.findElements(
-//                By.xpath("//table[@id='example']/tbody/tr[td[contains(text(),'" + accountNo + "')]]")
-//            );
-//
-//            if (!rows.isEmpty()) {
-//                WebElement deleteBtn = rows.get(0).findElement(By.xpath(".//i[@class='fa fa-trash-o fa-lg']"));
-//                safeClick(deleteBtn);
-//                
-//                // Accept alert
-//                wait.until(ExpectedConditions.alertIsPresent());
-//                driver.switchTo().alert().accept();
-//
-//                log.info("Deleted record for Account No: " + accountNo);
-//                
-//            } else {
-//                log.warn("No record found for Account No: " + accountNo);
-//            }
-//        } catch (Exception e) {
-//            log.error("Error while deleting record for Account No: " + accountNo, e);
-//        }
-//    }
-    
     private void deleteAllRecordsFromTable() {
         while (true) {
             List<WebElement> deleteButtons = driver.findElements(By.xpath("//i[@class=\"fa fa-trash-o fa-lg\"]"));

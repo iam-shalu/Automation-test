@@ -106,29 +106,30 @@ public class CityBlackList {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnExport"))).click();
 		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-
+		
 		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
 			CommonUtilis.moveDownloadedFileToDatedFolder("CityBlackList", dateFolder);
 		} else {
 			System.err.println(" No downloaded Excel file found to move.");
 		}
-
+		
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
 		Thread.sleep(3000);
+		
 		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant3)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(selectAllbtn3)).click();
 		wait.until(ExpectedConditions.elementToBeClickable(searchSubMastermerchant3)).sendKeys("Test-acs-01");
 		wait.until(ExpectedConditions.elementToBeClickable(Testacs3)).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Bangalore");
 		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Bangalore");
 		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
 		wait.until(ExpectedConditions.alertIsPresent());
 		driver.switchTo().alert().accept();
+		
 	}
+	
 }
-
-
 

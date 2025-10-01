@@ -25,7 +25,9 @@ public class MasterMerchant {
 
 	@FindBy(xpath = "(//span[@class=\"nav-item\"])[5]")
 	WebElement listControl;
-
+	
+	//I[@class="nav-icon icon-link"]
+	
 	@FindBy(xpath = "(//a[@id=\"submenuDropdown\"])[2]")
 	WebElement merchantList;
 
@@ -231,6 +233,12 @@ public class MasterMerchant {
 		System.out.println("Alert text: " + alert.getText());
 		alert.accept();
 		
+		
 	}
+	
 }
+
+
+
+
 
