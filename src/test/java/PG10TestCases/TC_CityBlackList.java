@@ -30,7 +30,7 @@ public class TC_CityBlackList extends PG10Base {
 		Listeners.test.log(Status.INFO, "click on Filter");
 		Listeners.test.log(Status.INFO, "Delete the Records");
 
-		cityblackListPage.interactWithfraudControlblackList();
+		cityblackListPage.interactWithFraudControlBlackList();
 
 		Listeners.test.log(Status.INFO, " City Blacklist Customer Test Completed");
 
