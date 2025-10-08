@@ -13,6 +13,7 @@ public class TC_MasterMerchant extends PG10Base {
 	public void masterMerchantList() throws Exception {
 		
 		log.info("==== Starting List Control Master Merchant Test ====");
+		
 		Listeners.test.log(Status.INFO, "Navigating to List Control Module");
 		Listeners.test.log(Status.INFO, "Click On List Control  & Go to Merchant List");
 		Listeners.test.log(Status.INFO, "Click On Master Merchant List");
@@ -66,7 +67,7 @@ public class TC_MasterMerchant extends PG10Base {
 	    Listeners.test.log(Status.INFO, "Delete the Record");
 	    
 		masterMerchantpage.interactWithlistControl_masterMerchant();
-		
+	
 		log.info("==== List Control  Merchant Test Completed ====");
 
 		Thread.sleep(3000);

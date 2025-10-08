@@ -9,7 +9,9 @@ public class TC_CityBlackList extends PG10Base {
 
 	@Test(priority = 13)
 	public void cityBlackListCustomer() throws Exception {
+		
 		log.info("==== Starting FraudControl City  Blacklist Customer Test ====");
+		
 		Listeners.test.log(Status.INFO, "Navigating to City Fraud Control Module");
 		Listeners.test.log(Status.INFO, "click On Fraud Control & Go to City Blacklist Customer");
 		Listeners.test.log(Status.INFO, "Select Sub Merchant List - Test-acs-01");
@@ -28,7 +30,7 @@ public class TC_CityBlackList extends PG10Base {
 		Listeners.test.log(Status.INFO, "click on Filter");
 		Listeners.test.log(Status.INFO, "Delete the Records");
 
-		cityblackListPage.interactWithfraudControlblackList();
+		cityblackListPage.interactWithFraudControlBlackList();
 
 		Listeners.test.log(Status.INFO, " City Blacklist Customer Test Completed");
 

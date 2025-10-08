@@ -12,7 +12,7 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
 	public void payoutBlackListCustomer() {
 		try {
 			Payout_BlackListCustomer payoutBlackListCustomerPage = new Payout_BlackListCustomer(driver);
-
+			
 			log.info("==== Starting FraudControl  Blacklist Payout Customer Test ====");
 			Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module");
 			Listeners.test.log(Status.INFO, "Click on 'Fraud Control' menu");
@@ -42,3 +42,6 @@ public class TC_Payout_BlackListCustomer extends PG10Base {
 		}
 	}
 }
+
+
+

@@ -140,6 +140,7 @@ public class Dashboard {
 
 	private void closeLimitBarIfPresent() throws InterruptedException {
 		try {
+			
 			wait.until(ExpectedConditions.visibilityOf(limitBarPopup));
 
 			// === Take screenshot BEFORE closing the pop up ===
@@ -153,6 +154,7 @@ public class Dashboard {
 			System.out.println("Limit Bar popup not present.");
 		} catch (IOException e) {
 			System.out.println("Screenshot error: " + e.getMessage());
+			
 		}
 	}
 

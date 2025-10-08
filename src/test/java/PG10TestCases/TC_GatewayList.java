@@ -14,7 +14,6 @@ public class TC_GatewayList extends PG10Base{
 		Listeners.test.log(Status.INFO, "Navigating to Fraud Control Module ");
 
 		log.info("==== Starting List Control Gateway List  Test ====");
-		
 		Listeners.test.log(Status.INFO, "Navigating to List Control  Module");
 		Listeners.test.log(Status.INFO, "Click On List Control & Go to Gateway List");
 		Listeners.test.log(Status.INFO, "Click On Descriptor ");
