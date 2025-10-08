@@ -1,4 +1,3 @@
-
 package PG10PageObject;
 import java.io.IOException;
 import java.time.Duration;
@@ -64,6 +63,7 @@ public class Settings_PayoutProcessorAss {
     public void interactWithsettingsPayoutProcessorAss() throws IOException, InterruptedException {
         try {
             // ✅ Ensure sidebar open
+        	
             try {
                 if (!settings.isDisplayed()) {
                     wait.until(ExpectedConditions.elementToBeClickable(sidebarToggle)).click();
@@ -115,5 +115,7 @@ public class Settings_PayoutProcessorAss {
             CommonUtilis.captureFullPageScreenshot(driver, "Settings-PayoutProcessorAssign", "Error_Screenshot");
             throw e;
         }
+        
+        
     }
 }

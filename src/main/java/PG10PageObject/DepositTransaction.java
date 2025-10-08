@@ -100,8 +100,6 @@ public class DepositTransaction {
 			// //li[@data-range-key="Last 7 Days"]
 			// /Yesterday - //li[@data-range-key='Yesterday']
 			
-			
-
 			// === Filter and Export ===
 			wait.until(ExpectedConditions.elementToBeClickable(filter)).click();
 			
@@ -158,8 +156,10 @@ public class DepositTransaction {
 			enterValueBox.sendKeys("gomzi001@axl");
 
 			System.out.println("==== Deposit Transactions Test Completed ====");
+		
 		} catch (Exception e) {
 			System.err.println("Unexpected error occurred: " + e.getMessage());
+			
 		}
 	}
 }

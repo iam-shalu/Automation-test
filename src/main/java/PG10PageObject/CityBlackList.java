@@ -3,133 +3,206 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+//import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import PG10utils.CommonUtilis;
 
 public class CityBlackList {
-	WebDriver driver;
-	WebDriverWait wait;
+    WebDriver driver;
+    WebDriverWait wait;
 
-	public CityBlackList(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public CityBlackList(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
 
-	}
+    // Locators
+    @FindBy(xpath = "//span[normalize-space()='Fraud Control']")
+    WebElement fraudControlMenu;
 
-	@FindBy(xpath = "//span[normalize-space()='Fraud Control']")
-	WebElement fraudControlManu;
+    @FindBy(xpath = "//a[normalize-space()='City BlackList']")
+    WebElement cityBlackListLink;
 
-	@FindBy(xpath = "//a[normalize-space()='City BlackList']")
-	WebElement cityBlackList;
+    @FindBy(xpath = "(//button[@class='multiselect dropdown-toggle btn btn-default'])[1]")
+    WebElement subMasterMerchantDropdown1;
 
-	@FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[1]")
-	WebElement SubMastermerchant1;
+    @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
+    WebElement searchMasterMerchant1;
 
-	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
-	WebElement searchMasterMerchant1;
-	
-	//X Path For UAT 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
-	WebElement Testacs1;
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
+    WebElement testAcs1;
 
-	@FindBy(xpath = "//a[@class='btn btn-info btn-sm']")
-	WebElement addcityBlackList;
+    @FindBy(xpath = "//a[@class='btn btn-info btn-sm']")
+    WebElement addCityBlackListBtn;
 
-	@FindBy(xpath = "(//button[@class='multiselect dropdown-toggle btn btn-default'])[3]")
-	WebElement selectSubMerchant2;
+    @FindBy(xpath = "(//button[@class='multiselect dropdown-toggle btn btn-default'])[3]")
+    WebElement subMasterMerchantDropdown2;
 
-	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
-	WebElement searchSubTestacs2;
-	
-	//x Path For UAT
-	@FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
-	WebElement selectsubTestacs2;
+    @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
+    WebElement searchSubTestAcs2;
 
-	@FindBy(xpath = "(//span[@class=\"multiselect-selected-text\"])[2]")
-	WebElement SubMastermerchant3;
+    @FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
+    WebElement selectSubTestAcs2;
 
-	@FindBy(xpath = "//li[@class='multiselect-item multiselect-all active']//label[@class='checkbox'][normalize-space()='Select all']")
-	WebElement selectAllbtn3;
+    @FindBy(xpath = "(//span[@class='multiselect-selected-text'])[2]")
+    WebElement subMasterMerchantDropdown3;
 
-	@FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
-	WebElement searchSubMastermerchant3;
-	
-	// X Path For UAT 
-	@FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
-	WebElement Testacs3;
+    @FindBy(xpath = "//li[@class='multiselect-item multiselect-all active']//label[@class='checkbox'][normalize-space()='Select all']")
+    WebElement selectAllBtn3;
 
-	@FindBy(xpath = "//h3[normalize-space()='City BlackList Details']")
-	WebElement cityBlackListDetails;
+    @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[2]")
+    WebElement searchSubMasterMerchant3;
 
-	@FindBy(xpath = "//span[@class=\"fa fa-trash-o fa-lg\"]")
-	WebElement deleteRecord;
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
+    WebElement testAcs3;
 
-	public void interactWithfraudControlblackList() throws InterruptedException, IOException {
-		
-		wait.until(ExpectedConditions.elementToBeClickable(fraudControlManu)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(cityBlackList)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant1)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(searchMasterMerchant1)).sendKeys("Test-acs-01");
-		wait.until(ExpectedConditions.elementToBeClickable(Testacs1)).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
-		WebElement blackListUpload = driver.findElement(By.xpath("//input[@id='fileInput']"));
-	//	String filePath = "D:\\Automation\\Excel file\\CityBlackList Customer\\CityBlackList.xlsx";
-		String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
-		
-		blackListUpload.sendKeys(filePath);
-		System.out.println("File uploaded successfully.");
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnimport"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(addcityBlackList)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(selectSubMerchant2)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(searchSubTestacs2)).sendKeys("Test-acs-01");
-		wait.until(ExpectedConditions.elementToBeClickable(selectsubTestacs2)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("City"))).sendKeys("Surat");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn_Save"))).click();
-		Thread.sleep(5000);
-		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant3)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(selectAllbtn3)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(searchSubMastermerchant3)).sendKeys("Test-acs-01");
-		wait.until(ExpectedConditions.elementToBeClickable(Testacs3)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
-		String screenshotName = "CityBlackListDetails_Page_Screenshot";
-		System.out.println("Capturing full page screenshot...");
-		CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-City BlackList", screenshotName);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Surat");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnExport"))).click();
-		String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-		
-		if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-			CommonUtilis.moveDownloadedFileToDatedFolder("CityBlackList", dateFolder);
-		} else {
-			System.err.println(" No downloaded Excel file found to move.");
-		}
-		
-		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-		wait.until(ExpectedConditions.alertIsPresent());
-		driver.switchTo().alert().accept();
-		Thread.sleep(3000);
-		
-		wait.until(ExpectedConditions.elementToBeClickable(SubMastermerchant3)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(selectAllbtn3)).click();
-		wait.until(ExpectedConditions.elementToBeClickable(searchSubMastermerchant3)).sendKeys("Test-acs-01");
-		wait.until(ExpectedConditions.elementToBeClickable(Testacs3)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnFilter"))).click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Bangalore");
-		wait.until(ExpectedConditions.elementToBeClickable(deleteRecord)).click();
-		wait.until(ExpectedConditions.alertIsPresent());
-		driver.switchTo().alert().accept();
-		
-	}
-	
+    @FindBy(xpath = "//h3[normalize-space()='City BlackList Details']")
+    WebElement cityBlackListDetailsPage;
+
+    @FindBy(xpath = "//span[@class='fa fa-trash-o fa-lg']")
+    WebElement deleteRecordBtn;
+
+    /**
+     * Main method to interact with City BlackList page
+     */
+    public void interactWithFraudControlBlackList() throws IOException {
+        try {
+            // Expand sidebar if collapsed
+            expandSidebarIfCollapsed();
+
+            // Navigate menus
+            clickElementWithFallback(fraudControlMenu, By.xpath("//span[normalize-space()='Fraud Control']"));
+            clickElementWithFallback(cityBlackListLink, By.xpath("//a[normalize-space()='City BlackList']"));
+
+            // Select Sub-Master Merchant (first dropdown)
+            clickElementWithFallback(subMasterMerchantDropdown1, By.xpath("(//button[@class='multiselect dropdown-toggle btn btn-default'])[1]"));
+            searchMasterMerchant1.sendKeys("Test-acs-01");
+            clickElementWithFallback(testAcs1, By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']"));
+
+            // Upload Excel
+            WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
+            String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
+            blackListUpload.sendKeys(filePath);
+            System.out.println("✅ File uploaded successfully.");
+
+            clickElementWithFallback(By.id("btnimport"));
+
+            // Add City BlackList entry
+            clickElementWithFallback(addCityBlackListBtn, By.xpath("//a[@class='btn btn-info btn-sm']"));
+
+            // Select sub-merchant (second dropdown)
+            clickElementWithFallback(subMasterMerchantDropdown2, By.xpath("(//button[@class='multiselect dropdown-toggle btn btn-default'])[3]"));
+            searchSubTestAcs2.sendKeys("Test-acs-01");
+            clickElementWithFallback(selectSubTestAcs2, By.xpath("//label[@class='radio'][normalize-space()='Test-Acs-01-SM']"));
+
+            // Enter city name & save
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("City"))).sendKeys("Surat");
+            clickElementWithFallback(By.id("btn_Save"));
+
+            // Third dropdown filter
+            clickElementWithFallback(subMasterMerchantDropdown3, By.xpath("(//span[@class='multiselect-selected-text'])[2]"));
+            clickElementWithFallback(selectAllBtn3, By.xpath("//li[@class='multiselect-item multiselect-all active']//label[@class='checkbox'][normalize-space()='Select all']"));
+            searchSubMasterMerchant3.sendKeys("Test-acs-01");
+            clickElementWithFallback(testAcs3, By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']"));
+            clickElementWithFallback(By.id("btnFilter"));
+
+            // Export Excel
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Surat");
+            clickElementWithFallback(By.id("btnExport"));
+
+            // Handle download file
+            String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
+            if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
+                CommonUtilis.moveDownloadedFileToDatedFolder("CityBlackList", dateFolder);
+            } else {
+                System.err.println("❌ No downloaded Excel file found to move.");
+            }
+
+            // Screenshot
+            CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-City BlackList", "CityBlackListDetails_Page_Screenshot");
+
+            // Delete record
+            clickElementWithFallback(deleteRecordBtn, By.xpath("//span[@class='fa fa-trash-o fa-lg']"));
+            wait.until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().accept();
+            
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).clear();           
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Bangalore");
+            
+            clickElementWithFallback(By.id("btnFilter"));
+            
+            // Delete record
+            clickElementWithFallback(deleteRecordBtn, By.xpath("//span[@class='fa fa-trash-o fa-lg']"));
+            wait.until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().accept();
+            
+
+        } catch (Exception e) {
+            CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-City BlackList", "Error_Capture_" + System.currentTimeMillis());
+            throw new RuntimeException(" Error in CityBlackList flow", e);
+        }
+    }
+
+    /**
+     * Expand sidebar if collapsed
+     */
+    private void expandSidebarIfCollapsed() {
+        try {
+            List<WebElement> toggles = driver.findElements(By.xpath("//button[contains(@class,'menu-toggle')]"));
+            if (!toggles.isEmpty() && toggles.get(0).isDisplayed()) {
+                toggles.get(0).click();
+                System.out.println("✅ Sidebar expanded via toggle button.");
+            }
+        } catch (Exception e) {
+            System.out.println("ℹ️ No sidebar toggle found, continuing...");
+        }
+    }
+
+    /**
+     * Robust click: element + JS fallback
+     */
+    private void clickElementWithFallback(WebElement element, By locator) throws IOException {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            element.click();
+        } catch (Exception e) {
+            System.out.println("⚠️ Normal click failed for " + locator + " - trying JS click.");
+            try {
+                WebElement el = driver.findElement(locator);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
+            } catch (Exception ex) {
+                CommonUtilis.captureFullPageScreenshot(driver, "debug", "clickFail_" + locator.toString());
+                throw new RuntimeException(" Could not click element: " + locator, ex);
+            }
+        }
+    }
+
+    private void clickElementWithFallback(By locator) throws IOException {
+        try {
+            WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
+            el.click();
+        } catch (Exception e) {
+            System.out.println("⚠️ Normal click failed for " + locator + " - trying JS click.");
+            try {
+                WebElement el = driver.findElement(locator);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
+            } catch (Exception ex) {
+                CommonUtilis.captureFullPageScreenshot(driver, "debug", "clickFail_" + locator.toString());
+                throw new RuntimeException("❌ Could not click element: " + locator, ex);
+            }
+        }
+    }
 }
-

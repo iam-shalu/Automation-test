@@ -19,7 +19,7 @@
 			 <class name="PG10TestCases.TC_VPABlackList" /> -->
 			 <!-- <class name="PG10TestCases.TC_CityBlackList" /> -->  
 			 <!-- <class name="PG10TestCases.TC_StateBlackList" /> -->   
-			 <class name="PG10TestCases.TC_MasterMerchant" />  
+			 <!-- <class name="PG10TestCases.TC_MasterMerchant" /> -->  
 			 <!-- <class name="PG10TestCases.TC_GatewayList" /> --> 
 			 <!-- <class name="PG10TestCases.TC_SettingsDepositAssignProces" /> 
 			 <class name="PG10TestCases.TC_SettingsPayoutAssignProces" /> --> 
