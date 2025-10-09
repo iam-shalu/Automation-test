@@ -35,6 +35,8 @@ public class TC_PayoutTransaction extends PG10Base {
 		Listeners.test.log(Status.INFO, "Enter the Value - gomzi001@axl");
 		Listeners.test.log(Status.INFO, "Click On Filter");
 
+	//	payoutTransactionPage.interactWithtransactionPayoutTxs();
+		
 		payoutTransactionPage.interactWithtransactionPayoutTxs();
 
 		log.info("==== Payout Transactions Test Completed ====");

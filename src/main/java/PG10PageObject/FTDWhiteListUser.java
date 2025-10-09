@@ -38,8 +38,12 @@ public class FTDWhiteListUser {
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
     WebElement searchMasterMerchant;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement TestAcs01;
+    
+    //For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcs01;
 
     @FindBy(xpath = "//a[normalize-space()='Add FTDWhiteList User']")
@@ -50,10 +54,14 @@ public class FTDWhiteListUser {
 
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
     WebElement searchAddWhiteListUserMasterMerchant;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement TestAcs013;
+    
+    //For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcs013;
-
+   
     @FindBy(xpath = "(//button[@class=\"btn btn-success\"])[1]")
     WebElement close;
 
@@ -62,8 +70,11 @@ public class FTDWhiteListUser {
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
     WebElement searchMasterMerchant2;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement TestAcs0135;
+    // For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcs0135;
 
     By duplicateDataError = By.xpath("//*[contains(text(),'Data Already Exist for this Merchant')]");

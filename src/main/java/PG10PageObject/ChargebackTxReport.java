@@ -51,9 +51,14 @@ public class ChargebackTxReport {
 
     @FindBy(xpath = "(//input[@placeholder='Search'])[1]")
     WebElement SearchMasterMerchant;
+    
     // X Path For UAT 
     @FindBy(xpath = "//label[normalize-space(text())='Test-Acs-01']")
     WebElement SelectmasterMasterTestacs01;
+    
+    //x Path For Production 
+    @FindBy(xpath = "//label[normalize-space()='Test-Acs-01-MM']")
+    WebElement SelectmasterMasterTestacs01L;
 
     @FindBy(xpath = "(//button[@class='multiselect dropdown-toggle btn btn-default'])[2]")
     WebElement merchantSelectAny2;
@@ -114,7 +119,10 @@ public class ChargebackTxReport {
         WebElement masterSearch = wait.until(ExpectedConditions.visibilityOf(SearchMasterMerchant));
         masterSearch.sendKeys("Test-Acs-01");
         //X Path For UAT 
-        clickElementWithFallback(By.xpath("//label[normalize-space(text())='Test-Acs-01']"));
+    //    clickElementWithFallback(By.xpath("//label[normalize-space(text())='Test-Acs-01']"));
+        
+      //X Path For Production
+        clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01-MM']"));
 
         // Merchant 2
         clickElementWithFallback(By.xpath("(//button[@class='multiselect dropdown-toggle btn btn-default'])[2]"));

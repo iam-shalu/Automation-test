@@ -1,5 +1,4 @@
 package PG10utils;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -140,37 +139,6 @@ public class CommonUtilis {
 		return false;
 	}
 	
-	/*
-	 * public static void moveDownloadedFileToDatedFolder(String moduleName, String
-	 * dateStr) { String baseDownloadDir =
-	 * "D:\\Automation\\pg10-automation\\ExcelFile"; File downloadFolder = new
-	 * File(baseDownloadDir); File[] xlsxFiles = downloadFolder.listFiles( (dir,
-	 * name) -> name.toLowerCase().endsWith(".xlsx") &&
-	 * !name.toLowerCase().endsWith(".crdownload")); if (xlsxFiles == null ||
-	 * xlsxFiles.length == 0) { log.warn("No downloaded Excel file found to move.");
-	 * return; }
-	 * 
-	 * File latestFile = xlsxFiles[0]; for (File f : xlsxFiles) { if
-	 * (f.lastModified() > latestFile.lastModified()) { latestFile = f; } } File
-	 * targetDir = new File(baseDownloadDir + File.separator + dateStr +
-	 * File.separator + moduleName); if (!targetDir.exists()) { if
-	 * (targetDir.mkdirs()) { log.info("Created directory: " +
-	 * targetDir.getAbsolutePath()); } else {
-	 * log.error("Failed to create target directory: " +
-	 * targetDir.getAbsolutePath()); return; } }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * // Generate timestamped destination file String timestamp = new
-	 * SimpleDateFormat("HHmmss").format(new Date()); File destinationFile = new
-	 * File(targetDir, "Export_" + timestamp + ".xlsx");
-	 * 
-	 * // Move file From Base if (latestFile.renameTo(destinationFile)) {
-	 * log.info("Exported file moved to: " + destinationFile.getAbsolutePath()); }
-	 * else { log.error("Failed to move file: " + latestFile.getAbsolutePath()); } }
-	 */
-	
 	public static void moveDownloadedFileToDatedFolder(String moduleName, String dateFolder) throws IOException {
 	    String baseDir = "D:\\Automation\\pg10-automation\\ExcelFile";
 
@@ -200,8 +168,7 @@ public class CommonUtilis {
 	    }
 	}
 	
-	
-	
+
 	// Generic calendar date picker
 	public static void selectCalendarDate(WebDriver driver, WebElement field, WebElement dateOption) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

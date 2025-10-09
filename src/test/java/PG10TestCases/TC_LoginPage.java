@@ -12,11 +12,15 @@ public class TC_LoginPage extends PG10Base {
 		Thread.sleep(3000);
 
 		Listeners.test.log(Status.INFO, "Entering Username");
-		loginPage.username("Akash_Lade");
+	//	loginPage.username("Akash_Lade");
+		
+		loginPage.username("miteshqa");
 		log.info("Entered username in username field");
 
 		Listeners.test.log(Status.INFO, "Entering Password");
-		loginPage.enterpass("KJMYqzp37~Wug&");
+	//	loginPage.enterpass("KJMYqzp37~Wug&");
+	
+		loginPage.enterpass("QEJm9~QBnfft7*");
 		log.info("Entered password in password field");
 
 		Listeners.test.log(Status.INFO, "Clicking on Login Button");

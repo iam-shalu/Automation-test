@@ -69,6 +69,7 @@ public class BlackListCustomer {
             }
         }
     }
+    
 
     // -----------------------
     // Main interaction method
@@ -154,9 +155,7 @@ public class BlackListCustomer {
                     WebElement row = rows.get(0);
                     WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(
                             row.findElement(By.xpath(
-                                    "./following-sibling::td//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-trash-o')]"
-                            ))
-                    ));
+                                    "./following-sibling::td//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-trash-o')]"))));
 
                     deleteBtn.click();
                     wait.until(ExpectedConditions.alertIsPresent()).accept();

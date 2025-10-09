@@ -1,5 +1,4 @@
 package PG10PageObject;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -23,7 +22,7 @@ public class PayoutTransaction {
 	@FindBy(xpath = "//div[@class='modal-dialog']//button[@type='button'][normalize-space()='Close']")
 	WebElement CloseLimit;
 
-	@FindBy(xpath = "//span[normalize-space()='Transactions']")
+	@FindBy(xpath = "(//span[@class=\"nav-item\"])[3]")
 	WebElement transactionsMenu;
 
 	@FindBy(xpath = "//a[@id='submenuTxDropdown']")
@@ -37,18 +36,32 @@ public class PayoutTransaction {
 
 	@FindBy(xpath = "//input[@id='txtDateRange']")
 	WebElement dateRange;
-
+	
+	//UAT 
 	@FindBy(xpath = "//li[@class='active']")
 	WebElement dateLast7days;
-
+	
+	//Production
+	@FindBy(xpath = "//Li[@data-range-key=\"Yesterday\"]")
+	WebElement Yesterday;	
+	
+	// For Production
+	@FindBy(xpath = "(//td[@class=\"dt-type-numeric sorting_1 dtr-control\"])[1]")
+	WebElement PayoutTxYesterday;
+	
 	@FindBy(xpath = "//button[@id='btnfiltersearch']")
 	WebElement filter;
 
 	@FindBy(xpath = "//button[@id='btnDownloadExcel']")
 	WebElement export;
-
+	
+	//For UAT
 	@FindBy(xpath = "(//td[@class=\"dt-type-numeric sorting_1 dtr-control\"])[1]")
 	WebElement PayoutId;
+	
+	//For Live 
+	@FindBy(xpath = "(//td[@class=\"dt-type-numeric sorting_1 dtr-control\"])[1]")
+	WebElement PayoutTxId;
 
 	@FindBy(xpath = "//span[@class='dtr-data']//i[@class='fa fa-server']")
 	WebElement tx_Action;
@@ -61,28 +74,45 @@ public class PayoutTransaction {
 
 	@FindBy(xpath = "//a[@href='/BNIBPayout/Transactions']")
 	WebElement payoutTxs;
-
+	
+	// For UAT 
 	@FindBy(xpath = "//li[normalize-space()='Last 7 Days']")
 	WebElement payoutTxdateLast7Days;
-
+	
 	@FindBy(xpath = "//h3[normalize-space()='Payout Tx List']")
 	WebElement payoutTxList;
-
+	
+	@FindBy(xpath = "//span[@class='dtr-data']//i[@class='fa fa-server']")
+	WebElement showDetails;
+	
+	@FindBy(xpath = "(//h4[@class=\"modal-title\"])[1]")
+	WebElement PayoutCollection;
+	
+	@FindBy(xpath = "(//button[@class=\"btn btn-default waves-effect\"])[1]")
+	WebElement close;
+	
 	public void interactWithtransactionPayoutTxs() throws IOException {
 		try {
 		//	System.out.println("==== Starting Payout Transactions Test ====");
 			Thread.sleep(3000);
-			wait.until(ExpectedConditions.or(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")),
-							ExpectedConditions.not(ExpectedConditions.attributeContains(By.id("merchantLimitModal"),
-									"style", "display: block"))));
+//			wait.until(ExpectedConditions.or(ExpectedConditions.invisibilityOfElementLocated(By.id("merchantLimitModal")),
+//			ExpectedConditions.not(ExpectedConditions.attributeContains(By.id("merchantLimitModal"),"style", "display: block"))));
+			
+			
+			
 			wait.until(ExpectedConditions.elementToBeClickable(transactionsMenu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(bnibMenu)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(payoutTxs)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(dateRange)).click();
-			wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
+			//For UAT
+			
+	//		wait.until(ExpectedConditions.elementToBeClickable(payoutTxdateLast7Days)).click();
+			
+			//For Production
+			wait.until(ExpectedConditions.elementToBeClickable(Yesterday)).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlCutOffTime"))).click();
-			WebElement cutoffTimeDropdown = wait
-					.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlCutOffTime")));
+			WebElement cutoffTimeDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlCutOffTime")));
+			
 			Select timeSelect = new Select(cutoffTimeDropdown);
 			// Select the option by visible text "12 AM to 12 AM"
 			timeSelect.selectByVisibleText("12 AM to 12 AM");
@@ -100,11 +130,19 @@ public class PayoutTransaction {
 			}
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("dt-length-1"))).click();
-			wait.until(ExpectedConditions.elementToBeClickable(PayoutId)).click();
+		//	wait.until(ExpectedConditions.elementToBeClickable(PayoutTxId)).click();
+			
+			wait.until(ExpectedConditions.elementToBeClickable(PayoutTxId)).click();
+			
 			Thread.sleep(3000);
 			CommonUtilis.takeScreenshot(driver, "Payout Transactions", "Payout_Tx_List");
 			Thread.sleep(3000);
 			((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+			
+			wait.until(ExpectedConditions.elementToBeClickable(showDetails)).click();
+			
+			wait.until(ExpectedConditions.elementToBeClickable(close)).click();
+			
 			System.out.println("==== Payout Transactions Test Completed ====");
 
 		} catch (Exception e) {
