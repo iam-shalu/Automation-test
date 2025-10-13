@@ -1,33 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-09T22:29:08 IST" name="Suite" finished-at="2025-10-09T22:30:39 IST" duration-ms="91134">
+  <suite started-at="2025-10-13T12:30:11 IST" name="Suite" finished-at="2025-10-13T12:32:04 IST" duration-ms="113826">
     <groups>
     </groups>
-    <test started-at="2025-10-09T22:29:08 IST" name="Test" finished-at="2025-10-09T22:30:39 IST" duration-ms="91134">
-      <class name="PG10TestCases.TC_SettingsPayoutAssignProces">
-        <test-method signature="SettingsPayoutAssignProces()[pri:18, instance:PG10TestCases.TC_SettingsPayoutAssignProces@5c669da8]" started-at="2025-10-09T22:29:16 IST" name="SettingsPayoutAssignProces" finished-at="2025-10-09T22:30:34 IST" duration-ms="78428" status="PASS">
+    <test started-at="2025-10-13T12:30:11 IST" name="Test" finished-at="2025-10-13T12:32:04 IST" duration-ms="113826">
+      <class name="PG10TestCases.TC_FTDWhiteListUser">
+        <test-method signature="whiteListFTDListCustomer()[pri:11, instance:PG10TestCases.TC_FTDWhiteListUser@5c669da8]" started-at="2025-10-13T12:30:25 IST" name="whiteListFTDListCustomer" finished-at="2025-10-13T12:31:59 IST" duration-ms="94246" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //span[@class='fa fa-trash-o fa-lg'] (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '4.33.0', revision: '2c6aaad03a'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.66, chrome: {chromedriverVersion: 141.0.7390.76 (d6fcfbb51aac..., userDataDir: C:\Users\india\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58297}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58297/devtoo..., se:cdpVersion: 141.0.7390.66, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1fef892799b5696901c262bfcca08ff9]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[@class='fa fa-trash-o fa-lg'] (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '4.33.0', revision: '2c6aaad03a'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.66, chrome: {chromedriverVersion: 141.0.7390.76 (d6fcfbb51aac..., userDataDir: C:\Users\india\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58297}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58297/devtoo..., se:cdpVersion: 141.0.7390.66, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1fef892799b5696901c262bfcca08ff9
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at PG10PageObject.FTDWhiteListUser.interactWithfraudControl_FTDwhiteListUser(FTDWhiteListUser.java:141)
+at PG10TestCases.TC_FTDWhiteListUser.whiteListFTDListCustomer(TC_FTDWhiteListUser.java:33)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SettingsPayoutAssignProces -->
-      </class> <!-- PG10TestCases.TC_SettingsPayoutAssignProces -->
+        </test-method> <!-- whiteListFTDListCustomer -->
+      </class> <!-- PG10TestCases.TC_FTDWhiteListUser -->
       <class name="PG10TestCases.TC_Logout">
-        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@31920ade]" started-at="2025-10-09T22:30:34 IST" name="logout" finished-at="2025-10-09T22:30:39 IST" duration-ms="5093" status="PASS">
+        <test-method signature="logout()[pri:19, instance:PG10TestCases.TC_Logout@31920ade]" started-at="2025-10-13T12:31:59 IST" name="logout" finished-at="2025-10-13T12:32:04 IST" duration-ms="4987" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
       </class> <!-- PG10TestCases.TC_Logout -->
       <class name="PG10TestCases.TC_LoginPage">
-        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-10-09T22:29:05 IST" name="setUpSuite" finished-at="2025-10-09T22:29:08 IST" duration-ms="3241" status="PASS">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-10-13T12:30:03 IST" name="setUpSuite" finished-at="2025-10-13T12:30:11 IST" duration-ms="7214" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-10-09T22:29:08 IST" name="login" finished-at="2025-10-09T22:29:16 IST" duration-ms="7568" status="PASS">
+        <test-method signature="login()[pri:1, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-10-13T12:30:11 IST" name="login" finished-at="2025-10-13T12:30:25 IST" duration-ms="14518" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-10-09T22:30:40 IST" name="tearDownSuite" finished-at="2025-10-09T22:30:40 IST" duration-ms="204" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:PG10TestCases.TC_LoginPage@616ac46a]" started-at="2025-10-13T12:32:05 IST" name="tearDownSuite" finished-at="2025-10-13T12:32:05 IST" duration-ms="218" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->

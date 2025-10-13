@@ -181,7 +181,6 @@
 //}
 
 package PG10PageObject;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -190,7 +189,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
-
 import PG10utils.CommonUtilis;
 
 public class DepositTransaction {
@@ -324,18 +322,7 @@ public class DepositTransaction {
             System.out.println("Normal click failed for locator, trying JS click.");
             WebElement el = driver.findElement(locator);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
+            
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

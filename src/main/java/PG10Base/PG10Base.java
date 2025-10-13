@@ -38,7 +38,7 @@ public class PG10Base {
     public static MasterMerchant masterMerchantpage;
     public static GatewayList gatewaylistpage;
     public static Settings_DepositAssignProcessor settingsDepositAssignPage;
-    public static Settings_PayoutProcessorAss settingsPayoutAssignPage;
+    public static Settings_PayoutrAssignProcessor settingsPayoutAssignPage;
     public static SearchTxHistory searchTxhistoryPage;
 
     @BeforeSuite
@@ -95,7 +95,7 @@ public class PG10Base {
             masterMerchantpage = new MasterMerchant(driver);
             gatewaylistpage = new GatewayList(driver);
             settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
-            settingsPayoutAssignPage = new Settings_PayoutProcessorAss(driver);
+            settingsPayoutAssignPage = new Settings_PayoutrAssignProcessor(driver);
             searchTxhistoryPage = new SearchTxHistory(driver);
             ChargebackTxPage = new ChargebackTxReport(driver);
             logoutPage = new Logout(driver);

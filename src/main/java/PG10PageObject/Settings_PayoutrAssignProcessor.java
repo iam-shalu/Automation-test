@@ -12,11 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
-public class Settings_PayoutProcessorAss {
+public class Settings_PayoutrAssignProcessor {
     WebDriver driver;
     WebDriverWait wait;
 
-    public Settings_PayoutProcessorAss(WebDriver driver) {
+    public Settings_PayoutrAssignProcessor(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));

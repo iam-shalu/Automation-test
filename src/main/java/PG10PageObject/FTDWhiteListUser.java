@@ -38,6 +38,7 @@ public class FTDWhiteListUser {
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
     WebElement searchMasterMerchant;
+    
     // For UAT
 //    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 //    WebElement TestAcs01;
@@ -54,6 +55,7 @@ public class FTDWhiteListUser {
 
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
     WebElement searchAddWhiteListUserMasterMerchant;
+    
     // For UAT
 //    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 //    WebElement TestAcs013;
@@ -73,6 +75,7 @@ public class FTDWhiteListUser {
     // For UAT
 //    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
 //    WebElement TestAcs0135;
+    
     // For Production
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcs0135;
@@ -109,7 +112,7 @@ public class FTDWhiteListUser {
         typeAndSelect(searchAddWhiteListUserMasterMerchant, "Test-acs-01", TestAcs013);
 
         typeText(By.id("firstName"), "Akash");
-        typeText(By.id("lastName"), "Lade");
+        typeText(By.id("lastName"), "Patel");
         typeText(By.id("Email"), "akash@gmail.com");
         typeText(By.id("Phone"), "9632629063");
         safeClick(By.id("btn_Save"));
@@ -130,9 +133,15 @@ public class FTDWhiteListUser {
         applyFilters();
         
         CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-FTDWhiteListUser", "FTDWhiteListUser_Page_Screenshot");
+       
+        deleteAllRecordsFromTable();
+         
+        applyFilters();
+        
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='fa fa-trash-o fa-lg']")));
         
         deleteAllRecordsFromTable();
-          
+
         log.info("==== Completed FraudControl FTD White List User Test ====");
         
     }
@@ -167,6 +176,17 @@ public class FTDWhiteListUser {
     }
 
     // Helper to re-apply filters
+//    private void applyFilters() {
+//        safeClick(selectMasterMerchant2);
+//        typeAndSelect(searchMasterMerchant2, "Test-acs-01", TestAcs0135);
+//        safeClick(By.id("btnFilter"));
+//
+//        typeText(By.id("txtSearch"), "Akash");
+//        safeClick(By.id("btnFilter"));
+//
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//table")));
+//    }
+    
     private void applyFilters() {
         safeClick(selectMasterMerchant2);
         typeAndSelect(searchMasterMerchant2, "Test-acs-01", TestAcs0135);
@@ -175,9 +195,15 @@ public class FTDWhiteListUser {
         typeText(By.id("txtSearch"), "Akash");
         safeClick(By.id("btnFilter"));
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//table")));
+        // Wait for either results or empty table message
+        wait.until(ExpectedConditions.or(
+            ExpectedConditions.presenceOfElementLocated(By.xpath("//table")),
+            ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'No data available')]"))
+        ));
+
+        log.info("Filters applied successfully.");
     }
-       
+
     private void deleteAllRecordsFromTable() {
       while (true) {
       List<WebElement> deleteButtons = driver.findElements(By.xpath("//span[@class='fa fa-trash-o fa-lg']"));
@@ -193,8 +219,36 @@ public class FTDWhiteListUser {
       driver.switchTo().alert().accept();
       wait.until(ExpectedConditions.stalenessOf(deleteBtn));
         
-  }
-    	
- }
+  	}  	
+       
       
 }
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

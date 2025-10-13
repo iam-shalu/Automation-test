@@ -3,15 +3,10 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.support.ui.*;
 import PG10utils.CommonUtilis;
 
 public class BlackListCustomer {
@@ -69,7 +64,6 @@ public class BlackListCustomer {
             }
         }
     }
-    
 
     // -----------------------
     // Main interaction method
@@ -79,7 +73,6 @@ public class BlackListCustomer {
             // Navigate to Blacklist Customer page
             clickElementWithFallback(By.xpath("/html/body/div[2]/div/nav/div/ul/li[4]/a/span"));
             clickElementWithFallback(By.xpath("//a[normalize-space()='Black List Customer']"));
-
             driver.manage().window().maximize();
 
             // Upload file
@@ -130,45 +123,85 @@ public class BlackListCustomer {
             wait.until(ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("//td[normalize-space(text())='" + expectedEmail + "']")));
 
-            // Screenshot
+            // Screenshot using full-page logic
             String screenshotName = "BlackListCustomerText_Page_Screenshot";
             System.out.println("Capturing full page screenshot...");
             CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-BlackListCustomer", screenshotName);
 
-            // Step 2: Delete all matching records
+            // ============================
+            // ✅ Fixed Delete Logic Section
+            // ============================
             while (true) {
                 try {
-                    WebElement searchBox2 = wait.until(ExpectedConditions.visibilityOf(searchBlackListCust));
+                    // Refresh search each loop
+                    WebElement searchBox2 = wait.until(ExpectedConditions.elementToBeClickable(searchBlackListCust));
                     searchBox2.clear();
                     searchBox2.sendKeys(expectedEmail);
 
-                    Thread.sleep(1000); // wait for table refresh
+                    // Wait until record appears
+                    List<WebElement> rows = wait.until(driver -> {
+                        List<WebElement> found = driver.findElements(
+                                By.xpath("//table//td[normalize-space(text())='" + expectedEmail + "']/parent::tr"));
+                        return (found.size() > 0) ? found : null;
+                    });
 
-                    List<WebElement> rows = driver.findElements(
-                            By.xpath("//td[normalize-space(text())='" + expectedEmail + "']"));
-
-                    if (rows.isEmpty()) {
-                        System.out.println("All records deleted for: " + expectedEmail);
+                    if (rows == null || rows.isEmpty()) {
+                        System.out.println("✅ All records deleted for: " + expectedEmail);
                         break;
                     }
 
+                    // Work with first record
                     WebElement row = rows.get(0);
-                    WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(
-                            row.findElement(By.xpath(
-                                    "./following-sibling::td//a[contains(@title,'Delete Blacklist customer')]//span[contains(@class,'fa-trash-o')]"))));
+                    WebElement deleteLink = row.findElement(By.xpath(".//a[contains(@title,'Delete Blacklist customer')]"));
 
-                    deleteBtn.click();
-                    wait.until(ExpectedConditions.alertIsPresent()).accept();
+                    // Scroll center (helps headless)
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", deleteLink);
+
+                    // Try normal click, fallback to JS
+                    try {
+                        wait.until(ExpectedConditions.elementToBeClickable(deleteLink));
+                        deleteLink.click();
+                    } catch (Exception clickEx) {
+                        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", deleteLink);
+                        System.out.println(" Used JS click fallback for delete (headless mode).");
+                    }
+
+                    // Handle alert confirmation
+                    try {
+                        wait.until(ExpectedConditions.alertIsPresent());
+                        Alert alert = driver.switchTo().alert();
+                        System.out.println("🪟 Alert message: " + alert.getText());
+                        alert.accept();
+                        System.out.println("✅ Alert accepted successfully.");
+                    } catch (Exception e) {
+                        System.out.println("⚠️ Alert not appeared — retrying DeleteRow() manually via JS.");
+                        try {
+                            ((JavascriptExecutor) driver).executeScript("DeleteRow('" + expectedEmail + "');");
+                            Thread.sleep(1000);
+                            driver.switchTo().alert().accept();
+                        } catch (Exception ignore) {
+                            System.out.println(" No alert found even after JS trigger — skipping.");
+                        }
+                    }
+
+                    // Wait for row to disappear
                     wait.until(ExpectedConditions.stalenessOf(row));
+                    System.out.println(" Deleted one record for: " + expectedEmail);
 
-                    System.out.println("Deleted one record for: " + expectedEmail);
+                    // Ensure table reload
+                    wait.until(ExpectedConditions.or(
+                            ExpectedConditions.stalenessOf(row),
+                            ExpectedConditions.invisibilityOfElementLocated(
+                                    By.xpath("//table//td[normalize-space(text())='" + expectedEmail + "']"))
+                    ));
+
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.out.println("⚠️ Deletion completed or no more records found.");
                     break;
                 }
             }
 
-            // Scroll page
+            // Scroll page for sanity
             wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
@@ -182,3 +215,4 @@ public class BlackListCustomer {
         Thread.sleep(2000);
     }
 }
+

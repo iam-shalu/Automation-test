@@ -11,11 +11,9 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import javax.imageio.ImageIO;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -83,6 +81,8 @@ public class CommonUtilis {
 		ImageIO.write(image, "PNG", outputFile);
 		System.out.println("Full-page screenshot saved at: " + outputFile.getAbsolutePath());
 	}
+	
+
 
 	// Rename downloaded file
 	public static void renameDownloadedFile(File file, String label) throws IOException {

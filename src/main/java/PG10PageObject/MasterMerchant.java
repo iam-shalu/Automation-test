@@ -267,7 +267,7 @@ public class MasterMerchant {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
             el.click();
         } catch (Exception e) {
-            System.out.println("⚠️ Normal click failed for " + locator + " - trying JS click.");
+            System.out.println(" Normal click failed for " + locator + " - trying JS click.");
             try {
                 WebElement el = driver.findElement(locator);
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);

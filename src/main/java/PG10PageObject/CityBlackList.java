@@ -38,7 +38,7 @@ public class CityBlackList {
 
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
     WebElement searchMasterMerchant1;
-
+    //FOR uat & Production 
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
     WebElement testAcs1;
 
@@ -126,7 +126,7 @@ public class CityBlackList {
             if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
                 CommonUtilis.moveDownloadedFileToDatedFolder("CityBlackList", dateFolder);
             } else {
-                System.err.println("❌ No downloaded Excel file found to move.");
+                System.err.println(" No downloaded Excel file found to move.");
             }
 
             // Screenshot
