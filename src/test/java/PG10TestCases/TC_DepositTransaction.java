@@ -31,7 +31,7 @@ public class TC_DepositTransaction extends PG10Base {
 		Listeners.test.log(Status.INFO, "Enter the Value - gomzi001@axl");
 		Listeners.test.log(Status.INFO, "Click On Filter");
 
-		depositTransactionPage.interactWithtransactionsDepositTxs();
+		depositTransactionPage.interactWithDepositTransactions();
 
 		log.info("==== Deposit Transactions Test Completed ====");
 

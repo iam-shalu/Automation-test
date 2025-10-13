@@ -1,5 +1,4 @@
- package PG10PageObject;
-
+package PG10PageObject;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -73,7 +72,11 @@ public class WhiteListCustomer {
         // Master Merchant selection
         clickElementWithFallback(By.xpath("//button[@title='Select Master Merchant']"));
         searchSelectMasterMerchant.sendKeys("Test-Acs-01");
-        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        //For UAT
+    //    clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        
+        //For Production
+        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']"));
 
         driver.manage().window().maximize();
 
@@ -93,8 +96,10 @@ public class WhiteListCustomer {
         clickElementWithFallback(By.xpath("//a[@class='btn btn-info btn-sm']")); // Add WhiteList
         clickElementWithFallback(By.xpath("//button[@class='multiselect dropdown-toggle btn btn-default']"));
         searchWhiteList.sendKeys("Test-acs-01");
-        clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01']"));
-
+        //For UAT
+    //    clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01']"));
+        //For Production
+        clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01-MM']"));
         // Fill details
         typeText(By.id("FirstName"), "Akash");
         typeText(By.id("LastName"), "Lade");
@@ -107,7 +112,12 @@ public class WhiteListCustomer {
         // Export Excel
         clickElementWithFallback(By.xpath("(//button[@title='Select Master Merchant'])[2]"));
         searchWhiteList2.sendKeys("Test-acs-01");
-        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        //For UAT
+     //   clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        
+        //For Production
+        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']"));
+        
         typeText(By.id("txtSearch"), "Akash");
         clickElementWithFallback(By.id("btnFilter"));
         clickElementWithFallback(By.id("btnExport"));
@@ -200,6 +210,3 @@ public class WhiteListCustomer {
         }
     }
 }
-
-
-

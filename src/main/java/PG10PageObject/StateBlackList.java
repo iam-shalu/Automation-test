@@ -39,10 +39,13 @@ public class StateBlackList {
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
     WebElement searchSubMerchant1;
 
-    // X Path For UAT Environment
+    // X Path For UAT Environment & Production Same
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']")
     WebElement Testacs1;
-
+    
+    //For Production
+    //ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']
+   
     @FindBy(xpath = "//a[@class='btn btn-info btn-sm']")
     WebElement addStateBlackList;
 
@@ -55,7 +58,7 @@ public class StateBlackList {
     // X Path For UAT Environment
     @FindBy(xpath = "//label[@class='radio'][normalize-space()='Test-Acs-01-SM']")
     WebElement Testacs2;
-
+    
     @FindBy(xpath = "//h3[normalize-space()='State BlackList Details']")
     WebElement StateBlackListText;
 

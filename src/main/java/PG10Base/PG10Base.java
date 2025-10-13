@@ -18,7 +18,6 @@ public class PG10Base {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
-  
     // Page objects
     public static Login loginPage;
     public static Transactions transactionPage;
@@ -33,13 +32,13 @@ public class PG10Base {
     public static CityBlackList cityblackListPage;
     public static FraudControl fraudControlPage;
     public static DepositTransaction depositTransactionPage;
-    public static PayoutTransaction payoutTransactionPage;
+   public static PayoutTransaction payoutTransactionPage;
     public static Dashboard dashboardPage;
     public static ChargebackTxReport ChargebackTxPage;
     public static MasterMerchant masterMerchantpage;
     public static GatewayList gatewaylistpage;
     public static Settings_DepositAssignProcessor settingsDepositAssignPage;
-    public static Settings_PayoutProcessorAss settingsPayoutAssignPage;
+    public static Settings_PayoutrAssignProcessor settingsPayoutAssignPage;
     public static SearchTxHistory searchTxhistoryPage;
 
     @BeforeSuite
@@ -49,7 +48,6 @@ public class PG10Base {
             DOMConfigurator.configure("log4j.xml");
             WebDriverManager.chromedriver().setup();
             String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
-
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<>();
             prefs.put("download.default_directory", downloadDir);
@@ -58,7 +56,7 @@ public class PG10Base {
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("--remote-allow-origins=*");
 
-            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
             if (headless) {
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
@@ -73,7 +71,9 @@ public class PG10Base {
             wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(15));
 
             // UAT URL
-            driver.get("https://uat.paygate10.com/Dashboard");
+       //    driver.get("https://uat.paygate10.com/Dashboard");
+            
+            driver.get("https://paygate10.com/");
             log.info("Navigated to PG10 login page");
 
             // ✅ Expand sidebar (important for headless)
@@ -95,7 +95,7 @@ public class PG10Base {
             masterMerchantpage = new MasterMerchant(driver);
             gatewaylistpage = new GatewayList(driver);
             settingsDepositAssignPage = new Settings_DepositAssignProcessor(driver);
-            settingsPayoutAssignPage = new Settings_PayoutProcessorAss(driver);
+            settingsPayoutAssignPage = new Settings_PayoutrAssignProcessor(driver);
             searchTxhistoryPage = new SearchTxHistory(driver);
             ChargebackTxPage = new ChargebackTxReport(driver);
             logoutPage = new Logout(driver);
