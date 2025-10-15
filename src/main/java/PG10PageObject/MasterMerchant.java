@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import PG10Base.PG10Base;
 import PG10utils.CommonUtilis;
 
 public class MasterMerchant {
@@ -268,7 +267,7 @@ public class MasterMerchant {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
             el.click();
         } catch (Exception e) {
-            System.out.println("⚠️ Normal click failed for " + locator + " - trying JS click.");
+            System.out.println(" Normal click failed for " + locator + " - trying JS click.");
             try {
                 WebElement el = driver.findElement(locator);
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);

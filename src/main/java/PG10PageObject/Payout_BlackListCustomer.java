@@ -41,8 +41,12 @@ public class Payout_BlackListCustomer {
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[1]")
     WebElement sSearchMasterMerchant;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    // For UAT 
+//   @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//   WebElement TestAcs01;
+    
+    // For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcs01;
 
     @FindBy(xpath = "(//button[@class=\"btn btn-info btn-sm\"])[1]")
@@ -53,8 +57,12 @@ public class Payout_BlackListCustomer {
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[3]")
     WebElement sSearchMasterMerchant3;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    // For UAT	
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement selectTestAcs013;
+    
+    // For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement selectTestAcs013;
 
     @FindBy(xpath = "(//button[@class=\"multiselect dropdown-toggle btn btn-default\"])[2]")
@@ -62,9 +70,14 @@ public class Payout_BlackListCustomer {
 
     @FindBy(xpath = "(//input[@class=\"form-control multiselect-search\"])[2]")
     WebElement searchMasterMerchant2;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement TestAcsMasterMerch03;
+    
+    //For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcsMasterMerch03;
+    
 
 
     // ==== Main Flow ====
@@ -123,7 +136,7 @@ public class Payout_BlackListCustomer {
         // Search & Delete records safely
    //     deleteRecordByAccountNo("1234234346789");
    //     deleteRecordByAccountNo("1234234346796");
-
+        
         deleteAllRecordsFromTable();
         
         log.info("==== Completed FraudControl Blacklist Payout Customer Test ====");
@@ -136,7 +149,6 @@ public class Payout_BlackListCustomer {
                 log.info("No more records left to delete.");
                 break;
             }
-            
             
             WebElement deleteBtn = deleteButtons.get(0);
             safeClick(deleteBtn);

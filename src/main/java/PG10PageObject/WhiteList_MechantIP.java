@@ -41,8 +41,13 @@ public class WhiteList_MechantIP {
 
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[1]")
     WebElement searchWhiteListMasterMerchant;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    
+    // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement TestAcs01;
+    
+    // For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement TestAcs01;
 
     @FindBy(xpath = "//a[normalize-space()='Add Whitelist Merchant IP']")
@@ -53,19 +58,30 @@ public class WhiteList_MechantIP {
 
     @FindBy(xpath = "(//input[@class='form-control multiselect-search'])[3]")
     WebElement addWhiteListTestACS;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+    
+    // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement addWhiteListSelectTestAcs;
+    
+    //For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
     WebElement addWhiteListSelectTestAcs;
+    
 
     @FindBy(xpath = "//div[@class='gutters row']//button[@title='Select Master Merchant']")
     WebElement sMasterMerchant2;
 
     @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//input[@placeholder='Search']")
     WebElement searchWhiteListMasterMerchant2;
-
-    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
-    WebElement TestAcs03;
-
+    
+      // For UAT
+//    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']")
+//    WebElement TestAcs03;
+    
+    // For Production
+    @FindBy(xpath = "//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']")
+     WebElement TestAcs03;
+    
     @FindBy(xpath = "//h3[text()='White list Master Merchant IP Details']")
     WebElement whitelistMasterMerchantIPDetails;
 
@@ -108,6 +124,7 @@ public class WhiteList_MechantIP {
         // Filter Records
         safeClick(sMasterMerchant2);
         typeAndSelect(searchWhiteListMasterMerchant2, "Test-acs-01", TestAcs03);
+        typeText(By.id("txtSearch"), "1.5.7.8");
         safeClick(By.id("btnFilter"));
 
         // Capture Screenshot

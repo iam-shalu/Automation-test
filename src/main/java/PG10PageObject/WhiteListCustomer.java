@@ -1,5 +1,4 @@
- package PG10PageObject;
-
+package PG10PageObject;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -60,10 +59,11 @@ public class WhiteListCustomer {
 
     // First delete button
     By deleteLocator1 = By.xpath("(//span[@class='fa fa-trash-o  fa-lg'])[1]");
+    
     // Generic delete locator for fallback
     By deleteLocator2 = By.xpath("//a[contains(@title,'Delete Record')]//span[contains(@class,'fa-lg')]");
 
-    public void interactWithfraudControl_whiteListCustomer() throws IOException {
+    public void interactWithfraudControl_whiteListCustomer() throws IOException, InterruptedException {
         expandSidebarIfCollapsed();
 
         // Fraud Control → White List Customer
@@ -73,7 +73,12 @@ public class WhiteListCustomer {
         // Master Merchant selection
         clickElementWithFallback(By.xpath("//button[@title='Select Master Merchant']"));
         searchSelectMasterMerchant.sendKeys("Test-Acs-01");
-        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        
+        //For UAT
+    //    clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        
+        //For Production
+        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']"));
 
         driver.manage().window().maximize();
 
@@ -93,8 +98,12 @@ public class WhiteListCustomer {
         clickElementWithFallback(By.xpath("//a[@class='btn btn-info btn-sm']")); // Add WhiteList
         clickElementWithFallback(By.xpath("//button[@class='multiselect dropdown-toggle btn btn-default']"));
         searchWhiteList.sendKeys("Test-acs-01");
-        clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01']"));
-
+        
+        //For UAT
+    //    clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01']"));
+        
+        //For Production
+        clickElementWithFallback(By.xpath("//label[normalize-space()='Test-Acs-01-MM']"));
         // Fill details
         typeText(By.id("FirstName"), "Akash");
         typeText(By.id("LastName"), "Lade");
@@ -107,7 +116,13 @@ public class WhiteListCustomer {
         // Export Excel
         clickElementWithFallback(By.xpath("(//button[@title='Select Master Merchant'])[2]"));
         searchWhiteList2.sendKeys("Test-acs-01");
-        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        
+        //For UAT
+     //   clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01']"));
+        
+        //For Production
+        clickElementWithFallback(By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='radio'][normalize-space()='Test-Acs-01-MM']"));
+        
         typeText(By.id("txtSearch"), "Akash");
         clickElementWithFallback(By.id("btnFilter"));
         clickElementWithFallback(By.id("btnExport"));
@@ -124,12 +139,29 @@ public class WhiteListCustomer {
         // Screenshot
         CommonUtilis.captureFullPageScreenshot(driver, "FraudControl-WhiteListCustomer", "WhiteListCustomer_Page_Screenshot");
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0);");
+        
+        Thread.sleep(2000);
 
         // Delete records (with retry)
         deleteWithRetry();
+        
+        waitForTableToLoad();
+        
     }
 
-    /**
+    private void waitForTableToLoad() {
+    	 try {
+             wait.until(driver -> {
+                 List<WebElement> loaders = driver.findElements(By.xpath("//*[contains(@class,'spinner') or contains(text(),'Loading')]"));
+                 return loaders.isEmpty();
+             });
+         } catch (TimeoutException e) {
+            // log.warn("Timeout waiting for table load stabilization.");
+         }
+	
+	}
+
+	/**
      * Expand sidebar if collapsed (for headless mode)
      */
     private void expandSidebarIfCollapsed() {
@@ -199,7 +231,7 @@ public class WhiteListCustomer {
             }
         }
     }
+    
+    
 }
-
-
 

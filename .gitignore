@@ -49,3 +49,7 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Ignore the folder 
+ExcelFile/
+screenshots/
+
