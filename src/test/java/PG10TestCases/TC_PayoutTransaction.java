@@ -20,7 +20,7 @@ public class TC_PayoutTransaction extends PG10Base {
 		Listeners.test.log(Status.INFO, "Click On Transaction Id");
 		Listeners.test.log(Status.INFO, "Capture the FullPageScreenshot");
 		
-		log.info("==== Capture Full Page Screenshot ====");
+		
 		
 		Listeners.test.log(Status.INFO, "Scroll To Top ");
 		Listeners.test.log(Status.INFO, "Scroll To Top ");
@@ -28,7 +28,7 @@ public class TC_PayoutTransaction extends PG10Base {
 		Listeners.test.log(Status.INFO, "Go to View Tx Details ");
 		Listeners.test.log(Status.INFO, "Capture the FullPageScreenshot");
 		
-		log.info("==== Capture Full Page Screenshot ====");
+		
 		Listeners.test.log(Status.INFO, "Control Back To Original Page");
 		Listeners.test.log(Status.INFO, "Search Field - IPayinfo");
 		Listeners.test.log(Status.INFO, "Filter Type - Equals");
@@ -38,6 +38,9 @@ public class TC_PayoutTransaction extends PG10Base {
 	//	payoutTransactionPage.interactWithtransactionPayoutTxs();
 		
 		payoutTransactionPage.interactWithtransactionPayoutTxs();
+		
+		
+		log.info("==== Capture Full Page Screenshot ====");
 
 		log.info("==== Payout Transactions Test Completed ====");
 
