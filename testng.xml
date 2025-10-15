@@ -8,7 +8,7 @@
 			<class name="PG10TestCases.TC_LoginPage" />
 			<class name="PG10TestCases.TC_Dashboard" />
 			<class name="PG10TestCases.TC_DepositTransaction" />
-			<class name="PG10TestCases.TC_PayoutTransaction" /> 
+			<class name="PG10TestCases.TC_PayoutTransaction" />
 			<class name="PG10TestCases.TC_SearchTxhist" /> 
 			<class name="PG10TestCases.TC_ChargebackTxs" /> 
 			<class name="PG10TestCases.TC_BlackListCustomer" />

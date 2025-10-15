@@ -124,6 +124,7 @@ public class WhiteList_MechantIP {
         // Filter Records
         safeClick(sMasterMerchant2);
         typeAndSelect(searchWhiteListMasterMerchant2, "Test-acs-01", TestAcs03);
+        typeText(By.id("txtSearch"), "1.5.7.8");
         safeClick(By.id("btnFilter"));
 
         // Capture Screenshot

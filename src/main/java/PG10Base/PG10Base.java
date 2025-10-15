@@ -57,14 +57,19 @@ public class PG10Base {
             options.addArguments("--remote-allow-origins=*");
 
             boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+
             if (headless) {
+            	options.addArguments("--headless=new"); // simpler and more reliable
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
-                options.addArguments("--window-size=1920,1080");
-           //   WebDriver driver = new ChromeDriver(options);
-                log.info("Browser launched in headless mode");
+                options.addArguments("--window-size=1920,1080"); // full HD
+                options.addArguments("--force-device-scale-factor=1");
+                options.addArguments("--start-maximized"); 
+                
+                log.info("Browser launched in headless mode (full screen)");
             } else {
                 log.info("Browser launched in normal mode");
+
             }
             
             driver = new ChromeDriver(options);
