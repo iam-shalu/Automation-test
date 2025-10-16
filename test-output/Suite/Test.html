@@ -1,0 +1,175 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>19/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Oct 16 12:22:27 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>2017 seconds (2017049 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='PG10TestCases.TC_BlackListCustomer.blackListCustomer()'><b>blackListCustomer</b><br>Test class: PG10TestCases.TC_BlackListCustomer</td>
+<td></td>
+<td>148</td>
+<td>PG10TestCases.TC_BlackListCustomer@2931522b</td></tr>
+<tr>
+<td title='PG10TestCases.TC_Logout.logout()'><b>logout</b><br>Test class: PG10TestCases.TC_Logout</td>
+<td></td>
+<td>4</td>
+<td>PG10TestCases.TC_Logout@3e6f3f28</td></tr>
+<tr>
+<td title='PG10TestCases.TC_CityBlackList.cityBlackListCustomer()'><b>cityBlackListCustomer</b><br>Test class: PG10TestCases.TC_CityBlackList</td>
+<td></td>
+<td>170</td>
+<td>PG10TestCases.TC_CityBlackList@327af41b</td></tr>
+<tr>
+<td title='PG10TestCases.TC_SettingsDepositAssignProces.SettingsDepositAssignProces()'><b>SettingsDepositAssignProces</b><br>Test class: PG10TestCases.TC_SettingsDepositAssignProces</td>
+<td></td>
+<td>10</td>
+<td>PG10TestCases.TC_SettingsDepositAssignProces@6aa61224</td></tr>
+<tr>
+<td title='PG10TestCases.TC_WhiteListCustomer.whiteListCustomer()'><b>whiteListCustomer</b><br>Test class: PG10TestCases.TC_WhiteListCustomer</td>
+<td></td>
+<td>229</td>
+<td>PG10TestCases.TC_WhiteListCustomer@7674b62c</td></tr>
+<tr>
+<td title='PG10TestCases.TC_LoginPage.login()'><b>login</b><br>Test class: PG10TestCases.TC_LoginPage</td>
+<td></td>
+<td>7</td>
+<td>PG10TestCases.TC_LoginPage@6304101a</td></tr>
+<tr>
+<td title='PG10TestCases.TC_ChargebackTxs.chargebackTransaction()'><b>chargebackTransaction</b><br>Test class: PG10TestCases.TC_ChargebackTxs</td>
+<td></td>
+<td>88</td>
+<td>PG10TestCases.TC_ChargebackTxs@5be49b60</td></tr>
+<tr>
+<td title='PG10TestCases.TC_MasterMerchant.masterMerchantList()'><b>masterMerchantList</b><br>Test class: PG10TestCases.TC_MasterMerchant</td>
+<td></td>
+<td>47</td>
+<td>PG10TestCases.TC_MasterMerchant@c7045b9</td></tr>
+<tr>
+<td title='PG10TestCases.TC_SearchTxhist.SearchTransactionshist()'><b>SearchTransactionshist</b><br>Test class: PG10TestCases.TC_SearchTxhist</td>
+<td></td>
+<td>88</td>
+<td>PG10TestCases.TC_SearchTxhist@5117dd67</td></tr>
+<tr>
+<td title='PG10TestCases.TC_VPABlackList.VPABlackListCustomer()'><b>VPABlackListCustomer</b><br>Test class: PG10TestCases.TC_VPABlackList</td>
+<td></td>
+<td>210</td>
+<td>PG10TestCases.TC_VPABlackList@16b2bb0c</td></tr>
+<tr>
+<td title='PG10TestCases.TC_DepositTransaction.depositTransactions()'><b>depositTransactions</b><br>Test class: PG10TestCases.TC_DepositTransaction</td>
+<td></td>
+<td>107</td>
+<td>PG10TestCases.TC_DepositTransaction@198d6542</td></tr>
+<tr>
+<td title='PG10TestCases.TC_GatewayList.gatewayList()'><b>gatewayList</b><br>Test class: PG10TestCases.TC_GatewayList</td>
+<td></td>
+<td>16</td>
+<td>PG10TestCases.TC_GatewayList@f99f5e0</td></tr>
+<tr>
+<td title='PG10TestCases.TC_WhiteListMechantIP.WhiteListMerchantIP()'><b>WhiteListMerchantIP</b><br>Test class: PG10TestCases.TC_WhiteListMechantIP</td>
+<td></td>
+<td>236</td>
+<td>PG10TestCases.TC_WhiteListMechantIP@19e7a160</td></tr>
+<tr>
+<td title='PG10TestCases.TC_PayoutTransaction.payoutTransactions()'><b>payoutTransactions</b><br>Test class: PG10TestCases.TC_PayoutTransaction</td>
+<td></td>
+<td>89</td>
+<td>PG10TestCases.TC_PayoutTransaction@5e403b4a</td></tr>
+<tr>
+<td title='PG10TestCases.TC_SettingsPayoutAssignProces.SettingsPayoutAssignProces()'><b>SettingsPayoutAssignProces</b><br>Test class: PG10TestCases.TC_SettingsPayoutAssignProces</td>
+<td></td>
+<td>12</td>
+<td>PG10TestCases.TC_SettingsPayoutAssignProces@30bce90b</td></tr>
+<tr>
+<td title='PG10TestCases.TC_FTDWhiteListUser.whiteListFTDListCustomer()'><b>whiteListFTDListCustomer</b><br>Test class: PG10TestCases.TC_FTDWhiteListUser</td>
+<td></td>
+<td>138</td>
+<td>PG10TestCases.TC_FTDWhiteListUser@45a4b042</td></tr>
+<tr>
+<td title='PG10TestCases.TC_Payout_BlackListCustomer.payoutBlackListCustomer()'><b>payoutBlackListCustomer</b><br>Test class: PG10TestCases.TC_Payout_BlackListCustomer</td>
+<td></td>
+<td>183</td>
+<td>PG10TestCases.TC_Payout_BlackListCustomer@662706a7</td></tr>
+<tr>
+<td title='PG10TestCases.TC_StateBlackList.stateBlackListCustomer()'><b>stateBlackListCustomer</b><br>Test class: PG10TestCases.TC_StateBlackList</td>
+<td></td>
+<td>159</td>
+<td>PG10TestCases.TC_StateBlackList@6cb6decd</td></tr>
+<tr>
+<td title='PG10TestCases.TC_Dashboard.verifyDashboardButtons()'><b>verifyDashboardButtons</b><br>Test class: PG10TestCases.TC_Dashboard</td>
+<td></td>
+<td>65</td>
+<td>PG10TestCases.TC_Dashboard@27d5a580</td></tr>
+</table><p>
+</body>
+</html>
