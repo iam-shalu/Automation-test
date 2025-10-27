@@ -56,7 +56,8 @@ public class PG10Base {
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("--remote-allow-origins=*");
 
-            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+            // boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+             boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
             if (headless) {
             	options.addArguments("--headless=new"); // simpler and more reliable
