@@ -57,7 +57,8 @@ public class VPABlackList {
         // Upload Excel
         WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("(//input[@class='form-control form-control-sm'])[1]")));
-        String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\VPA BlackList\\VPABlackList.xlsx";
+        //String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\VPA BlackList\\VPABlackList.xlsx";
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/VPA BlackList/VPABlackList.xlsx";
         blackListUpload.sendKeys(filePath);
         System.out.println(" File uploaded successfully.");
 
