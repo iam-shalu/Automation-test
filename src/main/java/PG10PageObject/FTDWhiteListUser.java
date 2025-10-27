@@ -95,7 +95,8 @@ public class FTDWhiteListUser {
         try {
             WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("fileInput")));
             // String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\FTDWhiteList User\\FTDWhiteListUser.xlsx";
-            String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/FTDWhiteList User/FTDWhiteListUser.xlsx";
+            // String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/FTDWhiteList User/FTDWhiteListUser.xlsx";
+            String filePath = System.getProperty("user.dir") + "Upload Excel File/FTDWhiteList User/FTDWhiteListUser.xlsx";
             fileInput.sendKeys(filePath);
             log.info("File uploaded successfully.");
         } catch (Exception e) {
