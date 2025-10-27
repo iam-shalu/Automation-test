@@ -79,7 +79,7 @@ public class BlackListCustomer {
             clickElementWithFallback(By.xpath("//a[text()='Download Sample File']"));
            // String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\Blacklist Customer\\BlackList.xlsx";
             // String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/Blacklist Customer/BlackList.xlsx";
-            String filePath = System.getProperty("user.dir") + "Upload Excel File/Blacklist Customer/BlackList.xlsx";
+            String filePath = System.getProperty("user.dir") + "/Upload Excel File/Blacklist Customer/BlackList.xlsx";
             chooseFileInput.sendKeys(filePath);
             clickElementWithFallback(By.id("frmimport"));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader")));
