@@ -95,7 +95,7 @@ public class CityBlackList {
             WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
             // String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
            // String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/CityBlackList Customer/CityBlackList.xlsx";
-            String filePath = System.getProperty("user.dir") + "Upload Excel File/CityBlackList Customer/CityBlackList.xlsx";
+            String filePath = System.getProperty("user.dir") + "/Upload Excel File/CityBlackList Customer/CityBlackList.xlsx";
             blackListUpload.sendKeys(filePath);
             System.out.println("✅ File uploaded successfully.");
 
