@@ -96,7 +96,8 @@ public class Payout_BlackListCustomer {
         
         try {
             WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("fileInput")));
-            String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";
+            // String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\PayoutBlackList Customer\\BlacklistPayoutCustomer.xlsx";
+            String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/PayoutBlackList Customer/BlacklistPayoutCustomer.xlsx";
             blackListUpload.sendKeys(filePath);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader']")));
             log.info("File uploaded successfully.");
