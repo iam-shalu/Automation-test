@@ -92,10 +92,19 @@ public class CityBlackList {
             clickElementWithFallback(testAcs1, By.xpath("//ul[@class='multiselect-container dropdown-menu show']//label[@class='checkbox'][normalize-space()='Test-Acs-01-SM']"));
 
             // Upload Excel
+           // WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
+           // String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
+           // blackListUpload.sendKeys(filePath);
+           // System.out.println("✅ File uploaded successfully.");
+            
+////////////////
+            // Upload Excel
             WebElement blackListUpload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='fileInput']")));
-            String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\CityBlackList Customer\\CityBlackList.xlsx";
+            String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/CityBlackList Customer/CityBlackList.xlsx";
             blackListUpload.sendKeys(filePath);
+
             System.out.println("✅ File uploaded successfully.");
+///////////////////
 
             clickElementWithFallback(By.id("btnimport"));
 
@@ -122,13 +131,13 @@ public class CityBlackList {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSearch"))).sendKeys("Surat");
             clickElementWithFallback(By.id("btnExport"));
 
-            // Handle download file
+             Handle download file
             String dateFolder = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             String downloadDir = "D:\\Automation\\pg10-automation\\ExcelFile";
             if (CommonUtilis.waitForFileDownload(downloadDir, ".xlsx", 20)) {
-                CommonUtilis.moveDownloadedFileToDatedFolder("CityBlackList", dateFolder);
+             CommonUtilis.moveDownloadedFileToDatedFolder("CityBlackList", dateFolder);
             } else {
-                System.err.println(" No downloaded Excel file found to move.");
+               System.err.println(" No downloaded Excel file found to move.");
             }
 
             // Screenshot
