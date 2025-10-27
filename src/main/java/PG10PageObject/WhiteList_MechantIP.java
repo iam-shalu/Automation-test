@@ -106,6 +106,7 @@ public class WhiteList_MechantIP {
         // Upload File
         WebElement fileInput = driver.findElement(By.id("fileInput"));
         String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\WhiteList Merchant Ip\\WhiteList_MerchantIP.xlsx";
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/WhiteList Merchant Ip/WhiteList_MerchantIP.xlsx";
         fileInput.sendKeys(filePath);
         waitForUploadComplete();
 
