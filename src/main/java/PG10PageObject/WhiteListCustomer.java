@@ -86,7 +86,8 @@ public class WhiteListCustomer {
         try {
             WebElement upload = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("fileInput")));
             // String filePath = "D:\\Automation\\pg10-automation\\Upload Excel File\\Whitelist Customer\\WhiteList.xlsx";
-			String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/Whitelist Customer/WhiteList.xlsx";
+			// String filePath = System.getProperty("user.dir") + "/src/test/resources/excel/Whitelist Customer/WhiteList.xlsx";
+			 String filePath = System.getProperty("user.dir") + "Upload Excel File/Whitelist Customer/WhiteList.xlsx";
             upload.sendKeys(filePath);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader")));
             System.out.println(" File uploaded successfully.");
