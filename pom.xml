@@ -35,6 +35,7 @@
 <artifactId>testng</artifactId>
 <version>7.11.0</version>
 <!-- <scope>test</scope> -->
+<scope>test</scope> 
 </dependency>
 <!--  https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java  -->
 <dependency>
